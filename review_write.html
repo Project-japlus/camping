@@ -10,25 +10,27 @@
 <body>
 
     <div class="container mt-3">
+      <div class="w-50 mx-auto">
         <h2>리뷰 작성</h2>
-        <form method="">
-            <div class="mb-3 mt-3">
+        <form method="" class="mt-4">
+            <div class="mb-4">
                 <input type="search" class="form-control" id="camping_idx" placeholder="캠핑장 검색" name="camping_idx" autofocus>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <input type="text" class="form-control" id="review_title" placeholder="제목을 입력하세요" name="review_title" required>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <textarea class="form-control" rows="5" id="review_content" placeholder="내용을 입력하세요" name="review_content" required></textarea>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <input type="file" class="form-control" id="review_img" name="review_img" multiple>
             </div>
-            <div class="mb-3 d-flex justify-content-between">
+            <div class="mb-4 d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary">작성완료</button>
                 <button type="button" class="btn btn-secondary">취소</button>
             </div>
         </form>
+      </div>
     </div>
 
 </body>
