@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>review_view</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+  <div class="container mt-3">
+    <div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
+      <div class="col text-start ms-2">Reo_boo92</div>
+      <div class="col text-center">2023-07-25</div>
+      <div class="col text-end me-2">조회 : 1853 | 추천 : 7</div>
+    </div>
+    <div class="mt-5 mb-5">
+      <h2>문수골 힐링 캠핑장</h2>
+    </div>
+    <div class="border-bottom border-secondary border-1">
+      <p class="mb-5">
+        저수지 앞에 있는 문수골 힐링 캠프장 다녀왔습니다^_^
+        저에게 가장 좋았던 이유중에 하나는 애견도 함께 즐길수 있어서 좋았던거 같습니다!
+        샤워실,개수대 모두사용 가능하고 매점도 있었습니다
+        지역은 김포 입니다!! 주말보다는 평일에 가는게 조용합니다!
+      </p>
+      <!-- 사진은 한 줄로 스크롤바? 또는 화살표로 넘길 수 있게 -->
+      <div id="carouselExampleIndicators" class="carousel carousel-dark slide w-50 mx-auto" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="C:\Users\gkfka\Downloads\문수골 힐링 캠핑장1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="C:\Users\gkfka\Downloads\문수골 힐링 캠핑장2.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="mt-4 mb-4 d-flex justify-content-center">
+        <button type="button" class="btn btn-primary">👍추천</button>
+      </div>
+    </div>
+    <div class="mt-4 d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-secondary me-3">목록</button>
+      <button type="button" class="btn btn-outline-secondary me-3">이전글</button>
+      <button type="button" class="btn btn-outline-secondary">다음글</button>
+    </div>
+  </div>
+
+</body>
+</html>
