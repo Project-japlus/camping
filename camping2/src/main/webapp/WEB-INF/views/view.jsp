@@ -52,9 +52,6 @@
 			</tr>	
 			</c:if>
 	  </table>
-<!-- 	  <div> -->
-<!-- 	  	<span>✩</span> -->
-<!-- 	  </div> -->
 	</div>  
 </div>
 
@@ -75,97 +72,51 @@
 </c:if>
 
 
-<c:if test="${dto.sbrsCl != null }">
-	<div style="width: 1200px; margin: auto; margin-top: 50px;">
-		<h5>💡캠핑장 시설정보</h5>
-	</div>
-</c:if>
-<c:if test="${dto.sbrsCl != null && fn:length(dto.sbrsCl) > 30}">
-	<div style="background-color: #f9f9f9; width: 1200px; height:250px; margin:auto; margin-top: 10px;">
-		<div style="margin-top: 15px; margin-left: 80px; height: 80px; padding-top: 40px;">
-			<c:if test="${dto.sbrsCl.contains('전기') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/전기.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('장작판매') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/장작.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('온수') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/온수.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/물놀이.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('산책로') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/산책.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/마트.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('운동시설') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/운동.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/와이파이.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/트렘폴린.png"></span>
-			</c:if>
-		
-			<c:if test="${dto.sbrsCl.contains('놀이터') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/놀이터.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('운동장') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/운동장.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/마트.png"></span>
-			</c:if>
-		</div>
-	</div>
-</c:if>
+<div style="width: 1200px; margin: auto; margin-top: 50px;">
+	<h5>💡캠핑장 시설정보</h5>
+</div>
 
-<c:if test="${dto.sbrsCl != null && fn:length(dto.sbrsCl) <= 30 }">
-	<div style="background-color: #f9f9f9; width: 1200px; height:150px; margin:auto; margin-top: 10px;">
-		<div style="margin-top: 15px; margin-left: 80px; height: 80px; padding-top: 40px;">
-			<c:if test="${dto.sbrsCl.contains('전기') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/전기.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('장작판매') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/장작.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('온수') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/온수.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/물놀이.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('산책로') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/산책.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/마트.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('운동시설') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/운동.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/와이파이.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/트렘폴린.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('놀이터') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/놀이터.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('운동장') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/운동장.png"></span>
-			</c:if>
-			<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-				<span style="margin-right: 100px;"><img src="${cpath }/resources/icon/마트.png"></span>
-			</c:if>
-		</div>
+<div style="background-color: #f9f9f9; width: 1200px; height:150px; margin:auto; margin-top: 10px;">
+	<div style="margin-top: 15px; margin-left: 80px; height: 80px; padding-top: 40px;">
+		<c:if test="${dto.sbrsCl.contains('전기') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/전기.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('장작판매') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/장작.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('온수') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/온수.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('물놀이장') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/물놀이.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('산책로') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/산책.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('마트편의점') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/마트.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('운동시설') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/운동.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/와이파이.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/트렘폴린.png"></span>
+		</c:if>
+	
+		<c:if test="${dto.sbrsCl.contains('놀이터') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/놀이터.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('운동장') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/운동장.png"></span>
+		</c:if>
+		<c:if test="${dto.sbrsCl.contains('마트편의점') }">
+			<span style="margin-right: 50px;"><img src="${cpath }/resources/icon/마트.png"></span>
+		</c:if>
 	</div>
-</c:if>
+</div>
 
 
 <div style="width: 1200px; margin: auto; margin-top: 50px;">

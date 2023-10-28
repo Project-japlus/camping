@@ -21,7 +21,7 @@
 			<!-- 					<li><a href="#" class="filterOptions" data-value="추천수">추천수</a></li> -->
 			<!-- 				</ul> -->
 			<!-- 			</div> -->
-			<a href="${cpath }/map/${pageNo}"><button type="button"
+			<a href="${cpath }/mapList/${page}"><button type="button"
 					class="btn btn-primary">지도로보기</button></a>
 		</div>
 	</div>
@@ -70,7 +70,7 @@
 
 	<div class="paging">
 		<c:if test="${paging.prev }">
-			<a href="${cpath }/list/${paging.begin - 10}">[이전]</a>
+			<a href="${cpath }/list/${paging.begin - 10}"> < </a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
@@ -80,10 +80,9 @@
 		</c:forEach>
 		
 		<c:if test="${paging.next }">
-			<a href="${cpath }/list/${paging.end + 1}">[다음]</a>
+			<a href="${cpath }/list/${paging.end + 1}"> > </a>
 		</c:if>
 		<br><br>
-<%-- 		<button onclick="alert('${paging}')">페이징 정보 확인</button> --%>
 	</div>
 
 <script>

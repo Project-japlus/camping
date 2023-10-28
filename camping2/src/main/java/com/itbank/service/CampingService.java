@@ -32,9 +32,8 @@ public class CampingService {
 		return campingDAO.selectAll(param);
 	}
 
-	public int getListCnt() {
-		return campingDAO.getListCnt();
-	}
+
+
 
 
 	

@@ -17,27 +17,6 @@ public class Paging {
 	private boolean prev;			// 이전 버튼을 출력하는 조건
 	private boolean next;			// 다음 버튼을 출력하는 조건
 	
-	@Override
-	public String toString() {
-		String format = "[";
-		format += "page : %s, ";
-		format += "boardCount : %s, ";
-		format += "perPage : %s, ";
-		format += "perSection : %s, ";
-		format += "offset : %s, ";
-		format += "pageCount : %s, ";
-		format += "begin : %s, ";
-		format += "end : %s, ";
-		format += "prev : %s, ";
-		format += "next : %s ]";
-		
-		String s = String.format(format, 
-					page, boardCount, perPage, perSection, offset,
-					pageCount, begin, end, prev, next
-				);
-		return s;
-	}
-	
 	// 생성자
 	public Paging(int page, int boardCount) {
 		this.page = page;

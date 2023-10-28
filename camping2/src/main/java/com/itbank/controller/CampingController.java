@@ -24,8 +24,6 @@ public class CampingController {
 	
 	@GetMapping("/list/{page}")
 	public ModelAndView list(@PathVariable("page") int page) {
-		// 검색어가 있을 경우와 검색어가 없을 경우의 게시글 전체 개수가 달라진다
-		
 		ModelAndView mav = new ModelAndView("list");
 		int totalCount = campingService.getTotalCount();
 		Paging paging = new Paging(page, totalCount);
@@ -39,16 +37,39 @@ public class CampingController {
 		return mav;
 	}
 	
+	@GetMapping("/mapList/{page}")
+	public ModelAndView map1(@PathVariable("page") int page) {
+		System.out.println("page :" + page);
+		ModelAndView mav = new ModelAndView("map");
+		int totalCount = campingService.getTotalCount();
+		Paging paging = new Paging(page, totalCount);
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("paging", paging);
+		
+		List<CampingDTO> list = campingService.selectAll(param);                         
+		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		return mav;
+		
+	}
 	
 	@GetMapping("/view/{camping_idx}")
 	public ModelAndView view(@PathVariable("camping_idx") int camping_idx) {
 		ModelAndView mav = new ModelAndView("view");
 		CampingDTO dto = campingService.selectOne(camping_idx);
 		List<CampingDTO> image = campingService.selectOneImage(camping_idx);
-		mav.addObject("list_cnt", campingService.getListCnt());
 		mav.addObject("dto", dto);
 		mav.addObject("image", image);
 		return mav;
+	}
+	
+	@GetMapping("/map/{list}")
+	public ModelAndView map(@PathVariable("/list") List<CampingDTO> list) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("list", list);
+		return mav;
+		
 	}
 	
 

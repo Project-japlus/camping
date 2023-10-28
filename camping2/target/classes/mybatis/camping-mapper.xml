@@ -19,18 +19,6 @@
                     fetch next #{paging.perPage} rows only
 	</select>
 	
-	<select id="getListCnt" resultType="int">
-		select max(camping_idx) from camping
-	</select>
-	
-<!-- 	<select id="getCampingByPaging" resultType="camping" parameterType="int"> -->
-<!-- 		 select * from camping -->
-<!-- 		 	order by camping_idx -->
-<!-- 		 	offset #{(page - 1) * 10} rows -->
-<!-- 		 	fetch next 10 rows only -->
-		 
-		
-<!-- 	</select> -->
 	
 	<select id="selectOne" parameterType="int" resultType="camping">
 	 	select c.*, ac.*, inter.*, intro.*, safe.*, img.first_img

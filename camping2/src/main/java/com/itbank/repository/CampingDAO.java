@@ -14,6 +14,6 @@ public interface CampingDAO {
 
 	List<CampingDTO> selectAll(HashMap<String, Object> param);
 
-	int getListCnt();
+
 
 }
