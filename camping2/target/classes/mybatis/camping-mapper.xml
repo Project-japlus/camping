@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="com.itbank.repository.CampingDAO">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from camping
+	</select>
+	
+	<select id="selectAll" resultType="camping" parameterType="hashmap">
+		select c.camping_idx, c.facltNm, c.featurenm, c.intro, c.lineintro, c.tel, c.lctcl, c.addr1, c.camping_viewcount, ci.sbrscl, cimg.first_img 
+                from camping c 
+                    join camping_internal ci on c.camping_idx = ci.camping_idx 
+                    join camping_img cimg on c.camping_idx = cimg.camping_idx
+                    where cimg.first_img is not null 
+                    order by c.camping_idx desc
+                    offset #{paging.offset} rows
+                    fetch next #{paging.perPage} rows only
+	</select>
+	
+	<select id="getListCnt" resultType="int">
+		select max(camping_idx) from camping
+	</select>
+	
+<!-- 	<select id="getCampingByPaging" resultType="camping" parameterType="int"> -->
+<!-- 		 select * from camping -->
+<!-- 		 	order by camping_idx -->
+<!-- 		 	offset #{(page - 1) * 10} rows -->
+<!-- 		 	fetch next 10 rows only -->
+		 
+		
+<!-- 	</select> -->
+	
+	<select id="selectOne" parameterType="int" resultType="camping">
+	 	select c.*, ac.*, inter.*, intro.*, safe.*, img.first_img
+   			from camping c
+    		join camping_activity ac on c.camping_idx = ac.camping_idx
+    		join camping_internal inter on c.camping_idx = inter.camping_idx
+    		join camping_introduce intro on c.camping_idx = intro.camping_idx
+    		join camping_safety_device safe on c.camping_idx = safe.camping_idx
+    		join camping_img img on c.camping_idx = img.camping_idx
+    		where c.camping_idx = #{camping_idx}
+    		and img.first_img is not null
+	</select>
+	
+	<select id="selectOneImage" resultType="camping" parameterType="int">
+		    select c.camping_idx, img.inner_img
+        		from camping c
+       			join camping_img img
+        		on c.camping_idx = img.camping_idx
+        		where c.camping_idx = #{camping_idx}
+        		and img.inner_img is not null
+	</select>
+	
+
+	
+</mapper>
