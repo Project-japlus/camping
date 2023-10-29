@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <style>
+    .main {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        width: 350px;
+        height: 350px;
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    body {
+        background: url("자연풍경.jpg") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    h1 {
+        color: black;
+    }
+
+    .other-elements {
+        opacity: 1;
+    }
+
+    #sub {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #sub a {
+        text-decoration: none;
+    }
+
+    #sub button {
+        width: 90px;
+        height: 30px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    #sub button:hover {
+        background: #0077FF;
+        color: white;
+        border: 1px solid #0077FF;
+        border-radius: 5px;
+    }
+
+    #login-button:hover {
+        background: #0077FF;
+        color: white;
+        border: 1px solid #0077FF;
+        border-radius: 5px;
+    }
+
+    #save-checkbox {
+        margin: 0;
+        padding: 0;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1 style="color: black; opacity: 1;">로그인</h1>
+        <div>
+            <form method="POST" style="opacity: 1;">
+                <p><input type="text" name="userid" placeholder="아이디" required autofocus class="other-elements" style="width: 200px; height: 30px;"></p>
+                <p><input type="password" name="userpw" placeholder="Password" required class="other-elements" style="width: 200px; height: 30px;"></p>
+                <p id="save-checkbox"><input type="checkbox" name="remember" required class="other-elements">아이디 저장</p>
+                <p><input type="submit" value="로그인" id="login-button" style="width: 200px; height: 30px;"></p>
+            </form>
+            <div id="sub" class="other-elements">
+                <a href="cpath/findmyidpw"><button>ID/PW찾기</button></a>
+                <a href="cpath/findmyidpw"><button>회원가입</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
