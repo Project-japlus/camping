@@ -41,6 +41,19 @@
         		and img.inner_img is not null
 	</select>
 	
+	<select id="searchKeyword" resultType="camping" parameterType="hashmap">
+		select * from 
+			camping where facltnm like '%${keyword}%' or addr1 like '%${keyword}%'
+		    order by camping_idx desc
+		    offset #{paging.offset} rows
+		    fetch next #{paging.perPage} rows only
+	</select>
+	
+	<select id="getSearchTotal" resultType="int" parameterType="String">
+		select count(*) from 
+			camping where facltnm like '%${keyword}%' or addr1 like '%${keyword}%'
+	</select>
+	
 
 	
 </mapper>

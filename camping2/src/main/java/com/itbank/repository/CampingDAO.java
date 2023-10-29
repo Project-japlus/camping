@@ -14,6 +14,10 @@ public interface CampingDAO {
 
 	List<CampingDTO> selectAll(HashMap<String, Object> param);
 
+	List<CampingDTO> searchKeyword(HashMap<String, Object> param);
+
+	int getSearchTotal(String keyword);
+
 
 
 }

@@ -32,6 +32,14 @@ public class CampingService {
 		return campingDAO.selectAll(param);
 	}
 
+	public List<CampingDTO> searchKeyword(HashMap<String, Object> param) {
+		return campingDAO.searchKeyword(param);
+	}
+
+	public int getSearchTotal(String keyword) {
+		return campingDAO.getSearchTotal(keyword);
+	}
+
 
 
 

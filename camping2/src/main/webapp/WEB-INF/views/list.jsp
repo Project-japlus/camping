@@ -70,17 +70,17 @@
 
 	<div class="paging">
 		<c:if test="${paging.prev }">
-			<a href="${cpath }/list/${paging.begin - 10}"> < </a>
+			<a href="${cpath }/list/${paging.begin - 10}" class="pagingA"> < </a>
 		</c:if>
 		
 		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
-			<a href="${cpath }/list/${i}">
+			<a href="${cpath }/list/${i}" class="pagingA">
 			${paging.page == i ? '<b>' : '' }
 				[${i }]${paging.page == i ? '</b>' : '' }</a>
 		</c:forEach>
 		
 		<c:if test="${paging.next }">
-			<a href="${cpath }/list/${paging.end + 1}"> > </a>
+			<a href="${cpath }/list/${paging.end + 1}" class="pagingA"> > </a>
 		</c:if>
 		<br><br>
 	</div>

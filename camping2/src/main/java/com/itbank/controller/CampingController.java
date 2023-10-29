@@ -36,14 +36,13 @@ public class CampingController {
 		mav.addObject("paging", paging);
 		return mav;
 	}
-	
+
+	// 지도로 보기로 이동
 	@GetMapping("/mapList/{page}")
-	public ModelAndView map1(@PathVariable("page") int page) {
-		System.out.println("page :" + page);
-		ModelAndView mav = new ModelAndView("map");
+	public ModelAndView mapList(@PathVariable("page") int page) {
+		ModelAndView mav = new ModelAndView("mapList");
 		int totalCount = campingService.getTotalCount();
 		Paging paging = new Paging(page, totalCount);
-		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("paging", paging);
 		
@@ -51,7 +50,38 @@ public class CampingController {
 		mav.addObject("list", list);
 		mav.addObject("paging", paging);
 		return mav;
+	}
+	
+	// 지도로 보기에서 키워드 검색
+	@GetMapping("/search/{page}")
+	public ModelAndView searchKeyword(@PathVariable("page")int page, String keyword) {
+		ModelAndView mav = new ModelAndView("searchKeyword");
+		int totalCount = campingService.getSearchTotal(keyword);
+		Paging paging = new Paging(page, totalCount);
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("paging", paging);
+		param.put("keyword", keyword);
 		
+		List<CampingDTO> list = campingService.searchKeyword(param);
+		mav.addObject("keyword", keyword);
+		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		return mav;
+	}
+	// 키워드 검색 결과에서 페이징 눌렀을 때
+	@GetMapping("/searchList/{page}/{keyword}")
+	public ModelAndView searchList(@PathVariable("page")int page, @PathVariable("keyword")String keyword) {
+		ModelAndView mav = new ModelAndView("searchKeyword");
+		int totalCount = campingService.getSearchTotal(keyword);
+		Paging paging = new Paging(page, totalCount);
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("paging", paging);
+		param.put("keyword", keyword);
+		
+		List<CampingDTO> list = campingService.searchKeyword(param);
+		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		return mav;
 	}
 	
 	@GetMapping("/view/{camping_idx}")
@@ -64,13 +94,7 @@ public class CampingController {
 		return mav;
 	}
 	
-	@GetMapping("/map/{list}")
-	public ModelAndView map(@PathVariable("/list") List<CampingDTO> list) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("list", list);
-		return mav;
-		
-	}
+	
 	
 
 }

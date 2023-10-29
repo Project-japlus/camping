@@ -81,7 +81,10 @@
 	div.paging > button {
 		opacity: 0.1;
 	}
-
+	.pagingA {
+		text-decoration: none;
+		color: inherit;
+	}
 
 </style>
 	<meta charset="utf-8">
