@@ -1,5 +1,5 @@
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=기록해주세요&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Camping&fontSize=90" />
 
 <div align=center>
   <h3>:open_hands: Project Introduction</h3>
@@ -18,7 +18,7 @@
 </p>
 
 <hr>
-
+<h3>Project Log</h3>
 지훈 branch : camping 프로젝트 통째로 올림 (예약/결제)  로그인/리스트까지 포함됨   a href 넘어가는 링크 살짝 수정해야 될 수도 있음
 
 23년 10월 30일 <br>
