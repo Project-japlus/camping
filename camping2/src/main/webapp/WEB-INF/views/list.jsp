@@ -2,56 +2,58 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-<div style="margin: auto; width: 1200px;">
-	지역
-	<div style="display:flex">
-		<form style="margin-bottom: 10px;" action="${cpath }/searchList/${page}">
-			<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
-				<option value="전체">전체</option>
-				<option value="서울시">서울시</option>
-				<option value="부산시">부산시</option>
-				<option value="대구시">대구시</option>
-				<option value="인천시">인천시</option>
-				<option value="광주시">광주시</option>
-				<option value="대전시">대전시</option>
-				<option value="울산시">울산시</option>
-				<option value="세종시">세종시</option>
-				<option value="경기도">경기도</option>
-				<option value="강원도">강원도</option>
-				<option value="충청북도">충청북도</option>
-				<option value="충청남도">충청남도</option>
-				<option value="전라북도">전라북도</option>
-				<option value="전라남도">전라남도</option>
-				<option value="경상북도">경상북도</option>
-				<option value="경상남도">경상남도</option>
-				<option value="제주도">제주도</option>
-			</select>
-			
-			<select id="secondSelect" name="secondSelect"></select>
 
-			<select id="details" name="details">
-				<option value="전체">전체테마</option>
-				<option value="해변">해변</option>
-				<option value="섬">섬</option>
-				<option value="산">산</option>
-				<option value="숲">숲</option>
-				<option value="계곡">계곡</option>
-				<option value="강">강</option>
-				<option value="호수">호수</option>
-				<option value="도심">도심</option>
-			</select>
-			<br>
-			<input type="search" name="keyword" id="keyword"> 
-			<input type="submit" value="캠핑장 검색">
-		</form>
-	</div>
-</div>
 
 <div class="main">
 	<div class="d-flex border border-3"
 		style="background-image: url(); background-repeat: no-repeat; width: 100%; height: 300px;">
 		<div>
 			<h1>mainsearchbox</h1>
+			<div style="margin: auto; width: 1200px;">
+			지역
+			<div style="display:flex">
+				<form style="margin-bottom: 10px;" action="${cpath }/searchList">
+					<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
+						<option value="전체">전체</option>
+						<option value="서울시">서울시</option>
+						<option value="부산시">부산시</option>
+						<option value="대구시">대구시</option>
+						<option value="인천시">인천시</option>
+						<option value="광주시">광주시</option>
+						<option value="대전시">대전시</option>
+						<option value="울산시">울산시</option>
+						<option value="세종시">세종시</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청북도">충청북도</option>
+						<option value="충청남도">충청남도</option>
+						<option value="전라북도">전라북도</option>
+						<option value="전라남도">전라남도</option>
+						<option value="경상북도">경상북도</option>
+						<option value="경상남도">경상남도</option>
+						<option value="제주도">제주도</option>
+					</select>
+					
+					<select id="secondSelect" name="secondSelect"></select>
+		
+					<select id="details" name="details">
+						<option value="전체">전체테마</option>
+						<option value="해변">해변</option>
+						<option value="섬">섬</option>
+						<option value="산">산</option>
+						<option value="숲">숲</option>
+						<option value="계곡">계곡</option>
+						<option value="강">강</option>
+						<option value="호수">호수</option>
+						<option value="도심">도심</option>
+					</select>
+					<br>
+					<input type="search" name="keyword" id="keyword"> 
+					<input type="submit" value="캠핑장 검색">
+				</form>
+	</div>
+</div>
+			
 		</div>
 	</div>
 	<br> <br>
@@ -67,7 +69,7 @@
 			<!-- 					<li><a href="#" class="filterOptions" data-value="추천수">추천수</a></li> -->
 			<!-- 				</ul> -->
 			<!-- 			</div> -->
-			<a href="${cpath }/mapList/${page}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+			<a href="${cpath }/mapList?page=${page}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" id="aLink"><button type="button"
 					class="btn btn-primary">지도로보기</button></a>
 		</div>
@@ -121,7 +123,7 @@
 							<a href="${cpath }/list/${paging.page - 1}" class="pagingA"> < </a>
 					</c:if>
 					<c:if test="${not empty param }">
-						<a href="${cpath }/searchList/${paging.page - 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/searchList?page=${paging.page - 1}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA"> < </a>
 					</c:if>
 				</c:if>
@@ -133,7 +135,7 @@
 						[${i }]${paging.page == i ? '</b>' : '' }</a>
 					</c:if>
 					<c:if test="${not empty param }">
-						<a href="${cpath }/searchList/${i}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/searchList?page=${i}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
 					${paging.page == i ? '<b>' : '' }
 						[${i }]${paging.page == i ? '</b>' : '' }</a>
@@ -145,7 +147,7 @@
 						<a href="${cpath }/list/${paging.page + 1}" class="pagingA"> > </a>
 					</c:if>
 					<c:if test="${not empty param }">
-						<a href="${cpath }/searchList/${paging.page + 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/searchList?page=${paging.page + 1}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA"> > </a>
 					</c:if>
 				</c:if>

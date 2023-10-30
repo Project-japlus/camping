@@ -1,7 +1,8 @@
 package com.itbank.controller;
-
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,6 @@ public class CampingController {
 	public String list() {
 		return "redirect:/list/1";
 	}
-	
 	// 리스트 페이징
 	@GetMapping("/list/{page}")
 	public ModelAndView list(@PathVariable("page") int page) {
@@ -38,31 +38,25 @@ public class CampingController {
 		mav.addObject("paging", paging);
 		return mav;
 	}
-	
-	@GetMapping("/mapList/{page}")
-	public ModelAndView mapList(@PathVariable("page")int page, @RequestParam HashMap<String, Object> param) {
-		ModelAndView mav = new ModelAndView("mapList");
-		int totalCount = campingService.getTotalCount();
-		Paging paging = new Paging(page, totalCount);
-		System.out.println(param);
-		
-		param.put("paging", paging);
-		List<CampingDTO> list = campingService.search(param);
-		mav.addObject("list", list);
-		mav.addObject("paging", paging);
-		mav.addObject("param", param);
-		return mav;
-	}
-	
-	@GetMapping("/searchList")
-	public String searchList() {
-		return "redirect:/searchList/1";
-	}
-	@GetMapping("/searchList/{page}")
-	public ModelAndView searchList(@PathVariable("page")int page, @RequestParam HashMap<String, Object> param) {
-		System.out.println("호출");
-		ModelAndView mav = new ModelAndView("list");
-		int totalCount = campingService.getSearchTotal(param);
+
+	@GetMapping({"/searchList", "/mapList"}) 
+	public ModelAndView searchList(@RequestParam HashMap<String, Object> param, HttpServletRequest request) {
+		int page = 1; 			// 기본 페이지 설정
+		if(param.containsKey("page")) {
+		    try {
+		       page = Integer.parseInt(param.get("page").toString()); 
+		    } catch (NumberFormatException e) {
+		       e.printStackTrace(); 
+		    }
+		}
+		ModelAndView mav = new ModelAndView(); 
+	    if (request.getRequestURI().contains("searchList")) {
+	    	mav.setViewName("list");
+	    } 
+	    else {
+	        mav.setViewName("mapList");
+	    }
+	    int totalCount = request.getRequestURI().contains("searchList") ? campingService.getSearchTotal(param) : campingService.getTotalCount();
 		Paging paging = new Paging(page, totalCount);
 		param.put("paging", paging);
 		List<CampingDTO> list = campingService.search(param);
@@ -73,7 +67,6 @@ public class CampingController {
 		return mav;
 	}
 	
-
 	@GetMapping("/view/{camping_idx}")
 	public ModelAndView view(@PathVariable("camping_idx") int camping_idx) {
 		ModelAndView mav = new ModelAndView("view");

@@ -41,7 +41,7 @@
         		and img.inner_img is not null
 	</select>
 	
-	<select id="getSearchTotal" resultType="int" parameterType="String">
+	<select id="getSearchTotal" resultType="int" parameterType="hashmap">
 		select count(*) 
 			from camping c
 			join camping_img img

@@ -5,7 +5,7 @@
 <div style="margin: auto; width: 1200px;">
 	지역
 	<div style="display:flex">
-		<form style="margin-bottom: 10px;" >
+		<form style="margin-bottom: 10px;" action="${cpath }/mapList">
 			<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
 				<option value="전체">전체</option>
 				<option value="서울시">서울시</option>
@@ -77,7 +77,7 @@
 							PREV </a>
 					</c:if>
 					<c:if test="${not empty param }">
-						<a href="${cpath }/mapList/${paging.page - 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/mapList?page=${paging.page - 1}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
 							PREV </a>
 					</c:if>
@@ -104,7 +104,7 @@
 					</c:if>
 					
 					<c:if test="${not empty param }">
-						<a href="${cpath }/mapList/${i}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/mapList?page=${i}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
 						 <c:choose>
 							<c:when test="${paging.page > 0}">
@@ -131,7 +131,7 @@
 							NEXT </a>
 					</c:if>
 					<c:if test="${not empty param }">
-						<a href="${cpath }/mapList/${paging.page + 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+						<a href="${cpath }/mapList?page=${paging.page + 1}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
 					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
 							NEXT </a>
 					</c:if>
