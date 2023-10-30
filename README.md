@@ -1,5 +1,5 @@
+![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=Hi%20there👋&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Camping&fontSize=90" />
 
 <div align=center>
   <h3>:open_hands: Project Introduction</h3>
@@ -18,7 +18,9 @@
 </p>
 
 <hr>
-<h3>Project Log</h3>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=ProjectLog&fontSize=90" />
+
 지훈 branch : camping 프로젝트 통째로 올림 (예약/결제)  로그인/리스트까지 포함됨   a href 넘어가는 링크 살짝 수정해야 될 수도 있음
 
 23년 10월 30일 <br>
