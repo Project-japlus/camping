@@ -17,29 +17,31 @@
 </head>
 <body>
 
-<!-- 	<h1>MENU</h1> -->
-<!-- 	<hr> -->
-<!-- 	<ul> -->
-<%-- 		<li><a href="${cpath }/calen"><button>calen</button></a></li> --%>
-<%-- 		<li><a href="${cpath }/list"><button>list</button></a></li> --%>
-<%-- 		<li><a href="${cpath }/join1"><button>join(normal)</button></a></li> --%>
-<%-- 		<li><a href="${cpath }/join2"><button>join(business)</button></a></li> --%>
-<!-- 	</ul> -->
-<!-- 회워가입{ -->
-<!-- 	4개 체크됬을때 회원가입 구현 아직 안됨 -->
-<!-- 	하나라도 체크 안되있으면 어딘지 알려주기 -->
-<!-- 	사업자 번호 -->
-<!-- 	전화 번호 -->
-<!-- 	비밀번호가 널값일때 중복확인 누르면 확인 -->
-<!-- 	비밀번호가 틀려도 같다고 함 -->
-<!-- 	사업자 이메일 인증번호 확인(갑자기 안됨) -->
-<!-- 	사업자 회원가입 -->
-<!-- } -->
+	<!-- 	<h1>MENU</h1> -->
+	<!-- 	<hr> -->
+	<!-- 	<ul> -->
+	<%-- 		<li><a href="${cpath }/calen"><button>calen</button></a></li> --%>
+	<%-- 		<li><a href="${cpath }/list"><button>list</button></a></li> --%>
+	<%-- 		<li><a href="${cpath }/join1"><button>join(normal)</button></a></li> --%>
+	<%-- 		<li><a href="${cpath }/join2"><button>join(business)</button></a></li> --%>
+	<!-- 	</ul> -->
 
-	
+			<!-- 
+			사업자 회원가입(bizrno 제약조건 걸려서 있음)
+			
+			사업자 로그인	
+			
+			로그인 안됬을때	회원가입 체크 4개 될때만 실행 되야함 하나라도 체크 안되있으면 어딘지 알려주기
+			
+			(아무값 없을때 회원가입 혹은 로그인 했을때 뜨는 에러페이지)
+			(ID찾기 PW찾기)
+			(약관)
+			(ID저장) 
+			-->
+
 	<h1>로그인된 아이디 : ${login.username }</h1>
-	
 	<button data-bs-toggle="modal" data-bs-target="#login">login</button>
+
 	<!-- 로그인 -->
 	<div class="modal" id="login">
 		<div class="modal-dialog">
@@ -51,11 +53,11 @@
 				</div>
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form class="form-inline m-auto" method="POST" action="${cpath }/login">
+					<form class="form-inline m-auto" method="POST"
+						action="${cpath }/user_login">
 						<div class="form-group w-75 p-1 m-auto">
 							<label for="email opacity-100">아이디</label> <input type="text"
-								class="form-control opacity-100" id="userid" placeholder="아이디"
-								name="userid">
+								class="form-control opacity-100" placeholder="아이디" name="userid">
 						</div>
 						<div class="form-group w-75 p-1 m-auto">
 							<label for="password">Password</label> <input type="password"
@@ -63,8 +65,12 @@
 								placeholder="Password" name="userpw">
 						</div>
 						<div class="checkbox opacity-100 m-auto ms-5 ps-2">
-							<label><input class="ms-2" type="checkbox"
-								name="remember">아이디저장</label>
+							<div class="d-flex" >
+								<label><input class="ms-2" type="checkbox"
+									name="remember">아이디저장</label>
+								<label><input class="ms-5" type="checkbox"
+									name="remember">사업자 로그인</label>
+							</div>
 						</div>
 						<div class="ms-3 mt-4">
 							<button type="submit"
@@ -73,7 +79,11 @@
 					</form>
 					<div class="ms-2">
 						<div class="d-flex justify-content-evenly">
-							<a href=""><button class="btn btn-primary ms-2 p-2">회원가입</button></a>
+							<a  data-bs-toggle="modal"
+									href="#exampleModalToggle" role="button">
+							<button class="btn btn-primary ms-2 p-2">회원가입</button></a>
+							
+							
 							<a href=""><button class="btn btn-primary p-2">ID/PW찾기</button></a>
 						</div>
 					</div>
@@ -86,7 +96,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 일반 회원가입-->
 	<div class="modal fade" id="exampleModalToggle" aria-hidden="true"
 		aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -102,28 +111,29 @@
 					<!-- Modal body -->
 					<div class="modal-body">
 						<div class="container">
-							<form method="POST" action="${cpath }/join_user">
+							<form method="POST" action="${cpath }/user_join">
 								<div class="d-flex flex-column w-100 m-auto">
 									<div class="mb-1">아이디</div>
 									<div class="d-flex justify-content-between mb-2">
 										<input type="text" name="userid" placeholder="아이디" required
-											autofocus autocomplete="off">
+											autofocus autocomplete="off" id="user_id">
 										<button type="button" class="btn btn-primary"
-											id="checkDuplicate">중복 확인</button>
+											id="user_checkDuplicate">중복 확인</button>
 									</div>
+
 									<div class="mb-1">비밀번호</div>
 									<div class="mb-1 d-flex justify-content-between ">
 										<p class="mb-1">
 											<input type="password" name="userpw" placeholder="비밀번호"
-												id="pw1" required>
+												id="user_pw1" required>
 										</p>
-
 									</div>
+
 									<div>
 										<p class="mb-2 d-flex justify-content-between">
-											<input type="password" name="userpwCheck" id="pw2"
+											<input type="password" name="userpwCheck" id="user_pw2"
 												placeholder="비밀번호 확인" required>
-											<button class="btn btn-primary" onclick="test()">패스워드확인</button>
+											<button class="btn btn-primary" onclick="userpw_test()">패스워드확인</button>
 										</p>
 									</div>
 									<div class="mb-1">이름</div>
@@ -139,13 +149,13 @@
 									<div>
 										<div>
 											<div class="d-flex justify-content-between">
-												<input type="email" id="email" type="email" name="email"
+												<input type="email" id="email_user" type="email" name="email"
 													placeholder="이메일" required>
 												<button type="button" class="btn btn-primary"
-													id="sendAuthNumber" style="height: 25px;">인증번호발송</button>
+													id="sendAuthNumber">인증번호발송</button>
 											</div>
 											<div class="d-flex justify-content-between mb-2 mt-3">
-												<input type="text" name="authNumber" placeholder="인증번호 입력">
+												<input type="text" name="authNumber_user" placeholder="인증번호 입력">
 												<input id="emailAuthBtn" class="btn btn-primary mt-1"
 													type="button" value="본인인증">
 											</div>
@@ -153,15 +163,18 @@
 									</div>
 									<div class="d-flex justify-content-between mb-2">
 										<div>
-											<input type="checkbox" name="tos">이용약관에 동의합니다
+											<input type="checkbox" name="tos" id="user_checkAuthCheckBox">이용약관에
+											동의합니다
 											<!-- tos : Terms Of Use 이용약관 -->
 										</div>
 										<a href="">보기</a>
 									</div>
+
 									<div class="d-flex justify-content-center">
 										<button type="submit" class="btn btn-primary"
-											id="registerButton">회원가입</button>
+											 onclick="user_join()">회원가입</button>
 									</div>
+
 								</div>
 							</form>
 						</div>
@@ -169,14 +182,13 @@
 				</div>
 				<!-- Modal footer -->
 				<div class="modal-footer">
-					<button class="btn btn-primary"
+					<button class="btn btn-primary" id="user_join"
 						data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
 						data-bs-dismiss="modal">사업자 회원가입</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	
 	<!-- 사업자 회원가입-->
 	<div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
 		aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
@@ -193,29 +205,32 @@
 					<div class="modal-body">
 						<div class="container">
 							<div class="d-flex flex-column w-100 m-auto">
-								<form method="POST" action="${cpath }/join_bizr">
+								<form method="POST" action="${cpath }/bizr_join">
 									<div class="mb-1">아이디</div>
 									<div class="d-flex justify-content-between mb-2">
 										<input type="text" name="userid" placeholder="아이디" required
-											autofocus autocomplete="off">
+											autofocus autocomplete="off" id="bizr_id">
 										<button type="button" class="btn btn-primary"
-											id="checkDuplicate1">중복 확인</button>
+											id="bizr_checkDuplicate">중복 확인</button>
 									</div>
 									<div class="mb-1">비밀번호</div>
-									<div>
+									<div class="mb-1 d-flex justify-content-between ">
 										<p class="mb-1">
-											<input type="password" id="pw1" name="userpw"
-												placeholder="비밀번호" required>
+											<input type="password" name="userpw" placeholder="비밀번호"
+												id="bizr_pw1" required>
 										</p>
-										<p class="d-flex mb-2 justify-content-between">
-											<input type="password" id="pw2" name="userpwCheck"
+
+									</div>
+									<div>
+										<p class="mb-2 d-flex justify-content-between">
+											<input type="password" name="userpwCheck" id="bizr_pw2"
 												placeholder="비밀번호 확인" required>
-											<button class="btn btn-primary" onclick="test()">패스워드확인</button>
+											<button class="btn btn-primary" onclick="bizrpw_test()">패스워드확인</button>
 										</p>
 									</div>
 									<div class="mb-1">이름</div>
 									<div class="mb-2">
-										<input type="text" name="userName" placeholder="이름" required>
+										<input type="text" name="username" placeholder="이름" required>
 									</div>
 									<div class="mb-1">휴대폰 번호</div>
 									<div class="d-flex justify-content-between mb-2">
@@ -226,13 +241,13 @@
 									<div>
 										<div>
 											<div class="d-flex justify-content-between">
-												<input type="email" id="email1" type="email" name="email"
+												<input type="email" id="email_bizr" type="email" name="email"
 													placeholder="이메일" required>
 												<button type="button" class="btn btn-primary"
-													id="sendAuthNumber1" style="height: 25px;">인증번호발송</button>
+													id="sendAuthNumber_bizr">인증번호발송</button>
 											</div>
 											<div class="d-flex justify-content-between mb-2 mt-3">
-												<input type="text" name="authNumber" placeholder="인증번호 입력">
+												<input type="text" name="authNumber_bizr" placeholder="인증번호 입력">
 												<input id="emailAuthBtn1" class="btn btn-primary mt-1"
 													type="button" value="본인인증">
 											</div>
@@ -240,118 +255,98 @@
 									</div>
 									<div class="mb-1">사업자번호</div>
 									<div class="d-flex justify-content-between mb-2">
-										<input type="text" name="bizrNo" placeholder="사업자번호" required>
+										<input type="text" name="bizrno" placeholder="사업자번호" required>
 										<a><button class="btn btn-primary">사업자인증</button></a>
 									</div>
 									<div class="d-flex justify-content-between mb-2">
 										<div>
-											<a href="">보기</a>
-										</div>
-										<div>
-											<input type="checkbox" name="tos" id="checkBox">
+											<input type="checkbox" name="tos" id="bizr_checkAuthCheckBox">
 											이용약관에 동의합니다
 											<!-- tos : Terms Of Use 이용약관 -->
 										</div>
+										<div>
+											<a href="">보기</a>
+										</div>
 									</div>
+
+								<div class="d-flex justify-content-center">
+									<!-- 								사업자 회원가입 버튼 -->
+									<button type="submit" class="btn btn-primary" onclick="bizr_join()">회원가입</button>
+								</div>
 								</form>
-							<div class="d-flex justify-content-center">
-								<button type="submit" class="btn btn-primary" id="validateForm">회원가입</button>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-primary" id="joinCheck"
-					data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-					data-bs-dismiss="modal">일반 회원가입</button>
+				<div class="modal-footer">
+					<button class="btn btn-primary"
+						data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+						data-bs-dismiss="modal">일반 회원가입</button>
+				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+	<!-- 	회원가입 버튼 -->
 	<a class="btn btn-primary" data-bs-toggle="modal"
 		href="#exampleModalToggle" role="button">회원가입</a>
 
-	<script>											
-	<!-- 아이디 중복 체크  -->
+	<script>		
+	let user_id_check = false;
+	let user_pw_check = false;
+	let user_email_check = false;
+	let user_checkbox_check = false;
+	 
+	let bizr_id_chkeck = false;
+	let bizr_pw_chkeck = false;
+	let bizr_checkbox_check = false;
+	let bizr_email_chkeck = false;
+	
     //일반 아이디중복확인
-    const checkDuplicateButton = document.getElementById('checkDuplicate');
-    const checkDuplicateButton1 = document.getElementById('checkDuplicate1');
-    let check = 0;
-    checkDuplicateButton.onclick = function(event) {
-        const userId = document.querySelector('input[name="userid"]').value;
-        const url = '${cpath}/ajax/checkDuplicateUserId?userId=' + userId; // 서버로 중복 확인 요청 보내는 URL
-        fetch(url)
-            .then(resp => resp.text())
-            .then(result => {
-                if (result === 'available') {
-                    alert('사용 가능한 아이디입니다.');
-                    var idAuthNumber = userId;
-                    check += 1;
-                    console.log(check)
-                } else if (result === 'unavailable') {
-                    alert('이미 사용 중인 아이디입니다.');
-                } else {
-                    alert('중복 확인 중 오류가 발생했습니다.');
-                }
-            })
-            .catch(error => {
-                console.error('중복 확인 요청 중 오류 발생:', error);
-            });
-        
-        console.log('입력한 아이디 : ' + idAuthNumber.value);
-        
+    const user_checkDuplicateButton = document.getElementById('user_checkDuplicate');
+    user_checkDuplicateButton.onclick = function(event) {
+        const userid = document.getElementById('user_id').value
+        if(userid != ''){
+        let url = '${cpath}/ajax/checkDuplicateUserId?userid=' + userid; // 서버로 중복 확인 요청 보내는 URL
+	        fetch(url)
+	            .then(resp => resp.text())
+	            .then(result => {
+	                if (result === 'available') {
+	                    alert('사용 가능한 아이디입니다.');
+	                    user_id_check = true;
+	                } else if (result === 'unavailable') {
+	                    alert('이미 사용 중인 아이디입니다.');
+	                } else {
+	                    alert('중복 확인 중 오류가 발생했습니다.');
+	                }
+	            })
+	            .catch(error => {
+	                console.error('중복 확인 요청 중 오류 발생:', error);
+	            });
+        }else{
+        	alert('아이디를 입력해 주세요')
+        }
     };
-    
-  	//사업자 아이디중복확인
-    checkDuplicateButton1.onclick = function(event) {
-        const userId = document.querySelector('input[name="userid"]').value;
-        const url = '${cpath}/ajax/checkDuplicateUserId?userId=' + userId; // 서버로 중복 확인 요청 보내는 URL
-        fetch(url)
-            .then(resp => resp.text())
-            .then(result => {
-                if (result === 'available') {
-                    alert('사용 가능한 아이디입니다.');
-                    var idAuthNumber = userId;
-                    check += 1;
-                    console.log(check)
-                } else if (result === 'unavailable') {
-                    alert('이미 사용 중인 아이디입니다.');
-                } else {
-                    alert('중복 확인 중 오류가 발생했습니다.');
-                }
-            })
-            .catch(error => {
-                console.error('중복 확인 요청 중 오류 발생:', error);
-            });
-        
-        console.log('입력한 아이디 : ' + idAuthNumber.value);
-        
-    };
-    
-	<!-- 비밀번호 중복 체크  -->
-	function test(){
-			
-		const pw1 = document.getElementById('pw1').value;
-		const pw2 = document.getElementById('pw2').value;
-		if(pw1 == pw2){
-			alert('비밀번호 일치');
-			check += 1;
-			console.log(check)
-			return true;
+	// 일반 비밀번호 중복 체크
+	function userpw_test(){
+		const user_pw1 = document.getElementById('user_pw1').value;
+		const user_pw2 = document.getElementById('user_pw2').value;
+		if(user_pw1 == '' && user_pw2 == ''){
+			alert('빈값 입니다.')
 		}
-		else {
+		else if(user_pw1 === user_pw2){
+			alert('비밀번호 일치');
+			user_pw_check = true;
+		}else {
 			alert('비밀번호를 다시확인해주세요');
 			return false;
 		}
-	}	
-	
+	}
+    
 	//일반 이메일 확인
-	<!-- 이메일 중복 체크  -->
 	const sendAuthNumber = document.getElementById('sendAuthNumber')
 	sendAuthNumber.onclick = function(event){
 		const url = '${cpath}/ajax/sendAuthNumber'
-		const email = document.getElementById('email')
+		const email = document.getElementById('email_user')
 		
 		if(email.value == ''){
 			alert('인증번호를 받을 이메일을 정확하게 입력해 주세요')
@@ -367,7 +362,6 @@
 		
 		
 	}
-	
 	// 회원가입시 인증번호부터 체크하고 이후 인증번호가 일치하면 가입 프로세스를 진행
 	const emailAuthBtn = document.getElementById('emailAuthBtn');
 	
@@ -375,9 +369,9 @@
 		console.log('test');
 		event.preventDefault()	// 일반 회원가입 시도를 막아두고
 								// 사용자가 입력한 인증번호를 서버로 전달하기 위해 불러온다
-		const authNumber = document.querySelector('input[name="authNumber"]')
+		const authNumber_user = document.querySelector('input[name="authNumber_user"]')
 		
-		const url = '${cpath}/ajax/checkAuthNumber/'+ authNumber.value
+		const url = '${cpath}/ajax/checkAuthNumber/'+ authNumber_user.value
 				
 		const result = await fetch(url).then(resp => resp.text())
 		console.log(result)
@@ -386,18 +380,105 @@
 		}
 		else {
 			alert('이메일 인증 성공!')
-			check += 1;
-			console.log(check)
+			user_email_check = true;
 		}
-		console.log('입력한 인증번호 : ' + authNumber.value);	
+		console.log('입력한 인증번호 : ' + authNumber_user.value);	
+	}
+	// 일반 체크박스
+	let user_checkBox = document.getElementById('user_checkAuthCheckBox')
+	if (user_checkBox.checked) {
+		console.log(user_checkBox)
+		user_checkbox_check = true;
+		
+	}
+	if (!user_id_check || !user_pw_check || !user_email_check || !user_checkbox_check) {
+	} else {
+	  user_join();
+	}
+	//일반 회원가입 실행문
+	function user_join() {
+	  location.href = `${cpath}/user_join`;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//사업자 아이디중복확인
+    const bizr_checkDuplicateButton = document.getElementById('bizr_checkDuplicate');
+    bizr_checkDuplicateButton.onclick = function(event) {
+        const birzid = document.getElementById('bizr_id').value;
+        if(birzid != ''){
+        	
+        let url = '${cpath}/ajax/checkDuplicatebizrId?userid=' + birzid; // 서버로 중복 확인 요청 보내는 URL
+        fetch(url)
+            .then(resp => resp.text())
+            .then(result => {
+                if (result === 'available') {
+                    alert('사용 가능한 아이디입니다.');
+                } else if (result === 'unavailable') {
+                    alert('이미 사용 중인 아이디입니다.');	
+                } else {
+                    alert('중복 확인 중 오류가 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('중복 확인 요청 중 오류 발생:', error);
+            });
+        }else{
+			alert('아이디를 입력해 주세요')        	
+        }
+    };
+	
+	//사업자 비밀번호 중복 체크 
+	function bizrpw_test(){
+		const bizr_pw1 = document.getElementById('bizr_pw1').value;
+		const bizr_pw2 = document.getElementById('bizr_pw2').value;
+		if(bizr_pw1 == '' && bizr_pw2 == ''){
+			alert('빈값 입니다.')
+		}
+		else if(bizr_pw1 === bizr_pw2){
+			alert('비밀번호 일치');
+			return true;
+		}else {
+			alert('비밀번호를 다시확인해주세요');
+			return false;
+		}
+	}
+	
+	
 	//사업자 이메일 확인
-	<!-- 이메일 중복 체크  -->
-	const sendAuthNumber1 = document.getElementById('sendAuthNumber1')
+	const sendAuthNumber1 = document.getElementById('sendAuthNumber_bizr')
 	sendAuthNumber1.onclick = function(event){
 		const url = '${cpath}/ajax/sendAuthNumber'
-		const email = document.getElementById('email')
+		const email = document.getElementById('email_bizr')
 		
 		if(email.value == ''){
 			alert('인증번호를 받을 이메일을 정확하게 입력해 주세요')
@@ -411,47 +492,43 @@
 			alert(text)
 		})
 	}
-	
 	// 회원가입시 인증번호부터 체크하고 이후 인증번호가 일치하면 가입 프로세스를 진행
 	const emailAuthBtn1 = document.getElementById('emailAuthBtn1');
 	
 	emailAuthBtn1.onclick = async function(){
-		console.log('test');
 		event.preventDefault()	// 일반 회원가입 시도를 막아두고
 								// 사용자가 입력한 인증번호를 서버로 전달하기 위해 불러온다
-		const authNumber = document.querySelector('input[name="authNumber"]')
+		const authNumber_bizr = document.querySelector('input[name="authNumber_bizr"]')
 		
-		const url = '${cpath}/ajax/checkAuthNumber/'+ authNumber.value
+		const url_bizr = '${cpath}/ajax/checkAuthNumber/'+ authNumber_bizr.value
+		console.log(url_bizr)
 				
-		const result = await fetch(url).then(resp => resp.text())
-		console.log(result)
+		const result = await fetch(url_bizr).then(resp => resp.text())
 		if(result == 0) {
 			alert('인증번호를 다시 확인해주세요')
 		}
 		else {
 			alert('이메일 인증 성공!')
-			check += 1;
-			console.log(check)
 		}
-		console.log('입력한 인증번호 : ' + authNumber.value);	
+		console.log('입력한 인증번호 : ' + authNumber_bizr.value);	
 	}
-
-	const joinCheck = document.getElementById('joinCheck');
-	joinCheck.onsubmit =  function(){
-		if(check == 4){
-			const url = '${cpath}/join_user'
-			event.target.submit()
-			console.log(url)
-		}
+	
+	
+	//체크박스 확인
+	let bizr_checkBox = document.getElementById('bizr_checkAuthCheckBox')
+	if (bizr_checkBox.checked) {
+		console.log(checkBox.value)
 	}
-	const joinCheck1 = document.getElementById('joinCheck1');
-	joinCheck1.onsubmit =  function(){
-		if(check == 4){
-			const url = '${cpath}/join_bizr'
-			event.target.submit()
-			console.log(url)
-		}
+	
+	if (!bizr_id_check || !bizr_pw_check || !bizr_email_check || !bizr_checkbox_check) {
+	} else {
+		bizr_join();
 	}
+	//사업자 회원가입 실행문
+	function bizr_join() {
+	  location.href = `${cpath}/bizr_join`;
+	}
+	
 </script>
 
 </body>
