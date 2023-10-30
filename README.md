@@ -1,7 +1,9 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=기록해주세요&fontSize=90" />
 
-:open_hands: ####Project Introduction
+<div align=center>
+  :open_hands: #### Project Introduction
+</div>
 
 <h3 align="center">📚 Tech Stack 📚</h3>
 <p align="center">
