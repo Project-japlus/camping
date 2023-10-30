@@ -1,6 +1,8 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=기록해주세요&fontSize=90" />
 
+:open_hands: ####Project Introduction
+
 <h3 align="center">📚 Tech Stack 📚</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat-square&logo=eclipseide&logoColor=white"/>&nbsp 
