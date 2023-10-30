@@ -54,6 +54,28 @@
 			camping where facltnm like '%${keyword}%' or addr1 like '%${keyword}%'
 	</select>
 	
-
+	<select id="selectOption" parameterType="String" resultType="camping">
+		select sigunguNm from camping where doNm = #{selectValue}
+	</select>
 	
+	<select id="search" parameterType="hashmap" resultType="camping">
+		select * from camping
+			<where>
+				<if test="firstSelect != '' and firstSelect != '전체'">
+					doNm = #{firstSelect} 
+				</if>
+				<if test="secondSelect != '' and secondSelect != '전체'">
+					and sigunguNm = #{secondSelect} 
+				</if>
+				<if test="details != '' and details != '전체'">
+					and lctcl = #{details} 
+				</if>			
+				<if test="keyword != ''">
+					and facltnm like '%${keyword}%'
+				</if>
+			</where>
+			order by camping_idx desc
+	</select>	
+	
+
 </mapper>

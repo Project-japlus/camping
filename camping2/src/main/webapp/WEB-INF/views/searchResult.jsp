@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="header.jsp"%>
+    pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 
 <div style="margin: auto; width: 1200px;">
 	지역
 	<div style="display:flex">
-		<form style="margin-bottom: 10px;" action="${cpath}/search/${page}">
+		<form style="margin-bottom: 10px;">
 			<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
 				<option value="전체">전체</option>
 				<option value="서울시">서울시</option>
@@ -225,6 +225,8 @@
 	})
 </script>
 
+
+
 <!-- 옵션 적용 -->
 <script>
 	window.onload = function() {
@@ -335,6 +337,7 @@
 	    });
 	}
 </script>
+
 
 </body>
 </html>

@@ -13,6 +13,8 @@ public class CampingDTO {
 	private String lctcl;
 	private String addr1;
 	private int camping_viewCount;
+	private String doNm;
+	private String sigunguNm;
 	
 	// camping_activity
 	private String posblFcltyCl;
@@ -365,6 +367,18 @@ public class CampingDTO {
 	}
 	public void setSiteMg3_price(int siteMg3_price) {
 		this.siteMg3_price = siteMg3_price;
+	}
+	public String getDoNm() {
+		return doNm;
+	}
+	public void setDoNm(String doNm) {
+		this.doNm = doNm;
+	}
+	public String getSigunguNm() {
+		return sigunguNm;
+	}
+	public void setSigunguNm(String sigunguNm) {
+		this.sigunguNm = sigunguNm;
 	}
 	
 	

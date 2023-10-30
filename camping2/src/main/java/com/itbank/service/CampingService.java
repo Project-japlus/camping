@@ -2,6 +2,7 @@ package com.itbank.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,16 @@ public class CampingService {
 	public int getSearchTotal(String keyword) {
 		return campingDAO.getSearchTotal(keyword);
 	}
+
+	public List<CampingDTO> selectOption(String selectValue) {
+		return campingDAO.selectOption(selectValue);
+	}
+
+	public List<CampingDTO> search(Map<String, Object> param) {
+		return campingDAO.search(param);
+	}
+
+
 
 
 

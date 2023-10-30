@@ -172,17 +172,17 @@
 	<h5 style="border-bottom: 2px solid black; padding-bottom: 15px;">💡${dto.facltnm }</h5>
 </div>
 
-<!-- <div> -->
-<!-- 	<div style="margin: auto; width: 1200px; display: flex;"> -->
+<div>
+	<div style="margin: auto; width: 1200px; display: flex;">
 
-<%-- 		<c:forEach var="img" items="${image }"> --%>
-<!-- 			<div style="margin-right:15px;"> -->
-<%-- 				<img src="${img.inner_img }" class="rounded" width="225" height="150"> --%>
-<!-- 			</div> -->
-<%-- 		</c:forEach>	 --%>
+		<c:forEach var="img" items="${image }">
+			<div style="margin-right:15px;">
+				<img src="${img.inner_img }" class="rounded" width="225" height="150">
+			</div>
+		</c:forEach>	
 			
-<!-- 	</div> -->
-<!-- </div> -->
+	</div>
+</div>
 
 	<main id="main">
 		<div class="slider__wrap">
@@ -196,95 +196,95 @@
 	</main>
 		
 		
-<script>
+<!-- <script> -->
 
-	let images = [
-	    "img/camping1.jpg",
-	    "img/camping2.jpg",
-	    "img/camping3.jpg",
-	    "img/camping4.jpg",
-	    "img/camping5.jpg",
-	    "img/camping6.jpg",
-	]
+<!-- 	let images = [ -->
+<!-- 	    "img/camping1.jpg", -->
+<!-- 	    "img/camping2.jpg", -->
+<!-- 	    "img/camping3.jpg", -->
+<!-- 	    "img/camping4.jpg", -->
+<!-- 	    "img/camping5.jpg", -->
+<!-- 	    "img/camping6.jpg", -->
+<!-- 	] -->
 	
-	function imageSlider(parent, images){
-	    let currentIndex = 0;
+<!-- 	function imageSlider(parent, images){ -->
+<!-- 	    let currentIndex = 0; -->
 	
-	    // 선택자
-	    let slider = {
-	        parent : parent,
-	        images : parent.querySelector(".slider__img"),
-	        thumnails : parent.querySelector(".slider__thumb"),
-	        prevBtn : parent.querySelector(".slider__btn .prev"),
-	        nextBtn : parent.querySelector(".slider__btn .next")
-	    };
+<!-- 	    // 선택자 -->
+<!-- 	    let slider = { -->
+<!-- 	        parent : parent, -->
+<!-- 	        images : parent.querySelector(".slider__img"), -->
+<!-- 	        thumnails : parent.querySelector(".slider__thumb"), -->
+<!-- 	        prevBtn : parent.querySelector(".slider__btn .prev"), -->
+<!-- 	        nextBtn : parent.querySelector(".slider__btn .next") -->
+<!-- 	    }; -->
 	
-	    // 이미지 출력하기
-	    slider.images.innerHTML = images.map((image, index) => {
-	        return `<img src="${image}" alt="이미지${index}" style="width:100%;">`
-	    }).join("");
+<!-- 	    // 이미지 출력하기 -->
+<!-- 	    slider.images.innerHTML = images.map((image, index) => { -->
+<%-- 	        return `<img src="${image}" alt="이미지${index}" style="width:100%;">` --%>
+<!-- 	    }).join(""); -->
 	
-	    // 이미지 활성화(active) 하기
-	    let imageNodes = slider.images.querySelectorAll("img");
-	    imageNodes[currentIndex].classList.add("active");
+<!-- 	    // 이미지 활성화(active) 하기 -->
+<!-- 	    let imageNodes = slider.images.querySelectorAll("img"); -->
+<!-- 	    imageNodes[currentIndex].classList.add("active"); -->
 	
-	    // 썸네일 이미지 출력하기
-	    slider.thumnails.innerHTML = slider.images.innerHTML
+<!-- 	    // 썸네일 이미지 출력하기 -->
+<!-- 	    slider.thumnails.innerHTML = slider.images.innerHTML -->
 	
-	    // 썸네일 활성화(active) 하기
-	    let thumnailNodes = slider.thumnails.querySelectorAll("img");
-	    thumnailNodes[currentIndex].classList.add("active");
+<!-- 	    // 썸네일 활성화(active) 하기 -->
+<!-- 	    let thumnailNodes = slider.thumnails.querySelectorAll("img"); -->
+<!-- 	    thumnailNodes[currentIndex].classList.add("active"); -->
 	
-	    // 썸네일 이미지 클릭하기
-	    thumnailNodes.forEach((e, i) => {
-	        e.addEventListener("click", () => {
-	            slider.thumnails.querySelector("img.active").classList.remove("active");
-	            thumnailNodes[i].classList.add("active");
+<!-- 	    // 썸네일 이미지 클릭하기 -->
+<!-- 	    thumnailNodes.forEach((e, i) => { -->
+<!-- 	        e.addEventListener("click", () => { -->
+<!-- 	            slider.thumnails.querySelector("img.active").classList.remove("active"); -->
+<!-- 	            thumnailNodes[i].classList.add("active"); -->
 	
-	            imageNodes[currentIndex].classList.remove("active");
-	            currentIndex = i;
-	            imageNodes[i].classList.add("active");
-	        });
-	    });
+<!-- 	            imageNodes[currentIndex].classList.remove("active"); -->
+<!-- 	            currentIndex = i; -->
+<!-- 	            imageNodes[i].classList.add("active"); -->
+<!-- 	        }); -->
+<!-- 	    }); -->
 	
 	
-	    // 왼쪽 버튼 클릭
-	    slider.prevBtn.addEventListener("click", () => {
-	        // active 지우기
-	        imageNodes[currentIndex].classList.remove("active");
-	        thumnailNodes[currentIndex].classList.remove("active");
+<!-- 	    // 왼쪽 버튼 클릭 -->
+<!-- 	    slider.prevBtn.addEventListener("click", () => { -->
+<!-- 	        // active 지우기 -->
+<!-- 	        imageNodes[currentIndex].classList.remove("active"); -->
+<!-- 	        thumnailNodes[currentIndex].classList.remove("active"); -->
 	
-	        // 순서 설정
-	        currentIndex--;
-	        if(currentIndex < 0) currentIndex = images.length - 1;
+<!-- 	        // 순서 설정 -->
+<!-- 	        currentIndex--; -->
+<!-- 	        if(currentIndex < 0) currentIndex = images.length - 1; -->
 	
-	        // 이미지 active
-	        imageNodes[currentIndex].classList.add("active");
+<!-- 	        // 이미지 active -->
+<!-- 	        imageNodes[currentIndex].classList.add("active"); -->
 	
-	        // 썸네일 active
-	        thumnailNodes[currentIndex].classList.add("active");
+<!-- 	        // 썸네일 active -->
+<!-- 	        thumnailNodes[currentIndex].classList.add("active"); -->
 	
-	    });
+<!-- 	    }); -->
 	
-	    // 오른쪽 버튼 클릭
-	    slider.nextBtn.addEventListener("click", () => {
-	        // active 지우기
-	        imageNodes[currentIndex].classList.remove("active");
-	        thumnailNodes[currentIndex].classList.remove("active");
+<!-- 	    // 오른쪽 버튼 클릭 -->
+<!-- 	    slider.nextBtn.addEventListener("click", () => { -->
+<!-- 	        // active 지우기 -->
+<!-- 	        imageNodes[currentIndex].classList.remove("active"); -->
+<!-- 	        thumnailNodes[currentIndex].classList.remove("active"); -->
 	
-	        // 순서 설정
-	        currentIndex = (currentIndex + 1) % images.length;
+<!-- 	        // 순서 설정 -->
+<!-- 	        currentIndex = (currentIndex + 1) % images.length; -->
 	
-	        // 이미지 active
-	        imageNodes[currentIndex].classList.add("active");
+<!-- 	        // 이미지 active -->
+<!-- 	        imageNodes[currentIndex].classList.add("active"); -->
 	
-	        // 썸네일 active
-	        thumnailNodes[currentIndex].classList.add("active");
-	    });
-	};
+<!-- 	        // 썸네일 active -->
+<!-- 	        thumnailNodes[currentIndex].classList.add("active"); -->
+<!-- 	    }); -->
+<!-- 	}; -->
 	
-	imageSlider(document.querySelector(".slider__wrap"), images)
-</script>
+<!-- 	imageSlider(document.querySelector(".slider__wrap"), images) -->
+<!-- </script> -->
 
 
 
