@@ -41,28 +41,14 @@
         		and img.inner_img is not null
 	</select>
 	
-	<select id="searchKeyword" resultType="camping" parameterType="hashmap">
-		select * from 
-			camping where facltnm like '%${keyword}%' or addr1 like '%${keyword}%'
-		    order by camping_idx desc
-		    offset #{paging.offset} rows
-		    fetch next #{paging.perPage} rows only
-	</select>
-	
 	<select id="getSearchTotal" resultType="int" parameterType="String">
-		select count(*) from 
-			camping where facltnm like '%${keyword}%' or addr1 like '%${keyword}%'
-	</select>
-	
-	<select id="selectOption" parameterType="String" resultType="camping">
-		select sigunguNm from camping where doNm = #{selectValue}
-	</select>
-	
-	<select id="search" parameterType="hashmap" resultType="camping">
-		select * from camping
-			<where>
+		select count(*) 
+			from camping c
+			join camping_img img
+			on c.camping_idx = img.camping_idx
+			where img.first_img is not null
 				<if test="firstSelect != '' and firstSelect != '전체'">
-					doNm = #{firstSelect} 
+					and doNm = #{firstSelect} 
 				</if>
 				<if test="secondSelect != '' and secondSelect != '전체'">
 					and sigunguNm = #{secondSelect} 
@@ -73,8 +59,30 @@
 				<if test="keyword != ''">
 					and facltnm like '%${keyword}%'
 				</if>
-			</where>
-			order by camping_idx desc
+			order by c.camping_idx desc 
+	</select>
+
+	<select id="search" parameterType="hashmap" resultType="camping">
+		select c.*, img.first_img 
+			from camping c
+			join camping_img img
+			on c.camping_idx = img.camping_idx
+			where img.first_img is not null
+				<if test="firstSelect != '' and firstSelect != '전체'">
+					and doNm = #{firstSelect} 
+				</if>
+				<if test="secondSelect != '' and secondSelect != '전체'">
+					and sigunguNm = #{secondSelect} 
+				</if>
+				<if test="details != '' and details != '전체'">
+					and lctcl = #{details} 
+				</if>			
+				<if test="keyword != ''">
+					and facltnm like '%${keyword}%'
+				</if>
+			order by c.camping_idx desc 
+			offset #{paging.offset} rows
+            fetch next #{paging.perPage} rows only
 	</select>	
 	
 

@@ -5,7 +5,7 @@
 <div style="margin: auto; width: 1200px;">
 	지역
 	<div style="display:flex">
-		<form style="margin-bottom: 10px;" action="${cpath}/search/${page}">
+		<form style="margin-bottom: 10px;" >
 			<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
 				<option value="전체">전체</option>
 				<option value="서울시">서울시</option>
@@ -72,31 +72,69 @@
 				style="display: flex; height: 30px; width: 300px;">
 				<div
 					style="border-right: 1px solid black; padding: 3px; width: 100px;">
-					<a href="${cpath }/mapList/${paging.page - 1}" class="pagingA">
-						PREV </a>
+					<c:if test="${empty param }">
+						<a href="${cpath }/mapList/${paging.page - 1}" class="pagingA">
+							PREV </a>
+					</c:if>
+					<c:if test="${not empty param }">
+						<a href="${cpath }/mapList/${paging.page - 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
+							PREV </a>
+					</c:if>
 				</div>
-				<div
-					style="border-right: 1px solid black; padding: 3px; width: 100px;">
-					<a href="${cpath }/mapList/${i}" class="pagingA"> <c:choose>
+				<div style="border-right: 1px solid black; padding: 3px; width: 100px;">
+					<c:if test="${empty param }">
+						<a href="${cpath }/mapList/${i}" class="pagingA">
+						 <c:choose>
 							<c:when test="${paging.page > 0}">
 								<c:choose>
 									<c:when test="${paging.page >= paging.pageCount}">
 			                ${paging.pageCount}
 			            </c:when>
-									<c:otherwise>
+							<c:otherwise>
 			                ${paging.page}
 			            </c:otherwise>
 								</c:choose>
 							</c:when>
 							<c:otherwise>
-			        1
-			    </c:otherwise>
+				        1
+				    </c:otherwise>
 						</c:choose>
 					</a>
+					</c:if>
+					
+					<c:if test="${not empty param }">
+						<a href="${cpath }/mapList/${i}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
+						 <c:choose>
+							<c:when test="${paging.page > 0}">
+								<c:choose>
+									<c:when test="${paging.page >= paging.pageCount}">
+			                ${paging.pageCount}
+			            </c:when>
+							<c:otherwise>
+			                ${paging.page}
+			            </c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+				        1
+				    </c:otherwise>
+						</c:choose>
+					</a>
+					</c:if>
 				</div>
+				
 				<div style="padding: 3px; width: 100px;">
-					<a href="${cpath }/mapList/${paging.page + 1}" class="pagingA">
-						NEXT </a>
+					<c:if test="${empty param }">
+						<a href="${cpath }/mapList/${paging.page + 1}" class="pagingA">
+							NEXT </a>
+					</c:if>
+					<c:if test="${not empty param }">
+						<a href="${cpath }/mapList/${paging.page + 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
+							NEXT </a>
+					</c:if>
 				</div>
 				<br>
 				<br>

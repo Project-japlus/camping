@@ -16,13 +16,9 @@ public interface CampingDAO {
 
 	List<CampingDTO> selectAll(HashMap<String, Object> param);
 
-	List<CampingDTO> searchKeyword(HashMap<String, Object> param);
-
-	int getSearchTotal(String keyword);
-
-	List<CampingDTO> selectOption(String selectValue);
-
 	List<CampingDTO> search(Map<String, Object> param);
+
+	int getSearchTotal(HashMap<String, Object> param);
 
 	
 

@@ -67,69 +67,98 @@
 			<!-- 					<li><a href="#" class="filterOptions" data-value="추천수">추천수</a></li> -->
 			<!-- 				</ul> -->
 			<!-- 			</div> -->
-			<a href="#" id="aLink"><button type="button"
+			<a href="${cpath }/mapList/${page}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" id="aLink"><button type="button"
 					class="btn btn-primary">지도로보기</button></a>
 		</div>
 	</div>
-
+	
 	<div class="d-flex flex-wrap col-8 container border border-5">
-		<c:forEach var="dto" items="${list }">
-			<div class="item d-flex">
-				<div class="p-3">
-					<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/view/${dto.camping_idx}'"></div>
-				</div>
-
-				<div class="mt-3 ms-3 itemText">
-					<div>
-						<h3>
-							<a href="${cpath }/view/${dto.camping_idx}">${dto.facltnm }</a>
-						</h3>
-						<span class="lineIntro">${dto.lineIntro }</span>
-						<c:choose>
-							<c:when test="${dto.featurenm != '' }">
-								<c:if test="${fn:length(dto.featurenm) >= 50 }">
-									<span class="intro">
-										<a href="${cpath }/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
-									</span>
+		<c:if test="${not empty list }">
+			<c:forEach var="dto" items="${list }">
+				<div class="item d-flex">
+					<div class="p-3">
+						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/view/${dto.camping_idx}'"></div>
+					</div>
+	
+					<div class="mt-3 ms-3 itemText">
+						<div>
+							<h3>
+								<a href="${cpath }/view/${dto.camping_idx}">${dto.facltnm }</a>
+							</h3>
+							<span class="lineIntro">${dto.lineIntro }</span>
+							<c:choose>
+								<c:when test="${dto.featurenm != '' }">
+									<c:if test="${fn:length(dto.featurenm) >= 50 }">
+										<span class="intro">
+											<a href="${cpath }/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
+										</span>
+									</c:if>
+								</c:when>
+								<c:when test="${dto.intro != '' }">
+									<c:if test="${fn:length(dto.intro) >= 50 }">
+										<span class="intro">
+											<a href="${cpath }/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
+										</span>
+									</c:if>
+								</c:when>
+							</c:choose>
+							<ul class="d-flex camping_info">
+								<li class="addr">${dto.addr1 }</li>
+								<c:if test="${not empty dto.tel }">
+									<li class="call_num">${dto.tel }</li>
 								</c:if>
-							</c:when>
-							<c:when test="${dto.intro != '' }">
-								<c:if test="${fn:length(dto.intro) >= 50 }">
-									<span class="intro">
-										<a href="${cpath }/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
-									</span>
-								</c:if>
-							</c:when>
-						</c:choose>
-						<ul class="d-flex camping_info">
-							<li class="addr">${dto.addr1 }</li>
-							<c:if test="${not empty dto.tel }">
-								<li class="call_num">${dto.tel }</li>
-							</c:if>
-						</ul>
+							</ul>
+						</div>
 					</div>
 				</div>
+			</c:forEach>
+			
+			<!-- 페이징 -->
+			<div class="paging">
+				<c:if test="${paging.prev }">
+					<c:if test="${empty param }">
+							<a href="${cpath }/list/${paging.page - 1}" class="pagingA"> < </a>
+					</c:if>
+					<c:if test="${not empty param }">
+						<a href="${cpath }/searchList/${paging.page - 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA"> < </a>
+					</c:if>
+				</c:if>
+				
+				<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
+					<c:if test="${empty param }">
+						<a href="${cpath }/list/${i}" class="pagingA">
+					${paging.page == i ? '<b>' : '' }
+						[${i }]${paging.page == i ? '</b>' : '' }</a>
+					</c:if>
+					<c:if test="${not empty param }">
+						<a href="${cpath }/searchList/${i}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA">
+					${paging.page == i ? '<b>' : '' }
+						[${i }]${paging.page == i ? '</b>' : '' }</a>
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${paging.next }">
+					<c:if test="${empty param }">
+						<a href="${cpath }/list/${paging.page + 1}" class="pagingA"> > </a>
+					</c:if>
+					<c:if test="${not empty param }">
+						<a href="${cpath }/searchList/${paging.page + 1}?firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" class="pagingA"> > </a>
+					</c:if>
+				</c:if>
+				<br><br>
 			</div>
-		</c:forEach>
+		</c:if>
+		<c:if test="${empty list }">
+			검색 결과가 없습니다.
+		</c:if>
 	</div>	
 </div>
 
-	<div class="paging">
-		<c:if test="${paging.prev }">
-			<a href="${cpath }/list/${paging.begin - 10}" class="pagingA"> < </a>
-		</c:if>
-		
-		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
-			<a href="${cpath }/list/${i}" class="pagingA">
-			${paging.page == i ? '<b>' : '' }
-				[${i }]${paging.page == i ? '</b>' : '' }</a>
-		</c:forEach>
-		
-		<c:if test="${paging.next }">
-			<a href="${cpath }/list/${paging.end + 1}" class="pagingA"> > </a>
-		</c:if>
-		<br><br>
-	</div>
+			
 
 <script>
 	document
@@ -269,26 +298,6 @@
 	}
 </script>
 
-<script>
-    const firstSelect = document.getElementById('firstSelect');
-    const secondSelect = document.getElementById('secondSelect');
-    const keyword = document.getElementById('keyword');
-    const aLink = document.getElementById('aLink')
-
-    function updateLink() {
-        const selectValue = firstSelect.value;
-        console.log(selectValue);
-        const secondValue = secondSelect.value;
-        const keywordValue = keyword.value;
-        let page = '${page}'; 
-    
-        const url = '${cpath}/mapList/' + page; 
-        aLink.href = url + '?selectValue=' + selectValue + '&secondValue=' + secondValue + '&keyword=' + keywordValue';
-    }
-    
-    const btn = document.querySelector('.btn btn-primary');
-    btn.addEventListener('click', updateLink);
-</script>
 
 </body>
 </html>
