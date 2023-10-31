@@ -31,5 +31,7 @@
 지훈 branch : payCheck.jsp , ReserveController, ReserveService,ReserveDAO , reserve-mapper 업로드 완료 <br>
 결제 후  payment = 1 (상태) , 사이트갯수 -1 <br>
 
+지훈 branch : reserve 프로젝트 전체 업로드 (결제 후 update 및 예약자 확인)<br>
+
 현우 branch : 캠핑프로젝트 전체 업로드, 개인회원가입, 개인로그인, 사업자 회원가입에서 부모키 제약조건 에 걸림<br>
 
