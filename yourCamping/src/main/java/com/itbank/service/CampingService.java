@@ -20,8 +20,8 @@ public class CampingService {
 		return cnt;
 	}
 
-	public List<CampingDTO> getCampingList(HashMap<String, Object> param) {
-		List<CampingDTO> list = campingComponent.getCampingList(param);
+	public List<CampingDTO> getCampingList(HashMap<String, Object> params) {
+		List<CampingDTO> list = campingComponent.getCampingList(params);
 		return list;
 	}
 
@@ -35,13 +35,9 @@ public class CampingService {
 		return campingComponent.selectOneImage(camping_idx);
 	}
 	
-	// 검색어가 있을 때 개수 구하기
-	public int getSearchCnt(String keyword) {
-		return campingComponent.getSearchCnt(keyword);
+	// 검색어/업종이 있을 때 개수 구하기
+	public int getSearchCnt(HashMap<String, String> param) {
+		return campingComponent.getSearchCnt(param);
 	}
-	
-	// 업종 개수 구하기
-	public int getIndutyCnt(String induty) {
-		return campingComponent.getIndutyCnt(induty);
-	}
+
 }

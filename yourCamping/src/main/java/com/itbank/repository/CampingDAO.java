@@ -13,7 +13,7 @@ public interface CampingDAO {
 
 	int selectCnt();
 
-	List<CampingDTO> selectList(HashMap<String, Object> param);
+	List<CampingDTO> selectList(HashMap<String, Object> params);
 
 	CampingDTO selectOne(int camping_idx);
 
@@ -21,8 +21,6 @@ public interface CampingDAO {
 
 	void plusCamping_viewCount(int camping_idx);
 
-	int selectKeywordCnt(String keyword);
-
-	int selectIndutyCnt(String induty);
+	int selectKeywordCnt(HashMap<String, String> param);
 
 }

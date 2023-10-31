@@ -20,8 +20,8 @@ public class CampingComponent {
 		return cnt;
 	}
 
-	public List<CampingDTO> getCampingList(HashMap<String, Object> param) {
-		List<CampingDTO> list = campingDAO.selectList(param);
+	public List<CampingDTO> getCampingList(HashMap<String, Object> params) {
+		List<CampingDTO> list = campingDAO.selectList(params);
 		return list;
 	}
 	
@@ -36,13 +36,9 @@ public class CampingComponent {
 		return campingDAO.selectOneImage(camping_idx);
 	}
 	
-	// 검색어가 있을 때 출력 개수 구하기
-	public int getSearchCnt(String keyword) {
-		return campingDAO.selectKeywordCnt(keyword);
+	// 검색어/업종 있을 때 출력 개수 구하기
+	public int getSearchCnt(HashMap<String, String> param) {
+		return campingDAO.selectKeywordCnt(param);
 	}
-	
-	// 업종 개수 구하기
-	public int getIndutyCnt(String induty) {
-		return campingDAO.selectIndutyCnt(induty);
-	}
+
 }

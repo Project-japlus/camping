@@ -201,6 +201,28 @@ div.paging {
 div.paging>button {
 	opacity: 0.1;
 }
+
+/* view CSS */
+div#imgBox {
+	position: relative;
+	display: flex;
+	margin: auto;
+	width: 900px;
+	height: 600px;
+}
+
+img.rounded {
+	width: 900px;
+	height: 600px;
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+img.active {
+	opacity: 1;
+}
+
 }
 </style>
 </head>
@@ -208,7 +230,7 @@ div.paging>button {
 	<header>
 		<div class="d-flex justify-content-between sticky-top"
 			style="width: 90%; margin: 30px auto 100px auto;">
-			<div class="fs-1 fst-italic fw-bold text-black">🏕️어디로캠핑(로고)</div>
+			<div class="fs-1 fst-italic fw-bold text-black"><a href="${cpath }">🏕️어디로캠핑(로고)</a></div>
 			<ul class="nav justify-content-end">
 				<li class="nav-item "><a class="nav-link  text-warning fw-bold"
 					href="#">예약내역확인</a></li>

@@ -4,123 +4,182 @@
 <div class="main">
 	<div class="d-flex border border-3"
 		style="background-image: url(); background-repeat: no-repeat; width: 100%; height: 300px;">
-		<div style="display: flex">
-			<form style="margin-bottom: 10px;">
-				<select id="firstSelect" name="firstSelect"
+		<form style="margin-bottom: 10px;"
+			action="${cpath }/camping/list/1">
+			<div style="display: flex">
+				<select id="firstSelect" name="firstSelect" style="width: 200px;"
 					onchange="changeSecondOptions()">
-					<option value="전체">전체</option>
-					<option value="서울시">서울시</option>
-					<option value="부산시">부산시</option>
-					<option value="대구시">대구시</option>
-					<option value="인천시">인천시</option>
-					<option value="광주시">광주시</option>
-					<option value="대전시">대전시</option>
-					<option value="울산시">울산시</option>
-					<option value="세종시">세종시</option>
-					<option value="경기도">경기도</option>
-					<option value="강원도">강원도</option>
-					<option value="충청북도">충청북도</option>
-					<option value="충청남도">충청남도</option>
-					<option value="전라북도">전라북도</option>
-					<option value="전라남도">전라남도</option>
-					<option value="경상북도">경상북도</option>
-					<option value="경상남도">경상남도</option>
-					<option value="제주도">제주도</option>
-				</select> <select id="secondSelect" name="secondSelect">
+					<option value="전체" ${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
+					<option value="서울시" ${param.firstSelect eq '서울시' ? 'selected' : '' }>서울시</option>
+					<option value="부산시" ${param.firstSelect eq '부산시' ? 'selected' : '' }>부산시</option>
+					<option value="대구시" ${param.firstSelect eq '대구시' ? 'selected' : '' }>대구시</option>
+					<option value="인천시" ${param.firstSelect eq '인천시' ? 'selected' : '' }>인천시</option>
+					<option value="광주시" ${param.firstSelect eq '광주시' ? 'selected' : '' }>광주시</option>
+					<option value="대전시" ${param.firstSelect eq '대전시' ? 'selected' : '' }>대전시</option>
+					<option value="울산시" ${param.firstSelect eq '울산시' ? 'selected' : '' }>울산시</option>
+					<option value="세종시" ${param.firstSelect eq '세종시' ? 'selected' : '' }>세종시</option>
+					<option value="경기도" ${param.firstSelect eq '경기도' ? 'selected' : '' }>경기도</option>
+					<option value="강원도" ${param.firstSelect eq '강원도' ? 'selected' : '' }>강원도</option>
+					<option value="충청북도" ${param.firstSelect eq '충청북도' ? 'selected' : '' }>충청북도</option>
+					<option value="충청남도" ${param.firstSelect eq '충청남도' ? 'selected' : '' }>충청남도</option>
+					<option value="전라북도" ${param.firstSelect eq '전라북도' ? 'selected' : '' }>전라북도</option>
+					<option value="전라남도" ${param.firstSelect eq '전라남도' ? 'selected' : '' }>전라남도</option>
+					<option value="경상북도" ${param.firstSelect eq '경상북도' ? 'selected' : '' }>경상북도</option>
+					<option value="경상남도" ${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
+					<option value="제주도" ${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
+				</select> <select id="secondSelect" name="secondSelect" style="width: 200px;">
+				</select> <select id="lctcl" name="lctcl">
+					<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
+					<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
+					<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
+					<option value="산" ${param.lctcl eq '산' ? 'selected' : '' }>산</option>
+					<option value="숲" ${param.lctcl eq '숲' ? 'selected' : '' }>숲</option>
+					<option value="계곡" ${param.lctcl eq '계곡' ? 'selected' : '' }>계곡</option>
+					<option value="강" ${param.lctcl eq '강' ? 'selected' : '' }>강</option>
+					<option value="호수" ${param.lctcl eq '호수' ? 'selected' : '' }>호수</option>
+					<option value="도심" ${param.lctcl eq '도심' ? 'selected' : '' }>도심</option>
 				</select>
-			</form>
-
-			<form>
-				<select id="details" name="details">
-					<option value="전체">전체테마</option>
-					<option value="해변">해변</option>
-					<option value="섬">섬</option>
-					<option value="산">산</option>
-					<option value="숲">숲</option>
-					<option value="계곡">계곡</option>
-					<option value="강">강</option>
-					<option value="호수">호수</option>
-					<option value="도심">도심</option>
+				<select id="induty" name="induty">
+					<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
+					<option value="일반야영장" ${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
+					<option value="자동차야영장" ${param.induty eq '자동차야영장' ? 'selected' : '' }>차박</option>
+					<option value="글램핑" ${param.induty eq '글램핑' ? 'selected' : '' }>글램핑</option>
+					<option value="카라반" ${param.induty eq '카라반' ? 'selected' : '' }>카라반 </option>
 				</select>
-			</form>
-		</div>
-
-		<div>
-			<form action="${cpath }/camping/list/${page}">
-				<input type="hidden" name="listType" value="${listType }">
+			</div>
+			<div>
 				<input type="text" name="keyword" placeholder="검색어를 입력하세요">
 				<input type="submit" value="캠핑장 검색">
-			</form>
-		</div>
+				<input type="button" id="reset" value="초기화">
+			</div>
+		</form>
+		
+		<script>
+			const reset = document.getElementById('reset')
+			reset.onclick = function () {
+				location.href = '${cpath}/camping/list/1'
+			}
+		</script>
+		
 	</div>
 </div>
 <br>
 <br>
-<div class="container  sb" style="width: 100%;">
+<div class="container sb" style="width: 100%;">
 
 	<h4>총 ${paging.boardCount }개의 캠핑장이 검색되었습니다.</h4>
 	<div class="justify-content-between d-flex mb-3">
-		<a href="${cpath }/camping/list/${page}?listType=map"><button
-				type="button" class="btn btn-primary">지도로보기</button></a>
+		<button class="btn btn-primary" id="mapBtn">지도로보기</button>
 	</div>
 
+	<script>
+		const mapBtn = document.getElementById('mapBtn')
+		mapBtn.onclick = function() {
+			if (${param.size()} == 0) {
+				location.href = '${cpath}/camping/list/${page}?listType=map'
+			} else {
+				const firstSelect = '${param.firstSelect}' || '전체'; // 만약 null이면 '전체'로 설정
+				const secondSelect = '${param.secondSelect}' || '전체';
+				const lctcl = '${param.lctcl}' || '전체'; // 만약 null이면 '전체'로 설정
+				const keyword = '${param.keyword}';
+				const induty = '${param.induty}' || '전체'; // 만약 null이면 '전체'로 설정
+	
+				// 새로운 href 생성
+				let newHref = '${cpath}/camping/list/${page}?listType=map';
+				newHref += '&firstSelect=' + firstSelect
+				newHref += '&secondSelect=' + secondSelect
+				newHref += '&lctcl=' + lctcl
+				newHref += '&keyword=' + keyword
+				newHref += '&induty=' + induty;
+			}
+			// 페이지 이동
+			location.href = newHref;
+		}
+	</script>
 
 </div>
 
 <div class="d-flex flex-wrap col-8 container border border-5">
-	<c:forEach var="dto" items="${list }">
+	<c:if test="${paging.boardCount != 0 }">
+		<c:forEach var="dto" items="${list }">
 		${dto.camping_viewCount }
 			<div class="item d-flex">
-			<div class="p-3">
-				<div class="itemImg"
-					style="background-image: url('${dto.first_img}'); cursor: pointer;"
-					OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
-			</div>
+				<div class="p-3">
+					<div class="itemImg"
+						style="background-image: url('${dto.first_img}'); cursor: pointer;"
+						OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
+				</div>
 
-			<div class="mt-3 ms-3 itemText">
-				<div>
-					<h3>
-						<a href="${cpath }/camping/view/${dto.camping_idx}">${dto.facltnm }</a>
-					</h3>
-					<span class="lineIntro">${dto.lineIntro }</span>
-					<c:choose>
-						<c:when test="${dto.featurenm != '' }">
-							<c:if test="${fn:length(dto.featurenm) >= 50 }">
-								<span class="intro"> <a
-									href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
-								</span>
+				<div class="mt-3 ms-3 itemText">
+					<div>
+						<h3>
+							<c:set var="address" value="${fn:split(dto.addr1, ' ') }" />
+							<a href="${cpath }/camping/view/${dto.camping_idx}">[${address[0]} ${address[1]}] ${dto.facltnm }</a>
+						</h3>
+						<span class="lineIntro">${dto.lineIntro }</span>
+						<c:choose>
+							<c:when test="${dto.featurenm != '' }">
+								<c:if test="${fn:length(dto.featurenm) >= 50 }">
+									<span class="intro"> <a
+										href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
+									</span>
+								</c:if>
+							</c:when>
+							<c:when test="${dto.intro != '' }">
+								<c:if test="${fn:length(dto.intro) >= 50 }">
+									<span class="intro"> <a
+										href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
+									</span>
+								</c:if>
+							</c:when>
+						</c:choose>
+						<ul class="d-flex camping_info">
+							<li class="addr">${dto.addr1 }</li>
+							<c:if test="${not empty dto.tel }">
+								<li class="call_num">${dto.tel }</li>
 							</c:if>
-						</c:when>
-						<c:when test="${dto.intro != '' }">
-							<c:if test="${fn:length(dto.intro) >= 50 }">
-								<span class="intro"> <a
-									href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
-								</span>
-							</c:if>
-						</c:when>
-					</c:choose>
-					<ul class="d-flex camping_info">
-						<li class="addr">${dto.addr1 }</li>
-						<c:if test="${not empty dto.tel }">
-							<li class="call_num">${dto.tel }</li>
-						</c:if>
-					</ul>
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
-	</c:forEach>
+		</c:forEach>
+	</c:if>
+	<c:if test="${paging.boardCount == 0 }">
+		<h2>검색된 결과가 없습니다</h2>
+	</c:if>
+
 	<div class="paging">
 		<c:if test="${paging.prev }">
-			<a href="${cpath }/list/${paging.begin - 10}?listType=list"> < </a>
+			<c:if test="${paging.begin - 10 > 0 }">
+				<c:if test="${not empty param }">
+					<a href="${cpath }/camping/list/${paging.begin - 10 }?firstSelect=${param.firstSelect}&secondSelect=${param.secondSelect}
+						&lctcl=${param.lctcl}&induty=${param.induty }&keyword=${param.keyword}"> < </a>
+				</c:if>
+				<c:if test="${empty param }">
+					<a href="${cpath }/camping/list/${paging.begin - 10}"> < </a>
+				</c:if>
+			</c:if>
 		</c:if>
 
 		<c:forEach var="i" begin="${paging.begin }" end="${paging.end }">
-			<a href="${cpath }/camping/list/${i}?listType=list">
-				${paging.page == i ? '<b>' : '' } [${i }]${paging.page == i ? '</b>' : '' }</a>
+			<c:if test="${empty param }">
+				<a href="${cpath }/camping/list/${i}">${page == i ? '<b>' : '' } [${i }]${page == i ? '</b>' : '' }</a>
+			</c:if>
+			<c:if test="${not empty param }">
+				<a href="${cpath }/camping/list/${i}?firstSelect=${param.firstSelect}&secondSelect=${param.secondSelect}
+						&lctcl=${param.lctcl}&induty=${param.induty }&keyword=${param.keyword}">
+					${page == i ? '<b>' : '' } [${i }]${page == i ? '</b>' : '' }</a>
+			</c:if>
 		</c:forEach>
 
 		<c:if test="${paging.next }">
-			<a href="${cpath }/list/${paging.end + 1}?listType=list"> > </a>
+			<c:if test="${not empty param }">
+				<a href="${cpath }/camping/list/${paging.end + 1 }?firstSelect=${param.firstSelect}&secondSelect=${param.secondSelect}
+						&lctcl=${param.lctcl}&induty=${param.induty }&keyword=${param.keyword}"> > </a>
+			</c:if>
+			<c:if test="${empty param }">
+				<a href="${cpath }/camping/list/${paging.end + 1}"> > </a>
+			</c:if>
 		</c:if>
 		<br> <br>
 	</div>
@@ -131,7 +190,6 @@
 	window.onload = function() {
 		// 기본값으로 '전체'를 선택하도록 함
 		var firstSelect = document.getElementById('firstSelect');
-		firstSelect.value = '전체';
 
 		// '전체'를 선택했을 때 두 번째 셀렉트 박스가 채워지도록 호출
 		changeSecondOptions();

@@ -4,7 +4,7 @@
 
 <div style="display:flex; width:1200px; margin:auto; margin-top: 120px;">
 	<div class="container mt-3">
-	  <img src="${dto.first_img }" class="rounded" width="600" height="400"> 
+	  <img src="${dto.first_img }" class="first" width="600" height="400"> 
 	</div>
 	
 	<div class="container mt-3">
@@ -173,9 +173,12 @@
 
 <div>
 		<button id="prev"><-</button>
-	<div style="margin: auto; width: 900px; height: 600px; display: flex; overflow: auto; position: relative;" id="imgBox">
-		<c:forEach var="img" items="${image }">
-			<img src="${img.inner_img }" class="rounded" width="900px" height="600px" style="position: absolute;">
+	<div id="imgBox">
+		<c:forEach var="img" items="${image }" varStatus="i">
+			<c:if test="${i.index == 0 }">
+				<img src="${img.inner_img }" class="rounded active">
+			</c:if>
+			<img src="${img.inner_img }" class="rounded">
 		</c:forEach>	
 	</div>
 		<button id="next">-></button>
@@ -188,13 +191,23 @@
 	const prev = document.getElementById('prev')
 	const next = document.getElementById('next')
 	const fullsize = +imgarr.length * 900;
-	let translate = 0
-	let currentIdx = 0;
-	currentIdx = 1;
-		
+	var currentImageIndex = 0;
+	
+	function showImage(index) {
+		for (var i = 0; i < imgarr.length; i++) {
+			imgarr[i].classList.remove('active');
+		}
+		imgarr[index].classList.add('active');
+	}
+	
 	next.onclick = function(event) {
-		indexsize = indexsize + 900;
-		imgBox.style.transform = 'translateX(' + indexsize + 'px)';
+		currentImageIndex = (currentImageIndex + 1) % imgarr.length;
+		showImage(currentImageIndex);
+	}
+	
+	prev.onclick = function () {
+		currentImageIndex = (currentImageIndex - 1 + imgarr.length) % imgarr.length;
+		showImage(currentImageIndex);
 	}
 </script>
 

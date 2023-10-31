@@ -34,10 +34,10 @@ public class PagingService {
 		// 마지막 번호는 전체 페이지 수를 초과할 수 없다
 		end = end >= pageCount ? pageCount : end;
 		
-		int section = (page - 1) / perSection;
-		int lastSection = (pageCount - 1) / perSection;
-		prev = begin > perSection;
-		next = lastSection > section;
+//		int section = (page - 1) / perSection;
+//		int lastSection = (pageCount - 1) / perSection;
+		prev = page != 1;
+		next = pageCount != end;
 	}
 
 	public int getPage() {

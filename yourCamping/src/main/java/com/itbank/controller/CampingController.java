@@ -23,52 +23,68 @@ public class CampingController {
 	private CampingService campingService;
 
 	@GetMapping("/list/{page}")
-	public ModelAndView campingList(@PathVariable("page") int page,
-			@RequestParam(value = "listType", defaultValue = "list") String listType,
-			@RequestParam(value = "keyword", defaultValue = "") String keyword,
-			@RequestParam(value = "induty", defaultValue = "") String induty) {
+	public ModelAndView campingList(@PathVariable("page") int page, @RequestParam HashMap<String, String> param) {
 		ModelAndView mav = new ModelAndView("/camping/list");
-		if (listType.equals("map")) {
-			mav.setViewName("/camping/map");
+		if (param != null && param.get("listType") != null) {
+			switch ((String) param.get("listType")) {
+			case ("map"):
+				mav.setViewName("/camping/map");
+				mav.addObject("listType", "map");
+				break;
+			case ("list"):
+				mav.addObject("listType", "list");
+				break;
+			}
 		}
-
-		HashMap<String, Object> param = new HashMap<String, Object>();
+		int tmp = page;
 		int boardCount = campingService.getListCnt();
-		if (!keyword.equals("")) {
-			page = 1;
-			boardCount = campingService.getSearchCnt(keyword);
-			param.put("keyword", keyword);
+		boolean flag1 = param.containsKey("keyword");
+		if (flag1) {
+			if (param.get("keyword").equals("")) {
+				param.put("keyword", null);
+				flag1 = !flag1;
+			} 
 		}
-		if (!induty.equals("")) {
-			page = 1;
-			boardCount = campingService.getIndutyCnt(induty);
-			param.put("induty", induty);
+		boolean flag2 = param.containsKey("induty");
+		if (flag2) {
+			if (param.get("induty").equals("전체")) {
+				param.put("induty", null);
+				flag2 = !flag2;
+			}
 		}
-		PagingService paging = new PagingService(page, boardCount);
-		param.put("paging", paging);
-
-		List<CampingDTO> list = campingService.getCampingList(param);
+		boolean flag3 = param.containsKey("lctcl");
+		if (flag3) {
+			if (param.get("lctcl").equals("전체")) {
+				param.put("lctcl", null);
+				flag3 = !flag3;
+			}
+		}
+		boolean flag4 = param.containsKey("firstSelect");
+		if (flag4) {
+			if (param.get("firstSelect").equals("전체")) {
+				param.put("firstSelect", null);
+				flag4 = !flag4;
+			}
+		}
+		
+		if (flag1 || flag2 || flag3 || flag4) {
+			tmp = 1;
+			boardCount = campingService.getSearchCnt(param);
+		}
+		PagingService paging = new PagingService(tmp, boardCount);
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		for (String key : param.keySet()) {
+			params.put(key, param.get(key));
+		}
+		params.put("paging", paging);
+		List<CampingDTO> list = campingService.getCampingList(params);
+		mav.addObject("param", params);
 		mav.addObject("list", list);
 		mav.addObject("paging", paging);
-		mav.addObject("listType", listType);
+		mav.addObject("page", page);
 		return mav;
 	}
-
-//	@GetMapping("/mapList/{page}")
-//	public ModelAndView map1(@PathVariable("page") int page) {
-//		System.out.println("page :" + page);
-//		ModelAndView mav = new ModelAndView("/camping/map");
-//		int totalCount = campingService.getListCnt();
-//		PagingService paging = new PagingService(page, totalCount);
-//		
-//		HashMap<String, Object> param = new HashMap<String, Object>();
-//		param.put("paging", paging);
-//		
-//		List<CampingDTO> list = campingService.getCampingList(param);                         
-//		mav.addObject("list", list);
-//		mav.addObject("paging", paging);
-//		return mav;
-//	}
 
 	@GetMapping("/view/{camping_idx}")
 	public ModelAndView view(@PathVariable("camping_idx") int camping_idx) {
