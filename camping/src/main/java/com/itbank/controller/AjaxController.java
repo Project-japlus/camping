@@ -12,51 +12,30 @@ import com.itbank.component.WeatherComponent;
 import com.itbank.util.DataType;
 
 @RestController
-@RequestMapping("/camping/ajax")
+@RequestMapping("/camping/view/ajax/{camping_idx}")
 public class AjaxController {
 
 	@Autowired private WeatherComponent weatherComponent;
 	
-	@GetMapping("/weatherShort/{dataType}")
-	public String weatherShort(@PathVariable("dataType") String dataType) throws IOException {
-		dataType = dataType.toUpperCase();	// json을 JSON으로 변경
-		String data = weatherComponent.getStringShort(DataType.valueOf(dataType));
-		return data;
-	}
-	
 	@GetMapping("/weatherShort")
-	public String weatherShort() throws IOException {
-		String jsonData = weatherComponent.getStringShort(DataType.JSON);
+	public String weatherShort(@PathVariable("camping_idx") int camping_idx) throws IOException {
+		String jsonData = weatherComponent.getStringShort(DataType.JSON, camping_idx);
 		System.out.println(jsonData);
 		
 		return jsonData;
-	}
-	
-	@GetMapping("/weatherMid/{dataType}")
-	public String weatherMid(@PathVariable("dataType") String dataType) throws IOException {
-		dataType = dataType.toUpperCase();	// json을 JSON으로 변경
-		String data = weatherComponent.getStringMid(DataType.valueOf(dataType));
-		return data;
 	}
 		
 	@GetMapping("/weatherMid")
-	public String weatherMid() throws IOException {
-		String jsonData = weatherComponent.getStringMid(DataType.JSON);
+	public String weatherMid(@PathVariable("camping_idx") int camping_idx) throws IOException {
+		String jsonData = weatherComponent.getStringMid(DataType.JSON, camping_idx);
 		System.out.println(jsonData);
 		
 		return jsonData;
 	}
 	
-	@GetMapping("/tempMid/{dataType}")
-	public String tempMid(@PathVariable("dataType") String dataType) throws IOException {
-		dataType = dataType.toUpperCase();
-		String data = weatherComponent.getStringTemp(DataType.valueOf(dataType));
-		return data;
-	}
-	
 	@GetMapping("/tempMid")
-	public String tempMid() throws IOException {
-		String jsonData = weatherComponent.getStringTemp(DataType.JSON);
+	public String tempMid(@PathVariable("camping_idx") int camping_idx) throws IOException {
+		String jsonData = weatherComponent.getStringTemp(DataType.JSON, camping_idx);
 		System.out.println(jsonData);
 		
 		return jsonData;

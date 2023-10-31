@@ -24,4 +24,6 @@ public interface CampingDAO {
 	double selectMapY(int camping_idx);
 
 	double selectMapX(int camping_idx);
+	
+	String selectAreaCode(int camping_idx);
 }

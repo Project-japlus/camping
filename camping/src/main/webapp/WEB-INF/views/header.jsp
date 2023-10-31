@@ -138,6 +138,17 @@
 	div.paging > button {
 		opacity: 0.1;
 	}
+/* 	view CSS */
+	table#week {
+		text-align: center;
+	}
+	table#week tr#date td {
+		width: 160px;
+		height: 40px;
+	}
+	table#week tr#time td, table#week tr#weather td, table#week tr#rain td, table#week tr#temp td {
+		width: 80px;
+	}
  </style>
 </head>
 <body>

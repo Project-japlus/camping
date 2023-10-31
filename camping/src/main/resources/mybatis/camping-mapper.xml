@@ -51,4 +51,12 @@
 	<select id="selectMapX" parameterType="int" resultType="double">
 		select mapX from camping_place where camping_idx = #{camping_idx}
 	</select>
+	
+	<select id="selectAreaCode" parameterType="int" resultType="String">
+		select a.areaCode
+			from areacode a
+			join camping c on c.addr1 like '%' || a.areaNm || '%'
+			where camping_idx = #{camping_idx}
+	</select>
+	
 </mapper>

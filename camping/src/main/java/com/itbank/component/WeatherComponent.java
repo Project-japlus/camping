@@ -22,14 +22,36 @@ public class WeatherComponent {
 	@Autowired private CampingDAO campingDAO;
 	
 	private String serviceKey = "QxR1rPiyyvLn78S6brSBcNjAWwYW73QU7hvslatKryTcXFLm5DbGyUhYCDcgK%2BxutbBkSzYIn%2BeaS3XzzjBf1g%3D%3D";
-	private int camping_idx = 100;
 	
-	public String getStringMid() throws IOException {
-		return getStringMid(DataType.JSON);
+	public String getStringMid(int camping_idx) throws IOException {
+		return getStringMid(DataType.JSON, camping_idx);
 	}
 	
-	public String getStringMid(DataType dataType) throws IOException {
+	public String getStringMid(DataType dataType, int camping_idx) throws IOException {
 		String jsonData = "";
+		String regId = "";
+		String code = campingDAO.selectAreaCode(camping_idx);
+		if (code.startsWith("11B")) {
+			regId = "11B00000";
+		} else if (code.startsWith("11D1")) {
+			regId = "11D10000";
+		} else if (code.startsWith("11D2")) {
+			regId = "11D20000";
+		} else if (code.startsWith("11C1")) {
+			regId = "11C10000";
+		} else if (code.startsWith("11C2")) {
+			regId = "11C20000";
+		} else if (code.startsWith("11F1")) {
+			regId = "11F10000";
+		} else if (code.startsWith("11F2")) {
+			regId = "11F20000";
+		} else if (code.startsWith("11H1")) {
+			regId = "11H10000";
+		} else if (code.startsWith("11H2")) {
+			regId = "11H20000";
+		} else if (code.startsWith("11G")) {
+			regId = "11G00000";
+		}
 		LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 		String date = "";
 		String time = "0600";
@@ -43,13 +65,13 @@ public class WeatherComponent {
 		// 1) 주소 및 파라미터 지정
 		String urlString = "https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst";
 		urlString += "?";
-				
+			
 		HashMap<String, String> params = new HashMap<>();
 		params.put("serviceKey", serviceKey);
 		params.put("pageNo", "1");
 		params.put("numOfRows", "10");
 		params.put("dataType", dataType.getDataType());
-		params.put("regId", "11B00000");
+		params.put("regId", regId);
 		params.put("tmFc", date + time);
 		
 		for (String key : params.keySet()) {
@@ -83,12 +105,13 @@ public class WeatherComponent {
 		return jsonData;
 	}
 	
-	public String getStringTemp() throws IOException {
-		return getStringTemp(DataType.JSON);
+	public String getStringTemp(int camping_idx) throws IOException {
+		return getStringTemp(DataType.JSON, camping_idx);
 	}
 	
-	public String getStringTemp(DataType dataType) throws IOException {
+	public String getStringTemp(DataType dataType, int camping_idx) throws IOException {
 		String jsonData = "";
+		String regId = campingDAO.selectAreaCode(camping_idx);
 		LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 		String date = "";
 		String time = "0600";
@@ -108,7 +131,7 @@ public class WeatherComponent {
 		params.put("pageNo", "1");
 		params.put("numOfRows", "10");
 		params.put("dataType", dataType.getDataType());
-		params.put("regId", "11B10101");
+		params.put("regId", regId);
 		params.put("tmFc", date + time);
 				
 		for (String key : params.keySet()) {
@@ -143,8 +166,8 @@ public class WeatherComponent {
 		return jsonData;
 	}
 
-	public String getStringShort() throws IOException {
-		return getStringShort(DataType.JSON);
+	public String getStringShort(int camping_idx) throws IOException {
+		return getStringShort(DataType.JSON, camping_idx);
 	}
 	
 	private LatLngDTO convertGRID_GPS(double lat, double lng) {	// lat : 위도, lng : 경도
@@ -192,7 +215,7 @@ public class WeatherComponent {
 	    return rs;
 	}
 	
-	public String getStringShort(DataType dataType) throws IOException {
+	public String getStringShort(DataType dataType, int camping_idx) throws IOException {
 		
 		String jsonData = "";
 		LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
