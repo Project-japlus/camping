@@ -20,9 +20,9 @@
 
 <hr>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧾기록(당일프로젝트전체업로드필수)&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧾기록&fontSize=90" />
 
-
+<h1>당일 12시 프로젝트 전체업로드 필수 (구현/업로드 시간에 비례해서 병합도 늦어짐) </h1>
 
 📌 23년 10월 30일 <br>
 수용 : 메인 페이지 업종 검색 및 키워드 검색 구현, view 페이지 이미지 스크롤 만드는 중<br>
