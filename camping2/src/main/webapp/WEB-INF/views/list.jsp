@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-
-
 <div class="main">
 	<div class="d-flex border border-3"
 		style="background-image: url(); background-repeat: no-repeat; width: 100%; height: 300px;">

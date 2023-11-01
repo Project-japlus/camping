@@ -47,6 +47,12 @@
 	</div>
 </div>
 
+<div style="width:860px; margin:auto;">
+	<a href="${cpath }/searchList?page=${page}&firstSelect=${param.get('firstSelect')}&secondSelect=${param.get('secondSelect')}
+					&details=${param.get('details')}&keyword=${param.get('keyword')}" id="aLink"><button type="button"
+					class="btn btn-primary" style="margin-left:800px; width: 160px;">리스트로 보기</button></a>
+</div>
+					
 <div style="display: flex; height: 700px; width: 1200px; margin: auto; margin-top: 50px;">
 	
 	<div id="map" style="width: 860px; height: 700px;"></div>

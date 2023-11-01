@@ -286,7 +286,5 @@
 <!-- 	imageSlider(document.querySelector(".slider__wrap"), images) -->
 <!-- </script> -->
 
-
-
 </body>
 </html>
