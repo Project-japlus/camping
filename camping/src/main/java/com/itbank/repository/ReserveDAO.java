@@ -18,7 +18,11 @@ public interface ReserveDAO {
 
 	User_tableDTO selectOneByUserid(String userid);
 
-	ReserveDTO reserveOne(int camping_idx);
+	ReserveDTO reserveOne(int reserve_idx);
+
+	int paymentByOne(int reserve_idx);
+
+	int minuseSiteCo(ReserveDTO reservedto);
 
 
 	

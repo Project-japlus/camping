@@ -84,7 +84,7 @@
     </div>
 	
 	
-	<!-- 결제 스크립트 -->
+<!-- 결제 스크립트 -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <div class="d-grid">
     <button onclick="requestPay()" class="fw-bold btn btn-warning btn-block w-75 m-auto mt-3" style="height: 60px;">결제하기 | ${reservedto.reserve_price}원</button>
@@ -104,7 +104,7 @@ function requestPay() {
     IMP.request_pay({
         pg: "kakaopay",
         pay_method: "card",
-        merchantuid: 'merchant'+new Date().getTime(),
+        merchantuid: 'merchant'+ new Date().getTime(),
         name: campingName,
         amount: price,
         currency: "KRW",
@@ -115,16 +115,14 @@ function requestPay() {
         m_redirect_url: "",
     }, function(rsp) {
         if (rsp.success) {
-            alert(`완료 -> imp_uid : ${rsp.imp_uid} / 구매자이름: ${username}`);
-            location.href = '${cpath}';
+            alert(`완료 -> imp_uid : ${rsp.imp_uid} / 구매자이름: username`);
+            location.href = '${cpath}/payCheck/${reservedto.reserve_idx}';
         } else {
             alert(`결제실패 : 코드(${rsp.error_code}) / 메세지(${rsp.error_msg})`);
         }
     });
 }
 </script>
-
-
 
 </body>
 </html>

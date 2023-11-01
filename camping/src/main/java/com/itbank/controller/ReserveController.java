@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.itbank.model.CampingDTO;
+import com.itbank.model.Camping_siteDTO;
 import com.itbank.model.ReserveDTO;
 import com.itbank.model.User_tableDTO;
 import com.itbank.service.ReservService;
@@ -52,25 +54,41 @@ public class ReserveController {
 		//추가하기
 		int row = reserveService.reservation(reservedto);
 		System.out.println(row + "번 예약 추가");
-		return "redirect:/confirm/" + reservedto.getCamping_idx();
+		return "redirect:/confirm/" + reservedto.getReserve_idx();
 	}
 	
-	//예약자 확인 페이지로 넘어감
-	@GetMapping("/confirm/{camping_idx}")
-	public ModelAndView confirm(@PathVariable("camping_idx")int camping_idx) {
+	//예약자 확인 페이지
+	@GetMapping("/confirm/{reserve_idx}")
+	public ModelAndView confirm(@PathVariable("reserve_idx")int reserve_idx) {
 		ModelAndView mav = new ModelAndView("confirm");
-		ReserveDTO reservedto = reserveService.reserveOne(camping_idx);
+		ReserveDTO reservedto = reserveService.reserveOne(reserve_idx);
 		mav.addObject("reservedto",reservedto);
 		return mav;
 	}
 	
 	
 	
+	//결제완료 및 확인
+	@GetMapping("/payCheck/{reserve_idx}")
+	public ModelAndView payCheck(@PathVariable("reserve_idx")int reserve_idx) {
+		ModelAndView mav = new ModelAndView("payCheck");
+		ReserveDTO reservedto = reserveService.reserveOne(reserve_idx);
+		
+		
+		
+		int payRow = reserveService.paymentByOne(reserve_idx);
+		int minRow = reserveService.minuseSiteCo(reservedto);
+		
+		System.out.println(payRow != 0 ? "pay업데이트" : "pay실패");
+		System.out.println(minRow != 0 ? "min업데이트" : "min실패");
+		mav.addObject("reservedto",reservedto);
+		return mav;
+	}
+	
 	//로그인
 	@GetMapping("/login")
 	public void login() {}
-	
-	
+		
 	@PostMapping("/login")
 	public String login(User_tableDTO dto , HttpSession session) {
 		User_tableDTO login = reserveService.login(dto);

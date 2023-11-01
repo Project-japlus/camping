@@ -39,6 +39,7 @@ public class ReserveDTO {
 	private String username;
 	private String phone;
 	private String email;
+	
 	public int getReserve_idx() {
 		return reserve_idx;
 	}

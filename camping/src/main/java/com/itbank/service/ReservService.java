@@ -37,9 +37,19 @@ public class ReservService {
 		return reserveDAO.selectOneByUserid(dto.getUserid());
 	}
 
-	public ReserveDTO reserveOne(int camping_idx) {
+	public ReserveDTO reserveOne(int reserve_idx) {
 		// TODO Auto-generated method stub
-		return reserveDAO.reserveOne(camping_idx);
+		return reserveDAO.reserveOne(reserve_idx);
+	}
+
+	public int paymentByOne(int reserve_idx) {
+		// TODO Auto-generated method stub
+		return reserveDAO.paymentByOne(reserve_idx);
+	}
+
+	public int minuseSiteCo(ReserveDTO reservedto) {
+		// TODO Auto-generated method stub
+		return reserveDAO.minuseSiteCo(reservedto);
 	}
 
 
