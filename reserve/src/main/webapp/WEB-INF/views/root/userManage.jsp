@@ -74,21 +74,6 @@
 			   </c:forEach>    
 		    </tbody>
 	 	 </table>
-	 	 
-	 	 
-	 	 <script>
-	 	 	const deleteUserByRootBtn_${dto.user_idx} = document.getElementById('deleteUserByRootBtn_${dto.user_idx}');
-	 	 	deleteUserByRootBtn_${dto.user_idx}.onclick = function(){
-	 	 		const check = confirm('해당 유저를 비활성화하시겠습니까?')
-	 	 		if(check == true){
-	 	 			alert('로그인을 제외한 모든 이용이 정지됩니다.')
-	 	 			location.href = '${cpath}/root/userDisabled/'+${dto.user_idx};
-	 	 		}
-	 	 		else {
-	 	 			location.href = '${cpath}/root/userManage'
-	 	 		}
-	 	 	};
-	 	 </script>
 	</div>
 </body>
 </html>
