@@ -78,7 +78,6 @@ public class WeatherComponent {
 			String value = params.get(key);
 			urlString += key + "=" + value + "&";
 		}
-		System.out.println(urlString);
 		
 		// 2) Http 연결 만들기
 		URL url = new URL(urlString);	// throws IOException
@@ -138,7 +137,6 @@ public class WeatherComponent {
 			String value = params.get(key);
 			urlString += key + "=" + value + "&";
 		}
-		System.out.println(urlString);
 		
 		// 2) Http 연결 만들기
 		URL url = new URL(urlString);	// throws IOException
@@ -249,7 +247,6 @@ public class WeatherComponent {
 			String value = params.get(key);
 			urlString += key + "=" + value + "&";
 		}
-		System.out.println(urlString);
 		
 		URL url = new URL(urlString);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -89,24 +89,18 @@ public class AjaxController {
 	@GetMapping("/weatherShort/{camping_idx}")
 	public String weatherShort(@PathVariable("camping_idx") int camping_idx) throws IOException {
 		String jsonData = weatherComponent.getStringShort(DataType.JSON, camping_idx);
-		System.out.println(jsonData);
-		
 		return jsonData;
 	}
 		
 	@GetMapping("/weatherMid/{camping_idx}")
 	public String weatherMid(@PathVariable("camping_idx") int camping_idx) throws IOException {
 		String jsonData = weatherComponent.getStringMid(DataType.JSON, camping_idx);
-		System.out.println(jsonData);
-		
 		return jsonData;
 	}
 	
 	@GetMapping("/tempMid/{camping_idx}")
 	public String tempMid(@PathVariable("camping_idx") int camping_idx) throws IOException {
 		String jsonData = weatherComponent.getStringTemp(DataType.JSON, camping_idx);
-		System.out.println(jsonData);
-		
 		return jsonData;
 	}
 }
