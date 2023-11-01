@@ -55,9 +55,241 @@
 	</div>  
 </div>
 
-<div style="width: 1200px; margin: auto; margin-top: 30px;">
-	날씨 API
+<div style="width: 1200px; margin: auto; margin-top: 50px;">
+	<h5>💡주간날씨</h5>
 </div>
+
+<div style="width: 1200px; margin: auto; margin-top: 10px;">
+	<table id="week" style="margin: auto;">
+		<tr id="date">
+		</tr>
+		<tr id="time">
+		</tr>
+		<tr id="weather">
+		</tr>
+		<tr id="rain">
+		</tr>
+		<tr id="temp">
+		</tr>
+	</table>
+</div>
+
+<script>
+	let date = new Date()
+	async function dateLoadHandler() {
+		const tr = document.getElementById('date')
+		for (let i = 0; i < 7; i++) {
+			const td = document.createElement('td')
+			td.setAttribute('colspan', 2)	<!-- td colspan="2" -->
+			let month = date.getMonth() + 1
+			let day = '일'
+			if (date.getDay() == 1) {
+				day = '월'
+			}
+			if (date.getDay() == 2) {
+				day = '화'
+			}
+			if (date.getDay() == 3) {
+				day = '수'
+			}
+			if (date.getDay() == 4) {
+				day = '목'
+			}
+			if (date.getDay() == 5) {
+				day = '금'
+			}
+			if (date.getDay() == 6) {
+				day = '토'
+			}
+			td.innerText = month + '/' + date.getDate() + ' ' + day
+			tr.appendChild(td)
+			date.setDate(date.getDate() + 1)
+		}
+	}
+	window.addEventListener('DOMContentLoaded', dateLoadHandler)
+	
+	async function timeLoadHandler() {
+		const tr = document.getElementById('time')
+		for (let i = 0; i < 14; i++) {
+			const td = document.createElement('td')
+			if (i % 2 == 0) {
+				td.innerText = '오전'
+			}
+			else {
+				td.innerText = '오후'
+			}
+			tr.appendChild(td)
+		}
+	}
+	window.addEventListener('DOMContentLoaded', timeLoadHandler)
+	
+	async function shortLoadHandler() {
+		const url = '${cpath}/ajax/weatherShort/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+		
+		const arr = json.response.body.items.item
+		const tr = document.getElementById('weather')
+		
+		arr.forEach(e => {
+			if (e['fcstTime'] == '0600' || e['fcstTime'] == '1500') {
+				if (e['category'] == 'SKY') {
+					const td = document.createElement('td')
+					if (e['fcstValue'] == '1') {
+						td.innerHTML = '<img src="${cpath }/resources/weather/맑음.png" style="width: 30px;">'
+						tr.appendChild(td)
+					} else if (e['fcstValue'] == '3') {
+						td.innerHTML = '<img src="${cpath }/resources/weather/구름많음.png" style="width: 30px;">'
+						tr.appendChild(td)
+					} else if (e['fcstValue'] == '4') {
+						td.innerHTML = '<img src="${cpath }/resources/weather/흐림.png" style="width: 30px;">'
+						tr.appendChild(td)
+					}
+ 				} 
+				if (e['category'] == 'PTY') {
+					const td = document.createElement('td')
+					if (e['fcstValue'] == '1' || e['fcstValue'] == '2') {
+						td.innerHTML = '<img src="${cpath }/resources/weather/비.png" style="width: 30px;">'
+						tr.appendChild(td)
+					} else if (e['fcstValue'] == '3') {
+						td.innerHTML = '<img src="${cpath }/resources/weather/눈.png" style="width: 30px;">'
+						tr.appendChild(td)
+					}
+				}
+			}
+		})
+	}
+	
+	async function midLoadHandler() {
+		const url = '${cpath}/ajax/weatherMid/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+		
+		const arr = json.response.body.items.item
+		const columnName = ['wf3Am', 'wf3Pm', 'wf4Am', 'wf4Pm', 'wf5Am', 'wf5Pm', 'wf6Am', 'wf6Pm']
+		const tr = document.getElementById('weather')
+		
+		arr.forEach(e => {
+			columnName.forEach(i => {
+				const td = document.createElement('td')
+				if (e[i] == '맑음') {
+					td.innerHTML = '<img src="${cpath }/resources/weather/맑음.png" style="width: 30px;">'
+					tr.appendChild(td)
+				} else if (e[i] == '구름많음') {
+					td.innerHTML = '<img src="${cpath }/resources/weather/구름많음.png" style="width: 30px;">'
+					tr.appendChild(td)
+				} else if (e[i] == '흐림') {
+					td.innerHTML = '<img src="${cpath }/resources/weather/흐림.png" style="width: 30px;">'
+					tr.appendChild(td)
+				} else if (e[i].includes('비')) {
+					td.innerHTML = '<img src="${cpath }/resources/weather/비.png" style="width: 30px;">'
+					tr.appendChild(td)
+				} else if (e[i].includes('눈')) {
+					td.innerHTML = '<img src="${cpath }/resources/weather/눈.png" style="width: 30px;">'
+					tr.appendChild(td)
+				}
+			})
+		})
+	}
+	
+	async function shortRainLoadHandler() {
+		const url = '${cpath}/ajax/weatherShort/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+			
+		const arr = json.response.body.items.item
+		const tr = document.getElementById('rain')
+			
+		arr.forEach(e => {
+			if (e['fcstTime'] == '0600') {
+				if (e['category'] == 'POP') {
+					const td = document.createElement('td')
+					td.innerText = '☂️' + e['fcstValue'] + '%'
+					tr.appendChild(td)
+				}
+			}
+			if (e['fcstTime'] == '1500') {
+				if (e['category'] == 'POP') {
+					const td = document.createElement('td')
+					td.innerText = '☂️' + e['fcstValue'] + '%'
+					tr.appendChild(td)
+				}
+			}
+		})
+	}
+	
+	async function midRainLoadHandler() {
+		const url = '${cpath}/ajax/weatherMid/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+			
+		const arr = json.response.body.items.item
+		const columnName = ['rnSt3Am', 'rnSt3Pm', 'rnSt4Am', 'rnSt4Pm', 'rnSt5Am', 'rnSt5Pm', 'rnSt6Am', 'rnSt6Pm']
+		const tr = document.getElementById('rain')
+		
+		arr.forEach(e => {
+			columnName.forEach(i => {
+				const td = document.createElement('td')
+				td.innerHTML = '☂️' + e[i] + '%'
+				tr.appendChild(td)
+			})
+		})
+	}
+	
+	async function shortTempLoadHandler() {
+		const url = '${cpath}/ajax/weatherShort/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+			
+		const arr = json.response.body.items.item
+		const tr = document.getElementById('temp')
+		
+		arr.forEach(e => {
+			if (e['fcstTime'] == '1500') {
+				if (e['category'] == 'TMX') {
+					const td = document.createElement('td')
+					td.innerText = parseInt(e['fcstValue']) + '℃'
+					tr.appendChild(td)
+				}
+			}
+			if (e['fcstTime'] == '0600') {
+				if (e['category'] == 'TMN') {
+					const td = document.createElement('td')
+					td.innerText = parseInt(e['fcstValue']) + '℃'
+					tr.appendChild(td)
+				}
+			}
+		})
+	}
+	
+	async function midTempLoadHandler() {
+		const url = '${cpath}/ajax/tempMid/${dto.camping_idx}'
+		const json = await fetch(url).then(resp => resp.json())
+		console.log(json)
+			
+		const arr = json.response.body.items.item
+		const tr = document.getElementById('temp')
+		const columnName = ['taMin3', 'taMax3', 'taMin4', 'taMax4', 'taMin5', 'taMax5', 'taMin6', 'taMax6']
+			
+		arr.forEach(e => {
+			columnName.forEach(i => {
+				const td = document.createElement('td')
+				td.innerText = e[i] + '℃'
+				tr.appendChild(td)	
+			})
+		})
+	}
+	
+	window.addEventListener('DOMContentLoaded', loadHandler)
+	async function loadHandler() {
+		await shortLoadHandler()
+		await midLoadHandler()
+		await shortRainLoadHandler()
+		await midRainLoadHandler()
+		await shortTempLoadHandler()
+		await midTempLoadHandler()
+	}
+</script>
 
 <!-- 특징/intro 부분 -->
 <c:if test="${not empty dto.featurenm }">

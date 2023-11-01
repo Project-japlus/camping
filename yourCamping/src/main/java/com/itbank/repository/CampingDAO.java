@@ -23,4 +23,10 @@ public interface CampingDAO {
 
 	int selectKeywordCnt(HashMap<String, String> param);
 
+	String selectAreaCode(int camping_idx);
+
+	double selectMapY(int camping_idx);
+
+	double selectMapX(int camping_idx);
+
 }

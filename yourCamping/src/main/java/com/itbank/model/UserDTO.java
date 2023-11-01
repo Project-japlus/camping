@@ -12,6 +12,16 @@ public class UserDTO {
 	private String bizrno;
 	private int camping_idx;
 	
+	// 10/31 추가함
+	private boolean remember_bizr;
+	
+	public boolean isRemember_bizr() {
+		return remember_bizr;
+	}
+	public void setRemember_bizr(boolean remember_bizr) {
+		this.remember_bizr = remember_bizr;
+	}
+	
 	public int getUser_idx() {
 		return user_idx;
 	}

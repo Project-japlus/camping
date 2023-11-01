@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<a href="${cpath }/camping/list/1"><button>임시</button></a>
+<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
 <div
 	class="container mt-5 w-50 p-5 border border-secondary rounded-5 border-5  bg-gradient shadow"
 	style="-bs-bg-opacity: .8; margin-bottom: 200px; height: 400px;">

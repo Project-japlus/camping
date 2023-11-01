@@ -27,6 +27,7 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:mybatis/camping-mapper.xml</value>
+				<value>classpath:mybatis/user-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

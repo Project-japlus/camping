@@ -223,6 +223,17 @@ img.active {
 	opacity: 1;
 }
 
+/* Mypage_check CSS */
+tr:nth-child(1) {
+	border-top-width: 2px;
+	border-top-color: black;
+}
+
+td:nth-child(1) {
+	border-right-width: 2px;
+	width: 150px;
+	background-color: #eee;
+}
 }
 </style>
 </head>
@@ -230,14 +241,26 @@ img.active {
 	<header>
 		<div class="d-flex justify-content-between sticky-top"
 			style="width: 90%; margin: 30px auto 100px auto;">
-			<div class="fs-1 fst-italic fw-bold text-black"><a href="${cpath }">🏕️어디로캠핑(로고)</a></div>
+			<div class="fs-1 fst-italic fw-bold text-black">
+				<a href="${cpath }">🏕️어디로캠핑(로고)</a>
+			</div>
 			<ul class="nav justify-content-end">
-				<li class="nav-item "><a class="nav-link  text-warning fw-bold"
-					href="#">예약내역확인</a></li>
-				<li class="nav-item "><a class="nav-link text-black fw-bold"
-					href="#">로그인</a></li>
-				<li class="nav-item"><a class="nav-link text-black fw-bold"
-					href="#">회원가입</a></li>
+				<c:if test="${not empty login }">
+					<li class="nav-item">${login.username }님</li>
+					<li class="nav-item ">
+						<a class="nav-link text-warning fw-bold" href="${cpath }/user/Mypage_check">마이페이지</a>
+					</li>
+					<li class="nav-item"><a class="nav-link text-black fw-bold" href="${cpath }/user/logout">로그아웃</a>
+					</li>
+				</c:if>
+				<c:if test="${empty login }">
+					<li class="nav-item "><a class="nav-link text-black fw-bold"
+						data-bs-toggle="modal" data-bs-target="#login"
+						href="javascript:void(0);">로그인</a></li>
+					<li class="nav-item"><a class="nav-link text-black fw-bold"
+						data-bs-toggle="modal" href="#exampleModalToggle">회원가입</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</header>
+	<%@ include file="modal.jsp"%>
