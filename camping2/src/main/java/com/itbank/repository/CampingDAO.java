@@ -20,20 +20,49 @@ public interface CampingDAO {
 
 	int getSearchTotal(HashMap<String, Object> param);
 
-	int campingInsert(CampingDTO form);
+	int campingInsert(CampingDTO dto);
 	int maxCampingIdx();
 
-	int campingImgInsert(CampingDTO form);
+	int campingImgInsert(CampingDTO dto);
+
+	int campingPlaceInsert(CampingDTO dto);
 
 	int activityInsert(CampingDTO param);
 
 	int introduceInsert(CampingDTO param);
 
-	int internalInsert(HashMap<String, Object> map);
+	int internalInsert(CampingDTO dto);
 
-	int safetyDeviceInsert(HashMap<String, Object> map);
+	int safetyDeviceInsert(CampingDTO dto);
 
-	int campingSiteInsert(HashMap<String, Object> map);
+	int campingSiteInsert(CampingDTO dto);
+
+	int updateInfo(CampingDTO dto);
+
+	int updateCampingImg(CampingDTO dto);
+
+	int updateInfoTwo(CampingDTO dto);
+
+	int updateActivity(CampingDTO dto);
+
+	int updateIntroduce(CampingDTO dto);
+
+	CampingDTO selectOnePrev(int maxCampingIdx);
+
+	CampingDTO selectOnePrevTwo(int maxCampingIdx);
+
+	int deleteCamping(int maxCampingIdx);
+
+	int deleteCampingImg(int maxCampingIdx);
+
+	int deleteCampingActivity(int maxCampingIdx);
+
+	int deleteCampingIntoduce(int maxCampingIdx);
+
+	int deleteCampingPlace(int maxCampingIdx);
+
+
+
 
 
 	

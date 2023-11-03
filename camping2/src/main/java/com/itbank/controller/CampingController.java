@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itbank.model.CampingDTO;
@@ -81,57 +82,91 @@ public class CampingController {
 	@GetMapping("/newCamping")
 	public void newCamping() {}
 	
-	@PostMapping("/newCampingSecond")
-	public ModelAndView newCamping(@RequestParam HashMap<String, Object> form) {
+	// 첫번째 form
+	@PostMapping("/newCamping")
+	public ModelAndView newCamping(CampingDTO dto, String firstSelect, String secondSelect) {
 		ModelAndView mav = new ModelAndView("newCampingSecond");
-		mav.addObject("form", form);
-		System.out.println("입지 : " + form.get("lctcl"));
-		return mav;
-	}
-	
-	@PostMapping("/newCampingThird")
-	public ModelAndView newCampingSecond(@RequestParam HashMap<String, Object> param, CampingDTO form) {
-		ModelAndView mav = new ModelAndView("newCampingThird");
-		mav.addObject("form", form);		// 첫번째 form
-		mav.addObject("param", param);		// 두번째 페이지 param
-		return mav;
-	}
-	
-	@PostMapping("/newCampingResult")
-	public ModelAndView newCampingThird(CampingDTO form, CampingDTO param, @RequestParam HashMap<String, Object> map) {
-		ModelAndView mav = new ModelAndView("campingInsert");
-//		mav.addObject("form", form);		// 첫번째 페이지 form
-//		mav.addObject("param", param);		// 두번째 페이지 param
-//		mav.addObject("map", map); 			// 세번째 페이지 form
-		// 각 테이블에 등록
+		dto.setDoNm(firstSelect);
+		dto.setSigunguNm(secondSelect);
+		dto.setAddr1(dto.getDoNm() + " " +  dto.getSigunguNm() + " " + dto.getAddr1());
 		// 1.camping테이블과 camping_img
-		int row1 = campingService.campingInsert(form);
-		System.out.println("row1 : " + row1);
+//		int row1 = campingService.campingInsert(dto);
+//		System.out.println("row1 : " + row1);
 		int maxCampingIdx = campingService.maxCampingIdx();
-		form.setCamping_idx(maxCampingIdx);
-		int row2 = campingService.campingImgInsert(form);
-		System.out.println("row2 : " + row2);
-		
-		// 2.camping_activity테이블과 camping_introduce테이블
-		param.setCamping_idx(maxCampingIdx);
-		int row3 = campingService.activityInsert(param);
-		System.out.println("row3 : " + row3);
-		int row4 = campingService.introduceInsert(param);
+//		 여기서부터 !
+//		if(row1 != 0) {
+			dto.setCamping_idx(maxCampingIdx);
+//			int row2 = campingService.campingImgInsert(dto);
+//			System.out.println("row2 : " + row2);
+//		}
+		mav.addObject("addr1", dto.getAddr1());
+		return mav;
+	} 
+	
+	// 두번째 form
+	@PostMapping("/newCampingSecond")
+	public String newCampingSecond(CampingDTO dto, String lat, String lng) {
+		int maxCampingIdx = campingService.maxCampingIdx();
+		System.out.println(lat);
+		System.out.println(lng);
+		// 2.camping_place테이블과 camping_activity테이블과 camping_introduce테이블
+		dto.setCamping_idx(maxCampingIdx);
+//		dto.setMapX(lng);		// 경도
+//		dto.setMapY(lat);		// 위도
+		System.out.println("mapX : " + dto.getMapX());
+		System.out.println("mapY : " + dto.getMapY());
+//		int row3 = campingService.campingPlaceInsert(dto);
+//		System.out.println("row3 : " + row3);
+		int row4 = campingService.activityInsert(dto);
 		System.out.println("row4 : " + row4);
-		
-		// 3.camping_internal테이블과 camping_safety_device테이블과 camping_site테이블
-		map.put("maxCampingIdx", maxCampingIdx);
-		int row5 = campingService.internalInsert(map);
+		int row5 = campingService.introduceInsert(dto);
 		System.out.println("row5 : " + row5);
-		int row6 = campingService.safetyDeviceInsert(map);
+		return "newCampingThird";
+	}
+	
+	// 세번째 form
+	@PostMapping("/newCampingThird")
+	public ModelAndView newCampingThird(CampingDTO dto) {
+		ModelAndView mav = new ModelAndView("campingInsert");
+		int maxCampingIdx = campingService.maxCampingIdx();
+		// 3.camping_internal테이블과 camping_safety_device테이블과 camping_site테이블
+		dto.setCamping_idx(maxCampingIdx);
+		int row6 = campingService.internalInsert(dto);
 		System.out.println("row6 : " + row6);
-		int row7 = campingService.campingSiteInsert(map);
+		int row7 = campingService.safetyDeviceInsert(dto);
 		System.out.println("row7 : " + row7);
-		CampingDTO dto = campingService.selectOne(maxCampingIdx);
-		mav.addObject("dto", dto);
+		int row8 = campingService.campingSiteInsert(dto);
+		System.out.println("row8 : " + row8);
+		CampingDTO resultDTO = campingService.selectOne(maxCampingIdx);
+		mav.addObject("resultDTO", resultDTO);
 		return mav; 
 	}
 	
+	// 두번째에서 이전 누를 때
 	@GetMapping("/prevPage")
-	public void prevPage() {}
+	@ResponseBody
+	public String prevPage() {
+		ModelAndView mav = new ModelAndView("newCamping");
+		int maxCampingIdx = campingService.maxCampingIdx();
+		int row = campingService.deleteCampingImg(maxCampingIdx);
+		int row2 = campingService.deleteCamping(maxCampingIdx);
+		
+		return "<script>history.go(-2);</script>";
+	}
+
+	@GetMapping("/prevPageTwo")
+	@ResponseBody
+	public String prevPagetwo() {
+		ModelAndView mav = new ModelAndView("newCampingSecond");
+		int maxCampingIdx = campingService.maxCampingIdx();
+		int row = campingService.deleteCampingActivity(maxCampingIdx);
+		int row2 = campingService.deleteCampingIntoduce(maxCampingIdx);
+//		int row3 = campingService.deleteCampingPlace(maxCampingIdx);
+		
+		return "<script>history.go(-2);</script>";
+	}
+
+		
+	
+	
 }

@@ -2,80 +2,85 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 
-${form }
-${param }
 <div class="container mt-3">
   <h2>캠핑장 상세등록</h2>
-  <form action="" method="POST" action="${cpath }/newCampingResult?form=${form}&param=${param}">
+  <form method="POST" action="${cpath }/newCampingThird">
 	    <div class="mb-3 mt-3">
 	      <label>부대시설:</label>
-	      <input type="text" name="sbrscl">
+	      <input type="text" name="sbrsCl">
 	    </div>
 	    <div class="mb-3">
 	      <label>부대시설 기타:</label>
-	      <input type="text" name="sbrsetc">
+	      <input type="text" name="sbrsEtc">
 	    </div>
 	    <div class="mb-3">
 	      <label>화장실 개수:</label>
-	     	<input type="number" name="toiletco">
+	     	<input type="number" name="toiletCo" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>샤워실 개수:</label>
-	     	<input type="number" name="swrmco">
+	     	<input type="number" name="swrmCo" required>
 	    </div>
 	     <div class="mb-3">	
 	      <label>글램핑 내부시설</label>
-	      	<input type="text" name="glampinnerfclty">
+	      	<input type="text" name="glamplnnerFclty">
 	    </div>
 	     <div class="mb-3">	
 	      <label>카라반 내부시설</label>
-	      	<input type="text" name="caravinnerfclty">
+	      	<input type="text" name="caravlnnerFclty">
 	    </div>
 	  	<!-- camping_safety_device -->
 	    <div class="mb-3">
 	      <label>소화기 개수:</label>
-	      	<input type="number" name="extshrCo">
+	      	<input type="number" name="extshrCo" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>방화수 개수:</label>
-	      	<input type="number" name="frprvtwrppco">
+	      	<input type="number" name="frprvtWrppCo" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>방화사 개수:</label>
-	      	<input type="number" name="frprvtsandco">
+	      	<input type="number" name="frprvtSandCo" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>화재감지기 개수:</label>
-	      	<input type="number" name="firesensorco">
+	      	<input type="number" name="fireSensorCo" required>
 	    </div>
 	    <!-- camping_site -->
 	    <div class="mb-3">
 	      <label>사이트A 개수:</label>
-	      	<input type="number" name="sitemg1co">
+	      	<input type="number" name="siteMg1Co" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>사이트B 개수:</label>
-	      	<input type="number" name="sitemg2co">
+	      	<input type="number" name="siteMg2Co">
 	    </div>
 	    <div class="mb-3">
 	      <label>사이트C 개수:</label>
-	      	<input type="number" name="sitemg3co">
+	      	<input type="number" name="siteMg3Co">
 	    </div>
 	    <div class="mb-3">
 	      <label>사이트A 가격:</label>
-	      	<input type="number" name="sitemg1_price">
+	      	<input type="number" name="siteMg1_price" required>
 	    </div>
 	    <div class="mb-3">
 	      <label>사이트B 가격:</label>
-	      	<input type="number" name="sitemg2_price">
+	      	<input type="number" name="siteMg2_price">
 	    </div>
 	    <div class="mb-3">
 	      <label>사이트C 가격:</label>
-	      	<input type="number" name="sitemg3_price">
+	      	<input type="number" name="siteMg3_price" required>
 	    </div>
-	    <a href="${cpath }/prevPage"><button class="btn btn-primary">이전</button></a>
+	      <button id="prevtwo" class="btn btn-primary">이전</button>
 	    <input type="submit" class="btn btn-primary" value="등록">
   </form>
 </div>
+
+<script>
+	const prev = document.getElementById('prevtwo')
+	prev.addEventListener('click', function() {
+		window.location.href='${cpath}/prevPageTwo'
+	})
+</script>
 </body>
 </html>
