@@ -37,7 +37,7 @@ public interface CampingDAO {
 
 	int campingSiteInsert(CampingDTO dto);
 
-	int updateInfo(CampingDTO dto);
+	int updateCamping(CampingDTO dto);
 
 	int updateCampingImg(CampingDTO dto);
 
@@ -47,19 +47,37 @@ public interface CampingDAO {
 
 	int updateIntroduce(CampingDTO dto);
 
-	CampingDTO selectOnePrev(int maxCampingIdx);
-
-	CampingDTO selectOnePrevTwo(int maxCampingIdx);
-
 	int deleteCamping(int maxCampingIdx);
 
-	int deleteCampingImg(int maxCampingIdx);
+	int deleteCampingImg(CampingDTO dto);
 
 	int deleteCampingActivity(int maxCampingIdx);
 
 	int deleteCampingIntoduce(int maxCampingIdx);
 
 	int deleteCampingPlace(int maxCampingIdx);
+
+	CampingDTO selectCamping(int camping_idx);
+
+	CampingDTO selectCampingTwo(int camping_idx);
+
+	int updateInternal(CampingDTO dto);
+
+	int updateSafety(CampingDTO dto);
+
+	int updateSite(CampingDTO dto);
+
+	CampingDTO selectCampingThree(int camping_idx);
+
+	CampingDTO selectOneByImg(int maxCampingIdx);
+
+	void deleteCampingInternal(int camping_idx);
+
+	void deleteCampingSafetyDevice(int camping_idx);
+
+	void deleteCampingSite(int camping_idx);
+
+	CampingDTO selectInnerImg(int camping_idx);
 
 
 

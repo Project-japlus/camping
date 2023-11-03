@@ -58,11 +58,17 @@ public class FileComponent {
 		return null;
 	}
 
-//	public void deleteFile(String fileName) {
-//		File dest = new File(saveDirectory, fileName);
-//		if(dest.exists()) {
-//			dest.delete();			
-//		}
-//	}
+	public void deleteFile(String fileName) {
+		File dest = new File(saveDirectory, fileName);
+		if(dest.exists()) {
+			dest.delete();			
+		}
+	}
+	public void deleteFile2(String fileName) {
+		File dest = new File(saveDirectory2, fileName);
+		if(dest.exists()) {
+			dest.delete();			
+		}
+	}
 
 }

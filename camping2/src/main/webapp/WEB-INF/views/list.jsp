@@ -78,7 +78,12 @@
 			<c:forEach var="dto" items="${list }">
 				<div class="item d-flex">
 					<div class="p-3">
-						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/view/${dto.camping_idx}'"></div>
+						<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+							<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/view/${dto.camping_idx}'"></div>
+						</c:if>
+						<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+							<div class="itemImg2" style="cursor: pointer;" OnClick="location.href='${cpath }/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}"></div>
+						</c:if>
 					</div>
 	
 					<div class="mt-3 ms-3 itemText">
