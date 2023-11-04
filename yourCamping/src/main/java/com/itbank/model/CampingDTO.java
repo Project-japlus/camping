@@ -58,14 +58,6 @@ public class CampingDTO {
 	private int frprvtSandCo;
 	private int fireSensorCo;
 
-	// camping_site
-	private int siteMg1Co;
-	private int siteMg2Co;
-	private int siteMg3Co;
-	private int siteMg1_price;
-	private int siteMg2_price;
-	private int siteMg3_price;
-
 	public int getCamping_idx() {
 		return camping_idx;
 	}
@@ -417,53 +409,4 @@ public class CampingDTO {
 	public void setFireSensorCo(int fireSensorCo) {
 		this.fireSensorCo = fireSensorCo;
 	}
-
-	public int getSiteMg1Co() {
-		return siteMg1Co;
-	}
-
-	public void setSiteMg1Co(int siteMg1Co) {
-		this.siteMg1Co = siteMg1Co;
-	}
-
-	public int getSiteMg2Co() {
-		return siteMg2Co;
-	}
-
-	public void setSiteMg2Co(int siteMg2Co) {
-		this.siteMg2Co = siteMg2Co;
-	}
-
-	public int getSiteMg3Co() {
-		return siteMg3Co;
-	}
-
-	public void setSiteMg3Co(int siteMg3Co) {
-		this.siteMg3Co = siteMg3Co;
-	}
-
-	public int getSiteMg1_price() {
-		return siteMg1_price;
-	}
-
-	public void setSiteMg1_price(int siteMg1_price) {
-		this.siteMg1_price = siteMg1_price;
-	}
-
-	public int getSiteMg2_price() {
-		return siteMg2_price;
-	}
-
-	public void setSiteMg2_price(int siteMg2_price) {
-		this.siteMg2_price = siteMg2_price;
-	}
-
-	public int getSiteMg3_price() {
-		return siteMg3_price;
-	}
-
-	public void setSiteMg3_price(int siteMg3_price) {
-		this.siteMg3_price = siteMg3_price;
-	}
-
 }
