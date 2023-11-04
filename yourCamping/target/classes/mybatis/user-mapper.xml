@@ -9,13 +9,18 @@
 			values (#{userid}, #{userpw}, #{username}, #{phone}, #{role}, #{email}, #{salt})
 	</insert>
 	
+	<insert id="insert_bizr" parameterType="user">
+		insert into bizrno values (#{bizrno})
+	</insert>
+	
 	<insert id="bizr_join" parameterType="user">
 		insert into bizr_table (userid, userpw, username, phone,  email, salt, bizrno) 
 			values (#{userid}, #{userpw}, #{username}, #{phone},  #{email}, #{salt}, #{bizrno})
 	</insert>
 	
+	
 	<select id="checkLogin" resultType="user">
-		select * from user_table where userid = #{userid}
+		select * from user_table where (userid) = (${userid})
 	</select>
 </mapper>
 

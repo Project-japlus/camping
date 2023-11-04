@@ -222,7 +222,6 @@
 			secondSelect.appendChild(opt);
 		});
 	}
-	
 </script>
 </body>
 </html>
