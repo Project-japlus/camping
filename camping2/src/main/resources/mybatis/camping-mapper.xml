@@ -39,15 +39,7 @@
         		where c.camping_idx = #{camping_idx}
         		and img.inner_img is not null
 	</select>
-	
-<!-- 	<select id="selectInnerImg" parameterType="int"> -->
-<!-- 		select * from  -->
-<!-- 			camping_img  -->
-<!-- 			where first_img is not null  -->
-<!-- 			and inner_img is not null  -->
-<!-- 			and camping_idx = #{camping_idx} -->
-<!-- 	</select> -->
-	
+
 	<select id="getSearchTotal" resultType="int" parameterType="hashmap">
 		select count(*) 
 			from camping c
