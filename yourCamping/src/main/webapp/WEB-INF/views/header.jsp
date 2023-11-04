@@ -380,6 +380,29 @@ img.active {
 table#week {
 	text-align: center;
 }
+
+/* mypage css */
+table#Mypage_check_table tr:nth-child(1) {
+	border-top-width: 2px;
+    border-top-color: black;
+}
+
+table#Mypage_check_table td:nth-child(1) {
+	border-right-width: 2px;
+    width: 150px;
+    background-color: #eee;
+}
+
+table#modify_table {
+	border: 1px solid black;
+}
+
+table#modify_table td {
+	padding: 30px;
+	text-align: center;
+	vertical-align: middle;
+}
+
 </style>
 </head>
 </head>
