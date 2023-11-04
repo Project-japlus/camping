@@ -75,10 +75,8 @@ public class CampingController {
 		ModelAndView mav = new ModelAndView("view");
 		CampingDTO dto = campingService.selectOne(camping_idx);
 		List<CampingDTO> image = campingService.selectOneImage(camping_idx);
-//		CampingDTO inner_img = campingService.selectInnerImg(camping_idx);
 		mav.addObject("dto", dto);
 		mav.addObject("image", image);
-//		mav.addObject("inner_img", inner_img);
 		return mav;
 	}
 	
