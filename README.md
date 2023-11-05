@@ -52,9 +52,10 @@
 
 
 📌23년 11월 6일 <br>
+<h2>병합된 프로젝트가 너무 커서 깃에 안올라감.. 일단 수정된 파일만 올렸고 프로젝트는 디스코드 (캠핑-사이트)채널 에 업로드 </h2>
 지훈 branch : 예약관련 수정처리<br>
 
-reservion.jsp : 체크박스 동기화 완료/ reserve_site 예외 처리? 완료 (ex 천지 글램핑)<br>
+reservion.jsp : 체크박스 동기화 완료/ reserve_site 예외 처리? 완료 (ex 천지 글램핑)/예약건수를 뺀 사이트 갯수에 따라서 select 바뀌게 적용<br>
 
 reserveModal.jsp : 모달 정중앙/ width 컨텐츠에맞게 지정 으로 수정<br>
 -제3자 제공모달 부분  dto수정해서 캠핑장이름 나오게 <br>
