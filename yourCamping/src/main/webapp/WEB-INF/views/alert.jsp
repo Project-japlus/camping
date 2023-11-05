@@ -10,6 +10,12 @@
 			if (url == 'home') {
 				href = '${cpath}'
 			}
+			if (url == 'Mypage_modify') {
+				href = '${cpath}/user/Mypage_modify'
+			}
+			if (url == 'logout') {
+				href = '${cpath}/user/logout'
+			}
 			location.href = href
 		}
 	</script>

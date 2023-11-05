@@ -1,5 +1,7 @@
 package com.itbank.model;
 
+import java.sql.Date;
+
 public class CampingDTO {
 	private int camping_idx;
 	private String facltnm;
@@ -65,6 +67,10 @@ public class CampingDTO {
 	private int siteMg1_price;
 	private int siteMg2_price;
 	private int siteMg3_price;
+	
+	private Date reserve_str_date;
+	private Date reserve_end_date;
+	private String reserve_site;
 
 	public int getCamping_idx() {
 		return camping_idx;
@@ -472,5 +478,29 @@ public class CampingDTO {
 
 	public void setSiteMg3_price(int siteMg3_price) {
 		this.siteMg3_price = siteMg3_price;
+	}
+
+	public Date getReserve_str_date() {
+		return reserve_str_date;
+	}
+
+	public void setReserve_str_date(Date reserve_str_date) {
+		this.reserve_str_date = reserve_str_date;
+	}
+
+	public Date getReserve_end_date() {
+		return reserve_end_date;
+	}
+
+	public void setReserve_end_date(Date reserve_end_date) {
+		this.reserve_end_date = reserve_end_date;
+	}
+
+	public String getReserve_site() {
+		return reserve_site;
+	}
+
+	public void setReserve_site(String reserve_site) {
+		this.reserve_site = reserve_site;
 	}
 }

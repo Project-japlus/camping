@@ -8,10 +8,18 @@ public class ReserveDTO {
 	private int camping_idx;
 	private String reserve_site;
 	private int reserve_price;
-	private Date reserve_str_date;
 	private int human_cnt;
-	private int car_ctn;
+	private int car_cnt;
+	private Date reserve_str_date;
 	private Date reserve_end_date;
+	private String facltnm;
+	
+	public String getFacltnm() {
+		return facltnm;
+	}
+	public void setFacltnm(String facltnm) {
+		this.facltnm = facltnm;
+	}
 	public int getReserve_idx() {
 		return reserve_idx;
 	}
@@ -54,11 +62,11 @@ public class ReserveDTO {
 	public void setHuman_cnt(int human_cnt) {
 		this.human_cnt = human_cnt;
 	}
-	public int getCar_ctn() {
-		return car_ctn;
+	public int getCar_cnt() {
+		return car_cnt;
 	}
-	public void setCar_ctn(int car_ctn) {
-		this.car_ctn = car_ctn;
+	public void setCar_cnt(int car_cnt) {
+		this.car_cnt = car_cnt;
 	}
 	public Date getReserve_end_date() {
 		return reserve_end_date;
