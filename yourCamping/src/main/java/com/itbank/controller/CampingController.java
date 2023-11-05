@@ -95,4 +95,5 @@ public class CampingController {
 		mav.addObject("image", image);
 		return mav;
 	}
+	
 }

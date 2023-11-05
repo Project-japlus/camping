@@ -536,6 +536,9 @@ div.reservationWrap .group:after {
 					<li class="nav-item">${login.username }님</li>
 					<li class="nav-item "><a class="text-warning fw-bold"
 						href="${cpath }/user/Mypage_check">마이페이지</a></li>
+					<c:if test="${not empty login.bizrno }">
+						<li class="nav-item"><a class="text-warning fw-bold" href="${cpath }/bizr/newCamping">캠핑장 등록</a></li>
+					</c:if>
 					<li class="nav-item"><a class="text-black fw-bold"
 						href="${cpath }/user/logout">로그아웃</a></li>
 				</c:if>

@@ -2,6 +2,8 @@ package com.itbank.model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CampingDTO {
 	private int camping_idx;
 	private String facltnm;
@@ -15,6 +17,9 @@ public class CampingDTO {
 	private String lctcl;
 	private String addr1;
 	private int camping_viewCount;
+	private String doNm;
+	private String sigunguNm;
+	private String userid;
 
 	// camping_activity
 	private String posblFcltyCl;
@@ -26,7 +31,10 @@ public class CampingDTO {
 	// camping_img
 	private String first_img;
 	private String inner_img;
-
+	
+	private MultipartFile upload1;
+	private MultipartFile[] upload2;
+	
 	// camping_internal
 	private String sbrsCl;
 	private String sbrsEtc;
@@ -168,6 +176,30 @@ public class CampingDTO {
 		this.camping_viewCount = camping_viewCount;
 	}
 
+	public String getDoNm() {
+		return doNm;
+	}
+
+	public void setDoNm(String doNm) {
+		this.doNm = doNm;
+	}
+
+	public String getSigunguNm() {
+		return sigunguNm;
+	}
+
+	public void setSigunguNm(String sigunguNm) {
+		this.sigunguNm = sigunguNm;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public String getPosblFcltyCl() {
 		return posblFcltyCl;
 	}
@@ -222,6 +254,22 @@ public class CampingDTO {
 
 	public void setInner_img(String inner_img) {
 		this.inner_img = inner_img;
+	}
+
+	public MultipartFile getUpload1() {
+		return upload1;
+	}
+
+	public void setUpload1(MultipartFile upload1) {
+		this.upload1 = upload1;
+	}
+
+	public MultipartFile[] getUpload2() {
+		return upload2;
+	}
+
+	public void setUpload2(MultipartFile[] upload2) {
+		this.upload2 = upload2;
 	}
 
 	public String getSbrsCl() {

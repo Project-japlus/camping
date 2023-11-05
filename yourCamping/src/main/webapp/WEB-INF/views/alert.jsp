@@ -16,6 +16,12 @@
 			if (url == 'logout') {
 				href = '${cpath}/user/logout'
 			}
+			if (url == 'view') {
+				href = '${cpath}/camping/view/${camping_idx}'
+			}
+			if (url == 'list') {
+				href = '${cpath}/camping/list/1'
+			}
 			location.href = href
 		}
 	</script>

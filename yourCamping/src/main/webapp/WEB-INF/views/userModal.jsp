@@ -28,7 +28,7 @@
 							<label> <input class="ms-2" type="checkbox"
 								name="remember">아이디저장
 							</label> <label><input class="ms-5" type="checkbox"
-								name="remember">사업자 로그인</label>
+								name="remember_bizr">사업자 로그인</label>
 						</div>
 					</div>
 					<div class="ms-3 mt-4">
@@ -90,7 +90,7 @@
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="user_pw2"
 											placeholder="비밀번호  확인" required>
-										<button class="btn btn-primary" onclick="userpw_test()"
+										<button type="button" class="btn btn-primary" onclick="userpw_test()"
 											style="width: 100px;">PW 확인</button>
 									</p>
 								</div>
@@ -181,8 +181,8 @@
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="bizr_pw2"
 											placeholder="비밀번호  확인" required>
-										<button class="btn btn-primary" onclick="bizrpw_test()"
-											style="width: 100px;">PW 확인</button>
+										<input type="button" class="btn btn-primary" onclick="bizrpw_test()"
+											style="width: 100px;" value="PW 확인">
 									</p>
 								</div>
 								<div class="mb-1">이름</div>
@@ -212,8 +212,8 @@
 								</div>
 								<div class="mb-1">사업자번호</div>
 								<div class="d-flex justify-content-between mb-2">
-									<input type="text" name="bizrno" placeholder="사업자번호" required>
-									<a><button class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
+									<input type="text" name="bizrno" placeholder="사업자번호" id="bizrno_check" required>
+									<a><button type="button" class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>
@@ -249,7 +249,6 @@
     let user_email_check = false;
     let user_checkbox_check = false;
 
-    const login = '${login}';
     const loginButton = document.getElementById('loginButton');
 
     //일반 아이디중복확인
@@ -391,7 +390,7 @@
             }
         };
 
-        //사업자 비밀번호 중복 체크 
+        //사업자 비밀번호 체크 
         function bizrpw_test() {
             const bizr_pw1 = document.getElementById('bizr_pw1').value;
             const bizr_pw2 = document.getElementById('bizr_pw2').value;
@@ -444,11 +443,12 @@
         let bizrNo_check = false;
         const bizrno_check_btn = document.getElementById('bizrno_check_btn')
         bizrno_check_btn.onclick = async function (event) {
-            const bizrNo = document.getElementById('bizrno').value
+            const bizrNo = document.getElementById('bizrno_check').value
             const url = '${cpath}/ajax/checkBizrNo?bizrNo=' + bizrNo
 
             let result = await fetch(url).then(resp => resp.text())
             if (result == '1') {
+            	alert('확인되었습니다')
                 bizrNo_check = true
             }
         }
@@ -462,7 +462,6 @@
         }
         const bizr_changeStatus = function () {
             bizr_checkbox_check = !bizr_checkbox_check;
-            console.log(bizr_checkbox_check)
         };
         const bizr_joinBtn = document.querySelector('.bizr_joinBtn');
         //사업자 회원가입 실행문
