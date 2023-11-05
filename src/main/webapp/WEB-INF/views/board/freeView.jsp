@@ -28,7 +28,7 @@
         	<a href="${cpath }/board/freeList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
 		<div class="mt-4">
-			<div class="mb-4">댓글 (${dto.replyCount })</div>
+			<div class="mb-4">댓글</div>
 			<div class="ms-3 mb-3">
 				<c:forEach var="reply" items="${list }">
 				<div class="mb-3 d-flex justify-content-between">

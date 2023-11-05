@@ -77,6 +77,7 @@ public class BoardController {
 	public ModelAndView reviewView(@PathVariable("review_idx") int review_idx) {
 		ModelAndView mav= new ModelAndView("/board/reviewView");
 		ReviewDTO dto = boardService.selectReviewOne(review_idx);
+		dto.setReview_viewCount(dto.getReview_viewCount() + 1);
 		String[] list = dto.getReview_img().split(",");
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
@@ -148,6 +149,7 @@ public class BoardController {
 	public ModelAndView freeView(@PathVariable("free_table_idx") int free_table_idx) {
 		ModelAndView mav= new ModelAndView("/board/freeView");
 		FreeDTO dto = boardService.selectFreeOne(free_table_idx);
+		dto.setFree_viewCount(dto.getFree_viewCount() + 1);
 		List<ReplyDTO> list = boardService.selectReply(free_table_idx);
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
@@ -170,7 +172,7 @@ public class BoardController {
 	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
 		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
 		if (dto.getUser_idx() == user_idx) {
-			boardService.deleteReply(free_table_idx);
+			boardService.deleteReplyOne(dto);
 			FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
 			freeDTO.setReplyCount(freeDTO.getReplyCount() - 1);
 		}
@@ -179,6 +181,7 @@ public class BoardController {
 	
 	@GetMapping("/freeDelete/{free_table_idx}")
 	public String freeDelete(@PathVariable("free_table_idx") int free_table_idx) {
+		boardService.deleteReplyAll(free_table_idx);
 		boardService.freeDelete(free_table_idx);
 		return "redirect:/board/freeList";
 	}

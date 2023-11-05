@@ -97,7 +97,7 @@
 	</select>
 	
 	<delete id="reviewDelete" parameterType="int">
-		delete review where review_idx = #{review_idx}
+		delete from review where review_idx = #{review_idx}
 	</delete>
 	
 	<update id="reviewModify" parameterType="review">
@@ -215,8 +215,12 @@
 				(#{user_idx}, #{free_table_idx}, #{reply_content})
 	</insert>
 	
-	<delete id="deleteReply" parameterType="int">
-		delete free_reply where free_table_idx = #{free_table_idx}
+	<delete id="deleteReplyOne" parameterType="reply">
+		delete from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
+	</delete>
+	
+	<delete id="deleteReplyAll" parameterType="int">
+		delete from free_reply where free_table_idx = #{free_table_idx}
 	</delete>
 	
 	<select id="selectFreeImg" parameterType="int" resultType="String">
@@ -224,7 +228,7 @@
 	</select>
 	
 	<delete id="freeDelete" parameterType="int">
-		delete free_table where free_table_idx = #{free_table_idx}
+		delete from free_table where free_table_idx = #{free_table_idx}
 	</delete>
 	
 	<update id="freeModify" parameterType="free">

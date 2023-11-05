@@ -43,7 +43,9 @@ public interface BoardDAO {
 	
 	int insertReply(ReplyDTO dto);
 	
-	int deleteReply(int free_table_idx);
+	int deleteReplyOne(ReplyDTO dto);
+	
+	int deleteReplyAll(int free_table_idx);
 
 	String selectFreeImg(int free_table_idx);
 

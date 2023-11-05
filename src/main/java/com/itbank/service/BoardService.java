@@ -103,8 +103,12 @@ public class BoardService {
 		return boardComponent.insertReply(dto);
 	}
 	
-	public int deleteReply(int free_table_idx) {
-		return boardComponent.deleteReply(free_table_idx);
+	public int deleteReplyOne(ReplyDTO dto) {
+		return boardComponent.deleteReplyOne(dto);
+	}
+	
+	public int deleteReplyAll(int free_table_idx) {
+		return boardComponent.deleteReplyAll(free_table_idx);
 	}
 	
 	public int freeDelete(int free_table_idx) {

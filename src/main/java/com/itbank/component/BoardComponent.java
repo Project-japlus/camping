@@ -84,8 +84,12 @@ public class BoardComponent {
 		return boardDAO.insertReply(dto);
 	}
 	
-	public int deleteReply(int free_table_idx) {
-		return boardDAO.deleteReply(free_table_idx);
+	public int deleteReplyOne(ReplyDTO dto) {
+		return boardDAO.deleteReplyOne(dto);
+	}
+	
+	public int deleteReplyAll(int free_table_idx) {
+		return boardDAO.deleteReplyAll(free_table_idx);
 	}
 	
 	public String selectFreeImg(int free_table_idx) {
