@@ -16,23 +16,29 @@ public class FileComponent {
 //	private String saveDirectory2 = cpath + "/webapp/resources/inner_img";
 	private String saveDirectory = "C:\\first_img";
 	private String saveDirectory2 = "C:\\inner_img";
+	private String saveDirectory3 = "C:\\upload";
 
 	public FileComponent() {
 		File dir = new File(saveDirectory);
-		if(dir.exists() == false) {
+		if (dir.exists() == false) {
 			dir.mkdirs();
 		}
 		File dir2 = new File(saveDirectory2);
-		if(dir2.exists() == false) {
+		if (dir2.exists() == false) {
 			dir2.mkdirs();
 		}
+		File dir3 = new File(saveDirectory3);
+		if (dir3.exists() == false) {
+			dir3.mkdirs();
+		}
 	}
-	
+
 	public String upload(MultipartFile f) {
-		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);;
+		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);
+		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
-		fileName += ext;			// 확장자 붙이고
+		fileName += ext; // 확장자 붙이고
 		File dest = new File(saveDirectory, fileName);
 		try {
 			f.transferTo(dest);
@@ -42,13 +48,30 @@ public class FileComponent {
 		}
 		return null;
 	}
-	
+
 	public String upload2(MultipartFile f) {
-		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);;
+		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);
+		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
-		fileName += ext;			// 확장자 붙이고
+		fileName += ext; // 확장자 붙이고
 		File dest = new File(saveDirectory2, fileName);
+		try {
+			f.transferTo(dest);
+			return fileName;
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String upload3(MultipartFile f) {
+		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);
+		;
+		String originalFileName = f.getOriginalFilename();
+		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
+		fileName += ext; // 확장자 붙이고
+		File dest = new File(saveDirectory3, fileName);
 		try {
 			f.transferTo(dest);
 			return fileName;
@@ -60,14 +83,22 @@ public class FileComponent {
 
 	public void deleteFile(String fileName) {
 		File dest = new File(saveDirectory, fileName);
-		if(dest.exists()) {
-			dest.delete();			
+		if (dest.exists()) {
+			dest.delete();
 		}
 	}
+
 	public void deleteFile2(String fileName) {
 		File dest = new File(saveDirectory2, fileName);
-		if(dest.exists()) {
-			dest.delete();			
+		if (dest.exists()) {
+			dest.delete();
+		}
+	}
+
+	public void deleteFile3(String fileName) {
+		File dest = new File(saveDirectory3, fileName);
+		if (dest.exists()) {
+			dest.delete();
 		}
 	}
 

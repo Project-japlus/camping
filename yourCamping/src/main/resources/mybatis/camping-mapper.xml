@@ -361,4 +361,8 @@
 			join camping_site site on inter.camping_idx = site.camping_idx
 			where inter.camping_idx = #{camping_idx}
 	</select>
+	
+	<select id="selectFacltnmList" resultType="String">
+		select facltnm from camping
+	</select>
 </mapper>

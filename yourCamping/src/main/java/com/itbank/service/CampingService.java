@@ -212,4 +212,9 @@ public class CampingService {
 	public CampingDTO selectInnerImg(int camping_idx) {
 		return campingDAO.selectInnerImg(camping_idx);
 	}
+
+	// 캠핑장명만 가져오기
+	public List<CampingDTO> selectFacltnmList() {
+		return campingDAO.selectFacltnmList();
+	}
 }

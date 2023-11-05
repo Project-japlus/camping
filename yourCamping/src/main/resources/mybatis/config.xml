@@ -9,6 +9,7 @@
 		<typeAlias type="com.itbank.model.ReserveDTO" alias="reserve"/>
 		<typeAlias type="com.itbank.model.UserDTO" alias="user"/>
 		<typeAlias type="com.itbank.model.FreeDTO" alias="free"/>
+		<typeAlias type="com.itbank.model.ReplyDTO" alias="reply"/>
 		<typeAlias type="com.itbank.model.ReviewDTO" alias="review"/>
 	</typeAliases>
 </configuration>

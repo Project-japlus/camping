@@ -87,4 +87,6 @@ public interface CampingDAO {
 	void deleteCampingSite(int camping_idx);
 
 	CampingDTO selectInnerImg(int camping_idx);
+
+	List<CampingDTO> selectFacltnmList();
 }
