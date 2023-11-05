@@ -48,4 +48,34 @@
 ->유란 : 사업주 캠핑장 등록 완료시 => 캠핑장등록내역/관리 페이지 진행예정 <br>
 ->하람 : 게시판 (자유,리뷰) 완료시 => 게시글 관리 페이지 진행예정<br>
 
+
+
+
+📌23년 11월 6일 <br>
+지훈 branch : 예약관련 수정처리<br>
+
+reservion.jsp : 체크박스 동기화 완료/ reserve_site 예외 처리? 완료 (ex 천지 글램핑)<br>
+
+reserveModal.jsp : 모달 정중앙/ width 컨텐츠에맞게 지정 으로 수정<br>
+-제3자 제공모달 부분  dto수정해서 캠핑장이름 나오게 <br>
+-pre에서 옆으로 뜬거 <br>로 한줄씩 내리고 width에 맞게 수정  <br>
+
+ReserveDTO(예약자 필드 join) <br>
+-username<br>
+-phone<br>
+-email <br>
+
+confirm : price로 가산금액까지 payCheck로 /-script 결제성공시 locaion.href (쿼리스트링 수정) <br>
+
+p.s  : 결제완료시 alert에 username 띄우는거 왠만한거 다해봤는데  안나옴.. <br>
+
+				
+ReserveController : payCheck함수 수정 (price넘김) <br>
+reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필요x) <br>
+
+<h3>프론트관련  11월5일 (일요일 ) 스타일회의때  지훈 파트</h3>  <br>
+-상세에서 이미지 부트스트랩 이미지 슬라이딩 적용 안되서 포기.. <br> 
+-버튼 양쪽으로 바꿈 <br> 
+-캠핑장등록/수정 프론트작업 내일 수업 시작 전에 할예정 <br>
+--------------------------------------------------지훈---------------------------------------------
  
