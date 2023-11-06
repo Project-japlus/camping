@@ -5,24 +5,6 @@
 <div class="container mt-3">
   <h2>캠핑장 상세등록</h2>
 	  <form method="POST" action="${cpath }/bizr/campingUpdateTwo/${camping_idx}">
-	  	<input type="hidden" name="mapX" id="mapX">
-	  	<input type="hidden" name="mapY" id="mapY">
-	    <div class="mb-3 mt-3">
-	      <label>주변 이용 가능 시설:</label>
-	      <input type="text" name="posblFcltyCl" value="${camping.posblFcltyCl }">
-	    </div>
-	    <div class="mb-3">
-	      <label>주변 이용 가능 시설 기타:</label>
-	      <input type="text" name="posblFcltyEtc" value="${camping.posblFcltyEtc }">
-	    </div>
-	    <div class="mb-3">
-	      <label>체험 프로그램:</label>
-	     	<input type="text" name="exprnprogrm" value="${camping.exprnprogrm }">
-	    </div>
-	    <div class="mb-3">
-	      <label>오시는 길:</label>
-	     	<input type="text" name="direction" value="${camping.direction }">
-	    </div>
 	    <!-- camping_introduce -->
 	     <div class="mb-3">	
 	      <label>개인 카라반 동반 여부:</label>
@@ -38,9 +20,9 @@
 	      	<input type="radio" name="trlerAcmpnyAt" value="N">
 	      		<label>N</label>
 	    </div>
-	     <div class="mb-3">
+	    <div class="mb-3">
 	      <label>운영 기간:</label>
-	     	<input type="checkbox" name="operPdCl" value="봄">
+	     	<input type="checkbox" name="operPdCl" value="봄" checked>
 	     		<label>봄</label>
 	     	<input type="checkbox" name="operPdCl" value="여름">
 	     		<label>여름</label>
@@ -51,7 +33,7 @@
 	    </div>
 	     <div class="mb-3">
 	      <label>운영일:</label>
-	     	<input type="checkbox" name="operDeCl" value="평일" required>
+	     	<input type="checkbox" name="operDeCl" value="평일" required checked>
 	     		<label>평일</label>
 	     	<input type="checkbox" name="operDeCl" value="주말">
 	     		<label>주말</label>
@@ -79,15 +61,77 @@
 	     	자갈 : <input type="number" name="sitebottomcl4" required value="${camping.sitebottomcl1 }">
 	     	맨흙 : <input type="number" name="sitebottomcl5" required value="${camping.sitebottomcl1 }">
 	    </div>
+	    
+	    <div class="mb-3 mt-3">
+	      <label>부대시설:</label>
+	      <input type="text" name="sbrsCl" value="${camping.sbrsCl }">
+	    </div>
+	    <div class="mb-3">
+	      <label>부대시설 기타:</label>
+	      <input type="text" name="sbrsEtc" value="${camping.sbrsCl }">
+	    </div>
+	    <div class="mb-3">
+	      <label>화장실 개수:</label>
+	     	<input type="number" name="toiletCo" required value="${camping.toiletCo }">
+	    </div>
+	    <div class="mb-3">
+	      <label>샤워실 개수:</label>
+	     	<input type="number" name="swrmCo" required value="${camping.swrmCo }">
+	    </div>
+	     <div class="mb-3">	
+	      <label>글램핑 내부시설</label>
+	      	<input type="text" name="glamplnnerFclty" value="${camping.glamplnnerFclty }">
+	    </div>
+	     <div class="mb-3">	
+	      <label>카라반 내부시설</label>
+	      	<input type="text" name="caravlnnerFclty" value="${camping.caravlnnerFclty }">
+	    </div>
+	  	<!-- camping_safety_device -->
+	    <div class="mb-3">
+	      <label>소화기 개수:</label>
+	      	<input type="number" name="extshrCo" required value="${camping.extshrCo }">
+	    </div>
+	    <div class="mb-3">
+	      <label>방화수 개수:</label>
+	      	<input type="number" name="frprvtWrppCo" required value="${camping.frprvtWrppCo }">
+	    </div>
+	    <div class="mb-3">
+	      <label>방화사 개수:</label>
+	      	<input type="number" name="frprvtSandCo" required value="${camping.frprvtSandCo }">
+	    </div>
+	    <div class="mb-3">
+	      <label>화재감지기 개수:</label>
+	      	<input type="number" name="fireSensorCo" required value="${camping.fireSensorCo }">
+	    </div>
+	    <!-- camping_site -->
+	    <div class="mb-3">
+	      <label>사이트A 개수:</label>
+	      	<input type="number" name="siteMg1Co" required value="${camping.siteMg1Co }">
+	    </div>
+	    <div class="mb-3">
+	      <label>사이트B 개수:</label>
+	      	<input type="number" name="siteMg2Co" value="${camping.siteMg2Co}">
+	    </div>
+	    <div class="mb-3">
+	      <label>사이트C 개수:</label>
+	      	<input type="number" name="siteMg3Co" value="${camping.siteMg3Co }">
+	    </div>
+	    <div class="mb-3">
+	      <label>사이트A 가격:</label>
+	      	<input type="number" name="siteMg1_price" required value="${camping.siteMg1_price }">
+	    </div>
+	    <div class="mb-3">
+	      <label>사이트B 가격:</label>
+	      	<input type="number" name="siteMg2_price" value="${camping.siteMg2_price }">
+	    </div>
+	    <div class="mb-3">
+	      <label>사이트C 가격:</label>
+	      	<input type="number" name="siteMg3_price" required value="${camping.siteMg3_price }">
+	    </div>
 		    <input type="submit" class="btn btn-primary" value="다음">
 	  </form>
 </div>
-<script>
-	const prev = document.getElementById('prev')
-	prev.addEventListener('click', function() {
-		window.location.href='${cpath}/prevPage'
-	})
-</script>
+
 
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
 <script>

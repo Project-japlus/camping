@@ -31,7 +31,8 @@
 	<c:if test="${not empty login.bizrno }">
 		<div><a class="text-warning fw-bold"
 			href="${cpath }/bizr/newCamping">캠핑장 등록</a></div>
+			<a href="${cpath }/bizr/campingUpdate/${dto.camping_idx}"><button>캠핑장 수정</button></a>
+			<a href="${cpath }/bizr/campingDelete/${dto.camping_idx}"><button>캠핑장 삭제</button></a>
 	</c:if>
-
 </body>
 </html>

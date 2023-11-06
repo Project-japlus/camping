@@ -1,5 +1,7 @@
 package com.itbank.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -94,4 +96,7 @@ public class UserService {
 		userDAO.bizr_modify_email(dto);
 	}
 
+	public List<Integer> getBookMark(int i) {
+		return userDAO.getBookMark(i);
+	}
 }

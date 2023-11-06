@@ -5,92 +5,112 @@
 
 <div class="container mt-3">
   <h2>캠핑장 등록</h2>
-  <form method="POST" enctype="multipart/form-data">
-    <div class="mb-3 mt-3">
-      <label for="facltnm">이름:</label>
-      <input type="text" name="facltnm" required>
-    </div>
-    <div class="mb-3">
-      <label for="featurenm">특징:</label><br>
-      <textarea name="featurenm" cols="50" rows="10"></textarea>
-    </div>
-    <div class="mb-3">
-      <label for="tooltip">툴팁:</label><br>
-     	<textarea name="tooltip" cols="50" rows="10"></textarea>
-    </div>
-    <div class="mb-3">
-   		<label for="induty">업종:</label><br>
-	    <p>
-			<input type="checkbox" name="induty" value="일반 야영장" checked>
-				<label for="induty1">일반 야영장</label>
-			<input type="checkbox" name="induty" value="자동차 야영장">
-				<label for="induty2">자동차 야영장</label>
-			<input type="checkbox" name="induty" value="글램핑">
-				<label for="induty3">글램핑</label>
-			<input type="checkbox" name="induty" value="카라반">
-				<label for="induty4">카라반</label>
-		</p>
-    </div>
-    <div class="mb-3">
-      <label for="tel">연락처:</label>
-     	<input type="text" name="tel">
-    </div>
-    <div class="mb-3">
-      <label for="homepage">홈페이지:</label>
-     	<input type="text" name="homepage">
-    </div>
-    <div class="mb-3">
-	    <label for="lctcl">입지:</label>
-    	<p>
-			<input type="checkbox" name="lctcl" value="산" checked="checked">
-				<label>산</label>
-			<input type="checkbox" name="lctcl" value="숲">
-				<label>숲</label>
-			<input type="checkbox" name="lctcl" value="해변">
-				<label>해변</label>
-			<input type="checkbox" name="lctcl" value="계곡">
-				<label>계곡</label>
-			<input type="checkbox" name="lctcl" value="강">
-				<label>강</label>
-			<input type="checkbox" name="lctcl" value="도심">
-				<label>도심</label>
-			<input type="checkbox" name="lctcl" value="섬">
-				<label>섬</label>
-		</p>
-     </div>
-     <div class="mb-3">
-      <label for="addr1">주소:</label>
-      	<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
-			<option value="서울시">서울시</option>
-			<option value="부산시">부산시</option>
-			<option value="대구시">대구시</option>
-			<option value="인천시">인천시</option>
-			<option value="광주시">광주시</option>
-			<option value="대전시">대전시</option>
-			<option value="울산시">울산시</option>
-			<option value="세종시">세종시</option>
-			<option value="경기도">경기도</option>
-			<option value="강원도">강원도</option>
-			<option value="충청북도">충청북도</option>
-			<option value="충청남도">충청남도</option>
-			<option value="전라북도">전라북도</option>
-			<option value="전라남도">전라남도</option>
-			<option value="경상북도">경상북도</option>
-			<option value="경상남도">경상남도</option>
-			<option value="제주도">제주도</option>
-		</select>
-		
-		<select id="secondSelect" name="secondSelect"></select>
-		<input type="text" name="addr1" placeholder="상세주소" required>
-   	 </div>
-     <div class="mb-3">
-      <label for="first_img">대표 사진:</label>
-     	<input type="file" name="upload1" required>
-    </div>
-    <div>
-      <label for="inner_img">상세 사진:</label>
-     	<input type="file" name="upload2" multiple="multiple" required>
-    </div>
+  <form method="POST" enctype="multipart/form-data" id="form-first">
+	 	 <input type="hidden" name="mapX" id="mapX">
+		 <input type="hidden" name="mapY" id="mapY">
+	    <div class="mb-3 mt-3">
+	      <label for="facltnm">이름:</label>
+	      <input type="text" name="facltnm" required>
+	    </div>
+	    <div class="mb-3">
+	      <label for="featurenm">특징:</label><br>
+	      <textarea name="featurenm" cols="50" rows="10"></textarea>
+	    </div>
+	    <div class="mb-3">
+	      <label for="tooltip">툴팁:</label><br>
+	     	<textarea name="tooltip" cols="50" rows="10"></textarea>
+	    </div>
+	    <div class="mb-3">
+	   		<label for="induty">업종:</label><br>
+		    <p>
+				<input type="checkbox" name="induty" value="일반 야영장" checked>
+					<label for="induty1">일반 야영장</label>
+				<input type="checkbox" name="induty" value="자동차 야영장">
+					<label for="induty2">자동차 야영장</label>
+				<input type="checkbox" name="induty" value="글램핑">
+					<label for="induty3">글램핑</label>
+				<input type="checkbox" name="induty" value="카라반">
+					<label for="induty4">카라반</label>
+			</p>
+	    </div>
+	    <div class="mb-3">
+	      <label for="tel">연락처:</label>
+	     	<input type="text" name="tel">
+	    </div>
+	    <div class="mb-3">
+	      <label for="homepage">홈페이지:</label>
+	     	<input type="text" name="homepage">
+	    </div>
+	    <div class="mb-3">
+		    <label for="lctcl">입지:</label>
+	    	<p>
+				<input type="checkbox" name="lctcl" value="산" checked="checked">
+					<label>산</label>
+				<input type="checkbox" name="lctcl" value="숲">
+					<label>숲</label>
+				<input type="checkbox" name="lctcl" value="해변">
+					<label>해변</label>
+				<input type="checkbox" name="lctcl" value="계곡">
+					<label>계곡</label>
+				<input type="checkbox" name="lctcl" value="강">
+					<label>강</label>
+				<input type="checkbox" name="lctcl" value="도심">
+					<label>도심</label>
+				<input type="checkbox" name="lctcl" value="섬">
+					<label>섬</label>
+			</p>
+	     </div>
+	     <div class="mb-3">
+	      <label for="addr1">주소:</label>
+	      	<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
+				<option value="서울시">서울시</option>
+				<option value="부산시">부산시</option>
+				<option value="대구시">대구시</option>
+				<option value="인천시">인천시</option>
+				<option value="광주시">광주시</option>
+				<option value="대전시">대전시</option>
+				<option value="울산시">울산시</option>
+				<option value="세종시">세종시</option>
+				<option value="경기도">경기도</option>
+				<option value="강원도">강원도</option>
+				<option value="충청북도">충청북도</option>
+				<option value="충청남도">충청남도</option>
+				<option value="전라북도">전라북도</option>
+				<option value="전라남도">전라남도</option>
+				<option value="경상북도">경상북도</option>
+				<option value="경상남도">경상남도</option>
+				<option value="제주도">제주도</option>
+			</select>
+			
+			<select id="secondSelect" name="secondSelect"></select>
+			<input type="text" name="addr1" placeholder="상세주소" id="addr" required>
+	   	 </div>
+	     <div class="mb-3">
+	      <label for="first_img">대표 사진:</label>
+	     	<input type="file" name="upload1" required>
+	    </div>
+	    <div>
+	      <label for="inner_img">상세 사진:</label>
+	     	<input type="file" name="upload2" multiple="multiple" required id="upload2">
+	    </div>
+	    <!-- camping_activity -->
+	   	<div class="mb-3 mt-3">
+	      <label>주변 이용 가능 시설:</label>
+	      <input type="text" name="posblFcltyCl">
+	    </div>
+	    <div class="mb-3">
+	      <label>주변 이용 가능 시설 기타:</label>
+	      <input type="text" name="posblFcltyEtc">
+	    </div>
+	    <div class="mb-3">
+	      <label>체험 프로그램:</label>
+	     	<input type="text" name="exprnprogrm">
+	    </div>
+	    <div class="mb-3">
+	      <label>오시는 길:</label>
+	     	<input type="text" name="direction">
+	    </div>
+   <!-- 제출 버튼 -->
 	    <input type="submit" class="btn btn-primary" value="다음">
   </form>
 </div>
@@ -203,6 +223,53 @@
 	}
 
 
+</script>
+
+	
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
+<script>
+	
+	const mapX = document.getElementById('mapX');
+	const mapY = document.getElementById('mapY');
+	const addr1 = document.getElementById('addr');
+	
+	function handler(event) {
+		event.preventDefault();
+		var geocoder = new kakao.maps.services.Geocoder();
+		const addr = addr1.value;
+		console.log(addr)
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(addr, function(result, status) {
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        let mapXValue = result[0].x
+		        let mapYValue = result[0].y
+		        console.log(mapX)
+		        console.log(mapY)
+		        
+				mapX.value = mapXValue;
+				mapY.value = mapYValue;
+				
+				document.getElementById('form-first').submit();
+		    } else{
+		    	alert('유효한 주소가 아닙니다.');
+		    }
+		});  
+	}
+	
+	
+	const upload2 = document.getElementById('upload2');
+
+	function file() {
+	    alert('사진을 여러 개 선택하려면 Ctrl 키를 누른 채로 선택하세요.');
+	}
+	
+	document.getElementById('form-first').addEventListener('submit', handler);
+	upload2.addEventListener('click', file);
+// 	window.addEventListener("DOMContentLoaded", handler);		
+	
 </script>
 
 </body>

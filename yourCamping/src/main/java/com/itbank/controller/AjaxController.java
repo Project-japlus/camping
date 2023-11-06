@@ -117,4 +117,20 @@ public class AjaxController {
 		String jsonData = weatherComponent.getStringTemp(DataType.JSON, camping_idx);
 		return jsonData;
 	}
+	
+	// 북마크 추가
+	@GetMapping("/addBookMark")
+	public void addBookMark(@RequestParam HashMap<String, Integer> param, HttpSession session) {
+		userDAO.addBookMark(param);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		login.setCamping_idx(userDAO.getBookMark(login.getUser_idx()));
+	}
+	
+	// 북마크 제거
+	@GetMapping("/removeBookMark")
+	public void removeBookMark(@RequestParam HashMap<String, Integer> param, HttpSession session) {
+		userDAO.removeBookMark(param);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		login.setCamping_idx(userDAO.getBookMark(login.getUser_idx()));
+	}
 }
