@@ -1,5 +1,6 @@
-	package com.itbank.controller;
+package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -193,9 +194,15 @@ public class BoardController {
 	}
 	
 	@GetMapping("/freeView/{free_table_idx}/deleteReply")
-	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		if (dto.getUser_idx() == user_idx) {
+	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, HttpSession session) {
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		ReplyDTO dto = null;
+		HashMap<String, Object> map = new HashMap<>();
+		
+		if (user_idx != null) {
+			map.put("free_table_idx", free_table_idx);
+			map.put("user_idx", user_idx);
+			dto = boardService.selectReplyOne(map);
 			boardService.deleteReplyOne(dto);
 		}
 		return "redirect:/board/freeView/" + free_table_idx;

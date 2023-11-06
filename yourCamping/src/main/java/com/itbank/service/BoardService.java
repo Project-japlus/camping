@@ -1,5 +1,6 @@
 package com.itbank.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -142,6 +143,10 @@ public class BoardService {
 	
 	public List<FreeDTO> freeSortViewCount() {
 		return boardComponent.freeSortViewCount();
+	}
+
+	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
+		return boardComponent.selectReplyOne(map);
 	}
 	
 }

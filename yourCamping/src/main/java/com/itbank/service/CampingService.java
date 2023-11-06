@@ -60,15 +60,13 @@ public class CampingService {
 			dto.setFirst_img(fileName);
 		}
 		if (dto.getUpload2() != null) {
-			String innerFileName = "";
 			for (int i = 0; i < dto.getUpload2().length; i++) {
 				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				innerFileName += fileName;
-				if (i < dto.getUpload2().length - 1) {
-					innerFileName += ",";
-				}
+				CampingDTO inner = new CampingDTO();
+				inner.setCamping_idx(dto.getCamping_idx());
+				inner.setInner_img(fileName);
+				campingDAO.campingImgInsert(inner);
 			}
-			dto.setInner_img(innerFileName);
 		}
 		return campingDAO.campingImgInsert(dto);
 	}
@@ -112,15 +110,13 @@ public class CampingService {
 			dto.setFirst_img(fileName);
 		}
 		if (dto.getUpload2() != null) {
-			String innerFileName = "";
 			for (int i = 0; i < dto.getUpload2().length; i++) {
 				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				innerFileName += fileName;
-				if (i < dto.getUpload2().length - 1) {
-					innerFileName += ",";
-				}
+				CampingDTO inner = new CampingDTO();
+				inner.setCamping_idx(dto.getCamping_idx());
+				inner.setInner_img(fileName);
+				campingDAO.updateCampingImg(inner);
 			}
-			dto.setInner_img(innerFileName);
 		}
 
 		return campingDAO.updateCampingImg(dto);
@@ -216,6 +212,14 @@ public class CampingService {
 	// 캠핑장명만 가져오기
 	public List<CampingDTO> selectFacltnmList() {
 		return campingDAO.selectFacltnmList();
+	}
+
+	public void deleteFile(CampingDTO storedImg) {
+		fileComponent.deleteFile(storedImg.getFirst_img());
+		String[] fileName = storedImg.getInner_img().split(",");
+		for (int i = 0; i < fileName.length; i++) {
+			fileComponent.deleteFile2(fileName[i]);
+		}
 	}
 	
 	public List<CampingDTO> campingSortViewCount() {

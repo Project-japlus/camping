@@ -1,5 +1,6 @@
 package com.itbank.repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -65,4 +66,6 @@ public interface BoardDAO {
 	List<ReviewDTO> reviewSortViewCount();
 	
 	List<FreeDTO> freeSortViewCount();
+
+	ReplyDTO selectReplyOne(HashMap<String, Object> map);
 }

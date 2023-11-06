@@ -101,19 +101,6 @@ div.mainIcon>div:hover {
 	margin-top: -10px;
 }
 
-div#main_link_div {
-	margin-top: 0;
-	height: 400px;
-}
-
-ul#main_link_ul {
-	font-size: 18px;
-}
-
-ul#main_link_ul li {
-	margin-bottom: 5px;
-}
-
 /* 	camping_list CSS */
 div#listSearchContainer {
 	background-image: url("${cpath}/resources/list_back.jpg");
@@ -199,8 +186,8 @@ div.itemText>div:last-child>span, div.itemText>div:last-child>h3 {
 }
 
 div.itemImg {
-	width: 370px;
-	height: 290px;
+	width: 300px;
+	height: 200px;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -331,6 +318,12 @@ div#view_TopWrap {
 	display: flex;
 	align-items: center;
 }
+div.view_imgTable{
+	display: flex; 
+	margin: auto; 
+	margin-top: 20px; 
+	width: 1200px;
+}
 
 div#view_TopWrap>div.sb {
 	width: 65%;
@@ -418,7 +411,7 @@ table#modify_table td {
 }
 
 /* reservation css */
-div.reservationWrap div {
+/* div.reservationWrap div {
 	color: black;
 }
 
@@ -534,7 +527,7 @@ div.reservationWrap .group:after {
 	content: "";
 	display: table;
 	clear: both;
-}
+} */
 </style>
 </head>
 <body>

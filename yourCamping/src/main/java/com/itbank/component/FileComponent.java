@@ -38,7 +38,7 @@ public class FileComponent {
 		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
-		fileName += ext; // 확장자 붙이고
+		fileName += ext;
 		File dest = new File(saveDirectory, fileName);
 		try {
 			f.transferTo(dest);
@@ -51,10 +51,9 @@ public class FileComponent {
 
 	public String upload2(MultipartFile f) {
 		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);
-		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
-		fileName += ext; // 확장자 붙이고
+		fileName += ext;
 		File dest = new File(saveDirectory2, fileName);
 		try {
 			f.transferTo(dest);
@@ -70,7 +69,7 @@ public class FileComponent {
 		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
-		fileName += ext; // 확장자 붙이고
+		fileName += ext;
 		File dest = new File(saveDirectory3, fileName);
 		try {
 			f.transferTo(dest);

@@ -14,7 +14,7 @@
 		        SELECT COUNT(*) 
 		        FROM review_like rl
 		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
-		    ) AS LIKE_COUNT
+		    ) AS REVIEW_LIKE_COUNT
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
@@ -37,7 +37,7 @@
 		        SELECT COUNT(*) 
 		        FROM review_like rl
 		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
-		    ) AS LIKE_COUNT
+		    ) AS REVIEW_LIKE_COUNT
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
@@ -223,6 +223,10 @@
 			values
 				(#{user_idx}, #{free_table_idx}, #{reply_content})
 	</insert>
+	
+	<select id="selectReplyOne" parameterType="hashmap" resultType="reply">
+		select * from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
+	</select>
 	
 	<delete id="deleteReplyOne" parameterType="reply">
 		delete from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}

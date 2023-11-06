@@ -7,9 +7,6 @@
 			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
 		</div>
 	</div>
-	<a href="${cpath }/bizr/campingUpdate/${dto.camping_idx}"><button>캠핑장 수정</button></a>
-	<a href="${cpath }/bizr/campingDelete/${dto.camping_idx}"><button>캠핑장 삭제</button></a>
-	<a href="${cpath }/camping/list"><button>캠핑 리스트</button></a>
 	<div id="view_TopWrap">
 		<div class="sb">
 			<div>
@@ -51,11 +48,10 @@
 	<div style="width: 70%; margin: auto;">
 		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
-				<img src="${dto.first_img }" class="first" width="700px"
-					height="525px">
+				<img src="${dto.first_img }" class="first" width="700px" height="525px">
 			</div>
 			<div class="container mt-1 view_campingInfo">
-				<table class="table">
+				<table class="table" style="width: 400px;">
 					<tr>
 						<th>캠핑장</th>
 						<td>${dto.facltnm }</td>
