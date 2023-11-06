@@ -1,5 +1,6 @@
 package com.itbank.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.itbank.component.FileComponent;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
+import com.itbank.model.ReviewLikeDTO;
 
 @Service
 public class BoardService {
@@ -52,6 +54,14 @@ public class BoardService {
 		return boardComponent.selectReviewOne(review_idx);
 	}
 	
+	public int countReviewView(ReviewDTO dto) {
+		return boardComponent.countReviewView(dto);
+	}
+	
+	public int countReviewLike(ReviewLikeDTO dto) {
+		return boardComponent.countReviewLike(dto);
+	}
+	
 	public int reviewDelete(int review_idx) {
 		String fileNames = boardComponent.selectReviewImg(review_idx);
 		if (fileNames != null) {
@@ -91,6 +101,10 @@ public class BoardService {
 		return boardComponent.selectFreeOne(free_table_idx);
 	}
 	
+	public int countFreeView(FreeDTO dto) {
+		return boardComponent.countFreeView(dto);
+	}
+	
 	public int replyCount(int free_table_idx) {
 		return boardComponent.replyCount(free_table_idx);
 	}
@@ -122,4 +136,17 @@ public class BoardService {
 	public int freeModify(FreeDTO dto) {
 		return boardComponent.freeModify(dto);
 	}
+	
+	public List<ReviewDTO> reviewSortViewCount() {
+		return boardComponent.reviewSortViewCount();
+	}
+	
+	public List<FreeDTO> freeSortViewCount() {
+		return boardComponent.freeSortViewCount();
+	}
+
+	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
+		return boardComponent.selectReplyOne(map);
+	}
+	
 }

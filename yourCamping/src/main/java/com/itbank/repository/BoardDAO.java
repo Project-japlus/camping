@@ -1,5 +1,6 @@
 package com.itbank.repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
+import com.itbank.model.ReviewLikeDTO;
 
 @Repository
 public interface BoardDAO {
@@ -23,6 +25,10 @@ public interface BoardDAO {
 
 	ReviewDTO selectReviewOne(int review_idx);
 	
+	int countReviewView(ReviewDTO dto);
+	
+	int countReviewLike(ReviewLikeDTO dto);
+	
 	String selectReviewImg(int review_idx);
 	
 	int reviewDelete(int review_idx);
@@ -36,6 +42,8 @@ public interface BoardDAO {
 	int insertFree(FreeDTO dto);
 
 	FreeDTO selectFreeOne(int free_table_idx);
+	
+	int countFreeView(FreeDTO dto);
 	
 	int replyCount(int free_table_idx);
 	
@@ -54,4 +62,10 @@ public interface BoardDAO {
 	int reviewModify(ReviewDTO dto);
 
 	int freeModify(FreeDTO dto);
+	
+	List<ReviewDTO> reviewSortViewCount();
+	
+	List<FreeDTO> freeSortViewCount();
+
+	ReplyDTO selectReplyOne(HashMap<String, Object> map);
 }

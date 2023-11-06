@@ -7,7 +7,7 @@
 			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
 				<div style="display: flex" id="listSearch">
 					<div>
-						<span>지역</span> <select id="firstSelect" name="firstSelect"
+						<span>지역</span> <select id="firstSelect" name="firstSelect" class="rounded"
 							onchange="changeSecondOptions()">
 							<option value="전체"
 								${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
@@ -48,7 +48,7 @@
 						</select> <select id="secondSelect" name="secondSelect"></select>
 					</div>
 					<div>
-						<span>테마</span> <select id="lctcl" name="lctcl">
+						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
 							<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
 							<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
 							<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
@@ -61,7 +61,7 @@
 						</select>
 					</div>
 					<div>
-						<span>숙박 형태</span> <select id="induty" name="induty">
+						<span>숙박 형태</span> <select id="induty" name="induty" class="rounded">
 							<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
 							<option value="일반야영장"
 								${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
@@ -75,11 +75,11 @@
 				</div>
 				<div id="keywordBox">
 					<div>
-						<span>검색어를 입력하세요</span> <input type="text" name="keyword"
+						<span>키워드 검색</span> <input type="text" name="keyword" class="rounded"
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색"> <input type="button"
+						<input type="submit" value="캠핑장 검색"> <input type="button" class="rounded"
 							id="reset" value="초기화">
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 	</div>
 </div>
 <div class="container sb" style="width: 100%;">
-	<h4>총 ${paging.boardCount }개의 캠핑장이 검색되었습니다.</h4>
+	<h4>총 <span class="text-danger fw-bold">${paging.boardCount }</span>개의 캠핑장이 검색되었습니다.</h4>
 	<div class="justify-content-between d-flex mb-3">
 		<button class="btn btn-primary" id="mapBtn">지도로보기</button>
 	</div>
@@ -128,7 +128,7 @@
 </div>
 
 <div class="d-flex flex-wrap col-8 container"
-	style="border-top: 2px solid black;">
+	style="border-top: 2px solid black; width: 100%;">
 	<c:if test="${paging.boardCount != 0 }">
 		<c:forEach var="dto" items="${list }">
 			<div class="item d-flex">
@@ -174,50 +174,39 @@
 							</ul>
 						</div>
 					</div>
-					<div class="list_SbrsCl">
+					<div class="list_SbrsCl" style="background-color: #f9f9f9;">
 						<c:if test="${dto.sbrsCl.contains('전기') }">
-							<span
-								style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
+							<span style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('장작판매') }">
-							<span class="firewood"
-								style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
+							<span class="firewood" style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('온수') }">
-							<span class="hotWater"
-								style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
+							<span class="hotWater" style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-							<span class="waterplay"
-								style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
+							<span class="waterplay" style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('산책로') }">
-							<span
-								style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
+							<span style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-							<span
-								style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
+							<span style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동시설') }">
-							<span class="play"
-								style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
+							<span class="play" style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-							<span class="wifi"
-								style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
+							<span class="wifi" style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-							<span class="tram"
-								style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
+							<span class="tram" style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('놀이터') }">
-							<span class="joyplace"
-								style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
+							<span class="joyplace" style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동장') }">
-							<span class="playground"
-								style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
+							<span class="playground" style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
 						</c:if>
 					</div>
 				</div>

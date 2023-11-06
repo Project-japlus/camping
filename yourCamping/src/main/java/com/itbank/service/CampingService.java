@@ -221,4 +221,8 @@ public class CampingService {
 			fileComponent.deleteFile2(fileName[i]);
 		}
 	}
+	
+	public List<CampingDTO> campingSortViewCount() {
+		return campingDAO.campingSortViewCount();
+	}
 }

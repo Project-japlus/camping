@@ -362,4 +362,9 @@
 	<select id="selectFacltnmList" resultType="String">
 		select facltnm from camping
 	</select>
+	
+	<select id="campingSortViewCount" resultType="camping">
+		select * from camping order by camping_viewCount desc
+	</select>
+	
 </mapper>

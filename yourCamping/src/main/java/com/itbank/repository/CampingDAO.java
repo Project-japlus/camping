@@ -89,4 +89,6 @@ public interface CampingDAO {
 	CampingDTO selectInnerImg(int camping_idx);
 
 	List<CampingDTO> selectFacltnmList();
+	
+	List<CampingDTO> campingSortViewCount();
 }

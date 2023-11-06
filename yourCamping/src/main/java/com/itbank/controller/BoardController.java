@@ -1,5 +1,6 @@
-	package com.itbank.controller;
+package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import com.itbank.model.CampingDTO;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
+import com.itbank.model.ReviewLikeDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.CampingService;
@@ -71,10 +73,11 @@ public class BoardController {
 	
 	@PostMapping("/reviewWrite")
 	public String reviewWrite(ReviewDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		
-		boardService.insertReview(dto);
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		if (user_idx != null) {
+			dto.setUser_idx(user_idx);
+			boardService.insertReview(dto);
+		}
 		return "redirect:/board/reviewList";
 	}
 	
@@ -82,11 +85,26 @@ public class BoardController {
 	public ModelAndView reviewView(@PathVariable("review_idx") int review_idx) {
 		ModelAndView mav= new ModelAndView("/board/reviewView");
 		ReviewDTO dto = boardService.selectReviewOne(review_idx);
-		dto.setReview_viewCount(dto.getReview_viewCount() + 1);
-		String[] list = dto.getReview_img().split(",");
+		boardService.countReviewView(dto);
+		String[] list = null;
+		if (dto.getReview_img() != null) {
+			list = dto.getReview_img().split(",");
+		}
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
 		return mav;
+	}
+	
+	@GetMapping("/reviewLike/{review_idx}")
+	public String reviewLike(@PathVariable("review_idx") int review_idx, HttpSession session) {
+		ReviewLikeDTO dto = new ReviewLikeDTO();
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		if (user_idx != null) {
+			dto.setUser_idx(user_idx);
+			dto.setReview_idx(review_idx);
+			boardService.countReviewLike(dto);
+		}
+		return "redirect:/board/reviewView/" + review_idx;
 	}
 	
 	@GetMapping("/reviewDelete/{review_idx}")
@@ -107,9 +125,11 @@ public class BoardController {
 	
 	@PostMapping("/reviewModify/{review_idx}")
 	public String reviewModify(@PathVariable("review_idx") int review_idx, ReviewDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		boardService.reviewModify(dto);
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		if (user_idx != null) {
+			dto.setUser_idx(user_idx);
+			boardService.reviewModify(dto);
+		}
 		return "redirect:/board/reviewView/" + review_idx;
 	}
 	
@@ -143,10 +163,11 @@ public class BoardController {
 	
 	@PostMapping("/freeWrite")
 	public String freeWrite(FreeDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		
-		boardService.insertFree(dto);
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		if (user_idx != null) {
+			dto.setUser_idx(user_idx);
+			boardService.insertFree(dto);
+		}
 		return "redirect:/board/freeList";
 	}
 	
@@ -154,7 +175,7 @@ public class BoardController {
 	public ModelAndView freeView(@PathVariable("free_table_idx") int free_table_idx) {
 		ModelAndView mav= new ModelAndView("/board/freeView");
 		FreeDTO dto = boardService.selectFreeOne(free_table_idx);
-		dto.setFree_viewCount(dto.getFree_viewCount() + 1);
+		boardService.countFreeView(dto);
 		List<ReplyDTO> list = boardService.selectReply(free_table_idx);
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
@@ -163,23 +184,26 @@ public class BoardController {
 	
 	@PostMapping("/freeView/{free_table_idx}")
 	public String insertReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		dto.setFree_table_idx(free_table_idx);
-		
-		FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-		freeDTO.setReplyCount(freeDTO.getReplyCount() + 1);
-		boardService.insertReply(dto);
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		if (user_idx != null) {
+			dto.setUser_idx(user_idx);
+			dto.setFree_table_idx(free_table_idx);
+			boardService.insertReply(dto);
+		}
 		return "redirect:/board/freeView/" + free_table_idx;
 	}
 	
 	@GetMapping("/freeView/{free_table_idx}/deleteReply")
-	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		if (dto.getUser_idx() == user_idx) {
+	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, HttpSession session) {
+		Integer user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
+		ReplyDTO dto = null;
+		HashMap<String, Object> map = new HashMap<>();
+		
+		if (user_idx != null) {
+			map.put("free_table_idx", free_table_idx);
+			map.put("user_idx", user_idx);
+			dto = boardService.selectReplyOne(map);
 			boardService.deleteReplyOne(dto);
-			FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-			freeDTO.setReplyCount(freeDTO.getReplyCount() - 1);
 		}
 		return "redirect:/board/freeView/" + free_table_idx;
 	}

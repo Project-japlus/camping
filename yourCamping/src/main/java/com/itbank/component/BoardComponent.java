@@ -1,5 +1,6 @@
 package com.itbank.component;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
+import com.itbank.model.ReviewLikeDTO;
 import com.itbank.repository.BoardDAO;
 
 @Component
@@ -38,6 +40,14 @@ public class BoardComponent {
 
 	public ReviewDTO selectReviewOne(int review_idx) {
 		return boardDAO.selectReviewOne(review_idx);
+	}
+	
+	public int countReviewView(ReviewDTO dto) {
+		return boardDAO.countReviewView(dto);
+	}
+	
+	public int countReviewLike(ReviewLikeDTO dto) {
+		return boardDAO.countReviewLike(dto);
 	}
 	
 	public String selectReviewImg(int review_idx) {
@@ -72,6 +82,10 @@ public class BoardComponent {
 		return boardDAO.selectFreeOne(free_table_idx);
 	}
 
+	public int  countFreeView(FreeDTO dto) {
+		return boardDAO.countFreeView(dto);
+	}
+	
 	public int replyCount(int free_table_idx) {
 		return boardDAO.replyCount(free_table_idx);
 	}
@@ -102,5 +116,17 @@ public class BoardComponent {
 
 	public int freeModify(FreeDTO dto) {
 		return boardDAO.freeModify(dto);
+	}
+	
+	public List<ReviewDTO> reviewSortViewCount() {
+		return boardDAO.reviewSortViewCount();
+	}
+	
+	public List<FreeDTO> freeSortViewCount() {
+		return boardDAO.freeSortViewCount();
+	}
+
+	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
+		return boardDAO.selectReplyOne(map);
 	}
 }

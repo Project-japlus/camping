@@ -44,6 +44,17 @@
 			WHERE r.review_idx = #{review_idx}
 	</select>
 	
+	<update id="countReviewView" parameterType="review">
+		update review set review_viewCount = #{review_viewCount} + 1 where review_idx = #{review_idx}
+	</update>
+	
+	<insert id="countReviewLike" parameterType="revLike">
+		insert into review_like
+			(user_idx, review_idx)
+			values
+			(#{user_idx}, #{review_idx})
+	</insert>
+	
 	<select id="selectSearchCamping" parameterType="String" resultType="review">
 		select
 		    R.*,
@@ -186,11 +197,9 @@
 			f.free_table_idx = #{free_table_idx}
 	</select>
 	
-	<select id="replyCount" parameterType="int" resultType="int">
-		SELECT COUNT(*) AS replyCount
-			FROM free_reply
-			WHERE FREE_TABLE_IDX = #{free_table_idx}
-	</select>
+	<update id="countFreeView" parameterType="free">
+		update free_table set free_viewCount = #{free_viewCount} + 1 where free_table_idx = #{free_table_idx}
+	</update>
 	
 	<select id="selectReply" parameterType="int" resultType="reply">
 		SELECT
@@ -214,6 +223,10 @@
 			values
 				(#{user_idx}, #{free_table_idx}, #{reply_content})
 	</insert>
+	
+	<select id="selectReplyOne" parameterType="hashmap" resultType="reply">
+		select * from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
+	</select>
 	
 	<delete id="deleteReplyOne" parameterType="reply">
 		delete from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
@@ -240,5 +253,13 @@
 				<if test="free_img != null">, free_img = #{free_img}</if>
 			where free_table_idx = #{free_table_idx}
 	</update>
+	
+	<select id="reviewSortViewCount" resultType="review">
+		select * from review order by review_viewCount desc
+	</select>
+	
+	<select id="freeSortViewCount" resultType="free">
+		select * from free_table order by free_viewCount desc
+	</select>
 	
 </mapper>

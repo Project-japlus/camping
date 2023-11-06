@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
 			<div class="col text-start ms-2">${dto.userid }</div>
 			<div class="col text-center">${dto.free_wdate }</div>
-			<div class="col text-end me-2">조회 : ${dto.free_viewCount }</div>
+			<div class="col text-end me-2">조회 : ${dto.free_viewCount + 1 }</div>
 		</div>
 		<div class="mt-5 mb-5">
 			<h2>${dto.free_title }</h2>
@@ -18,7 +18,7 @@
 			</p>
         	<c:if test="${dto.free_img != null}">
         	<div class="mt-5 mb-5">
-        		<img src="${cpath }/upload/${dto.free_img }" class="d-block w-100">
+        		<img src="${cpath }/upload/${dto.free_img }" class="d-block w-50 mx-auto">
 			</div>
 			</c:if>
 		</div>

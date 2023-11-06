@@ -11,5 +11,6 @@
 		<typeAlias type="com.itbank.model.FreeDTO" alias="free"/>
 		<typeAlias type="com.itbank.model.ReplyDTO" alias="reply"/>
 		<typeAlias type="com.itbank.model.ReviewDTO" alias="review"/>
+		<typeAlias type="com.itbank.model.ReviewLikeDTO" alias="revLike"/>
 	</typeAliases>
 </configuration>

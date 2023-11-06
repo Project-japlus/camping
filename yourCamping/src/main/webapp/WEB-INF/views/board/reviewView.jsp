@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
 			<div class="col text-start ms-2">${dto.userid }</div>
 			<div class="col text-center">${dto.review_wdate }</div>
-			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | 추천 : ${dto.like_count }</div>
+			<div class="col text-end me-2">조회 : ${dto.review_viewCount + 1 } | 추천 : ${dto.like_count }</div>
 		</div>
 		<div class="mt-5 mb-5">
 			<h2>${dto.review_title }</h2>
@@ -39,9 +39,7 @@
 			</div>
 			</c:if>
 			<div class="mt-4 mb-4 d-flex justify-content-center">
-				<form method="POST">
-					<input type="submit" class="btn btn-primary" value="👍추천">
-				</form>
+				<a href="${cpath }/board/reviewLike/${dto.review_idx}"><button id="likeBtn" type="button" class="btn btn-primary">👍추천</button></a>
 			</div>
 		</div>
       	<div class="mt-4 mb-4 d-flex justify-content-end">
@@ -78,6 +76,20 @@
 		}	
 	}
 	deleteBtn.onclick = deleteHandler
+	
+	const likeBtn = document.getElementById('likeBtn')
+	const likeHandler = function(event) {
+		event.preventDefault()			// 이벤트 기본 작동을 막는다
+		
+		if ('${login}' == '') {
+			alert('로그인이 필요한 항목입니다')
+			return
+		}
+		else if (confirm('추천하시겠습니까')) {
+			location.href = event.target.parentNode.href
+		}	
+	}
+	likeBtn.onclick = likeHandler
 </script>
 
 </body>
