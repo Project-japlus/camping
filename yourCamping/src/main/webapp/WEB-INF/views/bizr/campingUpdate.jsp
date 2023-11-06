@@ -5,7 +5,9 @@
 
 <div class="container mt-3">
   <h2>캠핑장 등록</h2>
-  <form method="POST" enctype="multipart/form-data">
+  <form method="POST" enctype="multipart/form-data" id="form-update">
+   	 <input type="hidden" name="mapX" id="mapX">
+	 <input type="hidden" name="mapY" id="mapY">
     <div class="mb-3 mt-3">
       <label for="facltnm">이름:</label>
       <input type="text" name="facltnm" required value="${dto.facltnm }">
@@ -81,7 +83,7 @@
 		</select>
 		
 		<select id="secondSelect" name="secondSelect"></select>
-		<input type="text" name="addr1" placeholder="상세주소" required>
+		<input type="text" name="addr1" placeholder="상세주소" id="addr" required>
    	 </div>
      <div class="mb-3">
       <label for="first_img">대표 사진:</label>
@@ -89,8 +91,27 @@
     </div>
     <div>
       <label for="inner_img">상세 사진:</label>
-     	<input type="file" name="upload2" multiple="multiple" required>
+     	<input type="file" name="upload2" multiple="multiple" required id="upload2Update">
     </div>
+    <div class="mb-3 mt-3">
+	      <label>주변 이용 가능 시설:</label>
+	      <input type="text" name="posblFcltyCl" value="${camping.posblFcltyCl }">
+	</div>
+	    <div class="mb-3">
+	      <label>주변 이용 가능 시설 기타:</label>
+	      <input type="text" name="posblFcltyEtc" value="${camping.posblFcltyEtc }">
+	    </div>
+	    <div class="mb-3">
+	      <label>체험 프로그램:</label>
+	     	<input type="text" name="exprnprogrm" value="${camping.exprnprogrm }">
+	    </div>
+	    <div class="mb-3">
+	      <label>오시는 길:</label>
+	     	<input type="text" name="direction" value="${camping.direction }">
+	    </div>
+    
+    
+    
 	    <input type="submit" class="btn btn-primary" value="다음">
   </form>
 </div>
@@ -202,8 +223,53 @@
 	    });
 	}
 
-
 </script>
+
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
+<script>
+	
+	const mapX = document.getElementById('mapX');
+	const mapY = document.getElementById('mapY');
+	const addr1 = document.getElementById('addr');
+	
+	function handler(event) {
+		event.preventDefault();
+		var geocoder = new kakao.maps.services.Geocoder();
+		const addr = addr1.value;
+		console.log(addr)
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(addr, function(result, status) {
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        let mapXValue = result[0].x
+		        let mapYValue = result[0].y
+		        console.log(mapX)
+		        console.log(mapY)
+		        
+				mapX.value = mapXValue;
+				mapY.value = mapYValue;
+				
+				document.getElementById('form-update').submit();
+		    } else{
+		    	alert('유효한 주소가 아닙니다.');
+		    }
+		});  
+	}
+	
+	
+	const upload2Update = document.getElementById('upload2Update');
+
+	function file() {
+	    alert('사진을 여러 개 선택하려면 Ctrl 키를 누른 채로 선택하세요.');
+	}
+	
+	document.getElementById('form-update').addEventListener('submit', handler);
+	upload2Update.addEventListener('click', file);
+	
+</script>
+
 
 </body>
 </html>

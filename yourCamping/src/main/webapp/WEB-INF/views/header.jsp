@@ -318,6 +318,12 @@ div#view_TopWrap {
 	display: flex;
 	align-items: center;
 }
+div.view_imgTable{
+	display: flex; 
+	margin: auto; 
+	margin-top: 20px; 
+	width: 1200px;
+}
 
 div#view_TopWrap>div.sb {
 	width: 65%;
@@ -405,7 +411,7 @@ table#modify_table td {
 }
 
 /* reservation css */
-div.reservationWrap div {
+/* div.reservationWrap div {
 	color: black;
 }
 
@@ -521,7 +527,7 @@ div.reservationWrap .group:after {
 	content: "";
 	display: table;
 	clear: both;
-}
+} */
 </style>
 </head>
 <body>

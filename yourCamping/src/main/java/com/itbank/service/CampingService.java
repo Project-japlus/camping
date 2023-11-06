@@ -213,4 +213,12 @@ public class CampingService {
 	public List<CampingDTO> selectFacltnmList() {
 		return campingDAO.selectFacltnmList();
 	}
+
+	public void deleteFile(CampingDTO storedImg) {
+		fileComponent.deleteFile(storedImg.getFirst_img());
+		String[] fileName = storedImg.getInner_img().split(",");
+		for (int i = 0; i < fileName.length; i++) {
+			fileComponent.deleteFile2(fileName[i]);
+		}
+	}
 }
