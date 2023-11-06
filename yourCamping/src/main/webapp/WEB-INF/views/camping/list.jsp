@@ -176,37 +176,48 @@
 					</div>
 					<div class="list_SbrsCl">
 						<c:if test="${dto.sbrsCl.contains('전기') }">
-							<span style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('장작판매') }">
-							<span class="firewood" style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
+							<span class="firewood"
+								style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('온수') }">
-							<span class="hotWater" style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
+							<span class="hotWater"
+								style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-							<span class="waterplay" style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
+							<span class="waterplay"
+								style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('산책로') }">
-							<span style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-							<span style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동시설') }">
-							<span class="play" style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
+							<span class="play"
+								style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-							<span class="wifi" style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
+							<span class="wifi"
+								style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-							<span class="tram" style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
+							<span class="tram"
+								style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('놀이터') }">
-							<span class="joyplace" style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
+							<span class="joyplace"
+								style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동장') }">
-							<span class="playground" style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
+							<span class="playground"
+								style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
 						</c:if>
 					</div>
 				</div>
