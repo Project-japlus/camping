@@ -2,20 +2,21 @@ package com.itbank.model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class FreeDTO {
 
-	// free_reply
-	private int user_idx;
 	private int free_table_idx;
-	private Date reply_wdate;
-	private String reply_content;
-	
-	// free_table
+	private int user_idx;
 	private String free_title;
 	private String free_content;
 	private String free_img;
 	private Date free_wdate;
 	private int free_viewCount;
+	
+	private String userid;
+	private int replyCount;
+	private MultipartFile upload;
 	
 	public int getUser_idx() {
 		return user_idx;
@@ -28,18 +29,6 @@ public class FreeDTO {
 	}
 	public void setFree_table_idx(int free_table_idx) {
 		this.free_table_idx = free_table_idx;
-	}
-	public Date getReply_wdate() {
-		return reply_wdate;
-	}
-	public void setReply_wdate(Date reply_wdate) {
-		this.reply_wdate = reply_wdate;
-	}
-	public String getReply_content() {
-		return reply_content;
-	}
-	public void setReply_content(String reply_content) {
-		this.reply_content = reply_content;
 	}
 	public String getFree_title() {
 		return free_title;
@@ -71,6 +60,22 @@ public class FreeDTO {
 	public void setFree_viewCount(int free_viewCount) {
 		this.free_viewCount = free_viewCount;
 	}
-	
-	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int countReply) {
+		this.replyCount = countReply;
+	}
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
 }
