@@ -2,49 +2,57 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div class="main">
-		<div id="view_TopWrap">
-			<div class="sb">
-				<div>
-					<h1 id="view_Facltnm">${dto.facltnm }</h1>
-					<c:if test="${not empty dto.lineIntro }">
-						<p>${dto.lineIntro }</p>
-					</c:if>
-				</div>
-				<div id="view_lctclWrap">
-					<c:choose>
-						<c:when test="${fn:contains(dto.lctcl, '해변') }">
-							<img src="${cpath }/resources/typeImg/해변.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '섬') }">
-							<img src="${cpath }/resources/typeImg/섬.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '산') }">
-							<img src="${cpath }/resources/typeImg/산.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '숲') }">
-							<img src="${cpath }/resources/typeImg/숲.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '계곡') }">
-							<img src="${cpath }/resources/typeImg/계곡.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '강') }">
-							<img src="${cpath }/resources/typeImg/강.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '호수') }">
-							<img src="${cpath }/resources/typeImg/호수.png">
-						</c:when>
-						<c:when test="${fn:contains(dto.lctcl, '도심') }">
-							<img src="${cpath }/resources/typeImg/도심.png">
-						</c:when>
-					</c:choose>
-				</div>
+	<div id="loading-container" style="display: none;">
+		<div id="loading-icon">
+			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
+		</div>
+	</div>
+	<a href="${cpath }/bizr/campingUpdate/${dto.camping_idx}"><button>캠핑장 수정</button></a>
+	<a href="${cpath }/bizr/campingDelete/${dto.camping_idx}"><button>캠핑장 삭제</button></a>
+	<a href="${cpath }/camping/list"><button>캠핑 리스트</button></a>
+	<div id="view_TopWrap">
+		<div class="sb">
+			<div>
+				<h1 id="view_Facltnm">${dto.facltnm }</h1>
+				<c:if test="${not empty dto.lineIntro }">
+					<p>${dto.lineIntro }</p>
+				</c:if>
+			</div>
+			<div id="view_lctclWrap">
+				<c:choose>
+					<c:when test="${fn:contains(dto.lctcl, '해변') }">
+						<img src="${cpath }/resources/typeImg/해변.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '섬') }">
+						<img src="${cpath }/resources/typeImg/섬.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '산') }">
+						<img src="${cpath }/resources/typeImg/산.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '숲') }">
+						<img src="${cpath }/resources/typeImg/숲.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '계곡') }">
+						<img src="${cpath }/resources/typeImg/계곡.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '강') }">
+						<img src="${cpath }/resources/typeImg/강.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '호수') }">
+						<img src="${cpath }/resources/typeImg/호수.png">
+					</c:when>
+					<c:when test="${fn:contains(dto.lctcl, '도심') }">
+						<img src="${cpath }/resources/typeImg/도심.png">
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
-		<div style="width: 70%; margin: auto;">
-		<div
-			style="display: flex; margin-top: 20px;">
+	</div>
+	<div style="width: 70%; margin: auto;">
+		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
-				<img src="${dto.first_img }" class="first" width="700px" height="525px">
+				<img src="${dto.first_img }" class="first" width="700px"
+					height="525px">
 			</div>
 			<div class="container mt-1 view_campingInfo">
 				<table class="table">
@@ -93,11 +101,78 @@
 				</table>
 			</div>
 		</div>
-	
+
+		<div>
+			<div style="margin-top: 50px;">
+				<h5>💡예약하기</h5>
+			</div>
+			<form action="${cpath }/reserve/reservation/${dto.camping_idx}">
+				<!--체크인 - 체크아웃 -->
+				<div
+					class="row d-flex border border-1 rounded-2 w-50 m-auto mt-3 p-3">
+					<div class="dates-wrapper group">
+						<!-- 캠핑 시작 날짜 -->
+						<div class="field clearfix date-range-start date-wrapper">
+							<div class="label">
+								<label for="datepicker-start">체크인:</label>
+							</div>
+							<div class="input">
+								<input type="date" name="reserve_str_date" id="datepicker-start"
+									class="input-text" placeholder="dd/mm/yyyy" required>
+							</div>
+							<a href="#" class="calendar-btn calendar-start hide-text">View
+								calendar</a>
+						</div>
+
+						<!-- 캠핑 끝 날짜 -->
+						<div class="field clearfix date-range-start date-wrapper">
+							<div class="label">
+								<label for="datepicker-end">체크아웃:</label>
+							</div>
+							<div class="input">
+								<input type="date" name="reserve_end_date" id="datepicker-end"
+									class="input-text" placeholder="dd/mm/yyyy" required>
+							</div>
+							<a href="#" class="calendar-btn hide-text">View calendar</a>
+						</div>
+
+						<!-- 달력 -->
+						<script>
+						if ($('html').hasClass('no-touch')) {
+							var $input, $btn;
+							$(".date-wrapper").each(function(index) {
+								$input = $(this).find('input');
+								$btn = $(this).find('.calendar-btn');
+								$input.attr('type', 'text');
+								var pickerStart = new Pikaday({
+									field : $input[0],
+									trigger : $btn[0],
+									container : $(this)[0],
+									format : 'dd/mm/yyyy',
+									firstDay : 1
+								});
+								$btn.show();
+							});
+						} else {
+							$('.date-wrapper input').attr('type', 'date');
+							$('.calendar-btn').hide();
+						}
+					</script>
+
+					</div>
+				</div>
+				<input type="submit" value="예약하기">
+			</form>
+
+
+			<%-- 		<a href="${cpath }/reservation/${dto.camping_idx}?reserve_str_date=${dto.reserve_str_date}&reserve_end_date=${dto.reserve_end_date}&reserve_site=${dto.reserve_site}" >${dto.camping_idx }</a> --%>
+		</div>
+		<%-- 	<div>${dto.reserve_str_date }</div> --%>
+
 		<div style="margin-top: 50px;">
 			<h5>💡주간날씨</h5>
 		</div>
-	
+
 		<div style="margin-top: 10px;">
 			<table id="week" style="margin: auto; width: 100%;">
 				<tr id="date">
@@ -334,11 +409,11 @@
 				}
 			}
 		</script>
-	
+
 		<div style="margin-top: 50px;">
 			<h5>💡캠핑장 소개</h5>
 		</div>
-	
+
 		<!-- 특징/intro 부분 -->
 		<c:if test="${not empty dto.featurenm }">
 			<div
@@ -350,12 +425,12 @@
 				style="border-top: 2px solid black; border-bottom: 1px solid black; auto; padding: 20px; margin-top: 20px; font-size: 1.2rem;">
 				${dto.intro }</div>
 		</c:if>
-	
-	
+
+
 		<div style="margin-top: 50px;">
 			<h5>💡캠핑장 시설정보</h5>
 		</div>
-	
+
 		<div
 			style="background-color: #f9f9f9; height: 150px; margin-top: 10px;">
 			<div
@@ -406,14 +481,13 @@
 				</c:if>
 			</div>
 		</div>
-	
-	
+
+
 		<div style="margin-top: 50px;">
 			<h5>💡기타 주요시설</h5>
 		</div>
 		<div class="container mt-3">
-			<table class="table"
-				style="border-top: 2px solid black;">
+			<table class="table" style="border-top: 2px solid black;">
 				<tr>
 					<th style="padding: 15px;">기타정보</th>
 					<td style="padding: 15px;"><c:if
@@ -423,7 +497,7 @@
 			        	 개인 트레일러 입장 가능 ·
 		        	</c:if> 반려동물 동반 ${dto.animalCmgCl }</td>
 				</tr>
-	
+
 				<c:if
 					test="${dto.sitebottomcl1 != 0 or dto.sitebottomcl2 != 0 
 			     	or dto.sitebottomcl3 != 0 or dto.sitebottomcl4 != 0 or dto.sitebottomcl5 != 0}">
@@ -441,14 +515,14 @@
 							</c:if> <c:if test="${dto.sitebottomcl5 != 0}">맨흙</c:if></td>
 					</tr>
 				</c:if>
-	
+
 				<c:if test="${not empty dto.sbrsEtc }">
 					<tr>
 						<th style="padding: 15px;">기타부대시설</th>
 						<td style="padding: 15px;">${dto.sbrsEtc }</td>
 					</tr>
 				</c:if>
-	
+
 				<c:if test="${not empty dto.eqpmnLendCl }">
 					<tr>
 						<th style="padding: 15px;">캠핑장비대여</th>
@@ -457,12 +531,12 @@
 				</c:if>
 			</table>
 		</div>
-	
-	
+
+
 		<div style="margin-top: 50px;">
 			<h5 style="border-bottom: 2px solid black; padding-bottom: 15px;">💡${dto.facltnm }</h5>
 		</div>
-	
+
 		<div>
 			<button id="prev"><-</button>
 			<div id="imgBox">

@@ -16,7 +16,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-
 .nnfont {
 	font-family: 'Jeju Myeongjo', serif;
 	color: black;
@@ -37,21 +36,21 @@ a:hover {
 }
 
 /* header.jsp CSS */
-ul.userInfo > li {
+ul.userInfo>li {
 	margin-left: 20px;
 }
 
 div#loading-container {
- 	position: fixed;
-  	top: 0;
-  	left: 0;
-  	width: 100%;
-  	height: 100%;
-  	background: rgba(0, 0, 0, 0.7); /* 어두운 배경 색상과 투명도 조정 */
-  	display: flex;
-  	justify-content: center;
-  	align-items: center;
-  	z-index: 9999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7); /* 어두운 배경 색상과 투명도 조정 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
 }
 
 div#loading-icon {
@@ -133,7 +132,7 @@ div#listSearchBox select {
 	width: 150px;
 }
 
-div#listSearch > div {
+div#listSearch>div {
 	margin: 10px;
 }
 
@@ -147,16 +146,16 @@ div#keywordBox input[type=text] {
 	width: 300px;
 }
 
-div#keywordBox > input, div#keywordBox > div:last-child > input {
+div#keywordBox>input, div#keywordBox>div:last-child>input {
 	margin-left: 10px;
 }
 
-div#keywordBox > div:last-child {
+div#keywordBox>div:last-child {
 	display: flex;
 	align-items: flex-end;
 }
 
-div#keywordBox > input {
+div#keywordBox>input {
 	height: 30px;
 	margin-top: 20px;
 }
@@ -171,18 +170,18 @@ div.itemTextWrap {
 	width: 100%;
 }
 
-div.itemTextWrap > div.viewCount {
+div.itemTextWrap>div.viewCount {
 	padding-top: 12px;
 	font-size: 0.8em;
 }
 
-div.itemTextWrap > div.viewCount > span {
+div.itemTextWrap>div.viewCount>span {
 	background-color: #777;
 	color: white;
 	padding: 2px;
 }
 
-div.itemText > div:last-child > span, div.itemText > div:last-child > h3 {
+div.itemText>div:last-child>span, div.itemText>div:last-child>h3 {
 	margin: 15px 0;
 }
 
@@ -246,54 +245,54 @@ div.list_SbrsCl {
 	padding: 20px;
 }
 
-div.list_SbrsCl > span {
+div.list_SbrsCl>span {
 	display: inline-block;
-    width: 80px;
-    height: 80px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    margin-right: 15px;
-    flex-flow: wrap;
+	width: 80px;
+	height: 80px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto;
+	margin-right: 15px;
+	flex-flow: wrap;
 }
 
-div.list_SbrsCl > span.wifi {
+div.list_SbrsCl>span.wifi {
 	background-position-y: 2px;
 }
 
-div.list_SbrsCl > span.firewood {
+div.list_SbrsCl>span.firewood {
 	background-position-y: 10px;
 }
 
-div.list_SbrsCl > span.hotWater {
+div.list_SbrsCl>span.hotWater {
 	background-position-y: 7px;
 }
 
-div.list_SbrsCl > span.waterplay {
+div.list_SbrsCl>span.waterplay {
 	background-position-y: 12px;
 }
 
-div.list_SbrsCl > span.play {
+div.list_SbrsCl>span.play {
 	background-position-y: 5px;
 }
 
-div.list_SbrsCl > span.tram {
+div.list_SbrsCl>span.tram {
 	background-position-y: 9px;
 }
 
-div.list_SbrsCl > span.joyplace {
+div.list_SbrsCl>span.joyplace {
 	background-position-y: 8px;
 }
 
-div.list_SbrsCl > span.playground {
+div.list_SbrsCl>span.playground {
 	background-position-y: 7px;
 }
 
-div.list_SbrsCl > span:first-child { 
- 	margin-left: 15px; 
+div.list_SbrsCl>span:first-child {
+	margin-left: 15px;
 }
 
-div.list_SbrsCl > span > img {
+div.list_SbrsCl>span>img {
 	width: 100%;
 	height: 100%;
 }
@@ -320,7 +319,7 @@ div#view_TopWrap {
 	align-items: center;
 }
 
-div#view_TopWrap > div.sb {
+div#view_TopWrap>div.sb {
 	width: 65%;
 	margin: auto;
 }
@@ -335,7 +334,7 @@ div#view_lctclWrap {
 	line-height: 80px;
 }
 
-div#view_lctclWrap > img {
+div#view_lctclWrap>img {
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
@@ -346,14 +345,16 @@ div.view_campingInfo {
 	padding-top: 10px;
 }
 
-div.view_campingInfo > table.table th, div.view_campingInfo > table.table td {
+div.view_campingInfo>table.table th, div.view_campingInfo>table.table td
+	{
 	padding: 15px 0;
 }
-div.view_campingInfo > table.table tr:nth-child(1) > th {
+
+div.view_campingInfo>table.table tr:nth-child(1)>th {
 	border-top: 2px solid #e55450;
 }
 
-div.view_campingInfo > table.table tr:nth-child(1) > td {
+div.view_campingInfo>table.table tr:nth-child(1)>td {
 	border-top: 2px solid #000;
 }
 
@@ -380,15 +381,150 @@ img.active {
 table#week {
 	text-align: center;
 }
+
+/* mypage css */
+table#Mypage_check_table tr:nth-child(1) {
+	border-top-width: 2px;
+	border-top-color: black;
+}
+
+table#Mypage_check_table td:nth-child(1) {
+	border-right-width: 2px;
+	width: 150px;
+	background-color: #eee;
+}
+
+table#modify_table {
+	border: 1px solid black;
+}
+
+table#modify_table td {
+	padding: 30px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* reservation css */
+div.reservationWrap div {
+	color: black;
+}
+
+@import "compass/css3";
+
+* {
+	box-sizing: border-box;
+}
+
+div.reservationWrap {
+	padding: 2em;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	color: #888;
+}
+
+div.reservationWrap .dates-wrapper {
+	background: #f0f0f0;
+	padding: 1em 1em 0 1em;
+	display: inline-block;
+}
+
+div.reservationWrap .input-text {
+	background-color: #ffffff;
+	padding: 2px 10px;
+	color: #333;
+	border: 1px solid #dddddd;
+	outline: none;
+	vertical-align: middle;
+	height: 36px;
+	border-radius: 0;
+	display: block;
+	width: 100%;
+	-webkit-appearance: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+div.reservationWrap .date-wrapper {
+	position: relative;
+	margin: 0 42px 10px 0;
+	display: inline-block;
+	color: #444;
+	font-weight: bold; . label { float : left;
+	display: inline-block;
+	margin-right: 28px;
+	padding-top: 10px;
+}
+
+div.reservationWrap .input {
+	font-size: 15px;
+	color: #333;
+	max-width: 172px;
+	float: left;
+	margin-right: 10px; input { float : left;
+	width: 100%;
+	padding: 2px 10px;
+}
+
+}
+div.reservationWrap .calendar-btn {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	border-radius: 18px;
+	float: left;
+	background-repeat: no-repeat;
+	background-size: 36px 36px;
+}
+
+}
+div.reservationWrap .pika-single {
+	position: absolute;
+	top: 40px;
+	left: 0px;
+}
+
+div.reservationWrap .pika-title {
+	color: #444;
+}
+
+div.reservationWrap .is-selected .pika-button {
+	border-radius: 0;
+	box-shadow: none;
+	background: #ec0000;
+}
+
+div.reservationWrap .pika-table tbody td {
+	border: 1px solid #b9b9b9;
+}
+
+div.reservationWrap .pika-button:hover {
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	background: #868686 !important;
+}
+
+div.reservationWrap .is-today .pika-button {
+	color: #FF7043;
+}
+
+div.reservationWrap .is-today.is-selected .pika-button {
+	color: #8BC34A;
+}
+
+div.reservationWrap .hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+div.reservationWrap .group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
 </style>
 </head>
-</head>
 <body>
-	<div id="loading-container" style="display: none;">
-		<div id="loading-icon">
-			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
-		</div>
-	</div>
 	<header>
 		<div class="d-flex justify-content-between sticky-top"
 			style="width: 90%; margin: 30px auto 50px auto; align-items: center;">
@@ -398,11 +534,13 @@ table#week {
 			<ul class="nav justify-content-end userInfo">
 				<c:if test="${not empty login }">
 					<li class="nav-item">${login.username }님</li>
-					<li class="nav-item ">
-						<a class="text-warning fw-bold" href="${cpath }/user/Mypage_check">마이페이지</a>
-					</li>
-					<li class="nav-item"><a class="text-black fw-bold" href="${cpath }/user/logout">로그아웃</a>
-					</li>
+					<li class="nav-item "><a class="text-warning fw-bold"
+						href="${cpath }/user/Mypage_check">마이페이지</a></li>
+					<c:if test="${not empty login.bizrno }">
+						<li class="nav-item"><a class="text-warning fw-bold" href="${cpath }/bizr/newCamping">캠핑장 등록</a></li>
+					</c:if>
+					<li class="nav-item"><a class="text-black fw-bold"
+						href="${cpath }/user/logout">로그아웃</a></li>
 				</c:if>
 				<c:if test="${empty login }">
 					<li class="nav-item "><a class="nav-link text-black fw-bold"
@@ -414,4 +552,4 @@ table#week {
 			</ul>
 		</div>
 	</header>
-	<%@ include file="modal.jsp"%>
+	<%@ include file="userModal.jsp"%>

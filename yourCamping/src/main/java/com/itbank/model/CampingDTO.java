@@ -1,5 +1,9 @@
 package com.itbank.model;
 
+import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class CampingDTO {
 	private int camping_idx;
 	private String facltnm;
@@ -13,6 +17,9 @@ public class CampingDTO {
 	private String lctcl;
 	private String addr1;
 	private int camping_viewCount;
+	private String doNm;
+	private String sigunguNm;
+	private String userid;
 
 	// camping_activity
 	private String posblFcltyCl;
@@ -24,7 +31,10 @@ public class CampingDTO {
 	// camping_img
 	private String first_img;
 	private String inner_img;
-
+	
+	private MultipartFile upload1;
+	private MultipartFile[] upload2;
+	
 	// camping_internal
 	private String sbrsCl;
 	private String sbrsEtc;
@@ -65,6 +75,10 @@ public class CampingDTO {
 	private int siteMg1_price;
 	private int siteMg2_price;
 	private int siteMg3_price;
+	
+	private Date reserve_str_date;
+	private Date reserve_end_date;
+	private String reserve_site;
 
 	public int getCamping_idx() {
 		return camping_idx;
@@ -162,6 +176,30 @@ public class CampingDTO {
 		this.camping_viewCount = camping_viewCount;
 	}
 
+	public String getDoNm() {
+		return doNm;
+	}
+
+	public void setDoNm(String doNm) {
+		this.doNm = doNm;
+	}
+
+	public String getSigunguNm() {
+		return sigunguNm;
+	}
+
+	public void setSigunguNm(String sigunguNm) {
+		this.sigunguNm = sigunguNm;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public String getPosblFcltyCl() {
 		return posblFcltyCl;
 	}
@@ -216,6 +254,22 @@ public class CampingDTO {
 
 	public void setInner_img(String inner_img) {
 		this.inner_img = inner_img;
+	}
+
+	public MultipartFile getUpload1() {
+		return upload1;
+	}
+
+	public void setUpload1(MultipartFile upload1) {
+		this.upload1 = upload1;
+	}
+
+	public MultipartFile[] getUpload2() {
+		return upload2;
+	}
+
+	public void setUpload2(MultipartFile[] upload2) {
+		this.upload2 = upload2;
 	}
 
 	public String getSbrsCl() {
@@ -418,6 +472,14 @@ public class CampingDTO {
 		this.fireSensorCo = fireSensorCo;
 	}
 
+	public String getOperDeCl() {
+		return operDeCl;
+	}
+
+	public void setOperDeCl(String operDeCl) {
+		this.operDeCl = operDeCl;
+	}
+
 	public int getSiteMg1Co() {
 		return siteMg1Co;
 	}
@@ -466,4 +528,27 @@ public class CampingDTO {
 		this.siteMg3_price = siteMg3_price;
 	}
 
+	public Date getReserve_str_date() {
+		return reserve_str_date;
+	}
+
+	public void setReserve_str_date(Date reserve_str_date) {
+		this.reserve_str_date = reserve_str_date;
+	}
+
+	public Date getReserve_end_date() {
+		return reserve_end_date;
+	}
+
+	public void setReserve_end_date(Date reserve_end_date) {
+		this.reserve_end_date = reserve_end_date;
+	}
+
+	public String getReserve_site() {
+		return reserve_site;
+	}
+
+	public void setReserve_site(String reserve_site) {
+		this.reserve_site = reserve_site;
+	}
 }
