@@ -2,6 +2,8 @@ package com.itbank.model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ReviewDTO {
 	// review
 	private int review_idx;
@@ -12,6 +14,12 @@ public class ReviewDTO {
 	private String review_img;
 	private Date review_wdate;
 	private int review_viewCount;
+	
+	private MultipartFile[] upload;
+	
+	private String userid;	// 조인으로 같이 불러올 userid
+	private String facltnm; // 조인으로 같이 불러올 캠핑장 이름
+	private int like_count;	// 조인으로 같이 불러올 review_like의 수량
 	
 	public int getReview_idx() {
 		return review_idx;
@@ -61,12 +69,28 @@ public class ReviewDTO {
 	public void setReview_viewCount(int review_viewCount) {
 		this.review_viewCount = review_viewCount;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+	public MultipartFile[] getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile[] upload) {
+		this.upload = upload;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public int getLike_count() {
+		return like_count;
+	}
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
+	}
+	public String getFacltnm() {
+		return facltnm;
+	}
+	public void setFacltnm(String facltnm) {
+		this.facltnm = facltnm;
+	}
 }

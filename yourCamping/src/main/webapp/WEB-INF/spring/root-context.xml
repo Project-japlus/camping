@@ -28,6 +28,9 @@
 			<list>
 				<value>classpath:mybatis/camping-mapper.xml</value>
 				<value>classpath:mybatis/user-mapper.xml</value>
+				<value>classpath:mybatis/root-mapper.xml</value>
+				<value>classpath:mybatis/reserve-mapper.xml</value>
+				<value>classpath:mybatis/board-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -1,96 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
-<div
-	class="container mt-5 w-50 p-5 border border-secondary rounded-5 border-5  bg-gradient shadow"
-	style="-bs-bg-opacity: .8; margin-bottom: 200px; height: 400px;">
-	<form action="${cpath }/camping/list/1">
+<div class="main">
+	<div class="homeMain">
+		<div class="w-50" style="margin: 0 auto; display: flex; justify-content: flex-end; padding: 5px 25px;">
+			<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
+		</div>
+		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 bg-gradient shadow"
+			style="-bs-bg-opacity: .8; height: 400px;">
+			<form action="${cpath }/camping/list/1">
+				<div class="mb-3 mt-4 d-flex justify-content-evenly gap-4 mx-auto w-75">
+					<select id="firstSelect" name="firstSelect" class="rounded" style="width: 200px;" onchange="changeSecondOptions()">
+						<option value="전체" ${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
+						<option value="서울시" ${param.firstSelect eq '서울시' ? 'selected' : '' }>서울시</option>
+						<option value="부산시" ${param.firstSelect eq '부산시' ? 'selected' : '' }>부산시</option>
+						<option value="대구시" ${param.firstSelect eq '대구시' ? 'selected' : '' }>대구시</option>
+						<option value="인천시" ${param.firstSelect eq '인천시' ? 'selected' : '' }>인천시</option>
+						<option value="광주시" ${param.firstSelect eq '광주시' ? 'selected' : '' }>광주시</option>
+						<option value="대전시" ${param.firstSelect eq '대전시' ? 'selected' : '' }>대전시</option>
+						<option value="울산시" ${param.firstSelect eq '울산시' ? 'selected' : '' }>울산시</option>
+						<option value="세종시" ${param.firstSelect eq '세종시' ? 'selected' : '' }>세종시</option>
+						<option value="경기도" ${param.firstSelect eq '경기도' ? 'selected' : '' }>경기도</option>
+						<option value="강원도" ${param.firstSelect eq '강원도' ? 'selected' : '' }>강원도</option>
+						<option value="충청북도" ${param.firstSelect eq '충청북도' ? 'selected' : '' }>충청북도</option>
+						<option value="충청남도" ${param.firstSelect eq '충청남도' ? 'selected' : '' }>충청남도</option>
+						<option value="전라북도" ${param.firstSelect eq '전라북도' ? 'selected' : '' }>전라북도</option>
+						<option value="전라남도" ${param.firstSelect eq '전라남도' ? 'selected' : '' }>전라남도</option>
+						<option value="경상북도" ${param.firstSelect eq '경상북도' ? 'selected' : '' }>경상북도</option>
+						<option value="경상남도" ${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
+						<option value="제주도" ${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
+					</select> 
+					<select id="secondSelect" name="secondSelect" class="rounded" style="width: 200px;"></select>
+				</div>
+				<input type="hidden" name="lctcl" value="전체"> 
+				<input type="hidden" name="induty" value="전체">
+				<div class="mb-3 mt-4 d-flex gap-3">
+					<input type="text" class="form-control" id="pwd" placeholder="검색어를 입력하세요" name="keyword"> 
+					<span><input type="submit" class="btn btn-success ms-3" value="GO!"></span>
+				</div>
+			</form>
+	
+			<div class="mainIcon">
+				<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=일반야영장&keyword='">캠핑</div>
+				<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=자동차야영장&keyword='">차박</div>
+				<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=글램핑&keyword='">글램핑</div>
+				<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=카라반&keyword='">카라반</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div id="main_link_div" class="d-flex gap-5 text-light rounded">
+	
+		<!--자주 찾는 캠핑장 링크-->
 		<div
-			class="mb-3 mt-4 d-flex justify-content-evenly gap-4 mx-auto w-75"">
-			<select id="firstSelect" name="firstSelect" style="width: 200px;"
-					onchange="changeSecondOptions()">
-					<option value="전체" ${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
-					<option value="서울시" ${param.firstSelect eq '서울시' ? 'selected' : '' }>서울시</option>
-					<option value="부산시" ${param.firstSelect eq '부산시' ? 'selected' : '' }>부산시</option>
-					<option value="대구시" ${param.firstSelect eq '대구시' ? 'selected' : '' }>대구시</option>
-					<option value="인천시" ${param.firstSelect eq '인천시' ? 'selected' : '' }>인천시</option>
-					<option value="광주시" ${param.firstSelect eq '광주시' ? 'selected' : '' }>광주시</option>
-					<option value="대전시" ${param.firstSelect eq '대전시' ? 'selected' : '' }>대전시</option>
-					<option value="울산시" ${param.firstSelect eq '울산시' ? 'selected' : '' }>울산시</option>
-					<option value="세종시" ${param.firstSelect eq '세종시' ? 'selected' : '' }>세종시</option>
-					<option value="경기도" ${param.firstSelect eq '경기도' ? 'selected' : '' }>경기도</option>
-					<option value="강원도" ${param.firstSelect eq '강원도' ? 'selected' : '' }>강원도</option>
-					<option value="충청북도" ${param.firstSelect eq '충청북도' ? 'selected' : '' }>충청북도</option>
-					<option value="충청남도" ${param.firstSelect eq '충청남도' ? 'selected' : '' }>충청남도</option>
-					<option value="전라북도" ${param.firstSelect eq '전라북도' ? 'selected' : '' }>전라북도</option>
-					<option value="전라남도" ${param.firstSelect eq '전라남도' ? 'selected' : '' }>전라남도</option>
-					<option value="경상북도" ${param.firstSelect eq '경상북도' ? 'selected' : '' }>경상북도</option>
-					<option value="경상남도" ${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
-					<option value="제주도" ${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-			</select> <select id="secondSelect" name="secondSelect" style="width: 200px;"></select>
+			class="container w-25 mx-auto rounded-5 bg-secondary"
+			style="-bs-bg-opacity: .8;">
+			<h2 class="text-center fw-bold fst-italic pt-5">자주 찾는 캠핑장</h2>
+			<div class="list-group w-90 m-4 mt-2">
+				<a href="${cpath }/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=전체&keyword=" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul id="main_link_ul">
+					<c:forEach var="camping" items="${campList }" begin="0" end="5">
+						<li><a href="${cpath }/camping/view/${camping.camping_idx}">${camping.facltnm }</a></li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
-		<input type="hidden" name="lctcl" value="전체">
-		<input type="hidden" name="induty" value="전체">
-		<div class="mb-3 mt-4 d-flex gap-3">
-			<input type="text" class="form-control" id="pwd"
-				placeholder="검색어를 입력하세요" name="keyword"> <span><input
-				type="submit" class="btn btn-success ms-3" value="GO!"></span>
+
+		<!--리뷰게시판-->
+		<div
+			class="container w-25 mx-auto rounded-5 bg-secondary"
+			style="-bs-bg-opacity: .8;">
+			<h2 class="text-center fw-bold fst-italic pt-5">캠핑장 후기</h2>
+			<div class="list-group w-90 m-4 mt-2">
+				<a href="${cpath }/board/reviewList" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul id="main_link_ul">
+					<c:forEach var="review" items="${revList }" begin="0" end="5">
+						<li><a href="${cpath }/board/reviewView/${review.review_idx}">${review.review_title }</a></li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
-	</form>
 
-	<div class="mainIcon">
-		<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=일반야영장&keyword='">캠핑</div>
-		<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=자동차야영장&keyword='">차박</div>
-		<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=글램핑&keyword='">글램핑</div>
-		<div onclick="location.href = '${cpath}/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=카라반&keyword='">카라반</div>
-	</div>
-</div>
-
-<br>
-<div class="d-flex gap-5">
-	<!--리뷰게시판-->
-
-	<div class="container w-25  mx-auto rounded-5 bg-secondary bg-gradient"
-		style="-bs-bg-opacity: .8;">
-		<h2 class="text-center text-light fw-bold fst-italic">camping</h2>
-		<div class="list-group w-90 m-4">
-			<a href="#"
-				class="text-end fw-bold text-decoration-none fs-3 text text-success">
-				➙</a> <a href="#" class="list-group-item list-group-item-action">링크1</a>
-			<a href="#" class="list-group-item list-group-item-action">링크2</a> <a
-				href="#" class="list-group-item list-group-item-action">링크3</a>
-		</div>
-	</div>
-
-	<!--음식링크-->
-	<div class="container w-25  mx-auto rounded-5 bg-secondary bg-gradient"
-		style="-bs-bg-opacity: .8;">
-		<h2 class="text-center text-light fw-bold fst-italic">Food</h2>
-		<div class="list-group w-90 m-4">
-			<a href="#"
-				class="text-end fw-bold text-decoration-none fs-3 text text-success">&nbsp;</a>
-			<a href="#" class="list-group-item list-group-item-action">링크1</a> <a
-				href="#" class="list-group-item list-group-item-action">링크2</a> <a
-				href="#" class="list-group-item list-group-item-action">링크3</a>
-		</div>
-	</div>
-
-	<!--자유게시판-->
-	<div class="container w-25  mx-auto rounded-5 bg-secondary bg-gradient"
-		style="-bs-bg-opacity: .8;">
-		<h2 class="text-center text-light fw-bold fst-italic">Free</h2>
-		<div class="list-group w-90 m-4">
-			<a href="#"
-				class="text-end fw-bold text-decoration-none fs-3 text text-success">
-				➙</a> <a href="#" class="list-group-item list-group-item-action">링크1</a>
-			<a href="#" class="list-group-item list-group-item-action">링크2</a> <a
-				href="#" class="list-group-item list-group-item-action">링크3</a>
+		<!--자유게시판-->
+		<div
+			class="container w-25 mx-auto rounded-5 bg-secondary"
+			style="-bs-bg-opacity: .8;">
+			<h2 class="text-center fw-bold fst-italic pt-5">자유게시판</h2>
+			<div class="list-group w-90 m-4 mt-2">
+				<a href="${cpath }/board/freeList" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul id="main_link_ul">
+					<c:forEach var="free" items="${freeList }" begin="0" end="5">
+						<li><a href="${cpath }/board/freeView/${free.free_table_idx}">${free.free_title }</a></li>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
-
-<footer style="margin-top: 200px;">
+<footer style="margin-top: 100px;">
 	<div class="p-2 text-black rounded text-center bg-warning"
 		style="-bs-bg-opacity: .7;">
 		<h2>🏕️어디로캠핑(주)</h2>
@@ -219,6 +226,7 @@
 			secondSelect.appendChild(opt);
 		});
 	}
+	
 </script>
 </body>
 </html>

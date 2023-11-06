@@ -32,7 +32,7 @@ public class PagingService {
 		pageCount = boardCount / perPage + (flag ? 1 : 0);
 		
 		// 마지막 번호는 전체 페이지 수를 초과할 수 없다
-		end = end >= pageCount ? pageCount : end;
+		end = end > pageCount ? pageCount : end;
 		
 //		int section = (page - 1) / perSection;
 //		int lastSection = (pageCount - 1) / perSection;
