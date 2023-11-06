@@ -33,7 +33,7 @@
 			</tbody>
 		</table>
 	    <div class="d-flex justify-content-between">
-	    	<form action="${cpath }/board/reviewList" method="POST" id="searchFoam" name="search-form">
+	    	<form action="${cpath }/board/reviewSearch" method="POST" id="searchFoam" name="search-form">
 				<p>
 					<select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>

@@ -45,7 +45,7 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect"></select>
+						</select> <select id="secondSelect" name="secondSelect" class="rounded"></select>
 					</div>
 					<div>
 						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
@@ -79,8 +79,8 @@
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색"> <input type="button" class="rounded"
-							id="reset" value="초기화">
+						<input type="submit" class="rounded" value="캠핑장 검색">
+						<input type="button" class="rounded" id="reset" value="초기화">
 					</div>
 				</div>
 			</form>

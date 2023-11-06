@@ -53,7 +53,7 @@
 	
 		<!--자주 찾는 캠핑장 링크-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
+			class="container w-25 mx-auto rounded-3 bg-secondary"
 			style="-bs-bg-opacity: .8;">
 			<h2 class="text-center fw-bold fst-italic pt-5">자주 찾는 캠핑장</h2>
 			<div class="list-group w-90 m-4 mt-2">
@@ -68,7 +68,7 @@
 
 		<!--리뷰게시판-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
+			class="container w-25 mx-auto rounded-3 bg-secondary"
 			style="-bs-bg-opacity: .8;">
 			<h2 class="text-center fw-bold fst-italic pt-5">캠핑장 후기</h2>
 			<div class="list-group w-90 m-4 mt-2">
@@ -83,7 +83,7 @@
 
 		<!--자유게시판-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
+			class="container w-25 mx-auto rounded-3 bg-secondary"
 			style="-bs-bg-opacity: .8;">
 			<h2 class="text-center fw-bold fst-italic pt-5">자유게시판</h2>
 			<div class="list-group w-90 m-4 mt-2">
