@@ -120,7 +120,7 @@ div#listSearchContainer {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: 0 -900px;
-	height:450px;
+	height: 450px;
 	width: 100%;
 	margin-bottom: 30px;
 }

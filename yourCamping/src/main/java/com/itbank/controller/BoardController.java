@@ -187,9 +187,6 @@ public class BoardController {
 		if (user_idx != null) {
 			dto.setUser_idx(user_idx);
 			dto.setFree_table_idx(free_table_idx);
-		
-			FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-			freeDTO.setReplyCount(freeDTO.getReplyCount() + 1);
 			boardService.insertReply(dto);
 		}
 		return "redirect:/board/freeView/" + free_table_idx;
@@ -200,8 +197,6 @@ public class BoardController {
 		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
 		if (dto.getUser_idx() == user_idx) {
 			boardService.deleteReplyOne(dto);
-			FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-			freeDTO.setReplyCount(freeDTO.getReplyCount() - 1);
 		}
 		return "redirect:/board/freeView/" + free_table_idx;
 	}

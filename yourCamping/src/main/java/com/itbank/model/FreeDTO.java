@@ -15,7 +15,6 @@ public class FreeDTO {
 	private int free_viewCount;
 	
 	private String userid;
-	private int replyCount;
 	private MultipartFile upload;
 	
 	public int getUser_idx() {
@@ -65,12 +64,6 @@ public class FreeDTO {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-	public int getReplyCount() {
-		return replyCount;
-	}
-	public void setReplyCount(int countReply) {
-		this.replyCount = countReply;
 	}
 	public MultipartFile getUpload() {
 		return upload;

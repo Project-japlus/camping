@@ -201,12 +201,6 @@
 		update free_table set free_viewCount = #{free_viewCount} + 1 where free_table_idx = #{free_table_idx}
 	</update>
 	
-	<select id="replyCount" parameterType="int" resultType="int">
-		SELECT COUNT(*) AS replyCount
-			FROM free_reply
-			WHERE FREE_TABLE_IDX = #{free_table_idx}
-	</select>
-	
 	<select id="selectReply" parameterType="int" resultType="reply">
 		SELECT
 		    ft.FREE_TABLE_IDX,
