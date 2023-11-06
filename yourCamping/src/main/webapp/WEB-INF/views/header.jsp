@@ -102,7 +102,7 @@ div.mainIcon>div:hover {
 }
 
 /* 	camping_list CSS */
-div#listSearchContainer {
+div.listSearchContainer {
 	background-image: url("${cpath}/resources/list_back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -112,7 +112,7 @@ div#listSearchContainer {
 	margin-bottom: 30px;
 }
 
-div#listSearchBox {
+div.listSearchBox {
 	margin: auto;
 	border: 2px solid black;
 	border-radius: 25px;
@@ -124,42 +124,43 @@ div#listSearchBox {
 	background-color: rgba(255, 255, 255, 0.7);
 }
 
-div#listSearchBox span {
+div.listSearchBox span {
 	display: block;
 }
 
-div#listSearchBox select {
+div.listSearchBox select {
 	width: 150px;
 }
 
-div#listSearch>div {
+div.listSearch>div {
 	margin: 10px;
 }
 
-div#keywordBox {
+div.keywordBox {
 	display: flex;
 	padding-left: 10px;
 	margin-top: 50px;
 }
 
-div#keywordBox input[type=text] {
+div.keywordBox input[type=text] {
 	width: 300px;
 }
 
-div#keywordBox>input, div#keywordBox>div:last-child>input {
+div.keywordBox>input, div.keywordBox>div:last-child>input {
 	margin-left: 10px;
 }
 
-div#keywordBox>div:last-child {
+div.keywordBox>div:last-child {
 	display: flex;
 	align-items: flex-end;
 }
 
-div#keywordBox>input {
+div.keywordBox>input {
 	height: 30px;
 	margin-top: 20px;
 }
-
+/* 여기까지 */
+/* view CSS */
 div.item {
 	width: 100%;
 	border-bottom: 1px solid grey;
@@ -302,9 +303,49 @@ div.paging {
 	text-align: center;
 	margin: 20px auto;
 }
+div.map_list {
+	display: flex; 
+	height: 700px; 
+	width: 1200px; 
+	margin: auto; 
+	margin-top: 30px;
+	position: relative;
+}
+div.map_paging {
+	position: absolute; 
+	top: 95.5%;
+	border-top: 1px solid grey;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
+}
+
+div.map_pagingNon {
+	position: absolute; 
+	top: 95.5%;
+	border-top: none;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
+}
 
 div.paging>button {
 	opacity: 0.1;
+}
+
+button.map_showListBtn {
+	margin-left: 1375px;	
+}
+ul.map_ul {
+	list-style:none; 
+	padding-left:0; 
+	height:120px; 
+	width:300px; 
+	border-bottom:1px solid grey; 
+	margin:0; 
+	padding:15px;
 }
 
 /* view CSS */
@@ -321,15 +362,38 @@ div#view_TopWrap {
 div.view_imgTable{
 	display: flex; 
 	margin:auto; 
-	margin-top: 20px; 
-	width: 1200px;
+	margin-top: 50px; 
+	width: 1300px;
 }
-
+div.view_date {
+	display: flex;
+}
+div.view_dateStart{
+	margin-right: 15px;
+}
+div.view_reserveBtn {
+	margin-left: 15px;
+	margin-top: 20px;
+}
+button#view_prev {
+	z-index: 10;
+	height: fit-content;
+	background-color: white;
+	margin-left:15px;
+	margin-right:45%;
+	margin-top: 31%; 
+}
+button#view_next{
+	z-index: 10;
+	height: fit-content;
+	background-color: white;
+	margin-left:45%;
+	margin-top: 31%; 
+}
 div#view_TopWrap>div.sb {
 	width: 65%;
 	margin: auto;
 }
-
 h1#view_Facltnm {
 	font-weight: bolder;
 }
@@ -378,6 +442,7 @@ img.rounded {
 	position: absolute;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
+	margin-top: 35px;
 }
 
 img.active {
@@ -386,6 +451,7 @@ img.active {
 
 table#week {
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 /* mypage css */
