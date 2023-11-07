@@ -75,20 +75,14 @@ public class AjaxController {
 	}
 
 	// 아이디 중복 체크
-	@GetMapping("/checkDuplicateId")
-	public String user_ajax(@RequestParam String userid) throws JsonProcessingException {
-		UserDTO dto = userDAO.user_selectOneByUserid_check(userid);
-		if (dto == null) {
-			dto = userDAO.bizr_selectOneBybizrid_login(userid);
-			if (dto == null) {
+		@GetMapping("/checkDuplicateId")
+		public String user_ajax(@RequestParam String userid) throws JsonProcessingException {
+			String result = userDAO.selectOneByUserid_check(userid);
+			if(result == null) {
 				return "available";
 			} else {
 				return "unavailable";
-			}
-		} else {
-			return "unavailable";
-		}
-	}
+			
 
 	// MyPageContorller 에서 솔트랑 비밀번호 받아서 해시처리 해주는 함수
 	@GetMapping("/Mypage_modify_hash")

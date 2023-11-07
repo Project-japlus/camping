@@ -12,13 +12,8 @@ import com.itbank.model.UserDTO;
 
 public interface UserDAO {
 
-	// 일반_아이디 중복체크
-	@Select("select * from user_table where userid=#{userid}")
-	UserDTO user_selectOneByUserid_check(String userid);
-
-	// 사업자_아이디 중복체크
-	@Select("select * from bizr_table where userid=#{userid}")
-	UserDTO bizr_selectOneBybizrid_check(String userid);
+	// 일반_사업자_아이디 중복체크
+	String selectOneByUserid_check(String userid);
 	
 	// 일반_로그인
 	@Select("select * from user_table where userid=#{userid} and joinconfirm != 'N'")
