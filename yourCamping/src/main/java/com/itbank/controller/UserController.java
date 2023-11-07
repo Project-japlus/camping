@@ -32,6 +32,7 @@ public class UserController {
 			login = userService.user_login(dto);
 		}
 		if (login != null) {
+			login.setCamping_idx(userService.getBookMark(login.getUser_idx()));
 			session.setAttribute("login", login);
 		} else {
 			mav.setViewName("/alert");

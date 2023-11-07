@@ -1,5 +1,7 @@
 package com.itbank.model;
 
+import java.util.List;
+
 public class UserDTO {
 	private int user_idx;
 	private String userid;
@@ -10,10 +12,13 @@ public class UserDTO {
 	private String phone;
 	private String email;
 	private String bizrno;
-	private int camping_idx;
 	
 	// 10/31 추가함
 	private boolean remember_bizr;
+	
+	// 11월 6일 추가
+	private List<Integer> camping_idx;
+	private String joinConfirm;
 	
 	public boolean isRemember_bizr() {
 		return remember_bizr;
@@ -76,11 +81,17 @@ public class UserDTO {
 	public void setBizrno(String bizrno) {
 		this.bizrno = bizrno;
 	}
-	public int getCamping_idx() {
+	public List<Integer> getCamping_idx() {
 		return camping_idx;
 	}
-	public void setCamping_idx(int camping_idx) {
+	public void setCamping_idx(List<Integer> camping_idx) {
 		this.camping_idx = camping_idx;
+	}
+	public String getJoinConfirm() {
+		return joinConfirm;
+	}
+	public void setJoinConfirm(String joinConfirm) {
+		this.joinConfirm = joinConfirm;
 	}
 	
 }
