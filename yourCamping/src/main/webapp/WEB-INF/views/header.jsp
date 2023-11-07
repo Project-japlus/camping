@@ -159,7 +159,8 @@ div.keywordBox>input {
 	height: 30px;
 	margin-top: 20px;
 }
-
+/* 여기까지 */
+/* view CSS */
 div.item {
 	width: 100%;
 	border-bottom: 1px solid grey;
@@ -302,9 +303,49 @@ div.paging {
 	text-align: center;
 	margin: 20px auto;
 }
+div.map_list {
+	display: flex; 
+	height: 700px; 
+	width: 1200px; 
+	margin: auto; 
+	margin-top: 30px;
+	position: relative;
+}
+div.map_paging {
+	position: absolute; 
+	top: 95.5%;
+	border-top: 1px solid grey;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
+}
+
+div.map_pagingNon {
+	position: absolute; 
+	top: 95.5%;
+	border-top: none;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
+}
 
 div.paging>button {
 	opacity: 0.1;
+}
+
+button.map_showListBtn {
+	margin-left: 1375px;	
+}
+ul.map_ul {
+	list-style:none; 
+	padding-left:0; 
+	height:120px; 
+	width:300px; 
+	border-bottom:1px solid grey; 
+	margin:0; 
+	padding:15px;
 }
 
 /* view CSS */
@@ -321,10 +362,35 @@ div#view_TopWrap {
 div.view_imgTable{
 	display: flex; 
 	margin: auto; 
-	margin-top: 20px; 
-	width: 1200px;
+	margin:auto; 
+	margin-top: 50px; 
+	width: 1300px;
 }
-
+div.view_date {
+	display: flex;
+}
+div.view_dateStart{
+	margin-right: 15px;
+}
+div.view_reserveBtn {
+	margin-left: 15px;
+	margin-top: 20px;
+}
+button#view_prev {
+	z-index: 10;
+	height: fit-content;
+	background-color: white;
+	margin-left:15px;
+	margin-right:45%;
+	margin-top: 31%; 
+}
+button#view_next{
+	z-index: 10;
+	height: fit-content;
+	background-color: white;
+	margin-left:45%;
+	margin-top: 31%; 
+}
 div#view_TopWrap>div.sb {
 	width: 65%;
 	margin: auto;
@@ -387,6 +453,7 @@ img.rounded {
 	position: absolute;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
+	margin-top: 35px;
 }
 
 img.active {
@@ -395,6 +462,7 @@ img.active {
 
 table#week {
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 /* mypage css */
