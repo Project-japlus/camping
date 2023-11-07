@@ -7,7 +7,7 @@
 			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
 		</div>
 	</div>
-	<div id="view_TopWrap">
+	<div id="view_TopWrap" style="background-image: url('${cpath}/resources/home_back1.jpeg');">
 		<div class="sb">
 			<div>
 				<div class="campingNm">

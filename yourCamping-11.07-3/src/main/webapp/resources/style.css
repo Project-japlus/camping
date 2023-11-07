@@ -141,8 +141,7 @@ div.keywordBox>input {
 	height: 30px;
 	margin-top: 20px;
 }
-/* 여기까지 */
-/* view CSS */
+
 div.item {
 	width: 100%;
 	border-bottom: 1px solid grey;
@@ -361,7 +360,6 @@ button#view_next{
 	margin-top: 31%; 
 }
 div#view_TopWrap {
-	background-image: url("${cpath}/resources/home_back1.jpeg");
 	color: white;
 	height: 200px;
 	background-repeat: no-repeat;
