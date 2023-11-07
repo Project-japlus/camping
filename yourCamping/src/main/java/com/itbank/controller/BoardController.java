@@ -38,17 +38,17 @@ public class BoardController {
 		return mav;
 	}
 	
-	@PostMapping("/reviewSearch")
-	public ModelAndView reviewSearch(@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword)throws Exception {
+	@GetMapping("/reviewSearch")
+	public ModelAndView reviewSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
 		List<ReviewDTO> list = null;
-		if (type == "facltnm" && keyword != null) {
+		if (type.equals("facltnm")) {
 			list = boardService.selectSearchReviewCamping(keyword);
 		}
-		else if (type == "title" && keyword != null) {
+		else if (type.equals("title")) {
 			list = boardService.selectSearchReviewTitle(keyword);
 		}
-		else if (type == "writer" && keyword != null) {
+		else if (type.equals("writer")) {
 			list = boardService.selectSearchReviewWriter(keyword);
 		}
 		else  {
@@ -149,6 +149,23 @@ public class BoardController {
 			list = boardService.selectSearchFreeTitle(keyword);
 		}
 		else if (type == "writer" && keyword != null) {
+			list = boardService.selectSearchFreeWriter(keyword);
+		}
+		else  {
+			list = boardService.selectFreeList();
+		}
+		mav.addObject("list", list);
+		return mav;
+	}
+	
+	@GetMapping("/freeSearch")
+	public ModelAndView freeSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
+		ModelAndView mav = new ModelAndView("/board/freeList");
+		List<FreeDTO> list = null;
+		if (type.equals("title")) {
+			list = boardService.selectSearchFreeTitle(keyword);
+		}
+		else if (type.equals("writer")) {
 			list = boardService.selectSearchFreeWriter(keyword);
 		}
 		else  {

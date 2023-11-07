@@ -29,7 +29,7 @@
 			</tbody>
 		</table>
 	    <div class="d-flex justify-content-between">
-	    	<form action="${cpath }/board/freeList" method="POST" id="searchFoam" name="search-form">
+	    	<form action="${cpath }/board/freeSearch" method="GET" id="searchFoam" name="search-form">
 				<p>
 					<select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
@@ -49,8 +49,9 @@
 	const writeBtn = document.getElementById('writeBtn')
 	const writeHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		if ('${login}' == null) {
-			location.href = "${cpath}/member/login"
+		if ('${login}' == '') {
+			alert('로그인이 필요한 항목입니다')
+			return
 		}
 		else {
 			location.href = event.target.parentNode.href

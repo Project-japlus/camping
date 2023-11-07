@@ -33,7 +33,7 @@
 			</tbody>
 		</table>
 	    <div class="d-flex justify-content-between">
-	    	<form action="${cpath }/board/reviewSearch" method="POST" id="searchFoam" name="search-form">
+	    	<form action="${cpath }/board/reviewSearch" method="GET" id="searchFoam" name="search-form">
 				<p>
 					<select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
@@ -41,7 +41,7 @@
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
 					</select>
-					<input class="inputId" type="text" name="keyword" placeholder="검색어 입력">
+					<input class="inputId" type="text" name="keyword" placeholder="검색어 입력" required>
 					<input class="submitBtn" type="submit" value="검색">
 				</p>
 			</form>
@@ -54,8 +54,9 @@
 	const writeBtn = document.getElementById('writeBtn')
 	const writeHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		if ('${login}' == null) {
-			location.href = "${cpath}/member/login"
+		if ('${login}' == '') {
+			alert('로그인이 필요한 항목입니다')
+			return
 		}
 		else {
 			location.href = event.target.parentNode.href
