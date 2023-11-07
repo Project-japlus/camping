@@ -97,7 +97,12 @@
 	<div style="width: 70%; margin: auto;">
 		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
-				<img src="${dto.first_img }" class="first" width="700px" height="525px">
+				<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+					<img src="${dto.first_img }" class="first" width="700px" height="525px" style="border-radius: 3%;">
+				</c:if>
+				<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+				  <img src="${cpath }/first_img/${dto.first_img }" class="first" width="700px" height="525px"> 
+				</c:if>
 			</div>
 			<div class="container mt-1 view_campingInfo">
 				<table class="table" style="width: 400px;">

@@ -2,10 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div class="main">
-	<div class="d-flex" id="listSearchContainer">
-		<div class="w-50" id="listSearchBox">
+	<div class="d-flex listSearchContainer" style="background-image: url('${cpath}/resources/list_back.jpg');">
+		<div class="w-50 listSearchBox">
 			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
-				<div style="display: flex" id="listSearch">
+				<div style="display: flex" class="listSearch">
 					<div>
 						<span>지역</span> <select id="firstSelect" name="firstSelect" class="rounded"
 							onchange="changeSecondOptions()">
@@ -45,7 +45,7 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect" class="rounded"></select>
+						</select> <select id="secondSelect" name="secondSelect"></select>
 					</div>
 					<div>
 						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
@@ -73,14 +73,14 @@
 						</select>
 					</div>
 				</div>
-				<div id="keywordBox">
+				<div class="keywordBox">
 					<div>
 						<span>키워드 검색</span> <input type="text" name="keyword" class="rounded"
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" class="rounded" value="캠핑장 검색">
-						<input type="button" class="rounded" id="reset" value="초기화">
+						<input type="submit" value="캠핑장 검색"> <input type="button" class="rounded"
+							id="reset" value="초기화">
 					</div>
 				</div>
 			</form>
@@ -133,10 +133,12 @@
 		<c:forEach var="dto" items="${list }">
 			<div class="item d-flex">
 				<div class="p-3">
-					<div class="itemImg"
-						style="background-image: url('${dto.first_img}'); cursor: pointer;"
-						OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'">
-					</div>
+					<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
+					</c:if>
+					<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg2" style="cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}"></div>
+					</c:if>
 				</div>
 				<div class="mt-1 ms-3 itemTextWrap">
 					<div class="viewCount">
@@ -176,37 +178,48 @@
 					</div>
 					<div class="list_SbrsCl" style="background-color: #f9f9f9;">
 						<c:if test="${dto.sbrsCl.contains('전기') }">
-							<span style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('장작판매') }">
-							<span class="firewood" style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
+							<span class="firewood"
+								style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('온수') }">
-							<span class="hotWater" style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
+							<span class="hotWater"
+								style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-							<span class="waterplay" style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
+							<span class="waterplay"
+								style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('산책로') }">
-							<span style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-							<span style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동시설') }">
-							<span class="play" style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
+							<span class="play"
+								style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-							<span class="wifi" style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
+							<span class="wifi"
+								style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-							<span class="tram" style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
+							<span class="tram"
+								style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('놀이터') }">
-							<span class="joyplace" style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
+							<span class="joyplace"
+								style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동장') }">
-							<span class="playground" style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
+							<span class="playground"
+								style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
 						</c:if>
 					</div>
 				</div>
@@ -364,9 +377,14 @@
 			fillSecondOptions(busanOptions);
 
 		} else if (selectedValue == '경상남도') {
-			var busanOptions = [ "전체", "서귀포시", "제주시" ];
-			fillSecondOptions(busanOptions);
-		}
+	        var busanOptions = ["전체", "거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시",
+	        	"의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"];
+	        fillSecondOptions(busanOptions);  
+	        
+		} else if(selectedValue == '제주도') {
+	        var busanOptions = ["전체", "서귀포시", "제주시"];
+	        fillSecondOptions(busanOptions);
+	    }
 
 	}
 

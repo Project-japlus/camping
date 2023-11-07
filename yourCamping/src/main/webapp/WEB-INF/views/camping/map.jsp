@@ -1,137 +1,181 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<div style="margin: auto; width: 1200px;">
-	지역
-	<div style="display: flex">
-		<form style="margin-bottom: 10px;"
-			action="${cpath }/camping/list/${page}">
-			<input type="hidden" name="listType" value="${listType }"> 
-			<select id="firstSelect" name="firstSelect" style="width: 200px;"
-					onchange="changeSecondOptions()">
-					<option value="전체" ${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
-					<option value="서울시" ${param.firstSelect eq '서울시' ? 'selected' : '' }>서울시</option>
-					<option value="부산시" ${param.firstSelect eq '부산시' ? 'selected' : '' }>부산시</option>
-					<option value="대구시" ${param.firstSelect eq '대구시' ? 'selected' : '' }>대구시</option>
-					<option value="인천시" ${param.firstSelect eq '인천시' ? 'selected' : '' }>인천시</option>
-					<option value="광주시" ${param.firstSelect eq '광주시' ? 'selected' : '' }>광주시</option>
-					<option value="대전시" ${param.firstSelect eq '대전시' ? 'selected' : '' }>대전시</option>
-					<option value="울산시" ${param.firstSelect eq '울산시' ? 'selected' : '' }>울산시</option>
-					<option value="세종시" ${param.firstSelect eq '세종시' ? 'selected' : '' }>세종시</option>
-					<option value="경기도" ${param.firstSelect eq '경기도' ? 'selected' : '' }>경기도</option>
-					<option value="강원도" ${param.firstSelect eq '강원도' ? 'selected' : '' }>강원도</option>
-					<option value="충청북도" ${param.firstSelect eq '충청북도' ? 'selected' : '' }>충청북도</option>
-					<option value="충청남도" ${param.firstSelect eq '충청남도' ? 'selected' : '' }>충청남도</option>
-					<option value="전라북도" ${param.firstSelect eq '전라북도' ? 'selected' : '' }>전라북도</option>
-					<option value="전라남도" ${param.firstSelect eq '전라남도' ? 'selected' : '' }>전라남도</option>
-					<option value="경상북도" ${param.firstSelect eq '경상북도' ? 'selected' : '' }>경상북도</option>
-					<option value="경상남도" ${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
-					<option value="제주도" ${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-				</select> <select id="secondSelect" name="secondSelect" style="width: 200px;">
-				</select> <select id="lctcl" name="lctcl">
-					<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
-					<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
-					<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
-					<option value="산" ${param.lctcl eq '산' ? 'selected' : '' }>산</option>
-					<option value="숲" ${param.lctcl eq '숲' ? 'selected' : '' }>숲</option>
-					<option value="계곡" ${param.lctcl eq '계곡' ? 'selected' : '' }>계곡</option>
-					<option value="강" ${param.lctcl eq '강' ? 'selected' : '' }>강</option>
-					<option value="호수" ${param.lctcl eq '호수' ? 'selected' : '' }>호수</option>
-					<option value="도심" ${param.lctcl eq '도심' ? 'selected' : '' }>도심</option>
-				</select>
-				<select id="induty" name="induty">
-					<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
-					<option value="일반야영장" ${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
-					<option value="자동차야영장" ${param.induty eq '자동차야영장' ? 'selected' : '' }>차박</option>
-					<option value="글램핑" ${param.induty eq '글램핑' ? 'selected' : '' }>글램핑</option>
-					<option value="카라반" ${param.induty eq '카라반' ? 'selected' : '' }>카라반 </option>
-				</select> 
-				<br> 
-				<input type="search" name="keyword">
-				<input type="submit" value="캠핑장 검색">
-				<input type="button" id="reset" value="초기화">
-		</form>
+<div class="main">
+	<div class="d-flex listSearchContainer"  style="background-image: url('${cpath}/resources/list_back.jpg');">
+		<div class="w-50 listSearchBox">
+			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
+				<input type="hidden" name="listType" value="${listType }">
+				<div style="display: flex" class="listSearch">
+					<div>
+						<span>지역</span> <select id="firstSelect" name="firstSelect"
+							onchange="changeSecondOptions()">
+							<option value="전체"
+								${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
+							<option value="서울시"
+								${param.firstSelect eq '서울시' ? 'selected' : '' }>서울시</option>
+							<option value="부산시"
+								${param.firstSelect eq '부산시' ? 'selected' : '' }>부산시</option>
+							<option value="대구시"
+								${param.firstSelect eq '대구시' ? 'selected' : '' }>대구시</option>
+							<option value="인천시"
+								${param.firstSelect eq '인천시' ? 'selected' : '' }>인천시</option>
+							<option value="광주시"
+								${param.firstSelect eq '광주시' ? 'selected' : '' }>광주시</option>
+							<option value="대전시"
+								${param.firstSelect eq '대전시' ? 'selected' : '' }>대전시</option>
+							<option value="울산시"
+								${param.firstSelect eq '울산시' ? 'selected' : '' }>울산시</option>
+							<option value="세종시"
+								${param.firstSelect eq '세종시' ? 'selected' : '' }>세종시</option>
+							<option value="경기도"
+								${param.firstSelect eq '경기도' ? 'selected' : '' }>경기도</option>
+							<option value="강원도"
+								${param.firstSelect eq '강원도' ? 'selected' : '' }>강원도</option>
+							<option value="충청북도"
+								${param.firstSelect eq '충청북도' ? 'selected' : '' }>충청북도</option>
+							<option value="충청남도"
+								${param.firstSelect eq '충청남도' ? 'selected' : '' }>충청남도</option>
+							<option value="전라북도"
+								${param.firstSelect eq '전라북도' ? 'selected' : '' }>전라북도</option>
+							<option value="전라남도"
+								${param.firstSelect eq '전라남도' ? 'selected' : '' }>전라남도</option>
+							<option value="경상북도"
+								${param.firstSelect eq '경상북도' ? 'selected' : '' }>경상북도</option>
+							<option value="경상남도"
+								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
+							<option value="제주도"
+								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
+						</select> <select id="secondSelect" name="secondSelect"></select>
+					</div>
+					<div>
+						<span>테마</span> <select id="lctcl" name="lctcl">
+							<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
+							<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
+							<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
+							<option value="산" ${param.lctcl eq '산' ? 'selected' : '' }>산</option>
+							<option value="숲" ${param.lctcl eq '숲' ? 'selected' : '' }>숲</option>
+							<option value="계곡" ${param.lctcl eq '계곡' ? 'selected' : '' }>계곡</option>
+							<option value="강" ${param.lctcl eq '강' ? 'selected' : '' }>강</option>
+							<option value="호수" ${param.lctcl eq '호수' ? 'selected' : '' }>호수</option>
+							<option value="도심" ${param.lctcl eq '도심' ? 'selected' : '' }>도심</option>
+						</select>
+					</div>
+					<div>
+						<span>숙박 형태</span> <select id="induty" name="induty">
+							<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
+							<option value="일반야영장"
+								${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
+							<option value="자동차야영장"
+								${param.induty eq '자동차야영장' ? 'selected' : '' }>차박</option>
+							<option value="글램핑" ${param.induty eq '글램핑' ? 'selected' : '' }>글램핑</option>
+							<option value="카라반" ${param.induty eq '카라반' ? 'selected' : '' }>카라반
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="keywordBox">
+					<div>
+						<span>키워드를 입력하세요</span> <input type="text" name="keyword"
+							placeholder="검색어를 입력하세요">
+					</div>
+					<div>
+						<input type="submit" value="캠핑장 검색"> <input type="button"
+							id="reset" value="초기화">
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
-	<button id="showList">리스트로 보기</button>
+	<div class="justify-content-between d-flex mb-3">
+		<button class="btn btn-primary map_showListBtn" id="showList">
+			리스트로 보기
+		</button>
+	</div>
+
 	<script>
 		const reset = document.getElementById('reset')
 		reset.onclick = function () {
 			let url = '${cpath}/camping/list/${page}?listType=map'
 			location.href = url
 		}
-		document.getElementById('showList').onclick = function() {
-			if (${param.size()} == 1) {
-				location.href = '${cpath}/camping/list/${page}'
+		const mapBtn = document.getElementById('showList')
+		mapBtn.onclick = function() {
+			let newHref = ''
+			if (${param.size()} == 0) {
+				newHref = '${cpath}/camping/list/${page}'
 			} else {
 				const firstSelect = '${param.firstSelect}' || '전체'; // 만약 null이면 '전체'로 설정
 				const secondSelect = '${param.secondSelect}' || '전체';
 				const lctcl = '${param.lctcl}' || '전체'; // 만약 null이면 '전체'로 설정
-				const induty = '${param.induty}' || '전체'; // 만약 null이면 '전체'로 설정
 				const keyword = '${param.keyword}';
+				const induty = '${param.induty}' || '전체'; // 만약 null이면 '전체'로 설정
 	
 				// 새로운 href 생성
-				let url = '${cpath}/camping/list/${page}?';
-				url += '&firstSelect=' + firstSelect
-				url += '&secondSelect=' + secondSelect
-				url += '&lctcl=' + lctcl
-				url += '&induty=' + induty;
-				url += '&keyword=' + keyword
-				location.href = url
+				newHref = '${cpath}/camping/list/${page}?';
+				newHref += '&firstSelect=' + firstSelect
+				newHref += '&secondSelect=' + secondSelect
+				newHref += '&lctcl=' + lctcl
+				newHref += '&keyword=' + keyword
+				newHref += '&induty=' + induty;
 			}
-		}		
+			// 페이지 이동
+			location.href = newHref;
+		}
 	</script>
-</div>
-<div
-	style="display: flex; height: 700px; width: 1200px; margin: auto; margin-top: 50px;">
 
-	<div id="map" style="width: 860px; height: 700px;"></div>
+	<div class="map_list">
+	
+		<div id="map" style="width: 860px; height: 700px;"></div>
+		<div style="overflow-y:auto; overflow-x: hidden; background-color:#fafbfe; width:310px; height:670px;">
+			<c:if test="${empty list }">
+				검색 결과가 없습니다.
+				<div class="map_pagingNon"></div>
+			</c:if>
+			
+			<c:if test="${not empty list }">
+				<c:forEach var="row" items="${list}">
+					<ul class="map_ul">
+						<c:set var="address" value="${fn:split(row.addr1, ' ') }" />
+						<li>[${address[0]} ${address[1]}] ${row.facltnm }</li>
+						<li class="addr" data-addr="${row.addr1 }">${row.addr1 }</li>
+						<li>${row.tel }</li>
+					</ul>
+				</c:forEach>
+			<div>
+				<!-- 페이징 -->
+				<div class="map_paging">
+					<div id="prevDiv"
+						style="border-right: 1px solid black; padding: 3px; width: 100px; text-align: center;">
+						<c:if test="${page != 1 }">
+							<a id="prevA" href="javascript:void(0);" onclick="prevA()">
+								PREV </a>
+						</c:if>
+					</div>
+					<div id="pageDiv"
+						style="border-right: 1px solid black; padding: 3px; width: 100px; text-align: center;">
+						<c:if test="${not empty param }">
+							<a id="pageA" href="javascript:void(0);" onclick="pageA()">
+								${page }</a>
+						</c:if>
+						<c:if test="${empty param }">
+							<a href="${cpath }/camping/list/${page}"> ${page }</a>
+						</c:if>
+					</div>
 
-	<div style="overflow-y: auto; background-color: #fafbfe;">
-		<c:if test="${empty list }">
-			검색 결과가 없습니다
-		</c:if>
-
-		<c:if test="${not empty list }">
-			<c:forEach var="row" items="${list}">
-				<ul class="ul"
-					style="list-style: none; padding-left: 0; height: 120px; width: 300px; border-bottom: 1px solid grey; margin: 0; padding: 15px;">
-					<c:set var="address" value="${fn:split(row.addr1, ' ') }" />
-					<li>[${address[0]} ${address[1]}] ${row.facltnm }</li>
-					<li class="addr" data-addr="${row.addr1 }">${row.addr1 }</li>
-					<li>${row.tel }</li>
-				</ul>
-			</c:forEach>
-
-			<!-- 페이징 -->
-			<div class="paging"
-				style="display: flex; height: 30px; width: 300px;">
-				<div id="prevDiv"
-					style="border-right: 1px solid black; padding: 3px; width: 100px;">
-					<c:if test="${page != 1 }">
-						<a id="prevA" href="javascript:void(0);" onclick="prevA()"> PREV </a>
-					</c:if>
+					<div id="nextDiv" style="padding: 3px; width: 100px; text-align: center;">
+						<c:if test="${page < paging.pageCount }">
+							<a id="nextA" href="javascript:void(0);" onclick="nextA()">
+								NEXT </a>
+						</c:if>
+					</div>
+					<br><br>
 				</div>
-				<div id="pageDiv"
-					style="border-right: 1px solid black; padding: 3px; width: 100px;">
-					<c:if test="${not empty param }">
-						<a id="pageA" href="javascript:void(0);" onclick="pageA()"> ${page } </a>
-					</c:if>
-					<c:if test="${empty param }">
-						<a href="${cpath }/camping/list/${page}"> ${page } </a>
-					</c:if>				
 				</div>
-
-				<div id="nextDiv" style="padding: 3px; width: 100px;">
-					<c:if test="${page < paging.pageCount }">
-						<a id="nextA" href="javascript:void(0);" onclick="nextA()"> NEXT </a>
-					</c:if>
-				</div>
-				<br> <br>
-			</div>
-		</c:if>
+			</c:if>
+		</div>
 	</div>
-</div>
-<script>
+	<script>
 	function prevA() {
 		let url = '';
 		if (${param.size()} == 1) {
@@ -202,11 +246,12 @@
 	}
 </script>
 
-<div style="height: 200px;"></div>
-
-<!-- 지도 -->
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
-<script>
+	<div style="height: 200px;"></div>
+</div>
+	<!-- 지도 -->
+	<script
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
+	<script>
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
@@ -219,7 +264,7 @@
 	// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
 
-	var rows = document.querySelectorAll('.ul')			
+	var rows = document.querySelectorAll('.map_ul')			
 	rows.forEach(row => {
 		var firstValue = row.querySelector('li:first-of-type').textContent;	 
 		var addressValue = row.querySelector('li:nth-of-type(2)').textContent;		// 주소
@@ -305,8 +350,8 @@
 	})
 </script>
 
-<!-- 옵션 적용 -->
-<script>
+	<!-- 옵션 적용 -->
+	<script>
 	window.onload = function() {
 	    // 기본값으로 '전체'를 선택하도록 함
 	    var firstSelect = document.getElementById('firstSelect');
@@ -397,7 +442,12 @@
 	        	"안동시", "영덕군", "영양군", "영주시", "영천시", "예천군", "울릉군", "울진군", "의성군", "청도군", "청송군", "칠곡군", "포항시"];
 	        fillSecondOptions(busanOptions);
 	    
-		} else if(selectedValue == '경상남도') {
+		} else if (selectedValue == '경상남도') {
+	        var busanOptions = ["전체", "거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시",
+	        	"의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"];
+	        fillSecondOptions(busanOptions);  
+	        
+		} else if(selectedValue == '제주도') {
 	        var busanOptions = ["전체", "서귀포시", "제주시"];
 	        fillSecondOptions(busanOptions);
 	    }

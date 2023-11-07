@@ -55,24 +55,23 @@
 			(#{user_idx}, #{review_idx})
 	</insert>
 	
-	<select id="selectSearchReviewCamping" parameterType="String" resultType="review">
-		SELECT
-		    r.*,
-		    u.USERID,
-		    c.FACLTNM,
-		    (
-		        SELECT COUNT(*) 
-		        FROM review_like rl
-		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
-		    ) AS REVIEW_LIKE_COUNT
-			FROM review r
-			JOIN user_table u ON r.USER_IDX = u.USER_IDX
-			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
-		    WHERE c.facltnm like '%'||#{keyword}||'%'
-			ORDER BY r.REVIEW_IDX DESC
+	<select id="selectSearchCamping" parameterType="String" resultType="review">
+		select
+		    R.*,
+		    U.userid,
+		    NVL(LIKE_COUNT, 0) as like_count
+		    from review R
+		    join user_table U on R.user_idx = U.user_idx
+		    left join (
+		        select review_idx, count(*) as LIKE_COUNT
+		        from review_like RL
+		        group by review_idx
+		    ) RL on R.review_idx = RL.review_idx
+		    where R. like '%'||#{keyword}||'%'
+		    order by R.review_idx desc
 	</select>
 	
-	<select id="selectSearchReviewTitle" parameterType="String" resultType="review">
+	<select id="selectSearchTitle" parameterType="String" resultType="review">
 		select
 		    r.*,
 		    u.userid,
@@ -88,7 +87,7 @@
 		    order by r.review_idx desc
 	</select>
 	
-	<select id="selectSearchReviewWriter" parameterType="String" resultType="review">
+	<select id="selectSearchWriter" parameterType="String" resultType="review">
 		select
 		    R.*,
 		    U.userid,

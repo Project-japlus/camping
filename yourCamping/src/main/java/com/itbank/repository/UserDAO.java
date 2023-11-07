@@ -53,12 +53,15 @@ public interface UserDAO {
 	// 사업자 번호 확인
 	@Select("select * from bizrNo where bizrNo = #{bizrNo}")
 	String getbizrNo(String bizrNo);
-
+	
+	// 북마크에서 가져오기
 	List<Integer> getBookMark(int i);
 	
+	// 북마크 추가
 	@Insert("insert into bookmark values (#{user_idx}, #{camping_idx})")
 	void addBookMark(HashMap<String, Integer> param);
 
+	// 북마크 제거
 	@Delete("delete bookmark where user_idx = #{user_idx} and camping_idx = #{camping_idx}")
 	void removeBookMark(HashMap<String, Integer> param);
 	

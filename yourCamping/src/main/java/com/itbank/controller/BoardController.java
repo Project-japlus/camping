@@ -38,8 +38,8 @@ public class BoardController {
 		return mav;
 	}
 	
-	@PostMapping("/reviewSearch")
-	public ModelAndView reviewSearch(@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword)throws Exception {
+	@PostMapping("/reviewList")
+	public ModelAndView reviewList(@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword)throws Exception {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
 		List<ReviewDTO> list = null;
 		if (type == "facltnm" && keyword != null) {
