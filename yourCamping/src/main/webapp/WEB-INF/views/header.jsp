@@ -101,6 +101,18 @@ div.mainIcon>div:hover {
 	margin-top: -10px;
 }
 
+div#main_link_div {
+	margin-top: 0;
+	height: 400px;
+}
+
+ul#main_link_ul {
+	font-size: 18px;
+}
+
+ul#main_link_ul li {
+	margin-bottom: 10px;
+}
 /* 	camping_list CSS */
 div.listSearchContainer {
 	background-image: url("${cpath}/resources/list_back.jpg");
@@ -186,8 +198,8 @@ div.itemText>div:last-child>span, div.itemText>div:last-child>h3 {
 }
 
 div.itemImg {
-	width: 300px;
-	height: 200px;
+	width: 320px;
+	height: 270px;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
