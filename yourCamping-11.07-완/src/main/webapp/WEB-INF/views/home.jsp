@@ -97,16 +97,6 @@
 		</div>
 	</div>
 </div>
-<footer style="margin-top: 100px;">
-	<div class="p-2 text-black rounded text-center bg-warning"
-		style="-bs-bg-opacity: .7;">
-		<h2>🏕️어디로캠핑(주)</h2>
-		<br>
-		<p>개인정보처리방침</p>
-		<p>홈페이지 이용약관</p>
-		<p>고객센터</p>
-	</div>
-</footer>
 <script>
 	window.onload = function() {
 		// 기본값으로 '전체'를 선택하도록 함
@@ -228,5 +218,4 @@
 	}
 	
 </script>
-</body>
-</html>
+<%@ include file="footer.jsp" %>

@@ -649,5 +649,4 @@
 		showImage(currentImageIndex);
 	}
 </script>
-</body>
-</html>
+<%@ include file="../footer.jsp" %>
