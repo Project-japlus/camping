@@ -97,12 +97,7 @@
 	<div style="width: 70%; margin: auto;">
 		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
-				<c:if test="${fn:startsWith(dto.first_img, 'https')}">
-					<img src="${dto.first_img }" class="first" width="700px" height="525px" style="border-radius: 3%;">
-				</c:if>
-				<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
-				  <img src="${cpath }/first_img/${dto.first_img }" class="first" width="700px" height="525px"> 
-				</c:if>
+				<img src="${dto.first_img }" class="first" width="700px" height="525px">
 			</div>
 			<div class="container mt-1 view_campingInfo">
 				<table class="table" style="width: 400px;">
@@ -149,13 +144,20 @@
 						</tr>
 					</c:if>
 				</table>
-				
-				<form action="${cpath }/reserve/reservation/${dto.camping_idx}">
+			</div>
+		</div>
+
+		<div>
+			<div style="margin-top: 50px;">
+				<h5>💡예약하기</h5>
+			</div>
+			<form action="${cpath }/reserve/reservation/${dto.camping_idx}">
 				<!--체크인 - 체크아웃 -->
-				<div>
-					<div class="view_date">
+				<div
+					class="row d-flex border border-1 rounded-2 w-50 m-auto mt-3 p-3">
+					<div class="dates-wrapper group">
 						<!-- 캠핑 시작 날짜 -->
-						<div class="view_dateStart">
+						<div class="field clearfix date-range-start date-wrapper">
 							<div class="label">
 								<label for="datepicker-start">체크인:</label>
 							</div>
@@ -163,6 +165,8 @@
 								<input type="date" name="reserve_str_date" id="datepicker-start"
 									class="input-text" placeholder="dd/mm/yyyy" required>
 							</div>
+							<a href="#" class="calendar-btn calendar-start hide-text">View
+								calendar</a>
 						</div>
 
 						<!-- 캠핑 끝 날짜 -->
@@ -174,6 +178,7 @@
 								<input type="date" name="reserve_end_date" id="datepicker-end"
 									class="input-text" placeholder="dd/mm/yyyy" required>
 							</div>
+							<a href="#" class="calendar-btn hide-text">View calendar</a>
 						</div>
 
 						<!-- 달력 -->
@@ -198,12 +203,10 @@
 							$('.calendar-btn').hide();
 						}
 					</script>
-					<div class="view_reserveBtn">
-						<input type="submit" value="예약하기">
-					</div>
 
 					</div>
 				</div>
+				<input type="submit" value="예약하기">
 			</form>
 		</div>
 
@@ -226,9 +229,6 @@
 			</table>
 		</div>
 		<script>
-		
-		
-		
 			document.getElementById('loading-container').style.display = 'block';
 			document.body.style.overflow = 'hidden';
 			// 이벤트 리스너를 저장할 변수
@@ -291,7 +291,6 @@
 				const tr = document.getElementById('time')
 				for (let i = 0; i < 14; i++) {
 					const td = document.createElement('td')
-// 					tdElement.setAttribute('class', 'view_td');
 					if (i % 2 == 0) {
 						td.innerText = '오전'
 					}
@@ -605,28 +604,26 @@
 		</div>
 
 		<div>
-			<div id="imgBox" style="position: relative;">
-			<button id="view_prev"><-</button>
+			<button id="prev"><-</button>
+			<div id="imgBox">
 				<c:forEach var="img" items="${image }" varStatus="i">
 					<c:if test="${i.index == 0 }">
-						<img src="${img.inner_img }" class="rounded active" style="">
+						<img src="${img.inner_img }" class="rounded active">
 					</c:if>
 					<img src="${img.inner_img }" class="rounded">
 				</c:forEach>
-			<button id="view_next">-></button>
 			</div>
+			<button id="next">-></button>
 		</div>
 	</div>
 </div>
-
-
 <div style="height: 300px;"></div>
 
 <script>
 	const imgBox = document.getElementById('imgBox')
 	const imgarr = document.querySelectorAll('.rounded')
-	const prev = document.getElementById('view_prev')
-	const next = document.getElementById('view_next')
+	const prev = document.getElementById('prev')
+	const next = document.getElementById('next')
 	const fullsize = +imgarr.length * 900;
 	var currentImageIndex = 0;
 	
