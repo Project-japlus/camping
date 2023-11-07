@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0 //EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+		
+<mapper namespace="com.itbank.repository.RootDAO">
+
+	<!-- 예약리스트 -->
+	<select id="selectList" resultType="reserve" >
+		select 
+		    * 
+		    from 
+		    reserve r 
+		    join user_table ut on ut.user_idx = r.user_idx
+		    join camping c on  r.camping_idx = c.camping_idx
+            join camping_site cs on c.camping_idx = cs.camping_idx
+		    order by reserve_idx desc
+	</select>
+	
+	
+	<!-- 단일 -->
+	<select id="rootSelectOne" parameterType="int" resultType="reserve">
+			select 
+		    * 
+		    from 
+		    reserve r 
+		    join user_table ut on ut.user_idx = r.user_idx
+		    join camping c on  r.camping_idx = c.camping_idx
+		    where r.reserve_idx = #{reserve_idx}
+	</select>
+	
+	<!-- 유저관리 -->
+	<select id="userList" resultType="user">
+			select 
+			* 
+			from 
+				user_table order by user_idx desc
+	</select>
+	
+	<!-- 예약취소글 -->
+	<delete id="reserveDelete" parameterType="int">
+		delete reserve where reserve_idx = #{reserve_idx}	
+	</delete>
+	
+	<!-- 유저 비활성화 -->
+	<update id="userDisabled" parameterType="int">
+		update user_table
+			 set joinConfirm = 'N' 
+			 where user_idx = #{user_idx}
+	</update>
+	
+	
+	<!-- 조인 -->
+		<select id="rootOne" resultType="reserve" parameterType="int">
+		        
+		    select 
+				* 
+		        from 
+		        reserve r
+		        join user_table ut on r.user_idx = ut.user_idx
+		        join camping c on r.camping_idx = c.camping_idx
+		        where 
+		        r.reserve_idx = (SELECT MAX(reserve_idx) FROM reserve)
+	</select>
+	
+
+
+	
+	
+</mapper>
