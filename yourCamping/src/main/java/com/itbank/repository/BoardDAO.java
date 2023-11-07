@@ -25,7 +25,7 @@ public interface BoardDAO {
 
 	ReviewDTO selectReviewOne(int review_idx);
 	
-	int countReviewView(ReviewDTO dto);
+	int countReviewView(int review_idx);
 	
 	int countReviewLike(ReviewLikeDTO dto);
 	
@@ -43,7 +43,7 @@ public interface BoardDAO {
 
 	FreeDTO selectFreeOne(int free_table_idx);
 	
-	int countFreeView(FreeDTO dto);
+	int countFreeView(int free_table_idx);
 	
 	int replyCount(int free_table_idx);
 	
@@ -68,4 +68,5 @@ public interface BoardDAO {
 	List<FreeDTO> freeSortViewCount();
 
 	ReplyDTO selectReplyOne(HashMap<String, Object> map);
+
 }

@@ -42,8 +42,8 @@ public class BoardComponent {
 		return boardDAO.selectReviewOne(review_idx);
 	}
 	
-	public int countReviewView(ReviewDTO dto) {
-		return boardDAO.countReviewView(dto);
+	public int countReviewView(int review_idx) {
+		return boardDAO.countReviewView(review_idx);
 	}
 	
 	public int countReviewLike(ReviewLikeDTO dto) {
@@ -82,8 +82,8 @@ public class BoardComponent {
 		return boardDAO.selectFreeOne(free_table_idx);
 	}
 
-	public int  countFreeView(FreeDTO dto) {
-		return boardDAO.countFreeView(dto);
+	public int countFreeView(int free_table_idx) {
+		return boardDAO.countFreeView(free_table_idx);
 	}
 	
 	public int replyCount(int free_table_idx) {
@@ -129,4 +129,5 @@ public class BoardComponent {
 	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
 		return boardDAO.selectReplyOne(map);
 	}
+
 }

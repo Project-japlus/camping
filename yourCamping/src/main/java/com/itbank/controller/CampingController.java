@@ -68,7 +68,7 @@ public class CampingController {
 		}
 		
 		if (flag1 || flag2 || flag3 || flag4) {
-			tmp = 1;
+//			tmp = 1;
 			boardCount = campingService.getSearchCnt(param);
 		}
 		PagingService paging = new PagingService(tmp, boardCount);

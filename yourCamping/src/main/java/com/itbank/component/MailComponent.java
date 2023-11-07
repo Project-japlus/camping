@@ -35,8 +35,6 @@ public class MailComponent {
 	@Value("classpath:mailForm.html")
 	private Resource mailForm;
 	
-	private String tag = "";
-	
 	public MailComponent() throws FileNotFoundException, IOException{
 		// 파일 내용 불러와서 태그에 넣어두기
 		props = new Properties();

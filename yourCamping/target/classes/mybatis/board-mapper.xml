@@ -14,7 +14,7 @@
 		        SELECT COUNT(*) 
 		        FROM review_like rl
 		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
-		    ) AS REVIEW_LIKE_COUNT
+		    ) AS LIKE_COUNT
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
@@ -37,15 +37,15 @@
 		        SELECT COUNT(*) 
 		        FROM review_like rl
 		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
-		    ) AS REVIEW_LIKE_COUNT
+		    ) AS LIKE_COUNT
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
 			WHERE r.review_idx = #{review_idx}
 	</select>
 	
-	<update id="countReviewView" parameterType="review">
-		update review set review_viewCount = #{review_viewCount} + 1 where review_idx = #{review_idx}
+	<update id="countReviewView" parameterType="int">
+		update review set review_viewCount = review_viewCount + 1 where review_idx = #{review_idx}
 	</update>
 	
 	<insert id="countReviewLike" parameterType="revLike">
@@ -55,52 +55,55 @@
 			(#{user_idx}, #{review_idx})
 	</insert>
 	
-	<select id="selectSearchCamping" parameterType="String" resultType="review">
-		select
-		    R.*,
-		    U.userid,
-		    NVL(LIKE_COUNT, 0) as like_count
-		    from review R
-		    join user_table U on R.user_idx = U.user_idx
-		    left join (
-		        select review_idx, count(*) as LIKE_COUNT
-		        from review_like RL
-		        group by review_idx
-		    ) RL on R.review_idx = RL.review_idx
-		    where R. like '%'||#{keyword}||'%'
-		    order by R.review_idx desc
-	</select>
-	
-	<select id="selectSearchTitle" parameterType="String" resultType="review">
-		select
+	<select id="selectSearchReviewCamping" parameterType="String" resultType="review">
+		SELECT
 		    r.*,
-		    u.userid,
-		    NVL(LIKE_COUNT, 0) as like_count
-		    from review r
-		    join user_table u on r.user_idx = u.user_idx
-		    left join (
-		        select review_idx, count(*) as like_count
-		        from review_like rl
-		        group by review_idx
-		    ) rl on r.review_idx = rl.review_idx
-		    where r.review_title like '%'||#{keyword}||'%'
-		    order by r.review_idx desc
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    WHERE c.facltnm like '%'||#{keyword}||'%'
+			ORDER BY r.REVIEW_IDX DESC
 	</select>
 	
-	<select id="selectSearchWriter" parameterType="String" resultType="review">
-		select
-		    R.*,
-		    U.userid,
-		    NVL(LIKE_COUNT, 0) as like_count
-		    from review R
-		    join user_table U on R.user_idx = U.user_idx
-		    left join (
-		        select review_idx, count(*) as LIKE_COUNT
-		        from review_like RL
-		        group by review_idx
-		    ) RL on R.review_idx = RL.review_idx
-		    where U.userid like '%'||#{keyword}||'%'
-		    order by R.review_idx desc
+	<select id="selectSearchReviewTitle" parameterType="String" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    WHERE r.review_title like '%'||#{keyword}||'%'
+			ORDER BY r.REVIEW_IDX DESC
+	</select>
+	
+	<select id="selectSearchReviewWriter" parameterType="String" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    WHERE u.userid like '%'||#{keyword}||'%'
+			ORDER BY r.REVIEW_IDX DESC
 	</select>
 	
 	<select id="selectReviewImg" parameterType="int" resultType="String">
@@ -142,8 +145,7 @@
 		SELECT
 		    f.*,
 		    u.USERID,
-		    fr.REPLY_WDATE,
-		    fr.REPLY_CONTENT
+		    fr.*
 		FROM
 		    free_table f
 		JOIN
@@ -151,7 +153,7 @@
 		LEFT JOIN
 		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
-			f.free_title = like '%'||#{keyword}||'%'
+			f.free_title like '%'||#{keyword}||'%'
 		ORDER BY
 		    f.free_table_idx desc
 	</select>
@@ -160,8 +162,7 @@
 		SELECT
 		    f.*,
 		    u.USERID,
-		    fr.REPLY_WDATE,
-		    fr.REPLY_CONTENT
+		    fr.*
 		FROM
 		    free_table f
 		JOIN
@@ -197,8 +198,8 @@
 			f.free_table_idx = #{free_table_idx}
 	</select>
 	
-	<update id="countFreeView" parameterType="free">
-		update free_table set free_viewCount = #{free_viewCount} + 1 where free_table_idx = #{free_table_idx}
+	<update id="countFreeView" parameterType="int">
+		update free_table set free_viewCount = free_viewCount + 1 where free_table_idx = #{free_table_idx}
 	</update>
 	
 	<select id="selectReply" parameterType="int" resultType="reply">

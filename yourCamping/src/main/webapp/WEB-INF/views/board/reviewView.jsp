@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
 			<div class="col text-start ms-2">${dto.userid }</div>
 			<div class="col text-center">${dto.review_wdate }</div>
-			<div class="col text-end me-2">조회 : ${dto.review_viewCount + 1 } | 추천 : ${dto.like_count }</div>
+			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | 추천 : ${dto.like_count }</div>
 		</div>
 		<div class="mt-5 mb-5">
 			<h2>${dto.review_title }</h2>
@@ -22,7 +22,7 @@
 					<div class="carousel-item active">
 						<img src="${cpath }/resources/logo/logo.png" class="d-block w-100">
 					</div>
-					<c:forEach var="image" items="${list }">
+					<c:forEach var="image" items="${imgList }">
 					<div class="carousel-item">
 						<img src="${cpath }/upload/${image }" class="d-block w-100">
 					</div>
