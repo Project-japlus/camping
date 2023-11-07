@@ -343,7 +343,7 @@ ul.map_ul {
 	padding-left:0; 
 	height:120px; 
 	width:300px; 
-	border-bottom:1px solid grey; 
+	border-bottom:1px solid #eee; 
 	margin:0; 
 	padding:15px;
 }
