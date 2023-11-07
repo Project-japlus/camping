@@ -101,20 +101,8 @@ div.mainIcon>div:hover {
 	margin-top: -10px;
 }
 
-div#main_link_div {
-	margin-top: 0;
-	height: 400px;
-}
-
-ul#main_link_ul {
-	font-size: 18px;
-}
-
-ul#main_link_ul li {
-	margin-bottom: 10px;
-}
 /* 	camping_list CSS */
-div#listSearchContainer {
+div.listSearchContainer {
 	background-image: url("${cpath}/resources/list_back.jpg");
 	background-repeat: no-repeat;
 	background-size: 100%;
@@ -124,7 +112,7 @@ div#listSearchContainer {
 	margin-bottom: 30px;
 }
 
-div#listSearchBox {
+div.listSearchBox {
 	margin: auto;
 	border: 2px solid black;
 	border-radius: 25px;
@@ -136,38 +124,38 @@ div#listSearchBox {
 	background-color: rgba(255, 255, 255, 0.7);
 }
 
-div#listSearchBox span {
+div.listSearchBox span {
 	display: block;
 }
 
-div#listSearchBox select {
+div.listSearchBox select {
 	width: 150px;
 }
 
-div#listSearch>div {
+div.listSearch>div {
 	margin: 10px;
 }
 
-div#keywordBox {
+div.keywordBox {
 	display: flex;
 	padding-left: 10px;
 	margin-top: 50px;
 }
 
-div#keywordBox input[type=text] {
+div.keywordBox input[type=text] {
 	width: 300px;
 }
 
-div#keywordBox>input, div#keywordBox>div:last-child>input {
+div.keywordBox>input, div.keywordBox>div:last-child>input {
 	margin-left: 10px;
 }
 
-div#keywordBox>div:last-child {
+div.keywordBox>div:last-child {
 	display: flex;
 	align-items: flex-end;
 }
 
-div#keywordBox>input {
+div.keywordBox>input {
 	height: 30px;
 	margin-top: 20px;
 }
@@ -198,8 +186,8 @@ div.itemText>div:last-child>span, div.itemText>div:last-child>h3 {
 }
 
 div.itemImg {
-	width: 320px;
-	height: 270px;
+	width: 300px;
+	height: 200px;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -340,6 +328,15 @@ div.view_imgTable{
 div#view_TopWrap>div.sb {
 	width: 65%;
 	margin: auto;
+}
+
+div.campingNm {
+	display: flex;
+}
+
+div.campingNm > span#bookmark {
+	font-size: 1.5em;
+	cursor: pointer;
 }
 
 h1#view_Facltnm {

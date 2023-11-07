@@ -44,8 +44,8 @@
 			WHERE r.review_idx = #{review_idx}
 	</select>
 	
-	<update id="countReviewView" parameterType="review">
-		update review set review_viewCount = #{review_viewCount} + 1 where review_idx = #{review_idx}
+	<update id="countReviewView" parameterType="int">
+		update review set review_viewCount = review_viewCount + 1 where review_idx = #{review_idx}
 	</update>
 	
 	<insert id="countReviewLike" parameterType="revLike">
@@ -198,8 +198,8 @@
 			f.free_table_idx = #{free_table_idx}
 	</select>
 	
-	<update id="countFreeView" parameterType="free">
-		update free_table set free_viewCount = #{free_viewCount} + 1 where free_table_idx = #{free_table_idx}
+	<update id="countFreeView" parameterType="int">
+		update free_table set free_viewCount = free_viewCount + 1 where free_table_idx = #{free_table_idx}
 	</update>
 	
 	<select id="selectReply" parameterType="int" resultType="reply">

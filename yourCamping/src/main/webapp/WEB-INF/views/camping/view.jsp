@@ -10,7 +10,17 @@
 	<div id="view_TopWrap">
 		<div class="sb">
 			<div>
-				<h1 id="view_Facltnm">${dto.facltnm }</h1>
+				<div class="campingNm">
+					<h1 id="view_Facltnm">${dto.facltnm }</h1>
+					<c:choose>
+						<c:when test="${login.camping_idx.contains(dto.camping_idx) }">
+							<span id="bookmark" onmouseover="changeText()" onmouseout="restoreText()">❤️</span>
+						</c:when>
+						<c:otherwise>
+							<span id="bookmark" onmouseover="changeText()" onmouseout="restoreText()">🤍</span>
+						</c:otherwise>
+					</c:choose>
+				</div>
 				<c:if test="${not empty dto.lineIntro }">
 					<p>${dto.lineIntro }</p>
 				</c:if>
@@ -45,6 +55,45 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	    const bookmark = document.getElementById('bookmark')
+	    let camping_list = '${login.camping_idx}'
+	    let isClicked = camping_list.includes('${dto.camping_idx}') ? true : false;
+	    bookmark.onclick = function () {
+	    	if ('${login.user_idx}' != '') {
+	    		let url = ''
+	    		if (camping_list.includes('${dto.camping_idx}')) {
+	    			url = '${cpath}/ajax/removeBookMark?user_idx=${login.user_idx}&camping_idx=${dto.camping_idx}'
+	    			isClicked = false;
+	    		} else {
+	    			url = '${cpath}/ajax/addBookMark?user_idx=${login.user_idx}&camping_idx=${dto.camping_idx}'
+	    			isClicked = true;
+	    		}
+	    		fetch(url)
+	    		if (isClicked) {
+	    			 document.getElementById('bookmark').innerHTML = "❤️";
+	    		} else {
+	    			document.getElementById('bookmark').innerHTML = "🤍";
+	    		}
+	    	} else {
+	    		alert('로그인 후 이용해 주세요')
+	    	}
+	    }
+		function changeText() {
+			if (isClicked) {
+		         document.getElementById('bookmark').innerHTML = "🤍";
+			} else {
+		         document.getElementById('bookmark').innerHTML = "❤️";
+			}
+	    }
+	    function restoreText() {
+	    	if (isClicked) {
+		         document.getElementById('bookmark').innerHTML = "❤️";
+	    	} else {
+		         document.getElementById('bookmark').innerHTML = "🤍";
+	    	}
+	    }
+	</script>
 	<div style="width: 70%; margin: auto;">
 		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
@@ -159,11 +208,7 @@
 				</div>
 				<input type="submit" value="예약하기">
 			</form>
-
-
-			<%-- 		<a href="${cpath }/reservation/${dto.camping_idx}?reserve_str_date=${dto.reserve_str_date}&reserve_end_date=${dto.reserve_end_date}&reserve_site=${dto.reserve_site}" >${dto.camping_idx }</a> --%>
 		</div>
-		<%-- 	<div>${dto.reserve_str_date }</div> --%>
 
 		<div style="margin-top: 50px;">
 			<h5>💡주간날씨</h5>
@@ -186,6 +231,29 @@
 		<script>
 			document.getElementById('loading-container').style.display = 'block';
 			document.body.style.overflow = 'hidden';
+			// 이벤트 리스너를 저장할 변수
+			let isEventListenersDisabled = false;
+
+			// 이벤트 리스너를 비활성화하는 함수
+			function disableEventListeners() {
+			  isEventListenersDisabled = true;
+			}
+
+			// 이벤트 리스너를 다시 활성화하는 함수
+			function enableEventListeners() {
+			  isEventListenersDisabled = false;
+			}
+
+			// 키 다운 이벤트 리스너
+			function keyDownHandler(event) {
+			  if (isEventListenersDisabled) {
+			    event.preventDefault();
+			    return;
+			  }
+			}
+			// 로딩 시작 시 이벤트 리스너 비활성화
+			disableEventListeners();
+
 			let date = new Date()
 			async function dateLoadHandler() {
 				const tr = document.getElementById('date')
@@ -400,6 +468,8 @@
 					td.innerHTML = '<h5>날씨를 불러올 수 없습니다</h5>'
 					document.getElementById('tr#date').appendChild(td)
 				} finally {
+					// 로딩 완료 후 이벤트 리스너 다시 활성화
+					enableEventListeners();
 					document.getElementById('loading-container').style.display = 'none';
 					document.body.style.overflow = 'auto';
 				}

@@ -30,6 +30,7 @@ public class CampingService {
 
 	// 대표 이미지
 	public CampingDTO selectOne(int camping_idx) {
+		campingDAO.plusCamping_viewCount(camping_idx);
 		return campingDAO.selectOne(camping_idx);
 	}
 

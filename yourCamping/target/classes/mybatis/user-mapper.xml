@@ -14,8 +14,8 @@
 			values (#{userid}, #{userpw}, #{username}, #{phone},  #{email}, #{salt}, #{bizrno})
 	</insert>
 	
-	<select id="checkLogin" resultType="user">
-		select * from user_table where userid = #{userid}
+	<select id="getBookMark" parameterType="int" resultType="int">
+		select camping_idx from bookmark where user_idx = #{user_idx}
 	</select>
 </mapper>
 
