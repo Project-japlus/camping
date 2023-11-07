@@ -26,10 +26,11 @@
 	<table class="table table-bordered border border-1 rounded-5" id="modify_table">
 		<tr>
 			<td>
-				<h5>이름 </h5>
+<!-- 				사진 -->
+				<h5> </h5>
 			</td>
 			<td>
-				<h5>${login.username }</h5>
+				<h5></h5>
 			</td>
 		</tr>
 		<tr>
@@ -86,18 +87,20 @@
 <!-- 			간단한 캠핑장 정보 -->
 				<div>
 					<table class="table table-bordered" id="modify_table">
-						<tr>
-							<td>캠핑장 이름</td>
-							<td>asdflk;j</td>
-						</tr>
-						<tr>
-							<td>등록한 날짜</td>
-							<td>2023-11-06 ~ 2023-11-16</td>
-						</tr>
-						<tr>
-							<td>남은 날짜</td>
-							<td>D-5</td>
-						</tr>
+						<c:forEach var="dto" items="${reserveList }" >
+							<tr>
+								<td>캠핑장 이름</td>
+								<td>${dto.facltnm }</td>
+							</tr>
+							<tr>
+								<td>등록한 날짜</td>
+								<td>${dto.reserve_str_date }</td>
+							</tr>
+							<tr>
+								<td>남은 날짜</td>
+								<td>${dto.reserve_end_date }</td>
+							</tr>
+						</c:forEach>
 					</table>
 				</div>
 			</div>
