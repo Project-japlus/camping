@@ -146,11 +146,8 @@
 								<td>${dto.camping_viewCount }</td>
 								<td>
 									<div class="justify-content-between">
-										<a class="text-warning fw-bold"
-											href="${cpath }/bizr/campingUpdate/${dto.camping_idx}">캠핑장
-											수정</a> <a class="text-warning fw-bold"
-											href="${cpath }/bizr/campingDelete/${dto.camping_idx}">캠핑장
-											삭제</a>
+										<a class="text-warning fw-bold" href="${cpath }/bizr/campingUpdate/${dto.camping_idx}">캠핑장 수정</a>
+										<a class="text-warning fw-bold" href="${cpath }/user/Mypage_check?camping_idx=${dto.camping_idx}" id="campingDel">캠핑장 삭제</a>
 									</div>
 								</td>
 							</tr>
@@ -160,7 +157,6 @@
 			</div>
 		</div>
 	</c:if>
-</div>
 <script>
 	const leave = document.getElementById('leave')
 	leave.onclick = function(event) {
@@ -172,6 +168,16 @@
 			return
 		}
 	}
+	
+	const campingDel = document.getElementById('campingDel');
+	campingDel.addEventListener('click', function(event) {
+	  event.preventDefault();
+	  const userConfirm = confirm('정말 삭제하시겠습니까?');
+	  if(userConfirm) {
+	    location.href = campingDel.href;
+	  }
+	});
 </script>
+</div>
 </body>
 </html>

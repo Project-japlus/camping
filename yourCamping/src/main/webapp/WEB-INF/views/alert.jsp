@@ -22,6 +22,9 @@
 			if (url == 'list') {
 				href = '${cpath}/camping/list/1'
 			}
+			if (url == 'MpC') {
+				href = '${cpath}/user/Mypage_check'
+			}
 			location.href = href
 		}
 	</script>

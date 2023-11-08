@@ -130,8 +130,13 @@
 	</select>
 	
 	<insert id="campingImgInsert" parameterType="camping">
-		insert into camping_img
-			values(#{camping_idx}, #{first_img}, #{inner_img})
+		insert into camping_img(camping_idx, inner_img)
+			values(#{camping_idx}, #{inner_img})
+	</insert>
+	
+	<insert id="campingFirstInsert" parameterType="camping">
+		insert into camping_img(camping_idx, first_img)
+			values(#{camping_idx}, #{first_img})
 	</insert>
 
 	<insert id="campingPlaceInsert" parameterType="camping">
@@ -313,7 +318,7 @@
 		delete camping where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingImg" parameterType="camping">
+	<delete id="deleteCampingImg" parameterType="int">
 		delete camping_img where camping_idx = #{camping_idx}
 	</delete>
 	
@@ -321,25 +326,14 @@
 		delete camping_activity where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingIntoduce" parameterType="int">
-		delete camping_introduce where camping_idx = #{camping_idx}
-	</delete>
-	
 	<delete id="deleteCampingPlace" parameterType="int">
 		delete camping_place where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingInternal" parameterType="int">
-		delete camping_internal where camping_idx = #{camping_idx}
-	</delete>
-	
-	<delete id="deleteCampingSafetyDevice" parameterType="int">
-		delete camping_safety_device where camping_idx = #{camping_idx}
-	</delete>
-	
-	<delete id="deleteCampingSite" parameterType="int">
-		delete camping_site where camping_idx = #{camping_idx}
-	</delete>
+	<update id="updateConfirm" parameterType="int">
+		update camping set camping_confirm = 'N'
+				where camping_idx = #{camping_idx}
+	</update>
 	
 	<select id="selectCamping" resultType="camping" parameterType="int">
 		select *

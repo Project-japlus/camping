@@ -56,9 +56,12 @@ public class CampingService {
 	}
 
 	public int campingImgInsert(CampingDTO dto) {
+		int row = 0;
 		if (dto.getUpload1().getSize() != 0) {
 			String fileName = fileComponent.upload(dto.getUpload1());
 			dto.setFirst_img(fileName);
+			row = campingDAO.campingFirstInsert(dto);
+
 		}
 		if (dto.getUpload2() != null) {
 			for (int i = 0; i < dto.getUpload2().length; i++) {
@@ -66,10 +69,10 @@ public class CampingService {
 				CampingDTO inner = new CampingDTO();
 				inner.setCamping_idx(dto.getCamping_idx());
 				inner.setInner_img(fileName);
-				campingDAO.campingImgInsert(inner);
+				row = campingDAO.campingImgInsert(inner);
 			}
 		}
-		return campingDAO.campingImgInsert(dto);
+		return row;
 	}
 
 	public int campingPlaceInsert(CampingDTO dto) {
@@ -145,37 +148,25 @@ public class CampingService {
 		return campingDAO.deleteCamping(maxCampingIdx);
 	}
 
-	public int deleteCampingImg(CampingDTO dto) {
-		fileComponent.deleteFile(dto.getFirst_img());
-		String[] fileName = dto.getInner_img().split(",");
-		for (int i = 0; i < fileName.length; i++) {
-			fileComponent.deleteFile2(fileName[i]);
+	public int deleteCampingImg(int maxCampingIdx) {
+		List<CampingDTO> list = campingDAO.selectOneByImg(maxCampingIdx);
+		for (CampingDTO img : list) {
+			if (img.getFirst_img() != null) {
+				fileComponent.deleteFile(img.getFirst_img());
+			} else {
+				String inner = img.getInner_img();
+				fileComponent.deleteFile2(inner);
+			}
 		}
-		return campingDAO.deleteCampingImg(dto);
+		return campingDAO.deleteCampingImg(maxCampingIdx);
 	}
 
 	public int deleteCampingActivity(int maxCampingIdx) {
 		return campingDAO.deleteCampingActivity(maxCampingIdx);
 	}
 
-	public int deleteCampingIntoduce(int maxCampingIdx) {
-		return campingDAO.deleteCampingIntoduce(maxCampingIdx);
-	}
-
 	public int deleteCampingPlace(int maxCampingIdx) {
 		return campingDAO.deleteCampingPlace(maxCampingIdx);
-	}
-
-	public void deleteCampingInternal(int camping_idx) {
-		campingDAO.deleteCampingInternal(camping_idx);
-	}
-
-	public void deleteCampingSafetyDevice(int camping_idx) {
-		campingDAO.deleteCampingSafetyDevice(camping_idx);
-	}
-
-	public void deleteCampingSite(int camping_idx) {
-		campingDAO.deleteCampingSite(camping_idx);
 	}
 
 	public CampingDTO selectCamping(int camping_idx) {
@@ -202,7 +193,7 @@ public class CampingService {
 		return campingDAO.selectCampingThree(camping_idx);
 	}
 
-	public CampingDTO selectOneByImg(int maxCampingIdx) {
+	public List<CampingDTO> selectOneByImg(int maxCampingIdx) {
 		return campingDAO.selectOneByImg(maxCampingIdx);
 	}
 
@@ -215,15 +206,11 @@ public class CampingService {
 		return campingDAO.selectFacltnmList();
 	}
 
-	public void deleteFile(CampingDTO storedImg) {
-		fileComponent.deleteFile(storedImg.getFirst_img());
-		String[] fileName = storedImg.getInner_img().split(",");
-		for (int i = 0; i < fileName.length; i++) {
-			fileComponent.deleteFile2(fileName[i]);
-		}
-	}
-	
 	public List<CampingDTO> campingSortViewCount() {
 		return campingDAO.campingSortViewCount();
+	}
+
+	public void updateConfirm(int camping_idx) {
+		campingDAO.updateConfirm(camping_idx);
 	}
 }

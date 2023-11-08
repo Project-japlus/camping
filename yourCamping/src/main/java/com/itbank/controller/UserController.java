@@ -97,31 +97,46 @@ public class UserController {
 
 	// 마이페이지 이동 전 비밀번호 확인하는 창으로 이동
 	@GetMapping("/Mypage_check")
-	public ModelAndView MyPage_check(HttpSession session) {
+	public ModelAndView MyPage_check(HttpSession session, Integer camping_idx) {
 		ModelAndView mav = new ModelAndView();
 		if (session.getAttribute("login") == null) {
 			mav.setViewName("/alert");
 			mav.addObject("msg", "로그인 후 이용해 주세요");
 			mav.addObject("url", "home");
 		}
+		if (camping_idx != null) {
+			mav.addObject("camping_idx", camping_idx);
+		}
 		return mav;
 	}
 
 	//
 	@PostMapping("/Mypage_check")
-	public ModelAndView MyPage_check(UserDTO dto, HttpSession session) {
+	public ModelAndView MyPage_check(UserDTO dto, HttpSession session, Integer camping_idx) {
 		ModelAndView mav = new ModelAndView();
-		// 세션에서 가져온 로그인된 유저 정보
+//		// 세션에서 가져온 로그인된 유저 정보
 		UserDTO info_login = (UserDTO) session.getAttribute("login");
 		// 해쉬처리된 입력한 패스워드
 		String hash_inputpw = userService.getHash(dto.getUserpw(), info_login.getSalt());
 		// 세션의 패스워드
 		String session_pw = info_login.getUserpw();
 		// 해쉬처리된 입력한 패스워드 와 세션의 비밀번호가 같으면 Mypage로 돌리고 아니면 홈으로 돌리기
-		if (hash_inputpw.equals(session_pw)) {
-			mav.setViewName("redirect:/user/Mypage");
+		if (camping_idx != null) {
+			if (hash_inputpw.equals(session_pw)) {
+				mav.setViewName("bizr/campingDel");
+				mav.addObject("camping_idx", camping_idx);
+			} else {
+				mav.setViewName("redirect:/user/Mypage_check");
+				mav.addObject("camping_idx", camping_idx);
+			}
 		} else {
-			mav.setViewName("redirect:/user/Mypage_check");
+			if (hash_inputpw.equals(session_pw)) {
+				mav.setViewName("redirect:/user/Mypage");
+			} else {
+				mav.setViewName("/alert");
+				mav.addObject("msg", "비밀번호를 확인해 주세요");
+				mav.addObject("url", "MpC");
+			}
 		}
 		return mav;
 	}
@@ -129,7 +144,7 @@ public class UserController {
 	@GetMapping("/Mypage")
 	public ModelAndView Mypage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		UserDTO login = (UserDTO)session.getAttribute("login");
+		UserDTO login = (UserDTO) session.getAttribute("login");
 		if (login == null) {
 			mav.setViewName("/alert");
 			mav.addObject("msg", "로그인 후 이용해 주세요");
@@ -188,7 +203,7 @@ public class UserController {
 	@PostMapping("modify_userpw")
 	public ModelAndView Mypage_modify_password(UserDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView("/alert");
-		
+
 		// UserDTO 타입의 로그인 이란 이름이 변수 선언 (세션에서 로그인 정보 가져오고)
 		UserDTO login = (UserDTO) session.getAttribute("login");
 		// login 에서 bizrno 번호 가져오기
@@ -205,7 +220,7 @@ public class UserController {
 		mav.addObject("url", "logout");
 		return mav;
 	}
-	
+
 	// 회원탈퇴
 	@GetMapping("/leave/{user_idx}")
 	public ModelAndView leave(@PathVariable("user_idx") int user_idx, HttpSession session) {
@@ -215,7 +230,7 @@ public class UserController {
 			session.invalidate();
 			mav.addObject("msg", "탈퇴되었습니다.");
 			mav.addObject("url", "home");
-		} 
+		}
 		return mav;
 	}
 }

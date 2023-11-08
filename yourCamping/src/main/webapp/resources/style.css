@@ -56,6 +56,11 @@ div.homeMain {
 	margin-bottom: 100px;
 }
 
+div#home_SearchBox {
+	height: 400px;
+	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+}
+
 div.mainIcon {
 	display: flex;
 	justify-content: space-evenly;
@@ -82,11 +87,6 @@ div.mainIcon>div:hover {
 	transition-duration: 1s;
 	cursor: pointer;
 	margin-top: -10px;
-}
-
-div#home_SearchBox {
-	height: 400px;
-	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
 }
 
 /* 	camping_list CSS */
@@ -289,92 +289,84 @@ div.paging {
 	text-align: center;
 	margin: 20px auto;
 }
-
 div.map_list {
-	display: flex;
-	height: 700px;
-	width: 1200px;
-	margin: auto;
+	display: flex; 
+	height: 700px; 
+	width: 1200px; 
+	margin: auto; 
 	margin-top: 30px;
 	position: relative;
 }
-
 div.map_paging {
-	position: absolute;
+	position: absolute; 
 	top: 95.5%;
 	border-top: 1px solid grey;
-	display: flex;
-	height: 30px;
-	width: 310px;
-	background-color: #fafbfe;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
 }
-
+div.map_result {
+	margin: 55px;
+	text-align: center;
+}
 div.map_pagingNon {
-	position: absolute;
+	position: absolute; 
 	top: 95.5%;
 	border-top: none;
-	display: flex;
-	height: 30px;
-	width: 310px;
-	background-color: #fafbfe;
+	display:flex; 
+	height:30px; 
+	width:310px; 
+	background-color:#fafbfe;
 }
-
 div.paging>button {
 	opacity: 0.1;
 }
-
 button.map_showListBtn {
-	margin-left: 1375px;
+	margin-left: 1375px;	
 }
-
 ul.map_ul {
-	list-style: none;
-	padding-left: 0;
-	height: 120px;
-	width: 300px;
-	border-bottom: 1px solid #eee;
-	margin: auto;
-	padding: 15px;
+	list-style:none; 
+	padding-left:0; 
+	height:120px; 
+	width:300px; 
+	border-bottom:1px solid #eee; 
+	margin:0; 
+	padding:15px;
 }
 
 /* view CSS */
-div.view_imgTable {
-	display: flex;
-	margin: auto;
-	margin-top: 50px;
+div.view_imgTable{
+	display: flex; 
+	margin:auto; 
+	margin-top: 50px; 
 	width: 1300px;
 }
-
 div.view_date {
 	display: flex;
 }
-
-div.view_dateStart {
+div.view_dateStart{
 	margin-right: 15px;
 }
-
 div.view_reserveBtn {
 	margin-left: 15px;
 	margin-top: 20px;
 }
-
 button#view_prev {
 	z-index: 10;
 	height: fit-content;
 	background-color: white;
-	margin-left: 15px;
-	margin-right: 45%;
-	margin-top: 31%;
+	margin-left:15px;
+	margin-right:45%;
+	margin-top: 31%; 
 }
-
-button#view_next {
+button#view_next{
 	z-index: 10;
 	height: fit-content;
 	background-color: white;
-	margin-left: 45%;
-	margin-top: 31%;
+	margin-left:45%;
+	margin-top: 31%; 
 }
-
 div#view_TopWrap {
 	color: white;
 	height: 200px;
@@ -394,11 +386,9 @@ div.campingNm {
 	display: flex;
 }
 
-div.campingNm>span#bookmark {
+div.campingNm > span#bookmark {
 	font-size: 1.5em;
 	cursor: pointer;
-	height: 35px;
-	line-height: 35px;
 }
 
 h1#view_Facltnm {
@@ -481,10 +471,4 @@ table#modify_table td {
 	padding: 30px;
 	text-align: center;
 	vertical-align: middle;
-}
-
-/* reviewView css */
-div.reviewLikeWrap > span#reviewLike {
-	font-size: 1.3em;
-	cursor: pointer;	
 }
