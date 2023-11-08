@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +34,7 @@ public class UserController {
 		}
 		if (login != null) {
 			login.setCamping_idx(userService.getBookMark(login.getUser_idx()));
+			login.setReview_idx(userService.getReviewLike(login.getUser_idx()));
 			session.setAttribute("login", login);
 		} else {
 			mav.setViewName("/alert");
@@ -193,6 +195,19 @@ public class UserController {
 		}
 		mav.addObject("msg", "비밀번호가 변경되었습니다. 다시 로그인 해주세요");
 		mav.addObject("url", "logout");
+		return mav;
+	}
+	
+	// 회원탈퇴
+	@GetMapping("/leave/{user_idx}")
+	public ModelAndView leave(@PathVariable("user_idx") int user_idx, HttpSession session) {
+		ModelAndView mav = new ModelAndView("/alert");
+		int row = userService.user_leave(user_idx);
+		if (row != 0) {
+			session.invalidate();
+			mav.addObject("msg", "탈퇴되었습니다.");
+			mav.addObject("url", "home");
+		} 
 		return mav;
 	}
 }

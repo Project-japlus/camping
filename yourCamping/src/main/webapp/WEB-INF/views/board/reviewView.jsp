@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
 			<div class="col text-start ms-2">${dto.userid }</div>
 			<div class="col text-center">${dto.review_wdate }</div>
-			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | 추천 : ${dto.like_count }</div>
+			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | <span id="review_like">추천 : ${dto.like_count }</span></div>
 		</div>
 		<div class="mt-5 mb-5">
 			<h2>${dto.review_title }</h2>
@@ -38,8 +38,13 @@
 				</button>
 			</div>
 			</c:if>
-			<div class="mt-4 mb-4 d-flex justify-content-center">
-				<a href="${cpath }/board/reviewLike/${dto.review_idx}"><button id="likeBtn" type="button" class="btn btn-primary">👍추천</button></a>
+			<div class="mt-4 mb-4 d-flex justify-content-center reviewLikeWrap">
+				<c:if test="${login.review_idx.contains(dto.review_idx) }">
+					<span id="reviewLike">👍추천</span>
+				</c:if>
+				<c:if test="${!login.review_idx.contains(dto.review_idx) }">
+					<span id="reviewLike">추천</span>
+				</c:if>
 			</div>
 		</div>
       	<div class="mt-4 mb-4 d-flex justify-content-end">
@@ -52,6 +57,10 @@
 
 <script>
 	const modifyBtn = document.getElementById('modifyBtn')
+	const reviewLike = document.getElementById('reviewLike')
+	let review_idx = '${login.review_idx}'
+	let isClicked = review_idx.includes('${dto.review_idx}') ? true : false;
+	
 	const modifyHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
 		if ('${dto.userid}' != '${login.userid}') {
@@ -77,19 +86,55 @@
 	}
 	deleteBtn.onclick = deleteHandler
 	
-	const likeBtn = document.getElementById('likeBtn')
-	const likeHandler = function(event) {
-		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		
-		if ('${login}' == '') {
-			alert('로그인이 필요한 항목입니다')
-			return
+	function changeText() {
+		if (isClicked) {
+	         document.getElementById('reviewLike').innerHTML = "추천";
+		} else {
+	         document.getElementById('reviewLike').innerHTML = "👍추천";
 		}
-		else if (confirm('추천하시겠습니까')) {
-			location.href = event.target.parentNode.href
-		}	
+    }
+    function restoreText() {
+    	if (isClicked) {
+	         document.getElementById('reviewLike').innerHTML = "👍추천";
+    	} else {
+	         document.getElementById('reviewLike').innerHTML = "추천";
+    	}
+    }
+	
+	async function likeChange() {
+		if ('${login.user_idx}' != '') {
+			let url = ''
+			if (isClicked) {
+				url = '${cpath}/ajax/removeReviewLike?user_idx=${login.user_idx}&review_idx=${dto.review_idx}'
+				isClicked = false
+			}
+			else {
+				url = '${cpath}/ajax/addReviewLike?user_idx=${login.user_idx}&review_idx=${dto.review_idx}'
+				isClicked = true
+			}
+			await fetch(url)
+			if (isClicked) {
+				document.getElementById('reviewLike').innerHTML = "👍추천"
+			}
+			else {
+				document.getElementById('reviewLike').innerHTML = "추천"
+			}
+			// 변경된 추천수를 받아오는 ajax 주소
+			url = '${cpath}/ajax/getReviewLikeCnt/${dto.review_idx}'
+			let data = await fetch(url).then(resp => resp.text());
+			let match = data.match(/<Integer>(\d+)<\/Integer>/);
+			let cnt = match ? parseInt(match[1], 10) : null;
+			const review_like = document.getElementById('review_like')
+			review_like.innerText = '추천 : ' + cnt
+		}
+		else {
+			alert('로그인 후 이용할 수 있습니다')
+		}
 	}
-	likeBtn.onclick = likeHandler
+	reviewLike.onmouseover = changeText
+	reviewLike.onmouseout = restoreText
+	reviewLike.onclick = likeChange
+	
 </script>
 
 </body>

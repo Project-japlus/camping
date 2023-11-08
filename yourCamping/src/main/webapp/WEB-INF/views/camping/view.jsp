@@ -65,7 +65,7 @@
 	    bookmark.onclick = function () {
 	    	if ('${login.user_idx}' != '') {
 	    		let url = ''
-	    		if (camping_list.includes('${dto.camping_idx}')) {
+	    		if (isClicked) {
 	    			url = '${cpath}/ajax/removeBookMark?user_idx=${login.user_idx}&camping_idx=${dto.camping_idx}'
 	    			isClicked = false;
 	    		} else {
@@ -110,7 +110,7 @@
 				</c:if>
 			</div>
 			<div class="container mt-1 view_campingInfo">
-				<table class="table" style="width: 400px;">
+				<table class="table" style="width: 100%;">
 					<tr>
 						<th>캠핑장</th>
 						<td>${dto.facltnm }</td>

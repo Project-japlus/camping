@@ -63,7 +63,7 @@ div.mainIcon {
 }
 
 div.mainIcon>div {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.9);
 	width: 120px;
 	height: 120px;
 	border: 2px solid black;
@@ -284,81 +284,92 @@ div.paging {
 	text-align: center;
 	margin: 20px auto;
 }
+
 div.map_list {
-	display: flex; 
-	height: 700px; 
-	width: 1200px; 
-	margin: auto; 
+	display: flex;
+	height: 700px;
+	width: 1200px;
+	margin: auto;
 	margin-top: 30px;
 	position: relative;
 }
+
 div.map_paging {
-	position: absolute; 
+	position: absolute;
 	top: 95.5%;
 	border-top: 1px solid grey;
-	display:flex; 
-	height:30px; 
-	width:310px; 
-	background-color:#fafbfe;
+	display: flex;
+	height: 30px;
+	width: 310px;
+	background-color: #fafbfe;
 }
 
 div.map_pagingNon {
-	position: absolute; 
+	position: absolute;
 	top: 95.5%;
 	border-top: none;
-	display:flex; 
-	height:30px; 
-	width:310px; 
-	background-color:#fafbfe;
+	display: flex;
+	height: 30px;
+	width: 310px;
+	background-color: #fafbfe;
 }
+
 div.paging>button {
 	opacity: 0.1;
 }
+
 button.map_showListBtn {
-	margin-left: 1375px;	
+	margin-left: 1375px;
 }
+
 ul.map_ul {
-	list-style:none; 
-	padding-left:0; 
-	height:120px; 
-	width:300px; 
-	border-bottom:1px solid #eee; 
-	margin:0; 
-	padding:15px;
+	list-style: none;
+	padding-left: 0;
+	height: 120px;
+	width: 300px;
+	border-bottom: 1px solid #eee;
+	margin: auto;
+	padding: 15px;
 }
 
 /* view CSS */
-div.view_imgTable{
-	display: flex; 
-	margin:auto; 
-	margin-top: 50px; 
+div.view_imgTable {
+	display: flex;
+	margin: auto;
+	margin-top: 50px;
 	width: 1300px;
 }
+
 div.view_date {
 	display: flex;
 }
-div.view_dateStart{
+
+div.view_dateStart {
 	margin-right: 15px;
 }
+
 div.view_reserveBtn {
 	margin-left: 15px;
 	margin-top: 20px;
 }
+
 button#view_prev {
 	z-index: 10;
 	height: fit-content;
 	background-color: white;
-	margin-left:15px;
-	margin-right:45%;
-	margin-top: 31%; 
+	margin-left: 15px;
+	margin-right: 45%;
+	margin-top: 31%;
 }
-button#view_next{
+
+button#view_next {
 	z-index: 10;
 	height: fit-content;
 	background-color: white;
-	margin-left:45%;
-	margin-top: 31%; 
+	margin-left: 45%;
+	margin-top: 31%;
 }
+
 div#view_TopWrap {
 	color: white;
 	height: 200px;
@@ -368,15 +379,9 @@ div#view_TopWrap {
 	display: flex;
 	align-items: center;
 }
-div.view_imgTable{
-	display: flex; 
-	margin: auto; 
-	margin-top: 20px; 
-	width: 1200px;
-}
 
 div#view_TopWrap>div.sb {
-	width: 65%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -384,9 +389,11 @@ div.campingNm {
 	display: flex;
 }
 
-div.campingNm > span#bookmark {
+div.campingNm>span#bookmark {
 	font-size: 1.5em;
 	cursor: pointer;
+	height: 35px;
+	line-height: 35px;
 }
 
 h1#view_Facltnm {
@@ -471,121 +478,8 @@ table#modify_table td {
 	vertical-align: middle;
 }
 
-/* reservation css */
-/* div.reservationWrap div {
-	color: black;
+/* reviewView css */
+div.reviewLikeWrap > span#reviewLike {
+	font-size: 1.3em;
+	cursor: pointer;	
 }
-
-@import "compass/css3";
-
-* {
-	box-sizing: border-box;
-}
-
-div.reservationWrap {
-	padding: 2em;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	color: #888;
-}
-
-div.reservationWrap .dates-wrapper {
-	background: #f0f0f0;
-	padding: 1em 1em 0 1em;
-	display: inline-block;
-}
-
-div.reservationWrap .input-text {
-	background-color: #ffffff;
-	padding: 2px 10px;
-	color: #333;
-	border: 1px solid #dddddd;
-	outline: none;
-	vertical-align: middle;
-	height: 36px;
-	border-radius: 0;
-	display: block;
-	width: 100%;
-	-webkit-appearance: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-}
-
-div.reservationWrap .date-wrapper {
-	position: relative;
-	margin: 0 42px 10px 0;
-	display: inline-block;
-	color: #444;
-	font-weight: bold; . label { float : left;
-	display: inline-block;
-	margin-right: 28px;
-	padding-top: 10px;
-}
-
-div.reservationWrap .input {
-	font-size: 15px;
-	color: #333;
-	max-width: 172px;
-	float: left;
-	margin-right: 10px; input { float : left;
-	width: 100%;
-	padding: 2px 10px;
-}
-
-}
-div.reservationWrap .calendar-btn {
-	display: inline-block;
-	width: 36px;
-	height: 36px;
-	border-radius: 18px;
-	float: left;
-	background-repeat: no-repeat;
-	background-size: 36px 36px;
-}
-
-}
-div.reservationWrap .pika-single {
-	position: absolute;
-	top: 40px;
-	left: 0px;
-}
-
-div.reservationWrap .pika-title {
-	color: #444;
-}
-
-div.reservationWrap .is-selected .pika-button {
-	border-radius: 0;
-	box-shadow: none;
-	background: #ec0000;
-}
-
-div.reservationWrap .pika-table tbody td {
-	border: 1px solid #b9b9b9;
-}
-
-div.reservationWrap .pika-button:hover {
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	background: #868686 !important;
-}
-
-div.reservationWrap .is-today .pika-button {
-	color: #FF7043;
-}
-
-div.reservationWrap .is-today.is-selected .pika-button {
-	color: #8BC34A;
-}
-
-div.reservationWrap .hide-text {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-div.reservationWrap .group:after {
-	content: "";
-	display: table;
-	clear: both;
-} */

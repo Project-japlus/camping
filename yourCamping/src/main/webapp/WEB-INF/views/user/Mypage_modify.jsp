@@ -5,7 +5,7 @@
     <div class="container mt-3">
         <div class="d-flex justify-content-between">
             <h3>회원 정보 수정</h3>
-            <a href="${cpath}/mypage"><button class="btn btn-warning">회원탈퇴</button></a>
+            <a href="${cpath }/user/leave/${login.user_idx}"><button class="btn btn-warning" id="leave">회원탈퇴</button></a>
         </div>
         <hr>
         <table id="modify_table" class="table table-bordered">
@@ -169,6 +169,17 @@
             alert('이메일 변경 가능')
             email_submitBtn.style.display = 'block'
         }
+    }
+    
+    const leave = document.getElementById('leave')
+    leave.onclick = function(event) {
+    	event.preventDefault()
+    	const flag = confirm('정말 탈퇴하시겠습니까?')
+    	if (flag) {
+    		location.href = event.target.parentNode.href
+    	} else {
+    		return
+    	}
     }
 </script>
 </body>

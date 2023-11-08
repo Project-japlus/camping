@@ -8,7 +8,7 @@
 			alert(msg)
 			const url = '${url}'
 			if (url == 'home') {
-				href = '${cpath}'
+				href = '${cpath}/'
 			}
 			if (url == 'Mypage_modify') {
 				href = '${cpath}/user/Mypage_modify'

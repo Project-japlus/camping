@@ -115,7 +115,7 @@
 								<div>
 									<div>
 										<div class="d-flex justify-content-between">
-											<input type="email" id="email_user" type="email" name="email"
+											<input type="email" id="email_user" name="email"
 												placeholder="이메일" required>
 											<button type="button" class="btn btn-primary"
 												id="sendAuthNumber">인증번호발송</button>
@@ -214,7 +214,7 @@
 								<div>
 									<div>
 										<div class="d-flex justify-content-between">
-											<input type="email" id="email_bizr" type="email" name="email"
+											<input type="email" id="email_bizr" name="email"
 												placeholder="이메일" required>
 											<button type="button" class="btn btn-primary"
 												id="sendAuthNumber_bizr">인증번호발송</button>
@@ -236,8 +236,8 @@
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>
-										<input type="checkbox" name="tos" id="bizr_checkAuthCheckBox">
-										이용약관에 동의합니다
+										<label><input type="checkbox" name="tos" id="bizr_checkAuthCheckBox">
+										이용약관에 동의합니다</label>
 										<!-- tos : Terms Of Use 이용약관 -->
 									</div>
 									<div>
@@ -328,7 +328,7 @@
         const user_pw2 = document.getElementById('user_pw2').value;
         if (user_pw1 == '' && user_pw2 == '') {
         	let content_pw = document.getElementById('user_checkpw')							//////////11/6//////
-            content_pw.innerHTML = "<div style='color:red'>비밀번호를 입력해주세요</div>"				//////////11/6//////
+            content_pw.innerHTML = "<div style='color:red'>비밀번호 입력해주세요</div>"				//////////11/6//////
         }
         else if (user_pw1 === user_pw2) {
         	let content_pw = document.getElementById('user_checkpw')							//////////11/6//////

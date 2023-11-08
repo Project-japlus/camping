@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
-import com.itbank.model.ReviewLikeDTO;
 import com.itbank.repository.BoardDAO;
 
 @Component
@@ -44,10 +43,6 @@ public class BoardComponent {
 	
 	public int countReviewView(int review_idx) {
 		return boardDAO.countReviewView(review_idx);
-	}
-	
-	public int countReviewLike(ReviewLikeDTO dto) {
-		return boardDAO.countReviewLike(dto);
 	}
 	
 	public String selectReviewImg(int review_idx) {

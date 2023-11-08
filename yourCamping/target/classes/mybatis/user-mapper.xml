@@ -40,6 +40,14 @@
 	<select id="getBookMark" parameterType="int" resultType="int">
 		select camping_idx from bookmark where user_idx = #{user_idx}
 	</select>
+	
+	<select id="getReviewLike" parameterType="int" resultType="int">
+		select review_idx from review_like where user_idx = #{user_idx}
+	</select>
+	
+	<update id="user_leave" parameterType="int">
+		update user_table set joinconfirm = 'N' where user_idx = #{user_idx}
+	</update>
 </mapper>
 
 

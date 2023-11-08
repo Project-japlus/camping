@@ -127,8 +127,7 @@
 	</script>
 </div>
 
-<div class="d-flex flex-wrap col-8 container"
-	style="border-top: 2px solid black; width: 100%;">
+<div class="d-flex flex-wrap col-8 container" style="border-top: 2px solid black; width: 100%;">
 	<c:if test="${paging.boardCount != 0 }">
 		<c:forEach var="dto" items="${list }">
 			<div class="item d-flex">

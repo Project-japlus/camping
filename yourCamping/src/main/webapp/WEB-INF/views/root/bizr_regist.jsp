@@ -3,14 +3,9 @@
     <%@ include file="../header.jsp" %>
 <%@ include file="rootHeader.jsp" %>
 
-	<c:if test="${login.userid != 'root' }">
+	<c:if test="${login.role != 'pageManager' }">
 		<c:redirect url="/"></c:redirect>
 	</c:if>
-	
-	 <c:if test="${login.userid != 'root' }">
-		<c:redirect url="/"></c:redirect>
-	</c:if>
-    
     
 	<style>
 		.btn:hover{

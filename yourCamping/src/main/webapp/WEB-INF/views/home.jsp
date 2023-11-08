@@ -6,8 +6,8 @@
 		<div class="w-50" style="margin: 0 auto; display: flex; justify-content: flex-end; padding: 5px 25px;">
 			<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
 		</div>
-		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 bg-gradient shadow"
-			style="-bs-bg-opacity: .8; height: 400px;">
+		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 shadow"
+			style="height: 400px; background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2))">
 			<form action="${cpath }/camping/list/1">
 				<div class="mb-3 mt-4 d-flex justify-content-evenly gap-4 mx-auto w-75">
 					<select id="firstSelect" name="firstSelect" class="rounded" style="width: 200px;" onchange="changeSecondOptions()">

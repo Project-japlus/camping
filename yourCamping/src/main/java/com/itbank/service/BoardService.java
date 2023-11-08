@@ -11,7 +11,6 @@ import com.itbank.component.FileComponent;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
-import com.itbank.model.ReviewLikeDTO;
 
 @Service
 public class BoardService {
@@ -44,10 +43,6 @@ public class BoardService {
 	
 	public int countReviewView(int review_idx) {
 		return boardComponent.countReviewView(review_idx);
-	}
-	
-	public int countReviewLike(ReviewLikeDTO dto) {
-		return boardComponent.countReviewLike(dto);
 	}
 	
 	public int reviewDelete(int review_idx) {

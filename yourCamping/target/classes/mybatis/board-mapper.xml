@@ -48,13 +48,6 @@
 		update review set review_viewCount = review_viewCount + 1 where review_idx = #{review_idx}
 	</update>
 	
-	<insert id="countReviewLike" parameterType="revLike">
-		insert into review_like
-			(user_idx, review_idx)
-			values
-			(#{user_idx}, #{review_idx})
-	</insert>
-	
 	<select id="selectSearchReviewCamping" parameterType="String" resultType="review">
 		SELECT
 		    r.*,

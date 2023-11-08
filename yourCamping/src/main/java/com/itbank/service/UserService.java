@@ -94,7 +94,15 @@ public class UserService {
 		userDAO.bizr_modify_email(dto);
 	}
 
-	public List<Integer> getBookMark(int i) {
-		return userDAO.getBookMark(i);
+	public List<Integer> getBookMark(int user_idx) {
+		return userDAO.getBookMark(user_idx);
+	}
+
+	public List<Integer> getReviewLike(int user_idx) {
+		return userDAO.getReviewLike(user_idx);
+	}
+
+	public int user_leave(int user_idx) {
+		return userDAO.user_leave(user_idx);
 	}
 }

@@ -18,7 +18,6 @@ import com.itbank.model.CampingDTO;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
-import com.itbank.model.ReviewLikeDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.CampingService;
@@ -81,18 +80,6 @@ public class BoardController {
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
 		return mav;
-	}
-	
-	@GetMapping("/reviewLike/{review_idx}")
-	public String reviewLike(@PathVariable("review_idx") int review_idx, HttpSession session) {
-		ReviewLikeDTO dto = new ReviewLikeDTO();
-		UserDTO login = (UserDTO) session.getAttribute("login");
-		if (login != null) {
-			dto.setUser_idx(login.getUser_idx());
-			dto.setReview_idx(review_idx);
-			boardService.countReviewLike(dto);
-		}
-		return "redirect:/board/reviewView/" + review_idx;
 	}
 	
 	@GetMapping("/reviewDelete/{review_idx}")
