@@ -15,7 +15,6 @@ local.properties
 .recommenders
 pom.properties
 MANIFEST.MF
-.project
 
 # External tool builders
 .externalToolBuilders/
