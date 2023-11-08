@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+		 "-//mybatis.org//DTD Mapper 3.0//EN"
+		  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.repository.BoardDAO">
+
+	<select id="selectReviewList" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+			ORDER BY r.REVIEW_IDX DESC
+	</select>
+	
+	<insert id="insertReview" parameterType="review">
+		insert into review
+			(user_idx, camping_idx, review_title, review_content<if test="review_img != null">, review_img</if>)
+			values
+			(#{user_idx}, (select camping_idx from camping where facltnm = #{facltnm}), #{review_title}, #{review_content}<if test="review_img != null">, #{review_img}</if>)
+	</insert>
+	
+	<select id="selectReviewOne" parameterType="int" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+			WHERE r.review_idx = #{review_idx}
+	</select>
+	
+	<update id="countReviewView" parameterType="int">
+		update review set review_viewCount = review_viewCount + 1 where review_idx = #{review_idx}
+	</update>
+	
+	<select id="selectSearchReviewCamping" parameterType="String" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    WHERE c.facltnm like '%${keyword}%'
+			ORDER BY r.REVIEW_IDX DESC
+	</select>
+	
+	<select id="selectSearchReviewTitle" parameterType="String" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    WHERE r.review_title like '%${keyword}%'
+			ORDER BY r.REVIEW_IDX DESC
+	</select>
+	
+	<select id="selectSearchReviewWriter" parameterType="String" resultType="review">
+		SELECT
+		    r.*,
+		    u.USERID,
+		    c.FACLTNM,
+		    (
+		        SELECT COUNT(*) 
+		        FROM review_like rl
+		        WHERE rl.REVIEW_IDX = r.REVIEW_IDX
+		    ) AS LIKE_COUNT
+			FROM review r
+			JOIN user_table u ON r.USER_IDX = u.USER_IDX
+			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
+		    HERE u.userid like '%${keyword}%'
+			ORDER BY r.REVIEW_IDX DESC
+	</select>
+	
+	<select id="selectReviewImg" parameterType="int" resultType="String">
+		select review_img from review where review_idx = #{review_idx}
+	</select>
+	
+	<delete id="reviewDelete" parameterType="int">
+		delete from review where review_idx = #{review_idx}
+	</delete>
+	
+	<update id="reviewModify" parameterType="review">
+		update review
+			set 
+				user_idx = #{user_idx},
+				camping_idx = (select camping_idx from camping where facltnm = #{facltnm}),
+				review_title = #{review_title},
+				review_content = #{review_content}
+				<if test="review_img != null">, review_img = #{review_img}</if>
+			where review_idx = #{review_idx}
+	</update>
+	
+	<select id="selectFreeList" resultType="free">
+		SELECT
+		    f.*,
+		    u.USERID,
+		    fr.REPLY_WDATE,
+		    fr.REPLY_CONTENT
+		FROM
+		    free_table f
+		JOIN
+		    user_table u ON f.USER_IDX = u.USER_IDX
+		LEFT JOIN
+		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
+		ORDER BY
+		    f.free_table_idx desc
+	</select>
+	
+	<select id="selectSearchFreeTitle" parameterType="String" resultType="free">
+		SELECT
+		    f.*,
+		    u.USERID,
+		    fr.*
+		FROM
+		    free_table f
+		JOIN
+		    user_table u ON f.USER_IDX = u.USER_IDX
+		LEFT JOIN
+		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
+		WHERE
+			f.free_title like '%${keyword}%'
+		ORDER BY
+		    f.free_table_idx desc
+	</select>
+	
+	<select id="selectSearchFreeWriter" parameterType="String" resultType="free">
+		SELECT
+		    f.*,
+		    u.USERID,
+		    fr.*
+		FROM
+		    free_table f
+		JOIN
+		    user_table u ON f.USER_IDX = u.USER_IDX
+		LEFT JOIN
+		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
+		WHERE
+			u.userid like '%${keyword}%'
+		ORDER BY
+		    f.free_table_idx desc
+	</select>
+	
+	<insert id="insertFree" parameterType="free">
+		insert into free_table
+		(user_idx, free_title, free_content<if test="free_img != null">, free_img</if>)
+		values
+		(#{user_idx}, #{free_title}, #{free_content}<if test="free_img != null">, #{free_img}</if>)
+	</insert>
+	
+	<select id="selectFreeOne" resultType="free">
+		SELECT
+		    f.*,
+		    u.USERID,
+		    fr.REPLY_WDATE,
+		    fr.REPLY_CONTENT
+		FROM
+		    free_table f
+		JOIN
+		    user_table u ON f.USER_IDX = u.USER_IDX
+		LEFT JOIN
+		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
+		WHERE
+			f.free_table_idx = #{free_table_idx}
+	</select>
+	
+	<update id="countFreeView" parameterType="int">
+		update free_table set free_viewCount = free_viewCount + 1 where free_table_idx = #{free_table_idx}
+	</update>
+	
+	<select id="selectReply" parameterType="int" resultType="reply">
+		SELECT
+		    ft.FREE_TABLE_IDX,
+		    fr.REPLY_WDATE,
+		    fr.REPLY_CONTENT,
+		    ut.USERID
+		FROM
+			free_reply fr
+		JOIN
+			free_table ft ON ft.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
+		JOIN
+			user_table ut ON fr.USER_IDX = ut.USER_IDX
+		WHERE
+			fr.free_table_idx = #{free_table_idx}
+	</select>
+	
+	<insert id="insertReply" parameterType="reply">
+		insert into free_reply
+				(user_idx, free_table_idx, reply_content)
+			values
+				(#{user_idx}, #{free_table_idx}, #{reply_content})
+	</insert>
+	
+	<select id="selectReplyOne" parameterType="hashmap" resultType="reply">
+		select * from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
+	</select>
+	
+	<delete id="deleteReplyOne" parameterType="reply">
+		delete from free_reply where free_table_idx = #{free_table_idx} and user_idx = #{user_idx}
+	</delete>
+	
+	<delete id="deleteReplyAll" parameterType="int">
+		delete from free_reply where free_table_idx = #{free_table_idx}
+	</delete>
+	
+	<select id="selectFreeImg" parameterType="int" resultType="String">
+		select free_img from free_table where free_table_idx = #{free_table_idx}
+	</select>
+	
+	<delete id="freeDelete" parameterType="int">
+		delete from free_table where free_table_idx = #{free_table_idx}
+	</delete>
+	
+	<update id="freeModify" parameterType="free">
+		update free_table
+			set 
+				user_idx = #{user_idx},
+				free_title = #{free_title},
+				free_content = #{free_content}
+				<if test="free_img != null">, free_img = #{free_img}</if>
+			where free_table_idx = #{free_table_idx}
+	</update>
+	
+	<select id="reviewSortViewCount" resultType="review">
+		select * from review order by review_viewCount desc
+	</select>
+	
+	<select id="freeSortViewCount" resultType="free">
+		select * from free_table order by free_viewCount desc
+	</select>
+	
+</mapper>
