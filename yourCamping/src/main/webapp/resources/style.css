@@ -84,6 +84,11 @@ div.mainIcon>div:hover {
 	margin-top: -10px;
 }
 
+div#home_SearchBox {
+	height: 400px;
+	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+}
+
 /* 	camping_list CSS */
 div.listSearchContainer {
 	background-repeat: no-repeat;

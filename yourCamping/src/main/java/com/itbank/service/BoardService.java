@@ -23,12 +23,12 @@ public class BoardService {
 	}
 	
 	public int insertReview(ReviewDTO dto) {
-		if (dto.getUpload() != null) {
+		if (dto.getUpload().get(0).getSize() != 0) {
 			String innerFileName = "";
-			for(int i = 0; i < dto.getUpload().length; i++) {
-				String fileName = fileComponent.upload3(dto.getUpload()[i]);
+			for(int i = 0; i < dto.getUpload().size(); i++) {
+				String fileName = fileComponent.upload3(dto.getUpload().get(i));
 				innerFileName += fileName;
-				if (i < dto.getUpload().length - 1) {
+				if (i < dto.getUpload().size() - 1) {
 					innerFileName += ",";
 				}
 			}

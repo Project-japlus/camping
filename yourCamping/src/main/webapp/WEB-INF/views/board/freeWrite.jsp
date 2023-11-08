@@ -19,7 +19,7 @@
 	        <div class="mb-3">
 	            <input type="file" class="form-control" id="free_img" name="upload" accept="image/*">
 	        </div>
-	        <div class="mb-3 d-flex justify-content-between">
+	        <div class="mb-3 d-flex justify-content-end">
 	        	<input id="complete" type="submit" class="btn btn-primary" value="작성완료">
 	        	<a href="${cpath }/board/freeList"><button type="button" class="btn btn-secondary">취소</button></a>
 	        </div>
