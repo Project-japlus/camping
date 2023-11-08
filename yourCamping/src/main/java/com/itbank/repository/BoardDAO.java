@@ -13,7 +13,9 @@ import com.itbank.model.ReviewLikeDTO;
 @Repository
 public interface BoardDAO {
 
-	List<ReviewDTO> selectReviewList();
+	List<ReviewDTO> selectReviewList(HashMap<String, Object> map);
+	
+	int countReviewList();
 	
 	int insertReview(ReviewDTO dto);
 	
@@ -33,8 +35,10 @@ public interface BoardDAO {
 	
 	int reviewDelete(int review_idx);
 
-	List<FreeDTO> selectFreeList();
+	List<FreeDTO> selectFreeList(HashMap<String, Object> map);
 	
+	int countFreeList();
+
 	List<FreeDTO> selectSearchFreeTitle(String keyword);
 	
 	List<FreeDTO> selectSearchFreeWriter(String keyword);
@@ -68,5 +72,4 @@ public interface BoardDAO {
 	List<FreeDTO> freeSortViewCount();
 
 	ReplyDTO selectReplyOne(HashMap<String, Object> map);
-
 }

@@ -26,7 +26,6 @@ public class UserDTO {
 	public void setRemember_bizr(boolean remember_bizr) {
 		this.remember_bizr = remember_bizr;
 	}
-	
 	public int getUser_idx() {
 		return user_idx;
 	}

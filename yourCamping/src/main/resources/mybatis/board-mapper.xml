@@ -5,7 +5,7 @@
 
 <mapper namespace="com.itbank.repository.BoardDAO">
 
-	<select id="selectReviewList" resultType="review">
+	<select id="selectReviewList" resultType="review" parameterType="map">
 		SELECT
 		    r.*,
 		    u.USERID,
@@ -19,6 +19,11 @@
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
 			ORDER BY r.REVIEW_IDX DESC
+			offset #{paging.offset} rows fetch next #{paging.perPage} rows only
+	</select>
+	
+	<select id="countReviewList" resultType="int">
+		select count(*) from review
 	</select>
 	
 	<insert id="insertReview" parameterType="review">
@@ -125,7 +130,7 @@
 			where review_idx = #{review_idx}
 	</update>
 	
-	<select id="selectFreeList" resultType="free">
+	<select id="selectFreeList" resultType="free" parameterType="map">
 		SELECT
 		    f.*,
 		    u.USERID,
@@ -139,6 +144,11 @@
 		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		ORDER BY
 		    f.free_table_idx desc
+		offset #{paging.offset} rows fetch next #{paging.perPage} rows only
+	</select>
+	
+	<select id="countFreeList" resultType="int">
+		select count(*) from free_table
 	</select>
 	
 	<select id="selectSearchFreeTitle" parameterType="String" resultType="free">

@@ -1,38 +1,197 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
+<hr>
 
-
-	<h1>Mypage</h1>
-	<hr>
-
-	<a href="${cpath }/user/Mypage_modify"><button>수정페이지</button></a>
-
-	<div>
-		<h1>세션에 저장된 정보들</h1>
-		<h3>사용자 이름 : ${login.username }</h3>
-		<h3>사용자 아이디 : ${login.userid }</h3>
-		<h3>사용자 비번 : ${login.userpw }</h3>
-		<h3>사용자 번호 : ${login.user_idx }</h3>
-		<c:if test="${empty login.remember_bizr }">
-			<h3>사업자 번호 : ${login.bizrno }</h3>
+<!-- 내정보 위에 수정버튼 사업장 등록 버튼 -->
+<div class="container d-flex w-100 justify-content-between mb-2">
+	<div class="mt-3">
+		<h2>내정보</h2>
+	</div>
+	
+	<div class="d-flex mt-4">
+		<c:if test="${not empty login.bizrno }">
+			<div class="justify-content-between" style="width:300px;">
+				<a class="text-warning fw-bold" href="${cpath }/bizr/newCamping">캠핑장 등록</a>
+				<a class="text-warning fw-bold" href="${cpath }/bizr/campingUpdate/${dto.camping_idx}">캠핑장 수정</a>
+				<a class="text-warning fw-bold" href="${cpath }/bizr/campingDelete/${dto.camping_idx}">캠핑장 삭제</a>
+			</div>
 		</c:if>
-		<h3>사용자 솔트 :${login.salt }</h3>
-		<h3>사용자 이름 : ${login.username }</h3>
-		<h3>사용자 속성 : ${login.role }</h3>
-		<h3>사용자 전번 : ${login.phone }</h3>
-		<h3>사용자 이메일 : ${login.email }</h3>
+		<a class="text-primary fw-bold" href="${cpath }/user/Mypage_modify">정보수정</a>
 	</div>
+	
+</div>
 
-	<div>
-		즐겨찾기<br> 예약된 캠핑장<br> 올린 캠핑장<br> review_like table 써서 내가
-		좋아요 한 게시글 마이페이지에 올리기<br> 지난 예약<br>
+<div class="container">
+	<table class="table table-bordered border border-1 rounded-5" id="modify_table">
+		<tr>
+			<td>
+<!-- 				사진 -->
+				<h5> </h5>
+			</td>
+			<td>
+				<h5></h5>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h5>아이디 </h5>
+			</td>
+			<td>
+				<h5>${login.userid }</h5>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h5>휴대전화 번호</h5>
+			</td>
+			<td>
+				<h5>${login.phone }</h5>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h5>이메일</h5>
+			</td>
+			<td>
+				<h5>${login.email }</h5>
+			</td>
+		</tr>
+		<c:if test="${not empty login.bizrno }">
+			<tr>
+				<td>
+					<h5>사업자번호</h5>
+				</td>
+				<td>
+					<h5>${login.bizrno }</h5>
+				</td>
+			</tr>
+		</c:if>
+	</table>
+	
+	
+</div>
+
+<!-- 일반사용자 MyPage -->
+<c:if test="${empty login.bizrno }">
+
+	<div class="container border border-5 rounded-5">
+	
+		<div class="mt-3">
+			<h3>예약된 캠핑장</h3>
+<!-- 			캠핑장 사진 -->
+			<div class="d-flex">
+				<div>
+					<img alt="" src="">
+				</div>
+<!-- 			간단한 캠핑장 정보 -->
+				<div>
+					<table class="table table-bordered" id="modify_table">
+						<c:forEach var="dto" items="${reserveList }" >
+							<tr>
+								<td>캠핑장 이름</td>
+								<td>${dto.facltnm }</td>
+							</tr>
+							<tr>
+								<td>등록한 날짜</td>
+								<td>${dto.reserve_str_date }</td>
+							</tr>
+							<tr>
+								<td>남은 날짜</td>
+								<td>${dto.reserve_end_date }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="mt-3">
+			<h3>찜한 캠핑장</h3>
+<!-- 			캠핑장 사진 -->
+			<div class="d-flex">
+				<div>
+					<img alt="" src="">
+				</div>
+<!-- 			간단한 캠핑장 정보 -->
+				<div>
+					<table class="table table-bordered" id="modify_table">
+						<tr>
+							<td>캠핑장 이름</td>
+							<td>!!@#!#!#!#</td>
+						</tr>
+						<tr>
+							<td>등록한 날짜</td>
+							<td>2023-11-06 ~ 2023-11-16</td>
+						</tr>
+						<tr>
+							<td>남은 날짜</td>
+							<td>D-5</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<div class="mt-3">
+			<h3>이용했던 캠핑장</h3>
+<!-- 			캠핑장 사진 -->
+			<div class="d-flex">
+				<div>
+					<img alt="" src="">
+				</div>
+<!-- 			간단한 캠핑장 정보 -->
+				<div>
+					<table class="table table-bordered" id="modify_table">
+						<tr>
+							<td>캠핑장 이름</td>
+							<td>!!@#!#!#!#</td>
+						</tr>
+						<tr>
+							<td>등록한 날짜</td>
+							<td>2023-11-06 ~ 2023-11-16</td>
+						</tr>
+						<tr>
+							<td>남은 날짜</td>
+							<td>D-5</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		
 	</div>
-	<c:if test="${not empty login.bizrno }">
-		<div><a class="text-warning fw-bold"
-			href="${cpath }/bizr/newCamping">캠핑장 등록</a></div>
-			<a href="${cpath }/bizr/campingUpdate/${dto.camping_idx}"><button>캠핑장 수정</button></a>
-			<a href="${cpath }/bizr/campingDelete/${dto.camping_idx}"><button>캠핑장 삭제</button></a>
-	</c:if>
+</c:if>
+
+<!-- 사업자 MyPage -->
+<c:if test="${not empty login.bizrno }">
+	<div class="container mt-3">
+			<h3>등록한 캠핑장</h3>
+<!-- 			캠핑장 사진 -->
+			<div class="d-flex">
+				<div>
+					<img alt="" src="">
+				</div>
+<!-- 			간단한 캠핑장 정보 -->
+				<div>
+					<table class="table table-bordered" id="modify_table">
+						<tr>
+							<td>캠핑장 이름</td>
+							<td>!!@#!#!#!#</td>
+						</tr>
+						<tr>
+							<td>등록한 날짜</td>
+							<td>2023-11-06 ~ 2023-11-16</td>
+						</tr>
+						<tr>
+							<td>남은 날짜</td>
+							<td>D-5</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+</c:if>
+
 </body>
 </html>

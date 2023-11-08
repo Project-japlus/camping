@@ -1,5 +1,6 @@
 package com.itbank.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import com.itbank.model.ReviewLikeDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.CampingService;
+import com.itbank.service.PagingService;
 
 @Controller
 @RequestMapping("/board")
@@ -30,34 +32,22 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	@Autowired private CampingService campingService;
 	
-	@GetMapping("/reviewList")
-	public ModelAndView reviewList() {
+	@GetMapping("/reviewList/{page}")
+	public ModelAndView reviewList(@PathVariable("page") int page) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = boardService.selectReviewList();
+		int reviewCount = boardService.countReviewList();
+		PagingService paging = new PagingService(page, reviewCount);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<ReviewDTO> list = boardService.selectReviewList(map);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
-	
-	@GetMapping("/reviewSearch")
-	public ModelAndView reviewSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
-		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = null;
-		if (type.equals("facltnm")) {
-			list = boardService.selectSearchReviewCamping(keyword);
-		}
-		else if (type.equals("title")) {
-			list = boardService.selectSearchReviewTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchReviewWriter(keyword);
-		}
-		else  {
-			list = boardService.selectReviewList();
-		}
-		mav.addObject("list", list);
-		return mav;
-	}
-	
+		
 	@GetMapping("/reviewWrite")
 	public ModelAndView reviewWrite(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -78,7 +68,7 @@ public class BoardController {
 			dto.setUser_idx(login.getUser_idx());
 			boardService.insertReview(dto);
 		}
-		return "redirect:/board/reviewList";
+		return "redirect:/board/reviewList/1";
 	}
 	
 	@GetMapping("/reviewView/{review_idx}")
@@ -86,9 +76,9 @@ public class BoardController {
 		ModelAndView mav= new ModelAndView("/board/reviewView");
 		boardService.countReviewView(review_idx);
 		ReviewDTO dto = boardService.selectReviewOne(review_idx);
-		String[] list = null;
+		List<String> list = null;
 		if (dto.getReview_img() != null) {
-			list = dto.getReview_img().split(",");
+			list = Arrays.asList(dto.getReview_img().split(","));
 		}
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
@@ -110,7 +100,7 @@ public class BoardController {
 	@GetMapping("/reviewDelete/{review_idx}")
 	public String reviewDelete(@PathVariable("review_idx") int review_idx) {
 		boardService.reviewDelete(review_idx);
-		return "redirect:/board/reviewList";
+		return "redirect:/board/reviewList/1";
 	}
 	
 	@GetMapping("/reviewModify/{review_idx}")
@@ -133,28 +123,19 @@ public class BoardController {
 		return "redirect:/board/reviewView/" + review_idx;
 	}
 	
-	@GetMapping("/freeList")
-	public ModelAndView freeList() {
+	@GetMapping("/freeList/{page}")
+	public ModelAndView freeList(@PathVariable("page") int page) {
 		ModelAndView mav = new ModelAndView("/board/freeList");
-		List<FreeDTO> list = boardService.selectFreeList();
+		int freeCount = boardService.countFreeList();
+		PagingService paging = new PagingService(page, freeCount);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<FreeDTO> list = boardService.selectFreeList(map);
+		
 		mav.addObject("list", list);
-		return mav;
-	}
-	
-	@GetMapping("/freeSearch")
-	public ModelAndView freeSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
-		ModelAndView mav = new ModelAndView("/board/freeList");
-		List<FreeDTO> list = null;
-		if (type.equals("title")) {
-			list = boardService.selectSearchFreeTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchFreeWriter(keyword);
-		}
-		else  {
-			list = boardService.selectFreeList();
-		}
-		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
@@ -168,7 +149,7 @@ public class BoardController {
 			dto.setUser_idx(login.getUser_idx());
 			boardService.insertFree(dto);
 		}
-		return "redirect:/board/freeList";
+		return "redirect:/board/freeList/1";
 	}
 	
 	@GetMapping("/freeView/{free_table_idx}")
@@ -212,7 +193,7 @@ public class BoardController {
 	public String freeDelete(@PathVariable("free_table_idx") int free_table_idx) {
 		boardService.deleteReplyAll(free_table_idx);
 		boardService.freeDelete(free_table_idx);
-		return "redirect:/board/freeList";
+		return "redirect:/board/freeList/1";
 	}
 	
 	@GetMapping("/freeModify/{free_table_idx}")

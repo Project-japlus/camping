@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div class="main">
-	<div class="d-flex listSearchContainer">
+	<div class="d-flex listSearchContainer" style="background-image: url('${cpath}/resources/list_back.jpg');">
 		<div class="w-50 listSearchBox">
 			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
 				<div style="display: flex" class="listSearch">
@@ -133,10 +133,12 @@
 		<c:forEach var="dto" items="${list }">
 			<div class="item d-flex">
 				<div class="p-3">
-					<div class="itemImg"
-						style="background-image: url('${dto.first_img}'); cursor: pointer;"
-						OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'">
-					</div>
+					<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
+					</c:if>
+					<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg2" style="cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}"></div>
+					</c:if>
 				</div>
 				<div class="mt-1 ms-3 itemTextWrap">
 					<div class="viewCount">
@@ -375,9 +377,14 @@
 			fillSecondOptions(busanOptions);
 
 		} else if (selectedValue == '경상남도') {
-			var busanOptions = [ "전체", "서귀포시", "제주시" ];
-			fillSecondOptions(busanOptions);
-		}
+	        var busanOptions = ["전체", "거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시",
+	        	"의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"];
+	        fillSecondOptions(busanOptions);  
+	        
+		} else if(selectedValue == '제주도') {
+	        var busanOptions = ["전체", "서귀포시", "제주시"];
+	        fillSecondOptions(busanOptions);
+	    }
 
 	}
 
@@ -392,5 +399,4 @@
 		});
 	}
 </script>
-</body>
-</html>
+<%@ include file="../footer.jsp" %>

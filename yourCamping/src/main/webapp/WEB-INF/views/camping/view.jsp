@@ -7,7 +7,7 @@
 			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
 		</div>
 	</div>
-	<div id="view_TopWrap">
+	<div id="view_TopWrap" style="background-image: url('${cpath}/resources/home_back1.jpeg');">
 		<div class="sb">
 			<div>
 				<div class="campingNm">
@@ -97,7 +97,12 @@
 	<div style="width: 70%; margin: auto;">
 		<div style="display: flex; margin-top: 20px;">
 			<div class="container mt-3">
-				<img src="${dto.first_img }" class="first" width="700px" height="525px">
+				<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+					<img src="${dto.first_img }" class="first" width="700px" height="525px" style="border-radius: 3%;">
+				</c:if>
+				<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+				  <img src="${cpath }/first_img/${dto.first_img }" class="first" width="700px" height="525px"> 
+				</c:if>
 			</div>
 			<div class="container mt-1 view_campingInfo">
 				<table class="table" style="width: 400px;">
@@ -644,5 +649,4 @@
 		showImage(currentImageIndex);
 	}
 </script>
-</body>
-</html>
+<%@ include file="../footer.jsp" %>

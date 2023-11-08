@@ -17,9 +17,13 @@ public class BoardComponent {
 
 	@Autowired private BoardDAO boardDAO;
 	
-	public List<ReviewDTO> selectReviewList() {
-		List<ReviewDTO> list = boardDAO.selectReviewList();
+	public List<ReviewDTO> selectReviewList(HashMap<String, Object> map) {
+		List<ReviewDTO> list = boardDAO.selectReviewList(map);
 		return list;
+	}
+	
+	public int countReviewList() {
+		return boardDAO.countReviewList();
 	}
 	
 	public int insertReview(ReviewDTO dto) {
@@ -62,8 +66,12 @@ public class BoardComponent {
 		return boardDAO.reviewModify(dto);
 	}
 
-	public List<FreeDTO> selectFreeList() {
-		return boardDAO.selectFreeList();
+	public List<FreeDTO> selectFreeList(HashMap<String, Object> map) {
+		return boardDAO.selectFreeList(map);
+	}
+
+	public int countFreeList() {
+		return boardDAO.countFreeList();
 	}
 	
 	public List<FreeDTO> selectSearchFreeTitle(String keyword) {

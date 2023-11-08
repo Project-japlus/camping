@@ -19,10 +19,12 @@
         	<c:if test="${dto.review_img != null}">
         	<div id="carouselExampleControls" class="carousel slide w-50 mx-auto" data-bs-ride="carousel">
 				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="${cpath }/resources/logo/logo.png" class="d-block w-100">
-					</div>
-					<c:forEach var="image" items="${imgList }">
+					<c:forEach var="image" items="${list }" varStatus="i">
+					<c:if test="${i.index == 0 }">
+						<div class="carousel-item active">
+							<img src="${cpath }/upload/${image}" class="d-block w-100">
+						</div>
+					</c:if>
 					<div class="carousel-item">
 						<img src="${cpath }/upload/${image }" class="d-block w-100">
 					</div>
@@ -45,7 +47,7 @@
       	<div class="mt-4 mb-4 d-flex justify-content-end">
       		<a href="${cpath }/board/reviewModify/${dto.review_idx}"><button id="modifyBtn" type="button" class="btn btn-outline-secondary me-3">수정하기</button></a>
       		<a href="${cpath }/board/reviewDelete/${dto.review_idx}"><button id="deleteBtn" type="button" class="btn btn-outline-secondary me-3">삭제하기</button></a>
-        	<a href="${cpath }/board/reviewList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
+        	<a href="${cpath }/board/reviewList/1"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
     </div>
 </div>

@@ -28,10 +28,14 @@ import com.itbank.util.DataType;
 public class AjaxController {
 
 	private Random ran = new Random();
-	@Autowired private MailComponent mailComponent;
-	@Autowired private UserDAO userDAO;
-	@Autowired private WeatherComponent weatherComponent;
-	@Autowired private HashComponent hashComponent;
+	@Autowired
+	private MailComponent mailComponent;
+	@Autowired
+	private UserDAO userDAO;
+	@Autowired
+	private WeatherComponent weatherComponent;
+	@Autowired
+	private HashComponent hashComponent;
 
 	// 이메일 인증번호 전송
 	@GetMapping("/sendAuthNumber")
@@ -77,14 +81,9 @@ public class AjaxController {
 	// 아이디 중복 체크
 	@GetMapping("/checkDuplicateId")
 	public String user_ajax(@RequestParam String userid) throws JsonProcessingException {
-		UserDTO dto = userDAO.user_selectOneByUserid_check(userid);
-		if (dto == null) {
-			dto = userDAO.bizr_selectOneBybizrid_login(userid);
-			if (dto == null) {
-				return "available";
-			} else {
-				return "unavailable";
-			}
+		String result = userDAO.selectOneByUserid_check(userid);
+		if (result == null) {
+			return "available";
 		} else {
 			return "unavailable";
 		}
@@ -117,7 +116,7 @@ public class AjaxController {
 		String jsonData = weatherComponent.getStringTemp(DataType.JSON, camping_idx);
 		return jsonData;
 	}
-	
+
 	// 북마크 추가
 	@GetMapping("/addBookMark")
 	public void addBookMark(@RequestParam HashMap<String, Integer> param, HttpSession session) {
@@ -125,7 +124,7 @@ public class AjaxController {
 		UserDTO login = (UserDTO) session.getAttribute("login");
 		login.setCamping_idx(userDAO.getBookMark(login.getUser_idx()));
 	}
-	
+
 	// 북마크 제거
 	@GetMapping("/removeBookMark")
 	public void removeBookMark(@RequestParam HashMap<String, Integer> param, HttpSession session) {

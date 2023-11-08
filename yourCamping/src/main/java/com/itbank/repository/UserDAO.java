@@ -12,13 +12,8 @@ import com.itbank.model.UserDTO;
 
 public interface UserDAO {
 
-	// 일반_아이디 중복체크
-	@Select("select * from user_table where userid=#{userid}")
-	UserDTO user_selectOneByUserid_check(String userid);
-
-	// 사업자_아이디 중복체크
-	@Select("select * from bizr_table where userid=#{userid}")
-	UserDTO bizr_selectOneBybizrid_check(String userid);
+	// 일반_사업자_아이디 중복체크
+	String selectOneByUserid_check(String userid);
 	
 	// 일반_로그인
 	@Select("select * from user_table where userid=#{userid} and joinconfirm != 'N'")
@@ -53,12 +48,15 @@ public interface UserDAO {
 	// 사업자 번호 확인
 	@Select("select * from bizrNo where bizrNo = #{bizrNo}")
 	String getbizrNo(String bizrNo);
-
+	
+	// 북마크에서 가져오기
 	List<Integer> getBookMark(int i);
 	
+	// 북마크 추가
 	@Insert("insert into bookmark values (#{user_idx}, #{camping_idx})")
 	void addBookMark(HashMap<String, Integer> param);
 
+	// 북마크 제거
 	@Delete("delete bookmark where user_idx = #{user_idx} and camping_idx = #{camping_idx}")
 	void removeBookMark(HashMap<String, Integer> param);
 	

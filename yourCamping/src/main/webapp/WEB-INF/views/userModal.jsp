@@ -12,6 +12,7 @@
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
+			
 				<form class="form-inline m-auto" method="POST"
 					action="${cpath }/user/login">
 					<div class="form-group w-75 p-1 m-auto">
@@ -35,6 +36,7 @@
 						<button type="submit"
 							class="btn btn-primary btn-lg opacity-100 w-75 ms-5 mb-3">로그인</button>
 					</div>
+					
 				</form>
 				<div class="ms-3">
 					<div class="d-flex justify-content-between">
@@ -57,7 +59,7 @@
 <!-- 일반 회원가입-->
 <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
 	aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog">
 		<div class="modal-content">
 			<!-- Modal header -->
 			<div class="modal-header">
@@ -69,15 +71,19 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="container">
-						<form method="POST" action="${cpath }/user/join" id="userJoinForm">
+					
+						<form method="POST" action="${cpath }/user/user_join" id="userJoinForm">
 							<div class="d-flex flex-column w-100 m-auto">
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="userid" placeholder="아이디" required
-										autofocus autocomplete="off" id="user_id">
-									<button type="button" class="btn btn-primary"
-										id="user_checkDuplicate" style="width: 100px;">중복 확인</button>
+										autofocus autocomplete="off" class="idcheck">
+									<button type="button" class="btn btn-primary checkDuplicate"
+										style="width: 100px;">중복 확인</button>
 								</div>
+								
+<!-- 								중복여부 띄어줄 div								 -->
+								<div class="user_checkid"></div>		
 
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between ">
@@ -94,6 +100,9 @@
 											style="width: 100px;">PW 확인</button>
 									</p>
 								</div>
+<!-- 								중복여부 띄어줄 div								 -->
+								<div id="user_checkpw"></div>
+								
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
 									<input type="text" name="username" placeholder="이름" required>
@@ -117,6 +126,8 @@
 												class="btn btn-primary mt-1" type="button" value="본인인증"
 												style="width: 100px;">
 										</div>
+<!-- 								중복여부 띄어줄 div								 -->
+										<div id="user_check_email"></div>
 									</div>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
@@ -132,6 +143,7 @@
 									<input type="submit" class="btn btn-primary" value="회원가입">
 								</div>
 							</div>
+							
 						</form>
 					</div>
 				</div>
@@ -148,7 +160,7 @@
 <!-- 사업자 회원가입-->
 <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
 	aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog">
 		<div class="modal-content">
 			<!-- Modal1 header -->
 			<div class="modal-header">
@@ -166,10 +178,13 @@
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="userid" placeholder="아이디" required
-										autofocus autocomplete="off" id="bizr_id">
-									<button type="button" class="btn btn-primary"
-										id="bizr_checkDuplicate" style="width: 100px;">중복 확인</button>
+										autofocus autocomplete="off" class="idcheck">
+									<button type="button" class="btn btn-primary checkDuplicate"
+										 style="width: 100px;">중복 확인</button>
 								</div>
+								
+<!-- 								중복여부 띄어줄 div								 -->
+								<div class="bizr_checkid"></div>
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between">
 									<p class="mb-1">
@@ -185,6 +200,8 @@
 											style="width: 100px;" value="PW 확인">
 									</p>
 								</div>
+<!-- 								중복여부 띄어줄 div								 -->
+								<div id="bizr_checkpw"></div>
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
 									<input type="text" name="username" placeholder="이름" required>
@@ -210,6 +227,8 @@
 										</div>
 									</div>
 								</div>
+<!-- 								중복여부 띄어줄 div								 -->
+								<div id="bizr_check_email"></div>
 								<div class="mb-1">사업자번호</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="bizrno" placeholder="사업자번호" id="bizrno_check" required>
@@ -250,44 +269,74 @@
     let user_checkbox_check = false;
 
     const loginButton = document.getElementById('loginButton');
+	 // 일반 & 사업자 아이디 중복확인
+	 let checkDuplicateButtons = document.querySelectorAll('.checkDuplicate');
+	 checkDuplicateButtons.forEach(function(button) {
+	     button.addEventListener('click', function(event) {
+	         let userid = this.parentElement.querySelector('.idcheck').value;
+	         if (userid !== '') {
+	             let url = '${cpath}/ajax/checkDuplicateId?userid=${userid}' + userid;
+	             fetch(url)
+	                 .then(resp => resp.text())
+	                 .then(result => {
+	                     if (result === 'available') {
+	                         user_id_check = true;
+	                         bizr_id_check = true;
+	                         
+	                         let id_user = document.querySelector('.user_checkid'); // 변경
+	                         id_user.innerHTML = "<div style='color:blue'>사용 가능한 아이디 입니다</div>"; // 변경
+	                         
+	                         let id_bizr = document.querySelector('.bizr_checkid'); // 변경
+	                         id_bizr.innerHTML = "<div style='color:blue'>사용 가능한 아이디 입니다</div>"; // 변경
+	                         
+	                     } else if (result === 'unavailable') {
+	                    	 
+	                         let id_user = document.querySelector('.user_checkid'); // 변경
+	                         id_user.innerHTML = "<div style='color:red'>이미 사용 중인 아이디입니다.</div>"; // 변경
+	                         
+	                         let id_bizr = document.querySelector('.bizr_checkid'); // 변경
+	                         id_bizr.innerHTML = "<div style='color:red'>이미 사용 중인 아이디입니다.</div>"; // 변경
+	                         
+	                     } else {
+	                         alert('중복 확인 중 오류가 발생했습니다.');
+	                     }
+	                 })
+	                 .catch(error => {
+	                     console.error('중복 확인 요청 중 오류 발생:', error);
+	                 });
+	         } else {
+	             let id_user = document.querySelector('.user_checkid'); // 변경
+	             id_user.innerHTML = "<div style='color:yellow'>아이디를 입력해 주세요.</div>"; // 변경
+	             
+	             let id_bizr = document.querySelector('.bizr_checkid'); // 변경
+	             id_bizr.innerHTML = "<div style='color:yellow'>아이디를 입력해 주세요.</div>"; // 변경
+	             
+	         }
+	     });
+	 });
 
-    //일반 아이디중복확인
-    const user_checkDuplicateButton = document.getElementById('user_checkDuplicate');
-    user_checkDuplicateButton.onclick = function (event) {
-        const userid = document.getElementById('user_id').value
-        if (userid != '') {
-            let url = '${cpath}/ajax/checkDuplicateId?userid=' + userid; // 서버로 중복 확인 요청 보내는 URL
-            fetch(url)
-                .then(resp => resp.text())
-                .then(result => {
-                    if (result === 'available') {
-                        alert('사용 가능한 아이디입니다.');
-                        user_id_check = true;
-                    } else if (result === 'unavailable') {
-                        alert('이미 사용 중인 아이디입니다.');
-                    } else {
-                        alert('중복 확인 중 오류가 발생했습니다.');
-                    }
-                })
-                .catch(error => {
-                    console.error('중복 확인 요청 중 오류 발생:', error);
-                });
-        } else {
-            alert('아이디를 입력해 주세요')
-        }
-    };
+
+
+
+
+
+
+    
     // 일반 비밀번호 중복 체크
     function userpw_test() {
         const user_pw1 = document.getElementById('user_pw1').value;
         const user_pw2 = document.getElementById('user_pw2').value;
         if (user_pw1 == '' && user_pw2 == '') {
-            alert('비밀번호를 입력해주세요')
+        	let content_pw = document.getElementById('user_checkpw')							//////////11/6//////
+            content_pw.innerHTML = "<div style='color:red'>비밀번호를 입력해주세요</div>"				//////////11/6//////
         }
         else if (user_pw1 === user_pw2) {
-            alert('비밀번호 일치');
+        	let content_pw = document.getElementById('user_checkpw')							//////////11/6//////
+            content_pw.innerHTML = "<div style='color:blue'>비밀번호를 사용가능</div>"					//////////11/6//////
             user_pw_check = true;
         } else {
-            alert('비밀번호를 다시확인해주세요');
+        	let content_pw = document.getElementById('user_checkpw')							//////////11/6//////
+        	content_pw.innerHTML = "<div style='color:red'>비밀번호를 다시 확인해 주세요</div>"			//////////11/6//////
             return false;
         }
     }
@@ -299,7 +348,9 @@
         const email = document.getElementById('email_user')
 
         if (email.value == '') {
-            alert('이메일을 정확하게 입력해 주세요')
+            let content_email = document.getElementById('user_check_email')							//////////11/6//////
+            content_email.innerHTML = "<div style='color:red'>이메일을 정확하게 입력해 주세요</div>"			//////////11/6//////
+        	
             email.focus()
             return
         }
@@ -320,10 +371,12 @@
 
         const result = await fetch(url).then(resp => resp.text())
         if (result == 0) {
-            alert('인증번호를 확인해주세요')
+        	let content_email = document.getElementById('user_check_email')							//////////11/6//////
+            content_email.innerHTML = "<div style='color:red'>인증번호를 확인해 주세요</div>"				//////////11/6//////
         }
         else {
-            alert('이메일 인증에 성공하셨습니다')
+        	let content_email = document.getElementById('user_check_email')							//////////11/6//////
+            content_email.innerHTML = "<div style='color:blue'>이메일 인증에 성공 했습니다</div>"			//////////11/6//////
             user_email_check = true;
         }
     }
@@ -345,13 +398,13 @@
             location.href = '${cpath}/user/user_join';
             event.target.submit()
         } else {
-            if (!bizr_id_check) {
+            if (!user_id_check) {
                 alert('ID 중복 체크를 진행해 주세요')
-            } else if (!bizr_pw_check) {
+            } else if (!user_pw_check) {
                 alert('비밀번호가 일치하지 않습니다')
-            } else if (!bizr_email_check) {
+            } else if (!user_email_check) {
                 alert('이메일 인증을 진행해 주세요')
-            } else if (!bizr_checkbox_check) {
+            } else if (!user_checkbox_check) {
                 alert('약관에 동의해주세요')
             }
         };
@@ -364,44 +417,21 @@
         let bizr_email_check = false;		//사업자 이메일 확인
         let bizr_checkbox_check = false;	//사업자 약관 동의 확인
 
-        //사업자 아이디중복확인
-        const bizr_checkDuplicateButton = document.getElementById('bizr_checkDuplicate');
-        bizr_checkDuplicateButton.onclick = function (event) {
-            const birzid = document.getElementById('bizr_id').value;
-            if (birzid != '') {
-                let url = '${cpath}/ajax/checkDuplicateId?userid=' + birzid; // 서버로 중복 확인 요청 보내는 URL
-                fetch(url)
-                    .then(resp => resp.text())
-                    .then(result => {
-                        if (result === 'available') {
-                            alert('사용 가능한 아이디입니다.');
-                            bizr_id_check = true;
-                        } else if (result === 'unavailable') {
-                            alert('이미 사용 중인 아이디입니다.');
-                        } else {
-                            alert('중복 확인 중 오류가 발생했습니다.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('중복 확인 요청 중 오류 발생:', error);
-                    });
-            } else {
-                alert('아이디를 입력해 주세요')
-            }
-        };
-
         //사업자 비밀번호 체크 
         function bizrpw_test() {
             const bizr_pw1 = document.getElementById('bizr_pw1').value;
             const bizr_pw2 = document.getElementById('bizr_pw2').value;
             if (bizr_pw1 == '' && bizr_pw2 == '') {
-                alert('비밀번호를 입력해주세요')
+            	let content_pw = document.getElementById('bizr_checkpw');							//////////11/6//////
+                content_pw.innerHTML = "<div style='color:red'>비밀번호를 입력해 주세요 </div>";			//////////11/6//////
             }
             else if (bizr_pw1 === bizr_pw2) {
-                alert('비밀번호 일치');
+            	let content_pw = document.getElementById('bizr_checkpw');							//////////11/6//////
+                content_pw.innerHTML = "<div style='color:blue'>사용 가능한 비밀번호 입니다</div>";			//////////11/6//////
                 bizr_pw_check = true;
             } else {
-                alert('비밀번호를 다시확인해주세요');
+            	let content_pw = document.getElementById('bizr_checkpw');							//////////11/6//////
+                content_pw.innerHTML = "<div style='color:red'>사용 불가한 비밀번호 입니다</div>";			//////////11/6//////
             }
         }
 
@@ -424,6 +454,7 @@
                     alert(text)
                 })
         }
+        
         // 회원가입시 인증번호부터 체크하고 이후 인증번호가 일치하면 가입 프로세스를 진행
         const emailAuthBtn1 = document.getElementById('emailAuthBtn1');
 
@@ -439,6 +470,7 @@
                 bizr_email_check = true;
             }
         }
+        
         // 사업자 번호 확인
         let bizrNo_check = false;
         const bizrno_check_btn = document.getElementById('bizrno_check_btn')
@@ -450,6 +482,8 @@
             if (result == '1') {
             	alert('확인되었습니다')
                 bizrNo_check = true
+            }else{
+            	alert('사업자번호가 일치하지 않습니다')
             }
         }
 
