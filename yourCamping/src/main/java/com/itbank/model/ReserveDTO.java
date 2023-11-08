@@ -1,3 +1,4 @@
+
 package com.itbank.model;
 
 import java.sql.Date;
@@ -13,6 +14,17 @@ public class ReserveDTO {
 	private Date reserve_str_date;
 	private Date reserve_end_date;
 	private String facltnm;
+	private String payment;			
+	private int totalPrice;
+	//join 
+	private String username;
+	private String email;
+	private String phone;
+	private String userid;
+	private int useridx;
+	
+	
+	
 	
 	public String getFacltnm() {
 		return facltnm;
@@ -73,6 +85,48 @@ public class ReserveDTO {
 	}
 	public void setReserve_end_date(Date reserve_end_date) {
 		this.reserve_end_date = reserve_end_date;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public int getUseridx() {
+		return useridx;
+	}
+	public void setUseridx(int useridx) {
+		this.useridx = useridx;
+	}
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

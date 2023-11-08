@@ -41,19 +41,7 @@ public class BoardController {
 	@GetMapping("/reviewSearch")
 	public ModelAndView reviewSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = null;
-		if (type.equals("facltnm")) {
-			list = boardService.selectSearchReviewCamping(keyword);
-		}
-		else if (type.equals("title")) {
-			list = boardService.selectSearchReviewTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchReviewWriter(keyword);
-		}
-		else  {
-			list = boardService.selectReviewList();
-		}
+		List<ReviewDTO> list = boardService.selectSearchReview(type, keyword);
 		mav.addObject("list", list);
 		return mav;
 	}
@@ -145,15 +133,7 @@ public class BoardController {
 	public ModelAndView freeSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/freeList");
 		List<FreeDTO> list = null;
-		if (type.equals("title")) {
-			list = boardService.selectSearchFreeTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchFreeWriter(keyword);
-		}
-		else  {
-			list = boardService.selectFreeList();
-		}
+		list = boardService.selectSearchFree(type, keyword);
 		mav.addObject("list", list);
 		return mav;
 	}

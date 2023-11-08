@@ -105,7 +105,7 @@
 				</c:if>
 			</div>
 			<div class="container mt-1 view_campingInfo">
-				<table class="table" style="width: 400px;">
+				<table class="table" style="width: 100%;">
 					<tr>
 						<th>캠핑장</th>
 						<td>${dto.facltnm }</td>
@@ -170,8 +170,6 @@
 								<input type="date" name="reserve_str_date" id="datepicker-start"
 									class="input-text" placeholder="dd/mm/yyyy" required>
 							</div>
-							<a href="#" class="calendar-btn calendar-start hide-text">View
-								calendar</a>
 						</div>
 
 						<!-- 캠핑 끝 날짜 -->
@@ -183,7 +181,6 @@
 								<input type="date" name="reserve_end_date" id="datepicker-end"
 									class="input-text" placeholder="dd/mm/yyyy" required>
 							</div>
-							<a href="#" class="calendar-btn hide-text">View calendar</a>
 						</div>
 
 						<!-- 달력 -->

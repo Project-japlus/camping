@@ -38,18 +38,6 @@ public class BoardService {
 		return boardComponent.insertReview(dto);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewCamping(String keyword) {
-		return boardComponent.selectSearchReviewCamping(keyword);
-	}
-	
-	public List<ReviewDTO> selectSearchReviewTitle(String keyword) {
-		return boardComponent.selectSearchReviewTitle(keyword);
-	}
-	
-	public List<ReviewDTO> selectSearchReviewWriter(String keyword) {
-		return boardComponent.selectSearchReviewWriter(keyword);
-	}
-
 	public ReviewDTO selectReviewOne(int review_idx) {
 		return boardComponent.selectReviewOne(review_idx);
 	}
@@ -79,14 +67,6 @@ public class BoardService {
 	
 	public List<FreeDTO> selectFreeList() {
 		return boardComponent.selectFreeList();
-	}
-
-	public List<FreeDTO> selectSearchFreeTitle(String keyword) {
-		return boardComponent.selectSearchFreeTitle(keyword);
-	}
-	
-	public List<FreeDTO> selectSearchFreeWriter(String keyword) {
-		return boardComponent.selectSearchFreeWriter(keyword);
 	}
 	
 	public int insertFree(FreeDTO dto) {
@@ -147,5 +127,38 @@ public class BoardService {
 
 	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
 		return boardComponent.selectReplyOne(map);
+	}
+
+	public List<ReviewDTO> selectSearchReview(String type, String keyword) {
+		List<ReviewDTO> list = null;
+		switch(type) {
+		case "facltnm":
+			list = boardComponent.selectSearchReviewCamping(keyword);
+			break;
+		case "title":
+			list = boardComponent.selectSearchReviewTitle(keyword);
+			break;
+		case "writer":
+			list = boardComponent.selectSearchReviewWriter(keyword);
+			break;
+		default:
+			list = boardComponent.selectReviewList();	
+		} 
+		return list;
+	}
+
+	public List<FreeDTO> selectSearchFree(String type, String keyword) {
+		List<FreeDTO> list = null;
+		switch(type) {
+		case "title":
+			list = boardComponent.selectSearchFreeTitle(keyword);
+			break;
+		case "writer":
+			list = boardComponent.selectSearchFreeWriter(keyword);
+			break;
+		default:
+			list = boardComponent.selectFreeList();	
+		} 
+		return list;
 	}
 }

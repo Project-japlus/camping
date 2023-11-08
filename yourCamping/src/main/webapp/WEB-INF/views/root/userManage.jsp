@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp" %>
 <%@ include file="rootHeader.jsp" %>
 
-<c:if test="${login.userid != 'root' }">
+	<c:if test="${login.role != 'pageManager' }">
 		<c:redirect url="/"></c:redirect>
 	</c:if>
 
@@ -47,7 +47,11 @@
 			    <c:forEach var="dto" items="${userlist }">
 				    <tr>
 				        <td>${dto.user_idx }</td>
-				        <td>${dto.userid}</td>
+				        <td>${dto.userid}
+				        	<c:if test="${dto.joinConfirm == 'N' }">
+				        		<div class="fw-bold text-danger">비활성화</div>
+				        	</c:if>
+				        </td>
 				        <td>
 				        	${dto.username }
 				        </td>

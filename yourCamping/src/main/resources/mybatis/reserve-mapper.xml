@@ -6,15 +6,6 @@
 <!-- mapper의 namespace는 연결할 dao 인터페이스의 풀네임을 작성한다. -->
 <mapper namespace="com.itbank.repository.ReserveDAO">
 
-	<select id="selectList" resultType="camping">
-		select
-		*
-		from
-		camping c
-		join
-		reserve r on r.camping_idx = c.camping_idx
-
-	</select>
 
 
 	<!-- CampingDTO selectOne(HashMap<String, Object> param); -->
@@ -110,8 +101,6 @@
 	</select>
 
 
-	<!-- 예약이 되면 site개수 빼기 -->
-
 
 	<update id="paymentByOne" parameterType="int">
 		update reserve set
@@ -122,27 +111,10 @@
 	<select id="getMaxReserveIdx" resultType="int">
 		select max(reserve_idx) from reserve
 	</select>
-
-	<!-- <update id="minuseSiteCo" parameterType="reserve"> -->
-	<!-- update -->
-	<!-- camping_site -->
-	<!-- set -->
-	<!-- <if test="reserve_site == 'a사이트'"> -->
-	<!-- sitemg1co = sitemg1co - 1 -->
-	<!-- </if> -->
-	<!-- <if test="reserve_site == 'b사이트'"> -->
-	<!-- sitemg2co = sitemg2co - 1 -->
-
-	<!-- </if> -->
-	<!-- <if test="reserve_site == 'c사이트'"> -->
-	<!-- sitemg3co = sitemg3co - 1 -->
-	<!-- </if> -->
-	<!-- where camping_idx = #{camping_idx} -->
-	<!-- </update> -->
-
-
-
-
-
+	
+	<update id="totalPrice" parameterType="hashmap">
+		update reserve set  totalPrice = #{price}
+		where reserve_idx = #{reserve_idx}
+	</update>
 
 </mapper>

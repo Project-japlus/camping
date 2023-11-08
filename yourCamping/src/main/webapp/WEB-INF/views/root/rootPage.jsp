@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp" %>
 <%@ include file="rootHeader.jsp" %>
     
-    <c:if test="${login.userid != 'root' }">
+   <c:if test="${login.role != 'pageManager' }">
 		<c:redirect url="/"></c:redirect>
 	</c:if>
     
@@ -18,19 +18,11 @@
 		}
 	</style>
 	
-
+	
 	
 	<div class="container mt-3">
-  		<h4 class="fw-bold mb-4">고객예약내역확인
-  		<!-- 초기화 버튼 -->
-  			<span>
-  			 	<button id="resetSiteCount" class="btn btn-warning" data-bs-toggle="tooltip" title="퇴실완료처리">
-				↻</button>	
-  		
-			  
-		 	 </span>		 	 
-		  </h4>
-  		<div class="alert alert-dark">
+  		<h4 class="fw-bold mb-4">최근 등록된 캠핑장 내역</h4>
+  		<div class="alert alert-info">
   			<strong class="fst-italic">최근예약내역</strong>
 		</div>
   		
@@ -57,7 +49,7 @@
 				        	</a>
 				        </td>
 				        
-				        <td>${dto.reserve_price }</td>
+				        <td>${dto.totalPrice }</td>
 				        <td>
 					        <c:if test="${dto.payment eq '0'}">
 					        	<div class="fw-bold text-danger">미결제</div>
@@ -67,25 +59,8 @@
 					        </c:if>
 				        </td>
 				      </tr>
-				      
-				      			
-			<script>
-			
-						var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-						var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-						  return new bootstrap.Tooltip(tooltipTriggerEl)
-						})
-					const resetSiteCount = document.getElementById('resetSiteCount');
-					const reserve_idx = '${dto.reserve_idx}';
-					resetSiteCount.onclick = function(){
-						const check = confirm('퇴실된 예약내역의 사이트개수를 초기화합니다');
-						if(check == true){
-							alert('사이트갯수 초기화');
-							location.href = '${cpath}/root/resetSiteCo/'+reserve_idx;	 													
-						}
-					};
-			</script>
-			    </c:forEach>    
+			    </c:forEach>   
+			     
 		    </tbody>
 	 	 </table>
 	</div>

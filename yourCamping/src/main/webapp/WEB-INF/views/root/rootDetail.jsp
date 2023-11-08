@@ -4,7 +4,7 @@
 <%@ include file="rootHeader.jsp" %>
 	
 	<!-- 로그인인된 사용자가 관리자가 아니면  홈으로 리다이렉트 -->
- 	<c:if test="${login.userid != 'root' }">
+ 	<c:if test="${login.role != 'pageManager' }">
 		<c:redirect url="/"></c:redirect>
 	</c:if>
 	
@@ -29,7 +29,7 @@
 					      </tr>
 					      <tr>
 					        <th class="w-25">결제가격</th>
-					        <td><fmt:formatNumber pattern="#,##0">${reservedto.reserve_price}</fmt:formatNumber><span>원</span></td>
+					        <td><fmt:formatNumber pattern="#,##0">${reservedto.totalPrice}</fmt:formatNumber><span>원</span></td>
 					      </tr>
 					       <tr>
 					        <th class="w-25">캠핑장 내 사이트 </th>
