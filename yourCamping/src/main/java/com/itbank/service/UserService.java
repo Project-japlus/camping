@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itbank.component.HashComponent;
+import com.itbank.model.BookmarkDTO;
+import com.itbank.model.CampingDTO;
+import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.repository.UserDAO;
 
 @Service
 public class UserService {
 
-	@Autowired private HashComponent hashComponent;
-	@Autowired private UserDAO userDAO;
+	@Autowired
+	private HashComponent hashComponent;
+	@Autowired
+	private UserDAO userDAO;
 
 	// 일반 사용자 회원가입
 	public int join_user(UserDTO dto) {
@@ -104,5 +109,20 @@ public class UserService {
 
 	public int user_leave(int user_idx) {
 		return userDAO.user_leave(user_idx);
+	}
+
+	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
+	public List<ReserveDTO> getReserveInfo(int user_idx) {
+		return userDAO.getReserveInfo(user_idx);
+	}
+
+	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
+	public List<BookmarkDTO> getBookmarkInfo(int user_idx) {
+		return userDAO.getBookmarkInfo(user_idx);
+	}
+
+	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
+	public List<CampingDTO> getbizrInfo(int user_idx) {
+		return userDAO.getbizrInfo(user_idx);
 	}
 }

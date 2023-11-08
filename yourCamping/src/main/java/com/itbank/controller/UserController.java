@@ -1,5 +1,7 @@
 package com.itbank.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.model.BookmarkDTO;
+import com.itbank.model.CampingDTO;
+import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.UserService;
 
@@ -106,12 +111,6 @@ public class UserController {
 	@PostMapping("/Mypage_check")
 	public ModelAndView MyPage_check(UserDTO dto, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		if (session.getAttribute("login") == null) {
-			mav.setViewName("/alert");
-			mav.addObject("msg", "로그인 후 이용해 주세요");
-			mav.addObject("url", "home");
-			return mav;
-		}
 		// 세션에서 가져온 로그인된 유저 정보
 		UserDTO info_login = (UserDTO) session.getAttribute("login");
 		// 해쉬처리된 입력한 패스워드
@@ -130,11 +129,20 @@ public class UserController {
 	@GetMapping("/Mypage")
 	public ModelAndView Mypage(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		if (session.getAttribute("login") == null) {
+		UserDTO login = (UserDTO)session.getAttribute("login");
+		if (login == null) {
 			mav.setViewName("/alert");
 			mav.addObject("msg", "로그인 후 이용해 주세요");
 			mav.addObject("url", "home");
 		}
+		int user_idx = login.getUser_idx();
+		// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
+		List<ReserveDTO> reserveInfo = userService.getReserveInfo(user_idx);
+		List<BookmarkDTO> bookmarkInfo = userService.getBookmarkInfo(user_idx);
+		List<CampingDTO> bizrInfo = userService.getbizrInfo(user_idx);
+		mav.addObject("reservelist", reserveInfo);
+		mav.addObject("bookmarklist", bookmarkInfo);
+		mav.addObject("bizrlist", bizrInfo);
 		return mav;
 	}
 
