@@ -437,6 +437,7 @@ img.rounded {
 	position: absolute;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
+	margin-top: 35px;
 }
 
 img.active {
@@ -445,6 +446,7 @@ img.active {
 
 table#week {
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 /* mypage css */

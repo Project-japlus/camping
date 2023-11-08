@@ -20,7 +20,6 @@ public class CampingDTO {
 	private String doNm;
 	private String sigunguNm;
 	private int user_idx;
-	
 
 	// camping_activity
 	private String posblFcltyCl;

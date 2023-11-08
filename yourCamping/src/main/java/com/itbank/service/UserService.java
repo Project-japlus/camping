@@ -12,10 +12,8 @@ import com.itbank.repository.UserDAO;
 @Service
 public class UserService {
 
-	@Autowired
-	private HashComponent hashComponent;
-	@Autowired
-	private UserDAO userDAO;
+	@Autowired private HashComponent hashComponent;
+	@Autowired private UserDAO userDAO;
 
 	// 일반 사용자 회원가입
 	public int join_user(UserDTO dto) {

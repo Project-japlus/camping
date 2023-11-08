@@ -28,14 +28,10 @@ import com.itbank.util.DataType;
 public class AjaxController {
 
 	private Random ran = new Random();
-	@Autowired
-	private MailComponent mailComponent;
-	@Autowired
-	private UserDAO userDAO;
-	@Autowired
-	private WeatherComponent weatherComponent;
-	@Autowired
-	private HashComponent hashComponent;
+	@Autowired private MailComponent mailComponent;
+	@Autowired private UserDAO userDAO;
+	@Autowired private WeatherComponent weatherComponent;
+	@Autowired private HashComponent hashComponent;
 
 	// 이메일 인증번호 전송
 	@GetMapping("/sendAuthNumber")
