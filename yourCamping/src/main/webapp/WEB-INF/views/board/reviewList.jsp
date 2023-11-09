@@ -45,8 +45,9 @@
 				</c:if>
 			</tbody>
 		</table>
+		
 	    <div class="d-flex justify-content-between">
-	    	<form action="${cpath }/board/reviewSearch" method="GET" id="searchFoam" name="search-form">
+	    	<form action="${cpath }/board/reviewSearch/1" method="GET" id="searchFoam" name="search-form">
 				<p>
 					<select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>
@@ -90,7 +91,7 @@
 		}
 		else {
 			location.href = event.target.parentNode.href
-		}
+		}	
 	}
 	writeBtn.onclick = writeHandler
 </script>

@@ -66,6 +66,7 @@ public class FileComponent {
 
 	public String upload3(MultipartFile f) {
 		String fileName = UUID.randomUUID().toString().replace("-", "").substring(6);
+		;
 		String originalFileName = f.getOriginalFilename();
 		String ext = originalFileName.substring(originalFileName.lastIndexOf("."));
 		fileName += ext;

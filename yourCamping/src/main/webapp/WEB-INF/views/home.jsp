@@ -6,8 +6,7 @@
 		<div class="w-50" style="margin: 0 auto; display: flex; justify-content: flex-end; padding: 5px 25px;">
 			<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
 		</div>
-		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 bg-gradient shadow"
-			style="-bs-bg-opacity: .8; height: 400px;">
+		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 shadow" id="home_SearchBox">
 			<form action="${cpath }/camping/list/1">
 				<div class="mb-3 mt-4 d-flex justify-content-evenly gap-4 mx-auto w-75">
 					<select id="firstSelect" name="firstSelect" class="rounded" style="width: 200px;" onchange="changeSecondOptions()">
@@ -53,8 +52,8 @@
 	
 		<!--자주 찾는 캠핑장 링크-->
 		<div
-			class="container w-25 mx-auto rounded-3 bg-secondary home_listBox"
-			style="-bs-bg-opacity: .8;">
+			class="container w-25 mx-auto rounded-3"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
 			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=전체&keyword=">자주 찾는 캠핑장</a></h2>
 			<div class="list-group w-90 m-4">
 				<ul class="main_link_ul">
@@ -67,8 +66,8 @@
 
 		<!--리뷰게시판-->
 		<div
-			class="container w-25 mx-auto rounded-3 bg-secondary home_listBox"
-			style="-bs-bg-opacity: .8;">
+			class="container w-25 mx-auto rounded-3"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
 			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/board/reviewList/1">캠핑장 후기</a></h2>
 			<div class="list-group w-90 m-4">
 				<ul class="main_link_ul">
@@ -81,8 +80,8 @@
 
 		<!--자유게시판-->
 		<div
-			class="container w-25 mx-auto rounded-3 bg-secondary home_listBox"
-			style="-bs-bg-opacity: .8;">
+			class="container w-25 mx-auto rounded-3"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
 			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/board/freeList/1">자유게시판</a></h2>
 			<div class="list-group w-90 m-4">
 				<ul class="main_link_ul">

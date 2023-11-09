@@ -36,7 +36,7 @@ public class CampingController {
 				break;
 			}
 		}
-		
+		int tmp = page;
 		int boardCount = campingService.getListCnt();
 		boolean flag1 = param.containsKey("keyword");
 		if (flag1) {
@@ -70,7 +70,7 @@ public class CampingController {
 		if (flag1 || flag2 || flag3 || flag4) {
 			boardCount = campingService.getSearchCnt(param);
 		}
-		PagingService paging = new PagingService(page, boardCount);
+		PagingService paging = new PagingService(tmp, boardCount);
 		
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		for (String key : param.keySet()) {

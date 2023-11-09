@@ -129,7 +129,7 @@
 		<div id="map" style="width: 860px; height: 700px;"></div>
 		<div style="overflow-y:auto; overflow-x: hidden; background-color:#fafbfe; width:310px; height:670px;">
 			<c:if test="${empty list }">
-				검색 결과가 없습니다.
+				<div class="map_result">검색 결과가 없습니다.</div>
 				<div class="map_pagingNon"></div>
 			</c:if>
 			
@@ -246,7 +246,6 @@
 	}
 </script>
 
-	<div style="height: 200px;"></div>
 </div>
 	<!-- 지도 -->
 	<script

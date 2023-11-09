@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.model.CampingDTO;
 import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.repository.RootDAO;
@@ -44,6 +45,21 @@ public class RootService {
 		return rootDAO.rootOne(reserve_idx);
 	}
 
+	public List<CampingDTO> newCampingList(CampingDTO cdto) {
+		// TODO Auto-generated method stub
+		return rootDAO.newCampingList(cdto);
+	}
+
+	public CampingDTO newListOne(int camping_idx) {
+		// TODO Auto-generated method stub
+		return rootDAO.newListOne(camping_idx);
+	}
+
+	public int newCampingDelete(int camping_idx) {
+		// TODO Auto-generated method stub
+		return rootDAO.newCampingDelete(camping_idx);
+	}
+
 //	public int checkOutByRoot(int reserve_idx) {
 //		// TODO Auto-generated method stub
 //		return rootDAO.checkOutByRoot(reserve_idx);
@@ -53,8 +69,5 @@ public class RootService {
 //		// TODO Auto-generated method stub
 //		return rootDAO.resetSiteByRoot(reservedto);
 //	}
-
-
-
 	
 }

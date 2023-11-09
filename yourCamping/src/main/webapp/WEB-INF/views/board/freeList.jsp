@@ -20,6 +20,7 @@
 		        </tr>
 			</thead>
 			<tbody>
+		      	<c:if test="${paging.boardCount != 0 }">
 		      	<c:forEach var="dto" items="${list }">
 				<tr>
 					<td class="text-center">${dto.free_table_idx }</td>
@@ -32,10 +33,16 @@
 		        	</c:if>
 				</tr>
 		        </c:forEach>
+		        </c:if>
+		        <c:if test="${paging.boardCount == 0 }">
+				<tr>
+					<td colspan="7">검색된 결과가 없습니다</td>
+				</tr>
+				</c:if>
 			</tbody>
 		</table>
 	    <div class="d-flex justify-content-between">
-	    	<form action="${cpath }/board/freeSearch" method="GET" id="searchFoam" name="search-form">
+	    	<form action="${cpath }/board/freeSearch/1" method="GET" id="searchFoam" name="search-form">
 				<p>
 					<select name="type" class="type-box">
 						<option value="">검색 유형 선택</option>

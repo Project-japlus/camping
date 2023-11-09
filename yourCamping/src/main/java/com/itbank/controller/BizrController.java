@@ -1,6 +1,5 @@
 package com.itbank.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,8 @@ public class BizrController {
 	private CampingService campingService;
 
 	@GetMapping("/newCamping")
-	public void newCamping() {}
+	public void newCamping() {
+	}
 
 	// 첫번째 form
 	@PostMapping("/newCamping")
@@ -34,7 +34,7 @@ public class BizrController {
 		dto.setSigunguNm(secondSelect);
 		dto.setAddr1(dto.getDoNm() + " " + dto.getSigunguNm() + " " + dto.getAddr1());
 		// 1.camping테이블과 camping_img, camping_place 테이블 insert
-		UserDTO login = (UserDTO)session.getAttribute("login");
+		UserDTO login = (UserDTO) session.getAttribute("login");
 		dto.setUser_idx(login.getUser_idx());
 		int row1 = campingService.campingInsert(dto);
 		int maxCampingIdx = campingService.maxCampingIdx();
@@ -69,18 +69,21 @@ public class BizrController {
 	@ResponseBody
 	public String prevPage() {
 		int maxCampingIdx = campingService.maxCampingIdx();
-		System.out.println(maxCampingIdx);
-		CampingDTO dto = campingService.selectOneByImg(maxCampingIdx);
 		campingService.deleteCampingPlace(maxCampingIdx);
 		campingService.deleteCampingActivity(maxCampingIdx);
-		campingService.deleteCampingImg(dto);
+		campingService.deleteCampingImg(maxCampingIdx);
 		campingService.deleteCamping(maxCampingIdx);
 		return "<script>history.go(-2);</script>";
 	}
 
 	@GetMapping("/campingUpdate/{camping_idx}")
-	public ModelAndView campingUpdate(@PathVariable("camping_idx") int camping_idx) {
+	public ModelAndView campingUpdate(@PathVariable("camping_idx") int camping_idx, HttpSession session) {
 		ModelAndView mav = new ModelAndView("/bizr/campingUpdate");
+		if (session.getAttribute("login") == null) {
+			mav.setViewName("/alert");
+			mav.addObject("msg", "로그인 후 이용해 주세요");
+			mav.addObject("url", "home");
+		}
 		CampingDTO dto = campingService.selectCamping(camping_idx);
 		mav.addObject("dto", dto);
 		return mav;
@@ -95,11 +98,8 @@ public class BizrController {
 		dto.setSigunguNm(secondSelect);
 		dto.setAddr1(firstSelect + " " + secondSelect + " " + dto.getAddr1());
 		campingService.updateCamping(dto);
-		// 사진은 기존에 있던 파일 이름을 가져와서 삭제 시키고(실제 폴더에서만 삭제)
-		CampingDTO storedImg = campingService.selectOneByImg(camping_idx);
-		campingService.deleteFile(storedImg);
-//		// update 실행
-		campingService.updateCampingImg(dto);
+		campingService.deleteCampingImg(camping_idx);
+		campingService.campingImgInsert(dto);
 		campingService.updateInfoTwo(dto);		// camping_place테이블
 		campingService.updateActivity(dto);
 		CampingDTO camping = campingService.selectCampingTwo(camping_idx);
@@ -124,15 +124,7 @@ public class BizrController {
 	@GetMapping("/campingDelete/{camping_idx}")
 	public ModelAndView campingDelete(@PathVariable("camping_idx") int camping_idx) {
 		ModelAndView mav = new ModelAndView("/alert");
-		campingService.deleteCampingSite(camping_idx);
-		campingService.deleteCampingSafetyDevice(camping_idx);
-		campingService.deleteCampingInternal(camping_idx);
-		campingService.deleteCampingPlace(camping_idx);
-		campingService.deleteCampingIntoduce(camping_idx);
-		campingService.deleteCampingActivity(camping_idx);
-		CampingDTO dto = campingService.selectOneByImg(camping_idx);
-		campingService.deleteCampingImg(dto);
-		campingService.deleteCamping(camping_idx);
+		campingService.updateConfirm(camping_idx);
 		mav.addObject("msg", "캠핑장이 삭제되었습니다");
 		mav.addObject("url", "list");
 		return mav;

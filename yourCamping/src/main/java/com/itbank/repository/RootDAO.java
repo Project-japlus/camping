@@ -2,6 +2,7 @@ package com.itbank.repository;
 
 import java.util.List;
 
+import com.itbank.model.CampingDTO;
 import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 
@@ -23,6 +24,12 @@ public interface RootDAO {
 	int userDisabled(int user_idx);
 
 	ReserveDTO rootOne(int reserve_idx);
+
+	List<CampingDTO> newCampingList(CampingDTO cdto);
+
+	CampingDTO newListOne(int camping_idx);
+
+	int newCampingDelete(int camping_idx);
 
 //	int checkOutByRoot(int reserve_idx);
 //

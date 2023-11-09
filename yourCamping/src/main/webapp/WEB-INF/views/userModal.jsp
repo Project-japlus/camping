@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 로그인 -->
 <div class="modal" id="login">
 	<div class="modal-dialog">
@@ -12,12 +12,14 @@
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-			
+
 				<form class="form-inline m-auto" method="POST"
 					action="${cpath }/user/login">
 					<div class="form-group w-75 p-1 m-auto">
+						<!-- 							아이디저장쿠키 -->
 						<label for="email opacity-100">아이디</label> <input type="text"
-							class="form-control opacity-100" placeholder="아이디" name="userid">
+							class="form-control opacity-100" id="userInputId"
+							placeholder="아이디" name="userid">
 					</div>
 					<div class="form-group w-75 p-1 m-auto">
 						<label for="password">Password</label> <input type="password"
@@ -26,8 +28,9 @@
 					</div>
 					<div class="checkbox opacity-100 m-auto ms-5 ps-2">
 						<div class="d-flex">
+							<!-- 							아이디저장쿠키 -->
 							<label> <input class="ms-2" type="checkbox"
-								name="remember">아이디저장
+								id="idSaveCheck">아이디저장
 							</label> <label><input class="ms-5" type="checkbox"
 								name="remember_bizr">사업자 로그인</label>
 						</div>
@@ -36,7 +39,7 @@
 						<button type="submit"
 							class="btn btn-primary btn-lg opacity-100 w-75 ms-5 mb-3">로그인</button>
 					</div>
-					
+
 				</form>
 				<div class="ms-3">
 					<div class="d-flex justify-content-between">
@@ -71,8 +74,9 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="container">
-					
-						<form method="POST" action="${cpath }/user/user_join" id="userJoinForm">
+
+						<form method="POST" action="${cpath }/user/user_join"
+							id="userJoinForm">
 							<div class="d-flex flex-column w-100 m-auto">
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
@@ -81,9 +85,9 @@
 									<button type="button" class="btn btn-primary checkDuplicate"
 										style="width: 100px;">중복 확인</button>
 								</div>
-								
-<!-- 								중복여부 띄어줄 div								 -->
-								<div class="user_checkid"></div>		
+
+								<!-- 								중복여부 띄어줄 div								 -->
+								<div class="user_checkid"></div>
 
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between ">
@@ -96,13 +100,13 @@
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="user_pw2"
 											placeholder="비밀번호  확인" required>
-										<button type="button" class="btn btn-primary" onclick="userpw_test()"
-											style="width: 100px;">PW 확인</button>
+										<button type="button" class="btn btn-primary"
+											onclick="userpw_test()" style="width: 100px;">PW 확인</button>
 									</p>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="user_checkpw"></div>
-								
+
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
 									<input type="text" name="username" placeholder="이름" required>
@@ -126,7 +130,7 @@
 												class="btn btn-primary mt-1" type="button" value="본인인증"
 												style="width: 100px;">
 										</div>
-<!-- 								중복여부 띄어줄 div								 -->
+										<!-- 								중복여부 띄어줄 div								 -->
 										<div id="user_check_email"></div>
 									</div>
 								</div>
@@ -143,7 +147,7 @@
 									<input type="submit" class="btn btn-primary" value="회원가입">
 								</div>
 							</div>
-							
+
 						</form>
 					</div>
 				</div>
@@ -180,10 +184,10 @@
 									<input type="text" name="userid" placeholder="아이디" required
 										autofocus autocomplete="off" class="idcheck">
 									<button type="button" class="btn btn-primary checkDuplicate"
-										 style="width: 100px;">중복 확인</button>
+										style="width: 100px;">중복 확인</button>
 								</div>
-								
-<!-- 								중복여부 띄어줄 div								 -->
+
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div class="bizr_checkid"></div>
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between">
@@ -195,12 +199,12 @@
 								<div>
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="bizr_pw2"
-											placeholder="비밀번호  확인" required>
-										<input type="button" class="btn btn-primary" onclick="bizrpw_test()"
+											placeholder="비밀번호  확인" required> <input type="button"
+											class="btn btn-primary" onclick="bizrpw_test()"
 											style="width: 100px;" value="PW 확인">
 									</p>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="bizr_checkpw"></div>
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
@@ -227,12 +231,13 @@
 										</div>
 									</div>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="bizr_check_email"></div>
 								<div class="mb-1">사업자번호</div>
 								<div class="d-flex justify-content-between mb-2">
-									<input type="text" name="bizrno" placeholder="사업자번호" id="bizrno_check" required>
-									<a><button type="button" class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
+									<input type="text" name="bizrno" placeholder="사업자번호"
+										id="bizrno_check" required> <a><button
+											type="button" class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>
@@ -263,6 +268,69 @@
 </div>
 
 <script>
+	
+	$(document).ready(function() {
+	    // 페이지 로딩 시, 쿠키에서 사용자 아이디를 가져와 입력란에 설정
+	    var userInputId = getCookie("userInputId");
+	    $("input[name='userid']").val(userInputId);
+	    
+	    if (userInputId != "") {
+	        // 아이디 저장하기 체크가 되어있을 때, 체크 박스를 체크 상태로 설정
+	        $("#idSaveCheck").prop("checked", true);
+	    }
+	    
+	    // 아이디 저장하기 체크 상태가 변경되면 처리
+	    $("#idSaveCheck").change(function() {
+	        if ($("#idSaveCheck").is(":checked")) {
+	            // 아이디 저장하기가 체크된 경우, 사용자 아이디를 쿠키에 저장
+	            var userInputId = $("input[name='userid']").val();
+	            setCookie("userInputId", userInputId, 7);
+	        } else {
+	            // 아이디 저장하기가 체크 해제된 경우, 쿠키 삭제
+	            deleteCookie("userInputId");
+	        }
+	    });
+	
+	    // 사용자가 아이디 입력란에 아이디를 입력할 때도 쿠키를 저장
+	    $("input[name='userid']").keyup(function() {
+	        if ($("#idSaveCheck").is(":checked")) {
+	            var userInputId = $("input[name='userid']").val();
+	            setCookie("userInputId", userInputId, 7);
+	        }
+	    });
+	});
+	
+	// 아래는 수정되지 않은 쿠키 관련 함수입니다.
+	
+	function setCookie(cookieName, value, exdays) {
+	    var exdate = new Date();
+	    exdate.setDate(exdate.getDate() + exdays);
+	    var cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+	    document.cookie = cookieName + "=" + cookieValue;
+	}
+	
+	function deleteCookie(cookieName) {
+	    var expireDate = new Date();
+	    expireDate.setDate(expireDate.getDate() - 1);
+	    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+	}
+	
+	function getCookie(cookieName) {
+	    cookieName = cookieName + '=';
+	    var cookieData = document.cookie;
+	    var start = cookieData.indexOf(cookieName);
+	    var cookieValue = '';
+	    if (start != -1) {
+	        start += cookieName.length;
+	        var end = cookieData.indexOf(';', start);
+	        if (end == -1) end = cookieData.length;
+	        cookieValue = cookieData.substring(start, end);
+	    }
+	    return unescape(cookieValue);
+	}
+	
+	
+
     let user_id_check = false;
     let user_pw_check = false;
     let user_email_check = false;
@@ -395,6 +463,7 @@
     const user_join = function (event) {
         event.preventDefault();
         if (user_id_check && user_pw_check && user_email_check && user_checkbox_check) {
+        	
             location.href = '${cpath}/user/user_join';
             event.target.submit()
         } else {

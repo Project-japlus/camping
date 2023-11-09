@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
-import com.itbank.model.ReviewLikeDTO;
 import com.itbank.repository.BoardDAO;
 
 @Component
@@ -30,16 +29,28 @@ public class BoardComponent {
 		return boardDAO.insertReview(dto);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewCamping(String keyword) {
-		return boardDAO.selectSearchReviewCamping(keyword);
+	public List<ReviewDTO> selectSearchReviewCamping(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewCamping(map);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewTitle(String keyword) {
-		return boardDAO.selectSearchReviewTitle(keyword);
+	public int countSearchReviewCamping(String keyword) {
+		return boardDAO.countSearchReviewCamping(keyword);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewWriter(String keyword) {
-		return boardDAO.selectSearchReviewWriter(keyword);
+	public List<ReviewDTO> selectSearchReviewTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewTitle(map);
+	}
+	
+	public int countSearchReviewTitle(String keyword) {
+		return boardDAO.countSearchReviewTitle(keyword);
+	}
+	
+	public List<ReviewDTO> selectSearchReviewWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewWriter(map);
+	}
+	
+	public int countSearchReviewWriter(String keyword) {
+		return boardDAO.countSearchReviewWriter(keyword);
 	}
 
 	public ReviewDTO selectReviewOne(int review_idx) {
@@ -48,10 +59,6 @@ public class BoardComponent {
 	
 	public int countReviewView(int review_idx) {
 		return boardDAO.countReviewView(review_idx);
-	}
-	
-	public int countReviewLike(ReviewLikeDTO dto) {
-		return boardDAO.countReviewLike(dto);
 	}
 	
 	public String selectReviewImg(int review_idx) {
@@ -74,14 +81,22 @@ public class BoardComponent {
 		return boardDAO.countFreeList();
 	}
 	
-	public List<FreeDTO> selectSearchFreeTitle(String keyword) {
-		return boardDAO.selectSearchFreeTitle(keyword);
+	public List<FreeDTO> selectSearchFreeTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeTitle(map);
 	}
 	
-	public List<FreeDTO> selectSearchFreeWriter(String keyword) {
-		return boardDAO.selectSearchFreeWriter(keyword);
+	public int countSearchFreeTitle(String keyword) {
+		return boardDAO.countSearchFreeTitle(keyword);
+	}
+	
+	public List<FreeDTO> selectSearchFreeWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeWriter(map);
 	}
 
+	public int countSearchFreeWriter(String keyword) {
+		return boardDAO.countSearchFreeWriter(keyword);
+	}
+	
 	public int insertFree(FreeDTO dto) {
 		return boardDAO.insertFree(dto);
 	}

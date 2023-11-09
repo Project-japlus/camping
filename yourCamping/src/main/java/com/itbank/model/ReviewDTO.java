@@ -70,6 +70,12 @@ public class ReviewDTO {
 	public void setReview_viewCount(int review_viewCount) {
 		this.review_viewCount = review_viewCount;
 	}
+	public List<MultipartFile> getUpload() {
+		return upload;
+	}
+	public void setUpload(List<MultipartFile> upload) {
+		this.upload = upload;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -87,11 +93,5 @@ public class ReviewDTO {
 	}
 	public void setFacltnm(String facltnm) {
 		this.facltnm = facltnm;
-	}
-	public List<MultipartFile> getUpload() {
-		return upload;
-	}
-	public void setUpload(List<MultipartFile> upload) {
-		this.upload = upload;
 	}
 }

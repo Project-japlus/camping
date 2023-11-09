@@ -5,7 +5,6 @@
     <div class="container mt-3">
         <div class="d-flex justify-content-between">
             <h3>회원 정보 수정</h3>
-            <a href="${cpath}/mypage"><button class="btn btn-warning">회원탈퇴</button></a>
         </div>
         <hr>
         <table id="modify_table" class="table table-bordered">
@@ -68,7 +67,7 @@
     </div>
     <!-- footer -->
     <div class="container mt-3 d-flex justify-content-center" style="margin-left: 350px;">
-        <a href="${cpath}/Mypage"><button class="ms-5 btn btn-primary " style="width: 185px;">MYPAGE</button></a>
+        <a href="${cpath}/user/Mypage"><button class="ms-5 btn btn-primary " style="width: 185px;">MYPAGE</button></a>
     </div>
 </div>
 

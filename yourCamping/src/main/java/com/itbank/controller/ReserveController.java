@@ -111,7 +111,16 @@ public class ReserveController {
 		int payRow = reserveService.paymentByOne(reserve_idx);
 //		int minRow = reserveService.minuseSiteCo(reservedto);
 		
-//		System.out.println(minRow != 0 ? "min업데이트" : "min실패");
+		//총 결제금액 추가 
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("reservedto", reservedto);
+		param.put("reserve_idx", reserve_idx);
+		param.put("price", price);
+		
+		int priceRow = reserveService.totalPrice(param);
+		
+		System.out.println(payRow != 0  ? "결제상태 업뎃" : "결제업뎃실패"  );
+		System.out.println(priceRow != 0 ? "총금액 업뎃 " : "총금액 업뎃실패");
 		mav.addObject("reservedto",reservedto);
 		mav.addObject("price",price);
 		return mav;

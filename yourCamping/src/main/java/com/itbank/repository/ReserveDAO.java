@@ -33,4 +33,5 @@ public interface ReserveDAO {
 
 	int getMaxReserveIdx();
 	
+	int totalPrice(HashMap<String, Object> param);
 }

@@ -21,7 +21,7 @@
 	        </div>
 	        <div class="mb-3 d-flex justify-content-end">
 	        	<input id="complete" type="submit" class="btn btn-primary" value="작성완료">
-	        	<a href="${cpath }/board/freeList/1"><button type="button" class="btn btn-secondary ms-3">취소</button></a>
+	        	<a href="${cpath }/board/freeList/1"><button type="button" class="btn btn-secondary">취소</button></a>
 	        </div>
 		</form>
 	</div>

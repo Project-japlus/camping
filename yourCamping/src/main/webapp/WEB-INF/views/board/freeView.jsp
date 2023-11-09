@@ -40,7 +40,9 @@
 						<div class="ms-2">${reply.reply_content}</div>
 					</div>
 					<div>
-						<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						<c:if test="${reply.userid == login.userid }">
+							<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						</c:if>
 					</div>
 				</div>
 				</c:forEach>
@@ -85,10 +87,6 @@
 	const deleteReplyBtn = document.getElementById('deleteReplyBtn')
 	const deleteReplyHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		if ('${dto.userid}' != '${login.userid}') {
-			alert('본인 댓글만 삭제할 수 있습니다')
-			return
-		}
 		if (confirm('삭제하시겠습니까')) {
 			location.href = event.target.parentNode.href
 		}	
