@@ -85,6 +85,8 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 
 
 
+# 프로젝트 업데이트 기록
+
 ## 2023년 11월 8일
 
 ### 하람
@@ -107,7 +109,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 - [x] UserController에 list 추가
 - [x] UserService 함수 추가
 - [x] UserDAO 함수 추가
-- [x] UserMapper에 <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 추가
+- [x] UserMapper에 select문 getReserveInfo & getBookmarkInfo & getbizrInfo 추가
 - [x] @Mypage_modify 어노테이션 추가하여 MYPAGE 버튼 경로 수정
 - [x] @userModal 어노테이션 추가하여 아이디 저장 기능 구현
 - [x] userModal에 Jquery 추가 및 아래 스크립트 추가하여 완성
@@ -139,5 +141,3 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 - [x] 마이페이지에서 캠핑장 수정과 삭제 링크 주소 변경
 - [x] 정말 삭제할 것인지 물어보는 스크립트 생성
 - [x] MyPage_check의 GetMapping과 PostMapping 모두 변경
-
-
