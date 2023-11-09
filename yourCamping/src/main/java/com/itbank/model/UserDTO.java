@@ -20,6 +20,9 @@ public class UserDTO {
 	private List<Integer> camping_idx;
 	private String joinConfirm;
 	
+	// 11월 8일 추가
+	private List<Integer> review_idx;
+	
 	public boolean isRemember_bizr() {
 		return remember_bizr;
 	}
@@ -91,6 +94,12 @@ public class UserDTO {
 	}
 	public void setJoinConfirm(String joinConfirm) {
 		this.joinConfirm = joinConfirm;
+	}
+	public List<Integer> getReview_idx() {
+		return review_idx;
+	}
+	public void setReview_idx(List<Integer> review_idx) {
+		this.review_idx = review_idx;
 	}
 	
 }

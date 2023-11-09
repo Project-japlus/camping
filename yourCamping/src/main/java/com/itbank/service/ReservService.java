@@ -71,7 +71,8 @@ public class ReservService {
 		return reserveDAO.getMaxReserveIdx();
 	}
 
-
-
-	
+	public int totalPrice(HashMap<String, Object> param) {
+		// TODO Auto-generated method stub
+		return reserveDAO.totalPrice(param);
+	}
 }

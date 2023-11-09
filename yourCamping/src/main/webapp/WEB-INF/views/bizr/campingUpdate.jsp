@@ -95,22 +95,20 @@
     </div>
     <div class="mb-3 mt-3">
 	      <label>주변 이용 가능 시설:</label>
-	      <input type="text" name="posblFcltyCl" value="${camping.posblFcltyCl }">
+	      <input type="text" name="posblFcltyCl" value="${dto.posblFcltyCl }">
 	</div>
 	    <div class="mb-3">
 	      <label>주변 이용 가능 시설 기타:</label>
-	      <input type="text" name="posblFcltyEtc" value="${camping.posblFcltyEtc }">
+	      <input type="text" name="posblFcltyEtc" value="${dto.posblFcltyEtc }">
 	    </div>
 	    <div class="mb-3">
 	      <label>체험 프로그램:</label>
-	     	<input type="text" name="exprnprogrm" value="${camping.exprnprogrm }">
+	     	<input type="text" name="exprnprogrm" value="${dto.exprnprogrm }">
 	    </div>
 	    <div class="mb-3">
 	      <label>오시는 길:</label>
-	     	<input type="text" name="direction" value="${camping.direction }">
+	     	<input type="text" name="direction" value="${dto.direction }">
 	    </div>
-    
-    
     
 	    <input type="submit" class="btn btn-primary" value="다음">
   </form>

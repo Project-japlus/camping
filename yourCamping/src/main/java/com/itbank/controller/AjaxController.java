@@ -19,6 +19,7 @@ import com.itbank.component.HashComponent;
 import com.itbank.component.MailComponent;
 import com.itbank.component.WeatherComponent;
 import com.itbank.model.UserDTO;
+import com.itbank.repository.BoardDAO;
 import com.itbank.repository.UserDAO;
 import com.itbank.util.DataType;
 
@@ -28,14 +29,11 @@ import com.itbank.util.DataType;
 public class AjaxController {
 
 	private Random ran = new Random();
-	@Autowired
-	private MailComponent mailComponent;
-	@Autowired
-	private UserDAO userDAO;
-	@Autowired
-	private WeatherComponent weatherComponent;
-	@Autowired
-	private HashComponent hashComponent;
+	@Autowired private MailComponent mailComponent;
+	@Autowired private UserDAO userDAO;
+	@Autowired private WeatherComponent weatherComponent;
+	@Autowired private HashComponent hashComponent;
+	@Autowired private BoardDAO boardDAO;
 
 	// 이메일 인증번호 전송
 	@GetMapping("/sendAuthNumber")
@@ -45,9 +43,7 @@ public class AjaxController {
 		param.put("receiver", email);
 		param.put("subject", "인증번호 입니다");
 		param.put("content", authNumber);
-
 		int row = mailComponent.sendMimeMessage(param);
-
 		String msg;
 		if (row != 1) {
 			msg = "인증번호 발송에 실패 했습니다";
@@ -63,7 +59,9 @@ public class AjaxController {
 	@GetMapping("/checkAuthNumber/{userNumber}")
 	public String checkAuthNumber(@PathVariable("userNumber") String userNumber, HttpSession session) {
 		String sessionNumber = (String) session.getAttribute("authNumber");
+		System.out.println("sessionNumber : " + sessionNumber);
 		String result = userNumber.equals(sessionNumber) ? "1" : "0";
+		System.out.println("result : " + result);
 		return result;
 	}
 
@@ -131,5 +129,28 @@ public class AjaxController {
 		userDAO.removeBookMark(param);
 		UserDTO login = (UserDTO) session.getAttribute("login");
 		login.setCamping_idx(userDAO.getBookMark(login.getUser_idx()));
+	}
+	
+	// 리뷰 추천 추가
+	@GetMapping("/addReviewLike")
+	public void addReviewLike(@RequestParam HashMap<String, Integer> param, HttpSession session) {
+		boardDAO.addReviewLike(param);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		login.setReview_idx(userDAO.getReviewLike(login.getUser_idx()));
+	}
+	
+	// 리뷰 추천 제거
+	@GetMapping("/removeReviewLike")
+	public void removeReviewLike(@RequestParam HashMap<String, Integer> param, HttpSession session) {
+		boardDAO.removeReviewLike(param);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		login.setReview_idx(userDAO.getReviewLike(login.getUser_idx()));
+	}
+	
+	// 변경된 추천 수 받아오기
+	@GetMapping("/getReviewLikeCnt/{review_idx}")
+	public int getReviewLikeCnt(@PathVariable("review_idx") int review_idx) {
+		int cnt = boardDAO.getReviewLikeCnt(review_idx);
+		return cnt;
 	}
 }

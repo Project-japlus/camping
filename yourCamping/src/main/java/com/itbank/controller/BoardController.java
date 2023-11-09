@@ -18,7 +18,6 @@ import com.itbank.model.CampingDTO;
 import com.itbank.model.FreeDTO;
 import com.itbank.model.ReplyDTO;
 import com.itbank.model.ReviewDTO;
-import com.itbank.model.ReviewLikeDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.CampingService;
@@ -41,19 +40,7 @@ public class BoardController {
 	@GetMapping("/reviewSearch")
 	public ModelAndView reviewSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = null;
-		if (type.equals("facltnm")) {
-			list = boardService.selectSearchReviewCamping(keyword);
-		}
-		else if (type.equals("title")) {
-			list = boardService.selectSearchReviewTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchReviewWriter(keyword);
-		}
-		else  {
-			list = boardService.selectReviewList();
-		}
+		List<ReviewDTO> list = boardService.selectSearchReview(type, keyword);
 		mav.addObject("list", list);
 		return mav;
 	}
@@ -95,18 +82,6 @@ public class BoardController {
 		return mav;
 	}
 	
-	@GetMapping("/reviewLike/{review_idx}")
-	public String reviewLike(@PathVariable("review_idx") int review_idx, HttpSession session) {
-		ReviewLikeDTO dto = new ReviewLikeDTO();
-		UserDTO login = (UserDTO) session.getAttribute("login");
-		if (login != null) {
-			dto.setUser_idx(login.getUser_idx());
-			dto.setReview_idx(review_idx);
-			boardService.countReviewLike(dto);
-		}
-		return "redirect:/board/reviewView/" + review_idx;
-	}
-	
 	@GetMapping("/reviewDelete/{review_idx}")
 	public String reviewDelete(@PathVariable("review_idx") int review_idx) {
 		boardService.reviewDelete(review_idx);
@@ -145,15 +120,7 @@ public class BoardController {
 	public ModelAndView freeSearch(@RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/freeList");
 		List<FreeDTO> list = null;
-		if (type.equals("title")) {
-			list = boardService.selectSearchFreeTitle(keyword);
-		}
-		else if (type.equals("writer")) {
-			list = boardService.selectSearchFreeWriter(keyword);
-		}
-		else  {
-			list = boardService.selectFreeList();
-		}
+		list = boardService.selectSearchFree(type, keyword);
 		mav.addObject("list", list);
 		return mav;
 	}

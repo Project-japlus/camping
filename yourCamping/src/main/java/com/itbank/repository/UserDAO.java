@@ -14,10 +14,10 @@ import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 
 public interface UserDAO {
-	
+
 	// 일반_사업자_아이디 중복체크
 	String selectOneByUserid_check(String userid);
-	
+
 	// 일반_로그인
 	@Select("select * from user_table where userid=#{userid} and joinconfirm != 'N'")
 	UserDTO user_selectOneByUserid_login(String userid);
@@ -47,14 +47,14 @@ public interface UserDAO {
 	// 사업자 이메일 수정
 	@Update("update bizr_table set email = #{email} where user_idx=#{user_idx}")
 	int bizr_modify_email(UserDTO dto);
-	
+
 	// 사업자 번호 확인
 	@Select("select * from bizrNo where bizrNo = #{bizrNo}")
 	String getbizrNo(String bizrNo);
-	
+
 	// 북마크에서 가져오기
-	List<Integer> getBookMark(int i);
-	
+	List<Integer> getBookMark(int user_idx);
+
 	// 북마크 추가
 	@Insert("insert into bookmark values (#{user_idx}, #{camping_idx})")
 	void addBookMark(HashMap<String, Integer> param);
@@ -63,7 +63,12 @@ public interface UserDAO {
 	@Delete("delete bookmark where user_idx = #{user_idx} and camping_idx = #{camping_idx}")
 	void removeBookMark(HashMap<String, Integer> param);
 
-	
+	// 리뷰 추천 가져오기
+	List<Integer> getReviewLike(int user_idx);
+
+	// 회원 탈퇴
+	int user_leave(int user_idx);
+
 	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
 	List<ReserveDTO> getReserveInfo(int user_idx);
 
@@ -72,6 +77,5 @@ public interface UserDAO {
 
 	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
 	List<CampingDTO> getbizrInfo(int user_idx);
-	
-	
+
 }

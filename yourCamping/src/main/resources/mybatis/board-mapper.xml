@@ -48,13 +48,6 @@
 		update review set review_viewCount = review_viewCount + 1 where review_idx = #{review_idx}
 	</update>
 	
-	<insert id="countReviewLike" parameterType="revLike">
-		insert into review_like
-			(user_idx, review_idx)
-			values
-			(#{user_idx}, #{review_idx})
-	</insert>
-	
 	<select id="selectSearchReviewCamping" parameterType="String" resultType="review">
 		SELECT
 		    r.*,
@@ -68,7 +61,7 @@
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
-		    WHERE c.facltnm like '%'||#{keyword}||'%'
+		    WHERE c.facltnm like '%${keyword}%'
 			ORDER BY r.REVIEW_IDX DESC
 	</select>
 	
@@ -85,7 +78,7 @@
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
-		    WHERE r.review_title like '%'||#{keyword}||'%'
+		    WHERE r.review_title like '%${keyword}%'
 			ORDER BY r.REVIEW_IDX DESC
 	</select>
 	
@@ -102,7 +95,7 @@
 			FROM review r
 			JOIN user_table u ON r.USER_IDX = u.USER_IDX
 			JOIN camping c ON r.CAMPING_IDX = c.CAMPING_IDX
-		    WHERE u.userid like '%'||#{keyword}||'%'
+		    HERE u.userid like '%${keyword}%'
 			ORDER BY r.REVIEW_IDX DESC
 	</select>
 	
@@ -153,7 +146,7 @@
 		LEFT JOIN
 		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
-			f.free_title like '%'||#{keyword}||'%'
+			f.free_title like '%${keyword}%'
 		ORDER BY
 		    f.free_table_idx desc
 	</select>
@@ -170,7 +163,7 @@
 		LEFT JOIN
 		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
-			u.userid like '%'||#{keyword}||'%'
+			u.userid like '%${keyword}%'
 		ORDER BY
 		    f.free_table_idx desc
 	</select>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.itbank.model.CampingDTO;
 import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.RootService;
@@ -63,23 +64,22 @@ public class RootController {
 	}
 	
 	
-	//초기화 (필요없어짐)
-//	@GetMapping("/resetSiteCo/{reserve_idx}")
-//	public ModelAndView payCheck(@PathVariable("reserve_idx")int reserve_idx) {
-//		ModelAndView mav = new ModelAndView("payCheck");
-//		ReserveDTO reservedto = rootService.rootOne(reserve_idx);
-//
-//		int chkRow = rootService.checkOutByRoot(reserve_idx);
-//		int rstRow = rootService.resetSiteByRoot(reservedto);
-//		
-//		System.out.println(chkRow != 0 ? "checkOut" : "checkOut실패");
-//		System.out.println(rstRow != 0 ? "reset" : "reset실패");
-//		mav.addObject("reservedto",reservedto);
-//		return mav;
-//	}
-//	
 	//사업자 캠핑등록내역
 	@GetMapping("/bizr_regist")
-	public void bizr_regist() {}
+	public ModelAndView bizr_regist (CampingDTO cdto) {
+		ModelAndView mav = new ModelAndView();
+		List<CampingDTO> newList = rootService.newCampingList(cdto);
+		mav.addObject("newList",newList);
+		return mav;
+	}
+	
+	//등록글 상세 (단일)
+	@GetMapping("/newListOne/{camping_idx}")
+	public ModelAndView newListOne(@PathVariable("camping_idx") int camping_idx) {
+		ModelAndView mav = new ModelAndView("/root/newListOne");
+		CampingDTO cdto = rootService.newListOne(camping_idx);
+		mav.addObject("cdto",cdto);		
+		return mav;
+	}
 	
 }

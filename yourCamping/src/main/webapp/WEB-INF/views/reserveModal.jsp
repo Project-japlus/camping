@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div>
+
+	<!--  모달1~5번 전체 수정 :  정중앙, 가로길이    -->
+
 	<!-- 모달 모음 -->
 	<!--취소 및 환불 수수료 동의 약관 모달-->
 	<div class="modal" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 800px;">
+		
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content" >
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
+					<h4 class="modal-title">[ 취소수수료 규정 안내 ]</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					[ 취소수수료 규정 안내 ]<br> * 예약취소는 구매한 사이트 "MYPAGE" 혹은 "예약확인/취소"에서
+					<br> * 예약취소는 구매한 사이트 "MYPAGE" 혹은 "예약확인/취소"에서
 					가능합니다.<br> * 취소수수료는 예약 시점과는 무관하게 '입실일로부터 남은 날짜' 기준으로 부과되오니 신중히
 					예약 바랍니다.<br> * 예약 이용일 변경은 불가합니다. (취소 수수료 확인 후) 기존 예약 건 취소 및
 					재예약하셔야 합니다.<br> * 중복예약 취소, 업체 요청에 의한 취소, 법령에 의한 취소 등은 반드시 캠핑톡
@@ -31,8 +35,9 @@
 					취소수수료는 총 결제금액 기준으로 책정됩니다.<br> * 취소 신청 후 간편결제 사업자 또는 은행/신용카드사에
 					따라 환불 절차에 일정 시간이 소요됩니다.<br> * 영업일 기준(토/일/공휴일 제외)으로 실시간 계좌이체
 					2~3일, 신용카드 3~5일 소요됩니다.<br> * 환불과 관련된 자세한 사항은
-					고객센터(070-4336-1824)로 문의 부탁드립니다.<br>
-					<br> 캠핑톡(주)는 중개플랫폼사로, 현장에서 발생된 숙박업체와의 분쟁으로 인한 취소 및 환불에 관여하지
+					고객센터(051-731-2746)로 문의 부탁드립니다.<br>
+					<!-- 전화번호 뭘로할지몰라서 itbank 전화번호넣었음 / 이름정해지면 수정 하자  -->
+					<br> 어디로캠핑톡(주)는 중개플랫폼사로, 현장에서 발생된 숙박업체와의 분쟁으로 인한 취소 및 환불에 관여하지
 					않습니다.
 				</div>
 
@@ -48,12 +53,12 @@
 
 	<!--주의사항 모달 -->
 	<div class="modal" id="myModal1">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 800px;">
+			<div class="modal-dialog modal-dialog-centered modal-xl">
+				<div class="modal-content" >
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
+					<h4 class="modal-title">이용 시 주의사항</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -118,33 +123,32 @@
 
 	<!--개인정보 수집 및 이용 모달 -->
 	<div class="modal" id="myModal2">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 800px;">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content" >
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">이용 시 주의사항</h4>
+					<h4 class="modal-title">개인정보 수집 및 이용</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<pre>
-		                            분류 : 필수정보
-		                            수집 및 이용동의목적 : 계약의 이행 및 서비스 제공, 예약, 구매,
-		                            관심상품 내역, 결제대금의 청구, 상담, 불만, 민원처리, 고지/안내사항 전달, 
-		                            상품/서비스 이용실적 정보 통계 분석, 상품/서비스 서비스 개선 및 추천,
-		                            불법 · 부정이용방지, 개인정보 유효기간제 준수
-		                            항목 : 예약내역(예약일시, 결제금액, 업체명), 디바이스 ID, 휴대폰 번호,
-		                            서비스이용기록, IP 주소, 접속로그, Cookie, 광고식별자, 단말기 OS와 버전,
-		                            단말기 모델명, 브라우저 버전, 예약자 및 구매자의 이름, 휴대폰 번호,
-		                            (필요한 서비스의 경우)생년월일, (예약자와 방문자가 다른 경우) 방문자 및 탑승자의 이름,
-		                            휴대폰 번호, (필요한 서비스의 경우)생년월일, (예약확인서 발급 시) 예약자의 이메일 주소,
-		                            (현금 환불 요청 시) 계좌번호 및 예금주명
-		                            보유 및 이용기간 : 이용종료일로부터 상담 등 민원처리,
-		                            정산 및 환불 처리를 위해 30일 후 삭제 [관계법령에 따라 보존할 필요가 있는 경우
-		                            해당 법령에서 요구하는 기한까지 보관 (예: 구매 회원의 경우 5년간, IP 주소의 경우 3개월)]
-                        </pre>
+					
+		                            분류 : 필수정보<br>
+		                            수집 및 이용동의목적 : 계약의 이행 및 서비스 제공, 예약, 구매,<br>
+		                            관심상품 내역, 결제대금의 청구, 상담, 불만, 민원처리, 고지/안내사항 전달, <br>
+		                            상품/서비스 이용실적 정보 통계 분석, 상품/서비스 서비스 개선 및 추천,<br>
+		                            불법 · 부정이용방지, 개인정보 유효기간제 준수<br>
+		                            항목 : 예약내역(예약일시, 결제금액, 업체명), 디바이스 ID, 휴대폰 번호,<br>
+		                            서비스이용기록, IP 주소, 접속로그, Cookie, 광고식별자, 단말기 OS와 버전,<br>
+		                            단말기 모델명, 브라우저 버전, 예약자 및 구매자의 이름, 휴대폰 번호,<br>
+		                            (필요한 서비스의 경우)생년월일, (예약자와 방문자가 다른 경우) 방문자 및 탑승자의 이름,<br>
+		                            휴대폰 번호, (필요한 서비스의 경우)생년월일, (예약확인서 발급 시) 예약자의 이메일 주소,<br>
+		                            (현금 환불 요청 시) 계좌번호 및 예금주명<br>
+		                            보유 및 이용기간 : 이용종료일로부터 상담 등 민원처리,<br>
+		                            정산 및 환불 처리를 위해 30일 후 삭제 [관계법령에 따라 보존할 필요가 있는 경우<br>
+		                            해당 법령에서 요구하는 기한까지 보관 (예: 구매 회원의 경우 5년간, IP 주소의 경우 3개월)]   
 				</div>
 
 				<!-- Modal footer -->
@@ -158,25 +162,25 @@
 	</div>
 
 	<!--제3자 제공 모달-->
-	<div class="modal" id="myModal3">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 800px;">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<pre>제공받는 자 : ${dto.facltnm } (상호 : ${dto.facltnm })
-제공 목적 : 예약 · 구매한 상품 · 서비스의 제공 및 계약의 이행(이용자 및 이용정보 확인, 정산 등), 민원처리 등 소비자 분쟁해결
-제공 항목 : 예약번호, 예약자 정보(예약자명, 휴대폰 번호) 또는 방문자 정보(방문자명, 휴대폰 번호)
-이용 및 보유기간 : 개인정보 이용목적 달성 시까지
-단, 관계법령에 의하여 보존할 필요성이 있는 경우 그 시점까지 보존 후 지체 없이 파기
-위 개인정보 제3자 제공 동의를 거부할 수 있으며, 거부할 경우 서비스 이용이 제한됩니다.</pre>
-				</div>
+				<div class="modal" id="myModal3">
+					<div class="modal-dialog modal-dialog-centered modal-xl">
+						<div class="modal-content" >
+			
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">제 3자 제공</h4>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+			
+							<!-- Modal body -->
+							<div class="modal-body">
+								<pre>제공받는 자 : ${cdto.facltnm } (상호 : ${cdto.facltnm })
+			제공 목적 : 예약 · 구매한 상품 · 서비스의 제공 및 계약의 이행(이용자 및 이용정보 확인, 정산 등), 민원처리 등 소비자 분쟁해결
+			제공 항목 : 예약번호, 예약자 정보(예약자명, 휴대폰 번호) 또는 방문자 정보(방문자명, 휴대폰 번호)
+			이용 및 보유기간 : 개인정보 이용목적 달성 시까지
+			단, 관계법령에 의하여 보존할 필요성이 있는 경우 그 시점까지 보존 후 지체 없이 파기
+			위 개인정보 제3자 제공 동의를 거부할 수 있으며, 거부할 경우 서비스 이용이 제한됩니다.</pre>
+							</div>
 
 				<!-- Modal footer -->
 				<div class="modal-footer">
@@ -190,12 +194,12 @@
 
 	<!--예약자 확인 모달-->
 	<div class="modal" id="myModal4">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 800px;">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content" >
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">Modal Heading</h4>
+					<h4 class="modal-title">성인 확인</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 

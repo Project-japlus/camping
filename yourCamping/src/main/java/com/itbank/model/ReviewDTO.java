@@ -1,6 +1,7 @@
 package com.itbank.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +16,7 @@ public class ReviewDTO {
 	private Date review_wdate;
 	private int review_viewCount;
 	
-	private MultipartFile[] upload;
+	private List<MultipartFile> upload;
 	
 	private String userid;	// 조인으로 같이 불러올 userid
 	private String facltnm; // 조인으로 같이 불러올 캠핑장 이름
@@ -69,10 +70,10 @@ public class ReviewDTO {
 	public void setReview_viewCount(int review_viewCount) {
 		this.review_viewCount = review_viewCount;
 	}
-	public MultipartFile[] getUpload() {
+	public List<MultipartFile> getUpload() {
 		return upload;
 	}
-	public void setUpload(MultipartFile[] upload) {
+	public void setUpload(List<MultipartFile> upload) {
 		this.upload = upload;
 	}
 	public String getUserid() {

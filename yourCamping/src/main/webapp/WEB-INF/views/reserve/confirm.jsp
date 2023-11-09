@@ -92,7 +92,6 @@
 		const checkOutDate = new Date('${reservedto.reserve_end_date}');
 		
 		let price = ((checkOutDate - checkInDate)/ 86400000)*'${reservedto.reserve_price}';
-		price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '원';
 		addPrice.innerText = price;
 		
 	</script>
@@ -129,8 +128,9 @@
 	        m_redirect_url: "",
 	    }, function(rsp) {
 	        if (rsp.success) {
-	            alert('완료 -> imp_uid : ' + '${rsp.imp_uid}');
-	            location.href = '${cpath}/reserve/payCheck/${reservedto.reserve_idx}';
+	        	//username이 안나옴 
+	            alert('완료 -> imp_uid : ' + '${rsp.imp_uid}' + username);
+	            location.href = '${cpath}/reserve/payCheck/${reservedto.reserve_idx}?price='+price;
 	        } else {
 	            alert('결제실패 : 코드(${rsp.error_code}) / 메세지(${rsp.error_msg})');
 	        }

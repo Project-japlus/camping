@@ -19,13 +19,16 @@
 </head>
 <body>
 	<header>
-		<div class="d-flex justify-content-between sticky-top"
+		<div class="d-flex justify-content-between"
 			style="width: 90%; margin: 50px; align-items: center;">
-			<div class="fs-1 fst-italic fw-bold text-black" style="z-index: -1">
-				<a href="${cpath }">🏕️어디로캠핑(로고)</a>
+			<div class="fs-1 fst-italic fw-bold text-black">
+				<a href="${cpath }/">🏕️어디로캠핑(로고)</a>
 			</div>
 			<ul class="nav justify-content-end userInfo">
 				<c:if test="${not empty login }">
+					<c:if test="${login.role == 'pageManager' }">
+						<li class="nav-item"><a class="text-warning fw-bold" href="${cpath }/root/rootPage"><span class="badge bg-danger">관리</span></a>
+					</c:if>
 					<li class="nav-item">${login.username }님</li>
 					<li class="nav-item "><a class="text-warning fw-bold"
 						href="${cpath }/user/Mypage_check">마이페이지</a></li>

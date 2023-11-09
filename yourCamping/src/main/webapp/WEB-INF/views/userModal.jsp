@@ -12,13 +12,14 @@
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-			
+
 				<form class="form-inline m-auto" method="POST"
 					action="${cpath }/user/login">
 					<div class="form-group w-75 p-1 m-auto">
-					<!-- 							아이디저장쿠키 -->
+						<!-- 							아이디저장쿠키 -->
 						<label for="email opacity-100">아이디</label> <input type="text"
-							class="form-control opacity-100"  id="userInputId" placeholder="아이디" name="userid">
+							class="form-control opacity-100" id="userInputId"
+							placeholder="아이디" name="userid">
 					</div>
 					<div class="form-group w-75 p-1 m-auto">
 						<label for="password">Password</label> <input type="password"
@@ -27,7 +28,7 @@
 					</div>
 					<div class="checkbox opacity-100 m-auto ms-5 ps-2">
 						<div class="d-flex">
-<!-- 							아이디저장쿠키 -->
+							<!-- 							아이디저장쿠키 -->
 							<label> <input class="ms-2" type="checkbox"
 								id="idSaveCheck">아이디저장
 							</label> <label><input class="ms-5" type="checkbox"
@@ -38,7 +39,7 @@
 						<button type="submit"
 							class="btn btn-primary btn-lg opacity-100 w-75 ms-5 mb-3">로그인</button>
 					</div>
-					
+
 				</form>
 				<div class="ms-3">
 					<div class="d-flex justify-content-between">
@@ -73,8 +74,9 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="container">
-					
-						<form method="POST" action="${cpath }/user/user_join" id="userJoinForm">
+
+						<form method="POST" action="${cpath }/user/user_join"
+							id="userJoinForm">
 							<div class="d-flex flex-column w-100 m-auto">
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
@@ -83,9 +85,9 @@
 									<button type="button" class="btn btn-primary checkDuplicate"
 										style="width: 100px;">중복 확인</button>
 								</div>
-								
-<!-- 								중복여부 띄어줄 div								 -->
-								<div class="user_checkid"></div>		
+
+								<!-- 								중복여부 띄어줄 div								 -->
+								<div class="user_checkid"></div>
 
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between ">
@@ -98,13 +100,13 @@
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="user_pw2"
 											placeholder="비밀번호  확인" required>
-										<button type="button" class="btn btn-primary" onclick="userpw_test()"
-											style="width: 100px;">PW 확인</button>
+										<button type="button" class="btn btn-primary"
+											onclick="userpw_test()" style="width: 100px;">PW 확인</button>
 									</p>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="user_checkpw"></div>
-								
+
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
 									<input type="text" name="username" placeholder="이름" required>
@@ -128,7 +130,7 @@
 												class="btn btn-primary mt-1" type="button" value="본인인증"
 												style="width: 100px;">
 										</div>
-<!-- 								중복여부 띄어줄 div								 -->
+										<!-- 								중복여부 띄어줄 div								 -->
 										<div id="user_check_email"></div>
 									</div>
 								</div>
@@ -145,7 +147,7 @@
 									<input type="submit" class="btn btn-primary" value="회원가입">
 								</div>
 							</div>
-							
+
 						</form>
 					</div>
 				</div>
@@ -182,10 +184,10 @@
 									<input type="text" name="userid" placeholder="아이디" required
 										autofocus autocomplete="off" class="idcheck">
 									<button type="button" class="btn btn-primary checkDuplicate"
-										 style="width: 100px;">중복 확인</button>
+										style="width: 100px;">중복 확인</button>
 								</div>
-								
-<!-- 								중복여부 띄어줄 div								 -->
+
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div class="bizr_checkid"></div>
 								<div class="mb-1">비밀번호</div>
 								<div class="mb-1 d-flex justify-content-between">
@@ -197,12 +199,12 @@
 								<div>
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="bizr_pw2"
-											placeholder="비밀번호  확인" required>
-										<input type="button" class="btn btn-primary" onclick="bizrpw_test()"
+											placeholder="비밀번호  확인" required> <input type="button"
+											class="btn btn-primary" onclick="bizrpw_test()"
 											style="width: 100px;" value="PW 확인">
 									</p>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="bizr_checkpw"></div>
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
@@ -229,12 +231,13 @@
 										</div>
 									</div>
 								</div>
-<!-- 								중복여부 띄어줄 div								 -->
+								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="bizr_check_email"></div>
 								<div class="mb-1">사업자번호</div>
 								<div class="d-flex justify-content-between mb-2">
-									<input type="text" name="bizrno" placeholder="사업자번호" id="bizrno_check" required>
-									<a><button type="button" class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
+									<input type="text" name="bizrno" placeholder="사업자번호"
+										id="bizrno_check" required> <a><button
+											type="button" class="btn btn-primary" id="bizrno_check_btn">사업자인증</button></a>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>

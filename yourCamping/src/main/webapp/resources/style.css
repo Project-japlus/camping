@@ -56,6 +56,11 @@ div.homeMain {
 	margin-bottom: 100px;
 }
 
+div#home_SearchBox {
+	height: 400px;
+	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+}
+
 div.mainIcon {
 	display: flex;
 	justify-content: space-evenly;
@@ -63,7 +68,7 @@ div.mainIcon {
 }
 
 div.mainIcon>div {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.9);
 	width: 120px;
 	height: 120px;
 	border: 2px solid black;
@@ -301,7 +306,10 @@ div.map_paging {
 	width:310px; 
 	background-color:#fafbfe;
 }
-
+div.map_result {
+	margin: 55px;
+	text-align: center;
+}
 div.map_pagingNon {
 	position: absolute; 
 	top: 95.5%;
@@ -368,15 +376,9 @@ div#view_TopWrap {
 	display: flex;
 	align-items: center;
 }
-div.view_imgTable{
-	display: flex; 
-	margin: auto; 
-	margin-top: 20px; 
-	width: 1200px;
-}
 
 div#view_TopWrap>div.sb {
-	width: 65%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -437,6 +439,7 @@ img.rounded {
 	position: absolute;
 	opacity: 0;
 	transition: opacity 0.5s ease-in-out;
+	margin-top: 35px;
 }
 
 img.active {
@@ -445,6 +448,7 @@ img.active {
 
 table#week {
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 /* mypage css */
@@ -468,122 +472,3 @@ table#modify_table td {
 	text-align: center;
 	vertical-align: middle;
 }
-
-/* reservation css */
-/* div.reservationWrap div {
-	color: black;
-}
-
-@import "compass/css3";
-
-* {
-	box-sizing: border-box;
-}
-
-div.reservationWrap {
-	padding: 2em;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	color: #888;
-}
-
-div.reservationWrap .dates-wrapper {
-	background: #f0f0f0;
-	padding: 1em 1em 0 1em;
-	display: inline-block;
-}
-
-div.reservationWrap .input-text {
-	background-color: #ffffff;
-	padding: 2px 10px;
-	color: #333;
-	border: 1px solid #dddddd;
-	outline: none;
-	vertical-align: middle;
-	height: 36px;
-	border-radius: 0;
-	display: block;
-	width: 100%;
-	-webkit-appearance: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-}
-
-div.reservationWrap .date-wrapper {
-	position: relative;
-	margin: 0 42px 10px 0;
-	display: inline-block;
-	color: #444;
-	font-weight: bold; . label { float : left;
-	display: inline-block;
-	margin-right: 28px;
-	padding-top: 10px;
-}
-
-div.reservationWrap .input {
-	font-size: 15px;
-	color: #333;
-	max-width: 172px;
-	float: left;
-	margin-right: 10px; input { float : left;
-	width: 100%;
-	padding: 2px 10px;
-}
-
-}
-div.reservationWrap .calendar-btn {
-	display: inline-block;
-	width: 36px;
-	height: 36px;
-	border-radius: 18px;
-	float: left;
-	background-repeat: no-repeat;
-	background-size: 36px 36px;
-}
-
-}
-div.reservationWrap .pika-single {
-	position: absolute;
-	top: 40px;
-	left: 0px;
-}
-
-div.reservationWrap .pika-title {
-	color: #444;
-}
-
-div.reservationWrap .is-selected .pika-button {
-	border-radius: 0;
-	box-shadow: none;
-	background: #ec0000;
-}
-
-div.reservationWrap .pika-table tbody td {
-	border: 1px solid #b9b9b9;
-}
-
-div.reservationWrap .pika-button:hover {
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	background: #868686 !important;
-}
-
-div.reservationWrap .is-today .pika-button {
-	color: #FF7043;
-}
-
-div.reservationWrap .is-today.is-selected .pika-button {
-	color: #8BC34A;
-}
-
-div.reservationWrap .hide-text {
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-div.reservationWrap .group:after {
-	content: "";
-	display: table;
-	clear: both;
-} */

@@ -6,8 +6,7 @@
 		<div class="w-50" style="margin: 0 auto; display: flex; justify-content: flex-end; padding: 5px 25px;">
 			<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
 		</div>
-		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 bg-gradient shadow"
-			style="-bs-bg-opacity: .8; height: 400px;">
+		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 shadow" id="home_SearchBox">
 			<form action="${cpath }/camping/list/1">
 				<div class="mb-3 mt-4 d-flex justify-content-evenly gap-4 mx-auto w-75">
 					<select id="firstSelect" name="firstSelect" class="rounded" style="width: 200px;" onchange="changeSecondOptions()">
@@ -53,12 +52,12 @@
 	
 		<!--자주 찾는 캠핑장 링크-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
-			style="-bs-bg-opacity: .8;">
-			<h2 class="text-center fw-bold fst-italic pt-5">자주 찾는 캠핑장</h2>
+			class="container w-25 mx-auto rounded-5"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
+			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=전체&keyword=">자주 찾는 캠핑장</a></h2>
 			<div class="list-group w-90 m-4 mt-2">
-				<a href="${cpath }/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=전체&keyword=" class="text-end fw-bold fs-3 mb-2">+</a>
-				<ul id="main_link_ul">
+			<a href="${cpath }/camping/list/1?firstSelect=전체&secondSelect=전체&lctcl=전체&induty=전체&keyword=" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul class="main_link_ul">
 					<c:forEach var="camping" items="${campList }" begin="0" end="5">
 						<li><a href="${cpath }/camping/view/${camping.camping_idx}">${camping.facltnm }</a></li>
 					</c:forEach>
@@ -68,12 +67,12 @@
 
 		<!--리뷰게시판-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
-			style="-bs-bg-opacity: .8;">
-			<h2 class="text-center fw-bold fst-italic pt-5">캠핑장 후기</h2>
+			class="container w-25 mx-auto rounded-5"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
+			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/board/reviewList/1">캠핑장 후기</a></h2>
 			<div class="list-group w-90 m-4 mt-2">
-				<a href="${cpath }/board/reviewList" class="text-end fw-bold fs-3 mb-2">+</a>
-				<ul id="main_link_ul">
+			<a href="${cpath }/board/reviewList/1" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul class="main_link_ul">
 					<c:forEach var="review" items="${revList }" begin="0" end="5">
 						<li><a href="${cpath }/board/reviewView/${review.review_idx}">${review.review_title }</a></li>
 					</c:forEach>
@@ -83,12 +82,12 @@
 
 		<!--자유게시판-->
 		<div
-			class="container w-25 mx-auto rounded-5 bg-secondary"
-			style="-bs-bg-opacity: .8;">
-			<h2 class="text-center fw-bold fst-italic pt-5">자유게시판</h2>
+			class="container w-25 mx-auto rounded-5"
+			style="background-color: #c98293; box-shadow:5px 5px 10px gray;">
+			<h2 class="text-center fw-bold fst-italic pt-5"><a href="${cpath }/board/freeList/1">자유게시판</a></h2>
 			<div class="list-group w-90 m-4 mt-2">
-				<a href="${cpath }/board/freeList" class="text-end fw-bold fs-3 mb-2">+</a>
-				<ul id="main_link_ul">
+			<a href="${cpath }/board/freeList/1" class="text-end fw-bold fs-3 mb-2">+</a>
+				<ul class="main_link_ul">
 					<c:forEach var="free" items="${freeList }" begin="0" end="5">
 						<li><a href="${cpath }/board/freeView/${free.free_table_idx}">${free.free_title }</a></li>
 					</c:forEach>

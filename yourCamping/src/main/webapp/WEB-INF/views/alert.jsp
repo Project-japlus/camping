@@ -8,7 +8,7 @@
 			alert(msg)
 			const url = '${url}'
 			if (url == 'home') {
-				href = '${cpath}'
+				href = '${cpath}/'
 			}
 			if (url == 'Mypage_modify') {
 				href = '${cpath}/user/Mypage_modify'
@@ -21,6 +21,9 @@
 			}
 			if (url == 'list') {
 				href = '${cpath}/camping/list/1'
+			}
+			if (url == 'MpC') {
+				href = '${cpath}/user/Mypage_check'
 			}
 			location.href = href
 		}

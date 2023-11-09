@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <footer style="margin-top: 200px;">
-	<div class="p-2 text-black rounded text-center bg-warning"
-		style="-bs-bg-opacity: .7;">
+	<div class="p-2 text-black rounded text-center"
+		style="-bs-bg-opacity: .7; background-color: black;">
 		<div class="container d-flex justify-content-between">
-			<h2 class="mt-1">🏕️어디로캠핑(주)</h2>
-			<div class="d-flex mt-3">
+			<h2 class="mt-1" style="color: white;" >🏕️어디로캠핑(주)</h2>
+			<div class="d-flex mt-3" style="color: white;">
 				<p class="me-3">개인정보처리방침</p>
 				<p class="me-3">홈페이지 이용약관</p>
 				<p class="me-2">고객센터</p>

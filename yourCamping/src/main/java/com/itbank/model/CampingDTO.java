@@ -20,9 +20,6 @@ public class CampingDTO {
 	private String doNm;
 	private String sigunguNm;
 	private int user_idx;
-	
-	
-	
 
 	// camping_activity
 	private String posblFcltyCl;
@@ -82,16 +79,6 @@ public class CampingDTO {
 	private Date reserve_str_date;
 	private Date reserve_end_date;
 	private String reserve_site;
-	
-	// 11/08 추가함
-	private int human_cnt;
-	
-	public int getHuman_cnt() {
-		return human_cnt;
-	}
-	public void setHuman_cnt(int human_cnt) {
-		this.human_cnt = human_cnt;
-	}
 	public int getCamping_idx() {
 		return camping_idx;
 	}

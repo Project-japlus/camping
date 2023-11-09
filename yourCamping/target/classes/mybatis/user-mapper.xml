@@ -39,16 +39,22 @@
 	
 	<select id="getBookMark" parameterType="int" resultType="int">
 		select camping_idx from bookmark where user_idx = #{user_idx}
-		
 	</select>
 	
+	<select id="getReviewLike" parameterType="int" resultType="int">
+		select review_idx from review_like where user_idx = #{user_idx}
+	</select>
+	
+	<update id="user_leave" parameterType="int">
+		update user_table set joinconfirm = 'N' where user_idx = #{user_idx}
+	</update>
 	
 	<select id="getReserveInfo" parameterType="int">
-		select
-			* 
-			from reserve r
-			join camping c on r.camping_idx = c.camping_idx
-			where r.user_idx = #{user_idx} 
+		    SELECT *
+			    FROM reserve r
+			    JOIN camping c ON r.camping_idx = c.camping_idx
+			    WHERE r.user_idx = #{user_idx} AND r.checkout = 'Y'
+			    ORDER BY r.reserve_idx ASC
 	</select>
 	
 	<select id="getBookmarkInfo" parameterType="int">
@@ -64,8 +70,6 @@
 		    camping 
 		        where user_idx = #{user_idx}
 	</select>
-	
-	
 </mapper>
 
 
