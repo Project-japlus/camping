@@ -156,12 +156,14 @@ public class AjaxController {
 		return cnt;
 	}
 	
+	// email을 사용하여 user_table과 bizr_table에서 id 찾기
 	@GetMapping("/findId")
 	public List<String> findId(@RequestParam("email") String email) {
 		List<String> list = userDAO.findIdFromEmail(email);
 		return list;
 	}
 	
+	// 임시 비밀번호 발급 후, 이메일로 전송
 	@GetMapping("/findPw")
 	public int findPw(@RequestParam HashMap<String, String> param) {
 		int row = 0;

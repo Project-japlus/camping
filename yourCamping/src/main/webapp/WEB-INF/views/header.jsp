@@ -22,7 +22,7 @@
 		<div class="d-flex justify-content-between"
 			style="width: 90%; margin: 50px; align-items: center;">
 			<div class="fs-1 fst-italic fw-bold text-black">
-				<a href="${cpath }">🏕️어디로캠핑(로고)</a>
+				<a href="${cpath }/">🏕️어디로캠핑(로고)</a>
 			</div>
 			<ul class="nav justify-content-end userInfo">
 				<c:if test="${not empty login }">

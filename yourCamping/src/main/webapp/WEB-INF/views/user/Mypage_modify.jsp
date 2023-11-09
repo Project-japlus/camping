@@ -1,29 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+
+
 <div class="main">
-    <div class="container mt-3">
+    <div class="container mt-3 w-50 m-auto border border-3 rounded p-3">
         <div class="d-flex justify-content-between">
-            <h3>회원 정보 수정</h3>
+            <h3 class="fw-bold fst-italic">회원정보 수정</h3>
         </div>
-        <hr>
-        <table id="modify_table" class="table table-bordered">
+        <table id="modify_table" class="table-bordered bg-success-subtle text-secondary fw-bold ">
             <tr>
                 <td>이름</td>
-                <td>
+                <td class="justify-content-center">
                 	${login.username }
                 </td>
             </tr>
             <tr>
                 <td>이메일</td>
                 <td>
-                    <div class="">
-                        ${login.email }
+                    <div class="justify-content-center">
                         <form method="POST" action="${cpath }/user/changeEmailForm" id="changeEmailForm">
-                            <input type="button" id="showEmailBtn" class="btn btn-primary" value="이메일 변경">
+                        	<div class="d-flex justify-content-center">
+	                        	<p class="mt-2">${login.email }</p>
+	                            <input type="button" id="showEmailBtn" class="btn btn-primary ms-3" value="이메일 변경">
+                        	</div>
                             <div id="showAuthEmail" style="display: none;" class="mt-1">
-                                <input type="email" name="email" id="email" class="mt-2" value="${login.email }"> <input
-                                    type="button" value="인증번호 받기" class="btn btn-primary mt-1" id="modify_sendAuthNumber">
+                                <input type="email" name="email" id="email" class="mt-2" value="${login.email }"> 
+                                <input type="button" value="인증번호 받기" class="btn btn-primary mt-1" id="modify_sendAuthNumber">
                             </div>
                             <div id="showAuthNum" style="display: none;" class="mt-1">
                                 <input type="text" id="user_number" placeholder="인증번호">
@@ -38,20 +41,19 @@
                 </td>
             </tr>
             <tr>
-                <td>휴대폰 번호</td>
+                <td>휴대전화</td>
                 <td>
-                    <div>
-                        ${login.phone }
-                        <button class="btn btn-primary">휴대폰 번호 변경</button>
+                    <div class="d-flex justify-content-center">
+                        <p class="mt-2 me-3">${login.phone }</p>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>비밀번호 변경</td>
                 <td>
-                    <div>
+                    <div class="ms-5">
                         <form method="POST" action="${cpath }/user/modify_userpw" id="changePasswordForm">
-                            <div class="mx-auto d-flex flex-wrap w-25">
+                            <div class="mx-auto d-flex flex-wrap w-50">
                                 <input type="password" name="modify_userpw" placeholder="현재비밀번호" id="now_password"
                                     class="ms-5"> <input type="password" name="userpw" placeholder="새 비밀번호"
                                     id="modify_pw1" class="mt-2 ms-5"> <input type="password" placeholder="다시입력"
@@ -66,7 +68,7 @@
         </table>
     </div>
     <!-- footer -->
-    <div class="container mt-3 d-flex justify-content-center" style="margin-left: 350px;">
+    <div class="container mt-3 d-flex justify-content-center" style="margin-left: 330px;">
         <a href="${cpath}/user/Mypage"><button class="ms-5 btn btn-primary " style="width: 185px;">MYPAGE</button></a>
     </div>
 </div>
@@ -137,38 +139,48 @@
     // 인증번호가 null값일때 이메일 인증번호 성공함
     let modify_useremail_check = false;
 	const modify_sendAuthNumber = document.getElementById('modify_sendAuthNumber')
+	
     modify_sendAuthNumber.onclick = function (event) {
-        showAuthNum.style.display = 'block'
+		const now_Email = `${login.email}`
         const url = '${cpath}/ajax/sendAuthNumber'
         const email = document.getElementById('email')
         if (email.value == '') {
             alert('이메일을 정확하게 입력해 주세요')
             email.focus()
             return
-        }
+        }	
+        if(email.value != now_Email){
+        showAuthNum.style.display = 'block'
         fetch(url + '?email=' + email.value)
             .then(resp => resp.text())
             .then(text => {
                 alert(text)
             })
+        }else{
+        	alert('사용중인 이메일 입니다')
+        }
+        
     }
 
     // 회원가입시 인증번호부터 체크하고 이후 인증번호가 일치하면 가입 프로세스를 진행
     const modify_emailAuthBtn = document.getElementById('modify_emailAuthBtn');
-    modify_emailAuthBtn.onclick = async function (event) {
-        event.preventDefault()
-        // 일반 회원가입 시도를 막고, 사용자가 입력한 인증번호를 서버로 전달하기 위해 불러온다
-        const authNumber = document.getElementById('user_number');
-        const url = '${cpath}/ajax/checkAuthNumber/' + authNumber.value
-        const result = await fetch(url).then(resp => resp.text())
-        if (result == 0) {
-            alert('인증번호를 다시 확인해주세요')
+	modify_emailAuthBtn.onclick = async function (event) {
+    event.preventDefault();
+
+    const authNumber = document.getElementById('user_number').value;
+    const url = '${cpath}/ajax/checkAuthNumber/${authNumber}';
+    if (authNumber !== '') {
+        const result = await fetch(url).then(resp => resp.text());
+        if (result === '0') {
+            alert('인증번호를 다시 확인해주세요');
+        } else {
+            email_submitBtn.style.display = 'block';
+            alert('이메일 변경 가능');
         }
-        else {
-            alert('이메일 변경 가능')
-            email_submitBtn.style.display = 'block'
-        }
+    } else {
+        alert('인증번호를 입력해 주세요');
     }
+}
 </script>
 </body>
 </html>
