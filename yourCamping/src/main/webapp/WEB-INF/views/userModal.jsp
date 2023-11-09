@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 로그인 -->
-<div class="modal" id="login">
+<div class="modal fade" id="login" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<!-- Modal Header -->
@@ -46,8 +46,10 @@
 						<a data-bs-toggle="modal" href="#exampleModalToggle" role="button">
 							<button class="btn btn-primary p-2"
 								style="width: 150px; margin-left: 48px">회원가입</button>
-						</a> <a href=""><button class="btn btn-primary p-2"
-								style="width: 150px; margin-right: 63px;">ID/PW찾기</button></a>
+						</a> <a data-bs-toggle="modal" href="#findIDPW" role="button">
+							<button class="btn btn-primary p-2"
+								style="width: 150px; margin-right: 63px;">ID/PW찾기</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -58,6 +60,109 @@
 		</div>
 	</div>
 </div>
+
+<!-- ID/PW 찾기 -->
+<div class="modal fade" id="findIDPW" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">ID/PW 찾기</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<div>
+					<h4>아이디 찾기</h4>
+					<p>E-MAIL을 입력하면 ID를 확인할 수 있습니다</p>
+					<input type="email" id="findIdEamil" placeholder="이메일">
+					<button type="button" id="findIdBtn">아이디 찾기</button>
+				</div>
+				<div>
+					<h4>패스워드 찾기</h4>
+					<p>ID와 E-MAIL을 입력하여 임시비밀번호를 받을 수 있습니다</p>
+					<p>
+						<input type="text" id="findPwId" placeholder="아이디">
+					</p>
+					<p>
+						<input type="email" id="findPwEamil" placeholder="이메일">
+					</p>
+					<button type="button" id="findPwBtn">패스워드 찾기</button>
+				</div>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			<a data-bs-toggle="modal" href="#login" role="button">
+				<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal">Login</button>
+			</a>
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	const findIdBtn = document.getElementById('findIdBtn');
+	const findPwBtn = document.getElementById('findPwBtn');
+	
+	findIdBtn.onclick = async function() {
+	    let findIdEmail = document.getElementById('findIdEamil').value;
+	    url = '${cpath}/ajax/findId?email=' + findIdEmail;
+	    try {
+	        let result = await fetch(url).then(resp => resp.text());
+	        
+	        let parser = new DOMParser();
+	        let xmlDoc = parser.parseFromString(result, "application/xml");
+	        let items = xmlDoc.getElementsByTagName("item");
+	        let data = [];
+	        for (let i = 0; i < items.length; i++) {
+	            data.push(items[i].textContent);
+	        }
+	        
+	        if (data.length == 0) {
+	            alert('등록되지 않은 정보입니다');
+	        } else {
+	            let resultString = '';
+	            for (let i = 0; i < data.length; i++) {
+	                resultString += data[i];
+	                if (i != data.length - 1) {
+	                    resultString += ", ";
+	                }
+	            }
+	            alert("가입된 ID는 " + resultString + " 입니다");
+	        }
+	    } catch (error) {
+	        console.error('오류 발생:', error);
+	    }
+	}
+
+	
+	findPwBtn.onclick = async function() {
+		let findPwId = document.getElementById('findPwId').value;
+		let findPwEamil = document.getElementById('findPwEamil').value;
+		url = '${cpath}/ajax/findId?email=' + findPwEamil;
+		let result = await fetch(url).then(resp => resp.text());
+        
+        let parser = new DOMParser();
+        let xmlDoc = parser.parseFromString(result, "application/xml");
+        let items = xmlDoc.getElementsByTagName("item");
+        let data = [];
+        for (let i = 0; i < items.length; i++) {
+            data.push(items[i].textContent);
+        }
+        if (data.length == 0 || !data.includes(findPwId)) {
+            alert('등록되지 않은 정보입니다');
+        } else {
+			url = '${cpath}/ajax/findPw?userid=' + findPwId + '&email=' + findPwEamil;
+			let row = await fetch(url).then(resp => resp.text());
+			if (row != '0') {
+				alert('이메일이 발송되었습니다')
+				location.href = "#login"
+			}
+        }
+	}
+</script>
 
 <!-- 일반 회원가입-->
 <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
@@ -154,6 +259,9 @@
 			</div>
 			<!-- Modal footer -->
 			<div class="modal-footer">
+				<a data-bs-toggle="modal" href="#login" role="button">
+					<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal">Login</button>
+				</a>
 				<button class="btn btn-primary"
 					data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
 					data-bs-dismiss="modal">사업자 회원가입</button>
@@ -260,6 +368,9 @@
 				</div>
 			</div>
 			<div class="modal-footer">
+				<a data-bs-toggle="modal" href="#login" role="button">
+					<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal">Login</button>
+				</a>
 				<button class="btn btn-primary" data-bs-target="#exampleModalToggle"
 					data-bs-toggle="modal" data-bs-dismiss="modal">일반 회원가입</button>
 			</div>

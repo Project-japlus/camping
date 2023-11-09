@@ -70,6 +70,14 @@
 		    camping 
 		        where user_idx = #{user_idx}
 	</select>
+	
+	<select id="findIdFromEmail" parameterType="string" resultType="string">
+		SELECT COALESCE(u.userid, b.userid) AS userid
+			FROM user_table u
+			FULL OUTER JOIN bizr_table b ON u.email = b.email
+				WHERE u.email = #{email} OR b.email = #{email}
+	</select>
+	
 </mapper>
 
 

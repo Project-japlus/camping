@@ -610,9 +610,6 @@
 			<div id="imgBox" style="position: relative;">
 			<button id="view_prev"><</button>
 				<c:forEach var="img" items="${image }" varStatus="i">
-					<c:if test="${i.index == 0 }">
-						<img src="${img.inner_img }" class="rounded active" style="">
-					</c:if>
 					<img src="${img.inner_img }" class="rounded">
 				</c:forEach>
 				<button id="view_next">></button>
@@ -623,11 +620,9 @@
 <div style="height: 300px;"></div>
 
 <script>
-	const imgBox = document.getElementById('imgBox')
 	const imgarr = document.querySelectorAll('.rounded')
 	const prev = document.getElementById('view_prev')
 	const next = document.getElementById('view_next')
-	const fullsize = +imgarr.length * 900;
 	var currentImageIndex = 0;
 	
 	function showImage(index) {
@@ -636,6 +631,8 @@
 		}
 		imgarr[index].classList.add('active');
 	}
+	
+	showImage(0);
 	
 	next.onclick = function(event) {
 		currentImageIndex = (currentImageIndex + 1) % imgarr.length;

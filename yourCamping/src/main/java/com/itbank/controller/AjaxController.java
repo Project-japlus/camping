@@ -2,7 +2,9 @@ package com.itbank.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -152,5 +154,39 @@ public class AjaxController {
 	public int getReviewLikeCnt(@PathVariable("review_idx") int review_idx) {
 		int cnt = boardDAO.getReviewLikeCnt(review_idx);
 		return cnt;
+	}
+	
+	@GetMapping("/findId")
+	public List<String> findId(@RequestParam("email") String email) {
+		List<String> list = userDAO.findIdFromEmail(email);
+		return list;
+	}
+	
+	@GetMapping("/findPw")
+	public int findPw(@RequestParam HashMap<String, String> param) {
+		int row = 0;
+		UserDTO dto = userDAO.user_selectOneByUserid_login(param.get("userid"));
+		if (dto == null) {
+			dto = userDAO.bizr_selectOneBybizrid_login(param.get("userid"));
+		}
+		String pass = UUID.randomUUID().toString().split("-")[0];
+		String salt = hashComponent.getSalt();
+		String hash = hashComponent.getHash(pass, salt);
+		
+		dto.setSalt(salt);
+		dto.setUserpw(hash);
+		
+		param.put("userpw", pass);
+		param.put("subject", "[어디로캠핑] 변경된 비밀번호입니다");
+		
+		if (dto.getBizrno() != null) {
+			row = userDAO.bizr_modify_pw(dto);
+		} else {
+			row = userDAO.user_modify_pw(dto);
+		}
+		if (row != 0) {
+			mailComponent.sendPwMessage(param);
+		}
+		return row;
 	}
 }

@@ -77,5 +77,8 @@ public interface UserDAO {
 
 	// (11/8)마이페이지에서 내가 예약한 캠핑장 가져오는 메서드
 	List<CampingDTO> getbizrInfo(int user_idx);
-
+	
+	// 11월 9일 id 찾기
+	List<String> findIdFromEmail(String email);
+	
 }
