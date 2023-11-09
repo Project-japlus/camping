@@ -88,6 +88,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
    <p>하람 :</p>
 <p><a href="${cpath }/">🏕️어디로캠핑(로고)</a><br>
     헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인</p>
+
 <p>boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용<br>
     파라미터 추가로 board컴포넌트, 서비스, 컨트롤러도 수정<br>
     reviewList, freeList 페이징 추가 + 관리자일경우 글 삭제 버튼 추가<br>
@@ -99,7 +100,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 </p>
 
 <p>현우 :</p>
-<p>     @Mypage(일반 사업자 마이페이지 만들기)<br>
+<p>@Mypage(일반 사업자 마이페이지 만들기)<br>
     BookmarkDTO만듬<br>
     reserveDTO에 private String tel 추가함 / private String homepage 추가함<br>
     Config.xml typeAlias 추가함<br>
@@ -116,7 +117,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
     @userModal<br>
     아이디 저장<br>
     userModal 3번째 줄에 Jquery 추가하고<br>
-   밑에 스크립트 추가하면 완성<br>
+    밑에 스크립트 추가하면 완성<br>
 </p>
 
 <p>유란</p>
@@ -138,19 +139,19 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
     1-1. newCamping.jsp 수정<br>
     1-2. CampingService에 campingImgInsert 추가<br>
     1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가<br>
-    
+br
     prevPage<br>
     2-1. BizrController의 prevPage 수정<br>
     2-2. CampingService의 deleteCampingImg 추가<br>
     2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가<br>
-    
+    br
     caming Update<br>
     3-1. BizrController의 campingUpdate 추가<br>
     3-2. campingUpdate(POST) 수정<br>
     3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정<br>
-    
+    br
     CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제<br>
-    
+    br
     마이페이지<br>
     5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경<br>
     5-2. 정말 삭제할 것인지 물어보는 스크립트 생성<br>
