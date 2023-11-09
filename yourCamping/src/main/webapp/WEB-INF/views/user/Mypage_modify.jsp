@@ -54,12 +54,11 @@
                     <div class="ms-5">
                         <form method="POST" action="${cpath }/user/modify_userpw" id="changePasswordForm">
                             <div class="mx-auto d-flex flex-wrap w-50">
-                                <input type="password" name="modify_userpw" placeholder="현재비밀번호" id="now_password"
-                                    class="ms-5"> <input type="password" name="userpw" placeholder="새 비밀번호"
-                                    id="modify_pw1" class="mt-2 ms-5"> <input type="password" placeholder="다시입력"
-                                    id="modify_pw2" class="mt-2 ms-5"> <input type="submit" value="비밀번호 변경"
-                                    class="btn btn-primary" style="margin-top: 20px; margin-left: 75px;"> <input
-                                    type="hidden" value="${login.user_idx }" name="user_idx">
+                                <input type="password" name="modify_userpw" placeholder="현재비밀번호" id="now_password" class="ms-5"> 
+                                <input type="password" name="userpw" placeholder="새 비밀번호" id="modify_pw1" class="mt-2 ms-5">
+                                <input type="password" placeholder="다시입력" id="modify_pw2" class="mt-2 ms-5">
+                                <input type="submit" value="비밀번호 변경" class="btn btn-primary" style="margin-top: 20px; margin-left: 75px;">
+                                <input type="hidden" value="${login.user_idx }" name="user_idx">
                             </div>
                         </form>
                     </div>
@@ -79,7 +78,6 @@
         event.preventDefault()
         //현재 비밀번호 & 세션에 저장한 해쉬처리된 비밀번호
         let now_pw = document.getElementById('now_password').value
-        let session_salt = '${login.salt}'
         let session_password = '${login.userpw}'
 
         // 인풋에서 받은 값을 해쉬처리해서 넣을 변수
@@ -90,7 +88,7 @@
         let check_modify_password = false;
 
         // 현재 비밀번호를 세션처리해서 새 변수에 저장하기
-        const url = '${cpath}/ajax/Mypage_modify_hash?now_pw=' + now_pw + '&session_salt=' + session_salt
+        const url = '${cpath}/ajax/Mypage_modify_hash?now_pw=' + now_pw
 
         // controller에 값을 넣어서 원하는 값 받기
         hash_pw = await fetch(url).then(result => result.text())

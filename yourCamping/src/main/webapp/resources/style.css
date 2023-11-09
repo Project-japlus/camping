@@ -289,6 +289,7 @@ div.paging {
 	text-align: center;
 	margin: 20px auto;
 }
+
 div.map_list {
 	display: flex; 
 	height: 700px; 
@@ -350,8 +351,9 @@ div.view_dateStart{
 }
 div.view_reserveBtn {
 	margin-left: 15px;
-	margin-top: 20px;
+	margin-top: 25px;
 }
+
 button#view_prev {
 	z-index: 10;
 	height: fit-content;
@@ -359,14 +361,22 @@ button#view_prev {
 	margin-left:15px;
 	margin-right:45%;
 	margin-top: 31%; 
+	background-color: #ffc107; 
+	color:white; 
+	border:none;
 }
+
 button#view_next{
 	z-index: 10;
 	height: fit-content;
 	background-color: white;
 	margin-left:45%;
 	margin-top: 31%; 
+	background-color: #ffc107; 
+	color:white; 
+	border:none;
 }
+
 div#view_TopWrap {
 	color: white;
 	height: 200px;
@@ -375,6 +385,12 @@ div#view_TopWrap {
 	background-position: 0 -500px;
 	display: flex;
 	align-items: center;
+}
+
+button.userDelete {
+	background-color: #ffc107; 
+	color:white; 
+	border:none;
 }
 
 div#view_TopWrap>div.sb {
@@ -471,4 +487,8 @@ table#modify_table td {
 	padding: 30px;
 	text-align: center;
 	vertical-align: middle;
+}
+.footer_width {
+	width: 1500px;
+	margin: auto;
 }

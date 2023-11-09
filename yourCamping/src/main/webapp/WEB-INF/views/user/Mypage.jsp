@@ -8,7 +8,9 @@
 		<div class="container mt-3">
 			<div class="d-flex mt-4 justify-content-between">
 				<h2>내정보</h2>
-				<a href="${cpath }/user/leave/${login.user_idx}"><button class="btn btn-warning" id="leave" style="color:white;">회원탈퇴</button></a>
+				<a href="${cpath }/user/leave/${login.user_idx}">
+					<button class="btn ms-3 userDelete" id="leave">회원탈퇴</button>
+				</a>
 			</div>
 		  <table class="table table-striped table-hover">
 		    <tbody>

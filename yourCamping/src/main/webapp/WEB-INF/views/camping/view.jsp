@@ -205,7 +205,7 @@
 						}
 					</script>
 							<div class="view_reserveBtn">
-								<input type="submit" value="예약하기">
+								<input type="submit" value="예약하기" style="background-color: #ffc107; color:white; border:none;">
 							</div>
 						</div>
 					</div>
@@ -610,14 +610,19 @@
 			<div id="imgBox" style="position: relative;">
 			<button id="view_prev"><</button>
 				<c:forEach var="img" items="${image }" varStatus="i">
-					<img src="${img.inner_img }" class="rounded">
+					<c:if test="${fn:startsWith(img.inner_img, 'https')}">
+						<img src="${img.inner_img }" class="rounded">
+					</c:if>
+					
+					<c:if test="${not fn:startsWith(img.inner_img, 'https')}">
+						<img src="${cpath }/inner_img/${img.inner_img }" class="rounded">
+					</c:if>
 				</c:forEach>
 				<button id="view_next">></button>
 			</div>
 		</div>
 	</div>
 </div>
-<div style="height: 300px;"></div>
 
 <script>
 	const imgarr = document.querySelectorAll('.rounded')

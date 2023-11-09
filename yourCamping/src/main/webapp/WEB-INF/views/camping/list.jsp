@@ -45,7 +45,7 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect"></select>
+						</select> <select id="secondSelect" name="secondSelect"  class="rounded"></select>
 					</div>
 					<div>
 						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
@@ -79,7 +79,7 @@
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색"> <input type="button" class="rounded"
+						<input type="submit" value="캠핑장 검색" class="btn btn-success ms-3"> <input type="button" class="rounded btn btn-success ms-3"
 							id="reset" value="초기화">
 					</div>
 				</div>
@@ -97,7 +97,7 @@
 <div class="container sb" style="width: 100%;">
 	<h4>총 <span class="text-danger fw-bold">${paging.boardCount }</span>개의 캠핑장이 검색되었습니다.</h4>
 	<div class="justify-content-between d-flex mb-3">
-		<button class="btn btn-primary" id="mapBtn">지도로보기</button>
+		<button class="btn btn-primary" id="mapBtn" style="background-color: #ffc107; color:white; border:none;">지도로보기</button>
 	</div>
 
 	<script>
@@ -133,10 +133,10 @@
 			<div class="item d-flex">
 				<div class="p-3">
 					<c:if test="${fn:startsWith(dto.first_img, 'https')}">
-						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
+						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer; width:300px; height:200px;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
 					</c:if>
 					<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
-						<div class="itemImg2" style="cursor: pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}"></div>
+						<div class="itemImg2" style="cursor:pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}" style="width:300px; height:200px;"></div>
 					</c:if>
 				</div>
 				<div class="mt-1 ms-3 itemTextWrap">

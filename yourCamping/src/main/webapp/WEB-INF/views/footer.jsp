@@ -3,7 +3,7 @@
 <footer style="margin-top: 200px;">
 	<div class="p-2 text-black rounded text-center"
 		style="-bs-bg-opacity: .7; background-color: black;">
-		<div class="container d-flex justify-content-between">
+		<div class="footer_width d-flex justify-content-between">
 			<h2 class="mt-1" style="color: white;" >🏕️어디로캠핑(주)</h2>
 			<div class="d-flex mt-3" style="color: white;">
 				<p class="me-3">개인정보처리방침</p>
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="container">
+		<div class="footer_width">
 			<p style="color:white; text-align:start;">
 				EMAIL : KgItBank @ KgItBank.com <br>
 				부산광역시 해운대구 우동 센텀2로 25 센텀드림월드 11층 <br>

@@ -1,20 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="mt-4 p-5 bg-warning mb-4 text-white rounded w-75 m-auto">
-        <h1 class="fw-bold  mb-1 fst-italic text-dark">캠핑 상세정보 등록</h1> 
+<hr>
+    <div class="mt-4 mb-4 text-white rounded w-75 m-auto" style="padding-top:50px;">
+        <h1 class="fw-bold mb-1 fst-italic text-dark">캠핑 상세정보 등록</h1> 
     </div>
     <br>
-    <div class="alert alert-secondary mb-4  w-75 m-auto">
+    <div class="alert alert-secondary mb-4 w-75 m-auto">
         <strong>캠핑장 숙박옵션을 상세하게 등록해주세요 </strong>
     </div>
 

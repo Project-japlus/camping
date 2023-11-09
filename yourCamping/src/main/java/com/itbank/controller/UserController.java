@@ -123,8 +123,7 @@ public class UserController {
 		// 해쉬처리된 입력한 패스워드 와 세션의 비밀번호가 같으면 Mypage로 돌리고 아니면 홈으로 돌리기
 		if (camping_idx != null) {
 			if (hash_inputpw.equals(session_pw)) {
-				mav.setViewName("bizr/campingDel");
-				mav.addObject("camping_idx", camping_idx);
+				mav.setViewName("redirect:/bizr/campingDelete/" + camping_idx);
 			} else {
 				mav.setViewName("redirect:/user/Mypage_check");
 				mav.addObject("camping_idx", camping_idx);

@@ -11,6 +11,7 @@
     			join camping_internal ci on c.camping_idx = ci.camping_idx 
     			join camping_img cimg on c.camping_idx = cimg.camping_idx
     		where cimg.first_img is not null 
+    		and c.camping_confirm = 'Y'
     		<if test="keyword != null">
 	    		and c.facltNm like '%${keyword}%' 
     		</if>
@@ -31,7 +32,7 @@
 	</select>
 	 
 	<select id="getListCnt" resultType="int">
-		select count(*) from camping
+		select count(*) from camping where camping_confirm = 'Y'
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="camping">

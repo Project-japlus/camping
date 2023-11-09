@@ -4,7 +4,7 @@
 <div class="main">
 	<div class="homeMain" style="background-image: url('${cpath}/resources/home_back.jpg');">
 		<div class="w-50" style="margin: 0 auto; display: flex; justify-content: flex-end; padding: 5px 25px;">
-			<a href="${cpath }/camping/list/1"><button>목록보기</button></a>
+			<a href="${cpath }/camping/list/1"><button class="btn btn-success ms-3">목록보기</button></a>
 		</div>
 		<div class="container w-50 p-5 border border-secondary rounded-5 border-5 shadow" id="home_SearchBox">
 			<form action="${cpath }/camping/list/1">

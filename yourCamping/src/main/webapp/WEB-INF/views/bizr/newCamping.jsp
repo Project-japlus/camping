@@ -3,16 +3,17 @@
 <%@ include file="../header.jsp"%>
 <div class="main">
 	<hr>
-	<div class="mt-4 p-5 bg-warning mb-5 text-white rounded w-75 m-auto">
-		<h1 class="fw-bold  mb-4 fst-italic text-dark">지금 개장한 멋진 캠핑장을
-			소개해보세요!</h1>
-		<div class="fw-bold text-dark">최근에 개장한 캠핑장을 저희 플랫폼에 등록하고 특별한 제휴
-			혜택을 누려보세요.</div>
-		<div class="fw-bold text-dark">캠핑을 사랑하는 많은 여행객들이 여러분의 캠핑장을 찾고
-			있습니다.</div>
-	</div>
+
 	<form method="POST" id="form-first" enctype="multipart/form-data">
 		<div class=" w-75 m-auto rounded-3" style="background-color: #eee;">
+			<div class="mt-4 mb-5 text-white rounded w-75 m-auto" style="padding-top:60px;">
+			<h1 class="fw-bold mb-4 fst-italic text-dark">지금 개장한 멋진 캠핑장을
+				소개해보세요!</h1>
+			<div class="fw-bold text-dark">최근에 개장한 캠핑장을 저희 플랫폼에 등록하고 특별한 제휴
+				혜택을 누려보세요.</div>
+			<div class="fw-bold text-dark">캠핑을 사랑하는 많은 여행객들이 여러분의 캠핑장을 찾고
+				있습니다.</div>
+			</div>
 			<br>
 			<!-- 히든 -->
 			<input type="hidden" name="mapX" id="mapX"> 

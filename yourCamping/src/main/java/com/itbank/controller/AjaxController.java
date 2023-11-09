@@ -91,9 +91,10 @@ public class AjaxController {
 
 	// MyPageContorller 에서 솔트랑 비밀번호 받아서 해시처리 해주는 함수
 	@GetMapping("/Mypage_modify_hash")
-	public String Mypage_modify_hash(String now_pw, String session_salt) {
+	public String Mypage_modify_hash(String now_pw, HttpSession session) {
+		UserDTO dto = (UserDTO)session.getAttribute("login");
 		// now_pw랑 salt를 now_password_hash 로 담아서 해쉬처리
-		String now_password_hash = hashComponent.getHash(now_pw, session_salt);
+		String now_password_hash = hashComponent.getHash(now_pw, dto.getSalt());
 
 		// 그값 반환
 		return now_password_hash;

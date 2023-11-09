@@ -9,7 +9,7 @@
 				<div style="display: flex" class="listSearch">
 					<div>
 						<span>지역</span> <select id="firstSelect" name="firstSelect"
-							onchange="changeSecondOptions()">
+							onchange="changeSecondOptions()"  class="rounded">
 							<option value="전체"
 								${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
 							<option value="서울시"
@@ -46,10 +46,10 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect"></select>
+						</select> <select id="secondSelect" name="secondSelect"  class="rounded"></select>
 					</div>
 					<div>
-						<span>테마</span> <select id="lctcl" name="lctcl">
+						<span>테마</span> <select id="lctcl" name="lctcl"  class="rounded">
 							<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
 							<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
 							<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
@@ -62,7 +62,7 @@
 						</select>
 					</div>
 					<div>
-						<span>숙박 형태</span> <select id="induty" name="induty">
+						<span>숙박 형태</span> <select id="induty" name="induty"  class="rounded">
 							<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
 							<option value="일반야영장"
 								${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
@@ -76,11 +76,11 @@
 				</div>
 				<div class="keywordBox">
 					<div>
-						<span>키워드를 입력하세요</span> <input type="text" name="keyword"
+						<span>키워드 검색</span> <input type="text" name="keyword"  class="rounded"
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색"> <input type="button"
+						<input type="submit" value="캠핑장 검색" class="btn btn-success ms-3"> <input type="button" class="btn btn-success ms-3"
 							id="reset" value="초기화">
 					</div>
 				</div>
@@ -88,7 +88,7 @@
 		</div>
 	</div>
 	<div class="justify-content-between d-flex mb-3">
-		<button class="btn btn-primary map_showListBtn" id="showList">
+		<button class="btn btn-primary map_showListBtn" id="showList" style="background-color: #ffc107; color:white; border:none;">
 			리스트로 보기
 		</button>
 	</div>
