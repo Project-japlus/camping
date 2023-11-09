@@ -96,7 +96,7 @@ reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동<br>
 reviewView랑 freeView 목록으로 버튼 링크 수정<br>
 reviewView 이미지 보여주는 부분 코드 수정<br>
 ReviewDTO upload multipartfile배열에서 리스트로 수정 <br>
- <br>
+
 <h3>현우 :</h3><br>
 @Mypage(일반 사업자 마이페이지 만들기)<br>
 BookmarkDTO만듬<br>
@@ -114,18 +114,18 @@ MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로<br>
 아이디 저장<br>
 userModal 3번째 줄에 Jquery 추가하고<br>
 밑에 스크립트 추가하면 완성<br>
- <br>
+
 <h3>유란 :</h3><br>
 캠핑장 등록/수정/삭제 기능 수정 <br>
 프론트 맡았던 지훈한테 물어보고 수정 <br>
 newCamping.jsp / camping-mapper 수정 <br>
 bizr/campingDel.jsp 추가 controller/service/dao 수정<br>
- <br>
+
 <h3>지훈 :</h3><br>
 reservation.jsp 달력 스타일 수정   <br>
 payCheck.jsp 결제성공시 alert에 username전달하도록 수정<br>
 캠핑장등록내역 상세정보.jsp추가 <br>
- <br>
+
 <h3>수용 :</h3><br>
 footer, map.jsp, home.jsp 수정<br>
 camping Insert<br>
