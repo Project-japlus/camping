@@ -85,6 +85,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 
 
  <h2>📌23/11/8</h2><br>
+<h2>📌23/11/8</h2><br>
 <h3>하람 :</h3><br>
 <a href="${cpath }/">🏕️어디로캠핑(로고)</a><br>
 헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인<br>
@@ -97,7 +98,7 @@ reviewView랑 freeView 목록으로 버튼 링크 수정<br>
 reviewView 이미지 보여주는 부분 코드 수정<br>
 ReviewDTO upload multipartfile배열에서 리스트로 수정 <br>
 
-<h3>현우 :</h3><br>
+<h3>현우 :</h3>
 @Mypage(일반 사업자 마이페이지 만들기)<br>
 BookmarkDTO만듬<br>
 reserveDTO에 private String tel 추가함 / private String homepage 추가함<br>
@@ -115,18 +116,18 @@ MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로<br>
 userModal 3번째 줄에 Jquery 추가하고<br>
 밑에 스크립트 추가하면 완성<br>
 
-<h3>유란 :</h3><br>
+<h3>유란 :</h3>
 캠핑장 등록/수정/삭제 기능 수정 <br>
 프론트 맡았던 지훈한테 물어보고 수정 <br>
 newCamping.jsp / camping-mapper 수정 <br>
 bizr/campingDel.jsp 추가 controller/service/dao 수정<br>
 
-<h3>지훈 :</h3><br>
+<h3>지훈 :</h3>
 reservation.jsp 달력 스타일 수정   <br>
 payCheck.jsp 결제성공시 alert에 username전달하도록 수정<br>
 캠핑장등록내역 상세정보.jsp추가 <br>
 
-<h3>수용 :</h3><br>
+<h3>수용 :</h3>
 footer, map.jsp, home.jsp 수정<br>
 camping Insert<br>
 1-1. newCamping.jsp 수정<br>
@@ -145,5 +146,6 @@ CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구�
 5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경<br>
 5-2. 정말 삭제할 것인지 물어보는 스크립트 생성<br>
 -> 추후 변경할 수도 있음<br>
-5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경<br>
+5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경<br> 
+
 
