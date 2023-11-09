@@ -84,68 +84,60 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 <br>
 
 
- <h2>📌23/11/8</h2><br>
-<h2>📌23/11/8</h2><br>
-<h3>하람 :</h3><br>
-<a href="${cpath }/">🏕️어디로캠핑(로고)</a><br>
-헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인<br>
-boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용<br>
-파라미터 추가로 board컴포넌트, 서비스, 컨트롤러도 수정<br>
-reviewList, freeList 페이징 추가 + 관리자일경우 글 삭제 버튼 추가<br>
-home에 게시판 모양 수정, 링크 부분 수정<br>
-reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동<br>
-reviewView랑 freeView 목록으로 버튼 링크 수정<br>
-reviewView 이미지 보여주는 부분 코드 수정<br>
-ReviewDTO upload multipartfile배열에서 리스트로 수정 <br>
 
-<h3>현우 :</h3>
-@Mypage(일반 사업자 마이페이지 만들기)<br>
-BookmarkDTO만듬<br>
-reserveDTO에 private String tel 추가함 / private String homepage 추가함<br>
-Config.xml typeAlias 추가함<br>
-Mypage.jsp 전체적으로 수정해서 그냥 그대로 쓰면 될듯<br>
-[일반 사용자 정보에서 시설 이름 누르면 view로 넘어가게 구현 / 북마크한 캠핑장에서 캠핑장 홈페이지 누르면 홈페이지로 넘어가게 구현함]<br>
-[UserController  list 추가함]<br>
-[UserService  함수만듬]<br>
-[UserDAO  함수만듬]<br>
-[UserMapper  <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 만듬]<br>
-@Mypage_modify<br>
-MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로<br>
-@userModal<br>
-아이디 저장<br>
-userModal 3번째 줄에 Jquery 추가하고<br>
-밑에 스크립트 추가하면 완성<br>
+## 2023년 11월 8일
 
-<h3>유란 :</h3>
-캠핑장 등록/수정/삭제 기능 수정 <br>
-프론트 맡았던 지훈한테 물어보고 수정 <br>
-newCamping.jsp / camping-mapper 수정 <br>
-bizr/campingDel.jsp 추가 controller/service/dao 수정<br>
+### 하람
+- [x] 헤더 링크 문제 해결
+- [x] boardmapper에 파라미터 추가하여 전체 리스트 불러오도록 수정
+- [x] reviewList, freeList에 페이징 추가 및 관리자일 경우 글 삭제 버튼 추가
+- [x] 홈의 게시판 모양 수정 및 링크 부분 수정
+- [x] reviewWrite, freeWrite의 작성완료 및 취소 버튼 위치 조정
+- [x] reviewView 및 freeView 목록으로 버튼 링크 수정
+- [x] ReviewDTO의 upload 멀티파트 파일 배열을 리스트로 수정
 
-<h3>지훈 :</h3>
-reservation.jsp 달력 스타일 수정   <br>
-payCheck.jsp 결제성공시 alert에 username전달하도록 수정<br>
-캠핑장등록내역 상세정보.jsp추가 <br>
+### 현우
+- [x] @Mypage 어노테이션 추가하여 일반 사업자 마이페이지 구현
+- [x] BookmarkDTO 생성
+- [x] reserveDTO에 tel과 homepage 추가
+- [x] Config.xml에 typeAlias 추가
+- [x] Mypage.jsp 전체적으로 수정
+- [x] 일반 사용자 정보에서 시설 이름을 클릭하면 view로 이동하는 기능 구현
+- [x] 북마크한 캠핑장에서 캠핑장 홈페이지를 클릭하면 해당 홈페이지로 이동하는 기능 구현
+- [x] UserController에 list 추가
+- [x] UserService 함수 추가
+- [x] UserDAO 함수 추가
+- [x] UserMapper에 <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 추가
+- [x] @Mypage_modify 어노테이션 추가하여 MYPAGE 버튼 경로 수정
+- [x] @userModal 어노테이션 추가하여 아이디 저장 기능 구현
+- [x] userModal에 Jquery 추가 및 아래 스크립트 추가하여 완성
 
-<h3>수용 :</h3>
-footer, map.jsp, home.jsp 수정<br>
-camping Insert<br>
-1-1. newCamping.jsp 수정<br>
-1-2. CampingService에 campingImgInsert 추가<br>
-1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가<br>
-prevPage<br>
-2-1. BizrController의 prevPage 수정<br>
-2-2. CampingService의 deleteCampingImg 추가<br>
-2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가<br>
-caming Update<br>
-3-1. BizrController의 campingUpdate 추가<br>
-3-2. campingUpdate(POST) 수정<br>
-3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정<br>
-CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제<br>
-마이페이지<br>
-5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경<br>
-5-2. 정말 삭제할 것인지 물어보는 스크립트 생성<br>
--> 추후 변경할 수도 있음<br>
-5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경<br> 
+### 유란
+- [x] 캠핑장 등록/수정/삭제 기능 수정
+- [x] 지훈에게 프론트 수정 사항 확인 및 수정
+- [x] newCamping.jsp 및 camping-mapper 수정
+- [x] bizr/campingDel.jsp 추가하여 controller/service/dao 수정
+
+### 지훈
+- [x] reservation.jsp 달력 스타일 수정
+- [x] payCheck.jsp에서 결제 성공 시 alert에 username 전달하는 기능 추가
+- [x] 캠핑장 등록 내역 상세정보를 보여주는 campingDetail.jsp 추가
+
+### 수용
+- [x] footer, map.jsp, home.jsp 수정
+- [x] camping Insert 기능 구현
+- [x] newCamping.jsp 수정
+- [x] CampingService에 campingImgInsert 추가
+- [x] CampingDAO와 camping-mapper에 campingFirstInsert 추가
+- [x] BizrController의 prevPage 수정
+- [x] CampingService의 deleteCampingImg 추가
+- [x] CampingDAO와 camping-mapper에 deleteCampingImg 추가
+- [x] BizrController의 campingUpdate 추가
+- [x] campingUpdate(POST) 수정
+- [x] CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정
+- [x] CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제
+- [x] 마이페이지에서 캠핑장 수정과 삭제 링크 주소 변경
+- [x] 정말 삭제할 것인지 물어보는 스크립트 생성
+- [x] MyPage_check의 GetMapping과 PostMapping 모두 변경
 
 
