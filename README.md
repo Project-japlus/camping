@@ -85,7 +85,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 
 
  <h2>📌23/11/8</h2>
-    <p>하람 :</p>
+    <h3>하람 :</h3>
     <p><a href="${cpath }/">🏕️어디로캠핑(로고)</a>
         헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인</p>
     <p>boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용
@@ -97,8 +97,7 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
         reviewView 이미지 보여주는 부분 코드 수정
         ReviewDTO upload multipartfile배열에서 리스트로 수정 
     </p>
-
-    <p>현우 :</p>
+    <h3>현우 :</h3>
     <p>     @Mypage(일반 사업자 마이페이지 만들기)
         BookmarkDTO만듬
         reserveDTO에 private String tel 추가함 / private String homepage 추가함
@@ -109,52 +108,45 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
         [UserService  함수만듬]
         [UserDAO  함수만듬]
         [UserMapper  <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 만듬]
-   
         @Mypage_modify
         MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로
-   
         @userModal
         아이디 저장
         userModal 3번째 줄에 Jquery 추가하고
-       밑에 스크립트 추가하면 완성</p>
-
-    <p>유란</p>
+       밑에 스크립트 추가하면 완성
+    </p>
+    <h3>유란</h3>
     <p>캠핑장 등록/수정/삭제 기능 수정 
         프론트 맡았던 지훈한테 물어보고 수정 
         newCamping.jsp / camping-mapper 수정 
         bizr/campingDel.jsp 추가 controller/service/dao 수정
-    </p>
-    
-    <p>지훈 </p>
+    </p>    
+    <h3>지훈 </h3>
     <p>reservation.jsp 달력 스타일 수정   
        payCheck.jsp 결제성공시 alert에 username전달하도록 수정
        캠핑장등록내역 상세정보.jsp추가 
     </p>
-
-    <p>수용 </p>
+    <h3>수용 </h3>
     <p>footer, map.jsp, home.jsp 수정
         camping Insert
         1-1. newCamping.jsp 수정
         1-2. CampingService에 campingImgInsert 추가
-        1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가
-        
+        1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가        
         prevPage
         2-1. BizrController의 prevPage 수정
         2-2. CampingService의 deleteCampingImg 추가
-        2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가
-        
+        2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가        
         caming Update
         3-1. BizrController의 campingUpdate 추가
         3-2. campingUpdate(POST) 수정
-        3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정
-        
-        CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제
-        
+        3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정        
+        CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제   
         마이페이지
         5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경
         5-2. 정말 삭제할 것인지 물어보는 스크립트 생성
         -> 추후 변경할 수도 있음
-        5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경</p>
+        5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경
+    </p>
 
 
 
