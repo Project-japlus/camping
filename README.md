@@ -84,79 +84,78 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
 <br>
 
 
- <h2>📌23/11/8</h2>
- 
-    <p>하람 :</p>
-    <p><a href="${cpath }/">🏕️어디로캠핑(로고)</a>
-        헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인</p>
-    <p>boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용
-        파라미터 추가로 board컴포넌트, 서비스, 컨트롤러도 수정
-        reviewList, freeList 페이징 추가 + 관리자일경우 글 삭제 버튼 추가
-        home에 게시판 모양 수정, 링크 부분 수정
-        reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동
-        reviewView랑 freeView 목록으로 버튼 링크 수정
-        reviewView 이미지 보여주는 부분 코드 수정
-        ReviewDTO upload multipartfile배열에서 리스트로 수정 
+ <h2>📌23/11/8</h2><br>
+    <p>하람 :</p><br>
+    <p><a href="${cpath }/">🏕️어디로캠핑(로고)</a><br>
+        헤더에 있는 이거 링크가 안잡힘 => style = z-index 삭제 후 정상작동 확인</p><br>
+    <p>boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용<br>
+        파라미터 추가로 board컴포넌트, 서비스, 컨트롤러도 수정<br>
+        reviewList, freeList 페이징 추가 + 관리자일경우 글 삭제 버튼 추가<br>
+        home에 게시판 모양 수정, 링크 부분 수정<br>
+        reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동<br>
+        reviewView랑 freeView 목록으로 버튼 링크 수정<br>
+        reviewView 이미지 보여주는 부분 코드 수정<br>
+        ReviewDTO upload multipartfile배열에서 리스트로 수정 <br>
+    </p><br>
+	<br>
+    <p>현우 :</p><br>
+    <p>     @Mypage(일반 사업자 마이페이지 만들기)<br>
+        BookmarkDTO만듬<br>
+        reserveDTO에 private String tel 추가함 / private String homepage 추가함<br>
+        Config.xml typeAlias 추가함<br>
+        Mypage.jsp 전체적으로 수정해서 그냥 그대로 쓰면 될듯<br>
+        [일반 사용자 정보에서 시설 이름 누르면 view로 넘어가게 구현 / 북마크한 캠핑장에서 캠핑장 홈페이지 누르면 홈페이지로 넘어가게 구현함]<br>
+        [UserController  list 추가함]<br>
+        [UserService  함수만듬]<br>
+        [UserDAO  함수만듬]<br>
+        [UserMapper  <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 만듬]<br>
+   <br>
+        @Mypage_modify<br><br>
+        MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로<br>
+   <br>
+        @userModal<br>
+        아이디 저장<br>
+        userModal 3번째 줄에 Jquery 추가하고<br>
+       밑에 스크립트 추가하면 완성<br>
+    </p><br>
+<br>
+    <p>유란</p><br>
+    <p>캠핑장 등록/수정/삭제 기능 수정 <br>
+        프론트 맡았던 지훈한테 물어보고 수정 <br>
+        newCamping.jsp / camping-mapper 수정 <br>
+        bizr/campingDel.jsp 추가 controller/service/dao 수정<br>
     </p>
-
-    <p>현우 :</p>
-    <p>     @Mypage(일반 사업자 마이페이지 만들기)
-        BookmarkDTO만듬
-        reserveDTO에 private String tel 추가함 / private String homepage 추가함
-        Config.xml typeAlias 추가함
-        Mypage.jsp 전체적으로 수정해서 그냥 그대로 쓰면 될듯
-        [일반 사용자 정보에서 시설 이름 누르면 view로 넘어가게 구현 / 북마크한 캠핑장에서 캠핑장 홈페이지 누르면 홈페이지로 넘어가게 구현함]
-        [UserController  list 추가함]
-        [UserService  함수만듬]
-        [UserDAO  함수만듬]
-        [UserMapper  <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 만듬]
-   
-        @Mypage_modify
-        MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로
-   
-        @userModal
-        아이디 저장
-        userModal 3번째 줄에 Jquery 추가하고
-       밑에 스크립트 추가하면 완성
-    </p>
-
-    <p>유란</p>
-    <p>캠핑장 등록/수정/삭제 기능 수정 
-        프론트 맡았던 지훈한테 물어보고 수정 
-        newCamping.jsp / camping-mapper 수정 
-        bizr/campingDel.jsp 추가 controller/service/dao 수정
-    </p>
-    
+    <br>
     <p>지훈 </p>
-    <p>reservation.jsp 달력 스타일 수정   
-       payCheck.jsp 결제성공시 alert에 username전달하도록 수정
-       캠핑장등록내역 상세정보.jsp추가 
+    <p>reservation.jsp 달력 스타일 수정   <br>
+       payCheck.jsp 결제성공시 alert에 username전달하도록 수정<br>
+       캠핑장등록내역 상세정보.jsp추가 <br>
     </p>
-
+<br>
     <p>수용 </p>
-    <p>footer, map.jsp, home.jsp 수정
-        camping Insert
-        1-1. newCamping.jsp 수정
-        1-2. CampingService에 campingImgInsert 추가
-        1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가
-        
-        prevPage
-        2-1. BizrController의 prevPage 수정
-        2-2. CampingService의 deleteCampingImg 추가
-        2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가
-        
-        caming Update
-        3-1. BizrController의 campingUpdate 추가
-        3-2. campingUpdate(POST) 수정
-        3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정
-        
-        CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제
-        
-        마이페이지
-        5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경
-        5-2. 정말 삭제할 것인지 물어보는 스크립트 생성
-        -> 추후 변경할 수도 있음
-        5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경
+    <p>footer, map.jsp, home.jsp 수정<br>
+        camping Insert<br>
+        1-1. newCamping.jsp 수정<br>
+        1-2. CampingService에 campingImgInsert 추가<br>
+        1-3. CampingDAO와 camping-mapper에 campingFirstInsert 추가<br>
+        <br>
+        prevPage<br>
+        2-1. BizrController의 prevPage 수정<br>
+        2-2. CampingService의 deleteCampingImg 추가<br>
+        2-3. CampingDAO와 camping-mapper에 deleteCampingImg 추가<br>
+        <br>
+        caming Update<br>
+        3-1. BizrController의 campingUpdate 추가<br>
+        3-2. campingUpdate(POST) 수정<br>
+        3-3. CampingDAO와 camping-mapper에 campingFirstInsert와 campingImgInsert 추가 및 수정<br>
+        <br>
+        CampingService, CampingDAO, camping-mapper에서 사용하지 않는 delete 구문 삭제<br>
+        <br>
+        마이페이지<br>
+        5-1. 캠핑장 수정과 캠핑장 삭제 링크 주소 변경<br>
+        5-2. 정말 삭제할 것인지 물어보는 스크립트 생성<br>
+        -> 추후 변경할 수도 있음<br>
+        5-3. MyPage_check의 GetMapping과 PostMapping 모두 변경<br>
     </p>
 
  
