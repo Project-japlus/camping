@@ -52,7 +52,7 @@
       	<div class="mt-4 mb-4 d-flex justify-content-end">
       		<a href="${cpath }/board/reviewModify/${dto.review_idx}"><button id="modifyBtn" type="button" class="btn btn-outline-secondary me-3">수정하기</button></a>
       		<a href="${cpath }/board/reviewDelete/${dto.review_idx}"><button id="deleteBtn" type="button" class="btn btn-outline-secondary me-3">삭제하기</button></a>
-        	<a href="${cpath }/board/reviewList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
+        	<a href="${cpath }/board/reviewList/1"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
     </div>
 </div>

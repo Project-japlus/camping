@@ -18,8 +18,12 @@ public class BoardService {
 	@Autowired private BoardComponent boardComponent;
 	@Autowired private FileComponent fileComponent;
 	
-	public List<ReviewDTO> selectReviewList() {
-		return boardComponent.selectReviewList();
+	public List<ReviewDTO> selectReviewList(HashMap<String, Object> map) {
+		return boardComponent.selectReviewList(map);
+	}
+	
+	public int countReviewList() {
+		return boardComponent.countReviewList();
 	}
 	
 	public int insertReview(ReviewDTO dto) {
@@ -60,8 +64,12 @@ public class BoardService {
 		return boardComponent.reviewModify(dto);
 	}
 	
-	public List<FreeDTO> selectFreeList() {
-		return boardComponent.selectFreeList();
+	public List<FreeDTO> selectFreeList(HashMap<String, Object> map) {
+		return boardComponent.selectFreeList(map);
+	}
+
+	public int countFreeList() {
+		return boardComponent.countFreeList();
 	}
 	
 	public int insertFree(FreeDTO dto) {
@@ -124,36 +132,59 @@ public class BoardService {
 		return boardComponent.selectReplyOne(map);
 	}
 
-	public List<ReviewDTO> selectSearchReview(String type, String keyword) {
+	public List<ReviewDTO> selectSearchReview(HashMap<String, Object> map, String type, String keyword) {
 		List<ReviewDTO> list = null;
+		map.put("keyword", keyword);
 		switch(type) {
 		case "facltnm":
-			list = boardComponent.selectSearchReviewCamping(keyword);
+			list = boardComponent.selectSearchReviewCamping(map);
 			break;
 		case "title":
-			list = boardComponent.selectSearchReviewTitle(keyword);
+			list = boardComponent.selectSearchReviewTitle(map);
 			break;
 		case "writer":
-			list = boardComponent.selectSearchReviewWriter(keyword);
+			list = boardComponent.selectSearchReviewWriter(map);
 			break;
 		default:
-			list = boardComponent.selectReviewList();	
+			list = boardComponent.selectReviewList(map);	
 		} 
 		return list;
+	}
+	
+	public int countSearchReviewCamping(String keyword) {
+		return boardComponent.countSearchReviewCamping(keyword);
 	}
 
-	public List<FreeDTO> selectSearchFree(String type, String keyword) {
+	public int countSearchReviewTitle(String keyword) {
+		return boardComponent.countSearchReviewTitle(keyword);
+	}
+	
+	public int countSearchReviewWriter(String keyword) {
+		return boardComponent.countSearchReviewWriter(keyword);
+	}
+	
+	public List<FreeDTO> selectSearchFree(HashMap<String, Object> map, String type, String keyword) {
 		List<FreeDTO> list = null;
+		map.put("keyword", keyword);
 		switch(type) {
 		case "title":
-			list = boardComponent.selectSearchFreeTitle(keyword);
+			list = boardComponent.selectSearchFreeTitle(map);
 			break;
 		case "writer":
-			list = boardComponent.selectSearchFreeWriter(keyword);
+			list = boardComponent.selectSearchFreeWriter(map);
 			break;
 		default:
-			list = boardComponent.selectFreeList();	
+			list = boardComponent.selectFreeList(map);	
 		} 
 		return list;
 	}
+	
+	public int countSearchFreeTitle(String keyword) {
+		return boardComponent.countSearchFreeTitle(keyword);
+	}
+	
+	public int countSearchFreeWriter(String keyword) {
+		return boardComponent.countSearchFreeWriter(keyword);
+	}
+	
 }

@@ -15,16 +15,24 @@ import com.itbank.model.ReviewDTO;
 @Repository
 public interface BoardDAO {
 
-	List<ReviewDTO> selectReviewList();
+	List<ReviewDTO> selectReviewList(HashMap<String, Object> map);
+	
+	int countReviewList();
 
 	int insertReview(ReviewDTO dto);
 
-	List<ReviewDTO> selectSearchReviewCamping(String keyword);
+	List<ReviewDTO> selectSearchReviewCamping(HashMap<String, Object> map);
+	
+	int countSearchReviewCamping(String keyword);
 
-	List<ReviewDTO> selectSearchReviewTitle(String keyword);
+	List<ReviewDTO> selectSearchReviewTitle(HashMap<String, Object> map);
+	
+	int countSearchReviewTitle(String keyword);
 
-	List<ReviewDTO> selectSearchReviewWriter(String keyword);
+	List<ReviewDTO> selectSearchReviewWriter(HashMap<String, Object> map);
 
+	int countSearchReviewWriter(String keyword);
+	
 	ReviewDTO selectReviewOne(int review_idx);
 
 	int countReviewView(int review_idx);
@@ -33,11 +41,17 @@ public interface BoardDAO {
 
 	int reviewDelete(int review_idx);
 
-	List<FreeDTO> selectFreeList();
+	List<FreeDTO> selectFreeList(HashMap<String, Object> map);
+	
+	int countFreeList();
 
-	List<FreeDTO> selectSearchFreeTitle(String keyword);
+	List<FreeDTO> selectSearchFreeTitle(HashMap<String, Object> map);
+	
+	int countSearchFreeTitle(String keyword);
 
-	List<FreeDTO> selectSearchFreeWriter(String keyword);
+	List<FreeDTO> selectSearchFreeWriter(HashMap<String, Object> map);
+	
+	int countSearchFreeWriter(String keyword);
 
 	int insertFree(FreeDTO dto);
 

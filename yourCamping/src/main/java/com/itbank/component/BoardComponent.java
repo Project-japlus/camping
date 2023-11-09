@@ -16,25 +16,41 @@ public class BoardComponent {
 
 	@Autowired private BoardDAO boardDAO;
 	
-	public List<ReviewDTO> selectReviewList() {
-		List<ReviewDTO> list = boardDAO.selectReviewList();
+	public List<ReviewDTO> selectReviewList(HashMap<String, Object> map) {
+		List<ReviewDTO> list = boardDAO.selectReviewList(map);
 		return list;
+	}
+	
+	public int countReviewList() {
+		return boardDAO.countReviewList();
 	}
 	
 	public int insertReview(ReviewDTO dto) {
 		return boardDAO.insertReview(dto);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewCamping(String keyword) {
-		return boardDAO.selectSearchReviewCamping(keyword);
+	public List<ReviewDTO> selectSearchReviewCamping(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewCamping(map);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewTitle(String keyword) {
-		return boardDAO.selectSearchReviewTitle(keyword);
+	public int countSearchReviewCamping(String keyword) {
+		return boardDAO.countSearchReviewCamping(keyword);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewWriter(String keyword) {
-		return boardDAO.selectSearchReviewWriter(keyword);
+	public List<ReviewDTO> selectSearchReviewTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewTitle(map);
+	}
+	
+	public int countSearchReviewTitle(String keyword) {
+		return boardDAO.countSearchReviewTitle(keyword);
+	}
+	
+	public List<ReviewDTO> selectSearchReviewWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewWriter(map);
+	}
+	
+	public int countSearchReviewWriter(String keyword) {
+		return boardDAO.countSearchReviewWriter(keyword);
 	}
 
 	public ReviewDTO selectReviewOne(int review_idx) {
@@ -57,18 +73,30 @@ public class BoardComponent {
 		return boardDAO.reviewModify(dto);
 	}
 
-	public List<FreeDTO> selectFreeList() {
-		return boardDAO.selectFreeList();
-	}
-	
-	public List<FreeDTO> selectSearchFreeTitle(String keyword) {
-		return boardDAO.selectSearchFreeTitle(keyword);
-	}
-	
-	public List<FreeDTO> selectSearchFreeWriter(String keyword) {
-		return boardDAO.selectSearchFreeWriter(keyword);
+	public List<FreeDTO> selectFreeList(HashMap<String, Object> map) {
+		return boardDAO.selectFreeList(map);
 	}
 
+	public int countFreeList() {
+		return boardDAO.countFreeList();
+	}
+	
+	public List<FreeDTO> selectSearchFreeTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeTitle(map);
+	}
+	
+	public int countSearchFreeTitle(String keyword) {
+		return boardDAO.countSearchFreeTitle(keyword);
+	}
+	
+	public List<FreeDTO> selectSearchFreeWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeWriter(map);
+	}
+
+	public int countSearchFreeWriter(String keyword) {
+		return boardDAO.countSearchFreeWriter(keyword);
+	}
+	
 	public int insertFree(FreeDTO dto) {
 		return boardDAO.insertFree(dto);
 	}

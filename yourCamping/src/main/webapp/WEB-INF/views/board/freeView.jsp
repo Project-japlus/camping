@@ -25,7 +25,7 @@
       	<div class="mt-4 mb-4 d-flex justify-content-end">
       		<a href="${cpath }/board/freeModify/${dto.free_table_idx}"><button id="modifyBtn" type="button" class="btn btn-outline-secondary me-3">수정하기</button></a>
       		<a href="${cpath }/board/freeDelete/${dto.free_table_idx}"><button id="deleteBtn" type="button" class="btn btn-outline-secondary me-3">삭제하기</button></a>
-        	<a href="${cpath }/board/freeList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
+        	<a href="${cpath }/board/freeList/1"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
 		<div class="mt-4">
 			<div class="mb-4">댓글</div>
@@ -40,7 +40,9 @@
 						<div class="ms-2">${reply.reply_content}</div>
 					</div>
 					<div>
-						<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						<c:if test="${reply.userid == login.userid }">
+							<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						</c:if>
 					</div>
 				</div>
 				</c:forEach>
@@ -85,10 +87,6 @@
 	const deleteReplyBtn = document.getElementById('deleteReplyBtn')
 	const deleteReplyHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		if ('${dto.userid}' != '${login.userid}') {
-			alert('본인 댓글만 삭제할 수 있습니다')
-			return
-		}
 		if (confirm('삭제하시겠습니까')) {
 			location.href = event.target.parentNode.href
 		}	
