@@ -95,7 +95,8 @@ reserve-mapper.xml : selectList 삭제 (따로 list에서 불러오던거라 필
         reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동
         reviewView랑 freeView 목록으로 버튼 링크 수정
         reviewView 이미지 보여주는 부분 코드 수정
-        ReviewDTO upload multipartfile배열에서 리스트로 수정 </p>
+        ReviewDTO upload multipartfile배열에서 리스트로 수정 
+    </p>
 
     <p>현우 :</p>
     <p>     @Mypage(일반 사업자 마이페이지 만들기)
