@@ -38,7 +38,7 @@
 					<div class="ms-3 mt-4">
 						<button type="submit"
 							class="btn btn-primary btn-lg opacity-100 w-75 ms-5 mb-3"
-							style="background-color:green; border:none;">로그인</button>
+							style="background-color: green; border: none;">로그인</button>
 					</div>
 
 				</form>
@@ -46,17 +46,18 @@
 					<div class="d-flex justify-content-between">
 						<a data-bs-toggle="modal" href="#exampleModalToggle" role="button">
 							<button class="btn btn-primary p-2"
-								style="width: 150px; margin-left: 48px; background-color: #ffc107; border; color:white; border:none;">회원가입</button>
+								style="width: 150px; margin-left: 48px; background-color: #ffc107; border; color: white; border: none;">회원가입</button>
 						</a> <a data-bs-toggle="modal" href="#findIDPW" role="button">
 							<button class="btn btn-primary p-2"
-								style="width: 150px; margin-right: 63px; background-color: #ffc107; border; color:white; border:none;">ID/PW찾기</button>
+								style="width: 150px; margin-right: 63px; background-color: #ffc107; border; color: white; border: none;">ID/PW찾기</button>
 						</a>
 					</div>
 				</div>
 			</div>
 			<!-- Modal footer -->
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="background-color:green; border:none;">Close</button>
+				<button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+					style="background-color: green; border: none;">Close</button>
 			</div>
 		</div>
 	</div>
@@ -76,28 +77,45 @@
 			<div class="modal-body" style="padding: 30px;">
 				<div style="width: 400px; margin: auto;">
 					<h5 style="font-weight: 700;">🔍︎아이디 찾기</h5>
-					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">E-MAIL을 입력하면 ID를 확인할 수 있습니다</p>
-					<p><input type="email" id="findIdEamil" placeholder="✉ 이메일" style="width: 100%; height: 50px;"></p>
-					<p><button type="button" id="findIdBtn" style="background-color: #ffc107; border; color:white; border:none;">아이디 찾기</button></p>
+					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">E-MAIL을
+						입력하면 ID를 확인할 수 있습니다</p>
+					<p>
+						<input type="email" id="findIdEamil" class="rounded" placeholder="✉ 이메일"
+							style="width: 100%; height: 40px;">
+					</p>
+					<p>
+						<button type="button" id="findIdBtn" class="rounded"
+							style="background-color: #25A5F0; border; color: white; border: none; width: 100%; height: 50px;">아이디
+							찾기</button>
+					</p>
 				</div>
 				<div style="width: 400px; margin: auto; margin-top: 30px;">
 					<h5 style="font-weight: 700;">🔍︎패스워드 찾기</h5>
-					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">ID와 E-MAIL을 입력하여 임시비밀번호를 받을 수 있습니다</p>
+					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">ID와
+						E-MAIL을 입력하여 임시비밀번호를 받을 수 있습니다</p>
 					<p>
-						<input type="text" id="findPwId" placeholder="👤 아이디" style="width: 100%; height: 50px;">
+						<input type="text" id="findPwId" class="rounded" placeholder="👤 아이디"
+							style="width: 100%; height: 40px;">
 					</p>
 					<p>
-						<input type="email" id="findPwEamil" placeholder="✉ 이메일" style="width: 100%; height: 50px;">
+						<input type="email" id="findPwEamil" class="rounded" placeholder="✉ 이메일"
+							style="width: 100%; height: 40px;">
 					</p>
-					<p><button type="button" id="findPwBtn" style="background-color: #ffc107; border; color:white; border:none;s">패스워드 찾기</button></p>
+					<p>
+						<button type="button" id="findPwBtn" class="rounded"
+							style="background-color: #25A5F0; border; color: white; border: none; width: 100%; height: 50px;"">패스워드
+							찾기</button>
+					</p>
 				</div>
 			</div>
 
 			<!-- Modal footer -->
 			<div class="modal-footer">
-			<a data-bs-toggle="modal" href="#login" role="button">
-				<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal" style="background-color: green; border: none;">Login</button>
-			</a>
+				<a data-bs-toggle="modal" href="#login" role="button">
+					<button type="button" class="btn btn-primary p-2"
+						data-bs-dismiss="modal"
+						style="background-color: green; border: none;">Login</button>
+				</a>
 				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 			</div>
 		</div>
@@ -180,16 +198,17 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="container">
-
 						<form method="POST" action="${cpath }/user/user_join"
 							id="userJoinForm">
 							<div class="d-flex flex-column w-100 m-auto">
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="userid" placeholder="아이디" required
-										autofocus autocomplete="off" class="idcheck">
-									<button type="button" class="btn btn-primary checkDuplicate"
-										style="width: 100px; background-color: #ffc107; border; color:white; border:none;">중복 확인</button>
+										autofocus autocomplete="off" class="idcheck" size="25">
+									<button type="button"
+										class="btn btn-primary checkDuplicate me-5"
+										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">중복
+										확인</button>
 								</div>
 
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -199,15 +218,17 @@
 								<div class="mb-1 d-flex justify-content-between ">
 									<p class="mb-1">
 										<input type="password" name="userpw" placeholder="비밀번호"
-											id="user_pw1" required>
+											id="user_pw1" required size="25">
 									</p>
 								</div>
 								<div>
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="user_pw2"
-											placeholder="비밀번호  확인" required>
-										<button type="button" class="btn btn-primary"
-											onclick="userpw_test()" style="width: 100px; background-color: #ffc107; border; color:white; border:none;">PW 확인</button>
+											placeholder="비밀번호  확인" required size="25">
+										<button type="button" class="btn btn-primary me-5"
+											onclick="userpw_test()"
+											style="width: 100px; background-color: #ffc107; border; color: white; border: none;">PW
+											확인</button>
 									</p>
 								</div>
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -215,26 +236,30 @@
 
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
-									<input type="text" name="username" placeholder="이름" required>
+									<input type="text" name="username" placeholder="이름" required
+										size="25">
 								</div>
 								<div class="mb-1">휴대폰 번호</div>
 								<div class="d-flex justify-content-between mb-2">
-									<input type="text" name="phone" placeholder="휴대폰 번호" required>
+									<input type="text" name="phone" placeholder="휴대폰 번호" required
+										size="25">
 								</div>
 								<div class="mb-1">이메일</div>
 								<div>
 									<div>
 										<div class="d-flex justify-content-between">
 											<input type="email" id="email_user" type="email" name="email"
-												placeholder="이메일" required>
-											<button type="button" class="btn btn-primary" style="background-color: #ffc107; border; color:white; border:none;"
+												placeholder="이메일" required size="25">
+											<button type="button" class="btn btn-primary me-5"
+												style="background-color: #ffc107; border; color: white; border: none;"
 												id="sendAuthNumber">인증번호발송</button>
 										</div>
 										<div class="d-flex justify-content-between mb-2 mt-3">
 											<input type="text" name="authNumber_user"
-												placeholder="인증번호 입력"> <input id="emailAuthBtn"
-												class="btn btn-primary mt-1" type="button" value="본인인증"
-												style="width: 100px; background-color: #ffc107; border; color:white; border:none;">
+												placeholder="인증번호 입력" size="25"> <input
+												id="emailAuthBtn" class="btn btn-primary mt-1 me-5"
+												type="button" value="본인인증"
+												style="width: 100px; background-color: #ffc107; border; color: white; border: none;">
 										</div>
 										<!-- 								중복여부 띄어줄 div								 -->
 										<div id="user_check_email"></div>
@@ -246,11 +271,12 @@
 										동의합니다
 										<!-- tos : Terms Of Use 이용약관 -->
 									</div>
-									<a href="">보기</a>
+									<a href="" class="me-5">보기</a>
 								</div>
 
 								<div class="d-flex justify-content-center user_joinBtn">
-									<input type="submit" class="btn btn-primary" value="회원가입" style="background-color: green; border: none;">
+									<input type="submit" class="btn btn-primary" value="회원가입"
+										style="background-color: green; border: none;">
 								</div>
 							</div>
 
@@ -261,11 +287,14 @@
 			<!-- Modal footer -->
 			<div class="modal-footer">
 				<a data-bs-toggle="modal" href="#login" role="button">
-					<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal" style="background-color: green; border: none;">Login</button>
+					<button type="button" class="btn btn-primary p-2"
+						data-bs-dismiss="modal"
+						style="background-color: green; border: none;">Login</button>
 				</a>
 				<button class="btn btn-primary"
 					data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-					data-bs-dismiss="modal" style="background-color: green; border: none;">사업자 회원가입</button>
+					data-bs-dismiss="modal"
+					style="background-color: green; border: none;">사업자 회원가입</button>
 			</div>
 		</div>
 	</div>
@@ -287,13 +316,15 @@
 					<div class="container">
 						<div class="d-flex flex-column w-100 m-auto">
 							<form method="POST" action="${cpath }/user/bizr_join"
-								id="bizrJoinForm">
+								id="bizrJoinForm" class="ms-2">
 								<div class="mb-1">아이디</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="userid" placeholder="아이디" required
-										autofocus autocomplete="off" class="idcheck">
-									<button type="button" class="btn btn-primary checkDuplicate"
-										style="width: 100px; background-color: #ffc107; border; color:white; border:none;">중복 확인</button>
+										autofocus autocomplete="off" class="idcheck" size="25">
+									<button type="button"
+										class="btn btn-primary checkDuplicate me-5"
+										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">중복
+										확인</button>
 								</div>
 
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -302,41 +333,47 @@
 								<div class="mb-1 d-flex justify-content-between">
 									<p class="mb-1">
 										<input type="password" name="userpw" placeholder="비밀번호"
-											id="bizr_pw1" required>
+											id="bizr_pw1" required size="25">
 									</p>
 								</div>
 								<div>
 									<p class="mb-2 d-flex justify-content-between">
 										<input type="password" name="userpwCheck" id="bizr_pw2"
-											placeholder="비밀번호  확인" required> <input type="button"
-											class="btn btn-primary" onclick="bizrpw_test()"
-											style="width: 100px; background-color: #ffc107; border; color:white; border:none;" value="PW 확인">
+											placeholder="비밀번호  확인" required size="25"> <input
+											type="button" class="btn btn-primary me-5"
+											onclick="bizrpw_test()"
+											style="width: 100px; background-color: #ffc107; border; color: white; border: none;"
+											value="PW 확인">
 									</p>
 								</div>
 								<!-- 								중복여부 띄어줄 div								 -->
 								<div id="bizr_checkpw"></div>
 								<div class="mb-1">이름</div>
 								<div class="mb-2">
-									<input type="text" name="username" placeholder="이름" required>
+									<input type="text" name="username" placeholder="이름" required
+										size="25">
 								</div>
 								<div class="mb-1">휴대폰 번호</div>
 								<div class="d-flex justify-content-between mb-2">
-									<input type="text" name="phone" placeholder="휴대폰 번호" required>
+									<input type="text" name="phone" placeholder="휴대폰 번호" required
+										size="25">
 								</div>
 								<div class="mb-1">이메일</div>
 								<div>
 									<div>
 										<div class="d-flex justify-content-between">
 											<input type="email" id="email_bizr" type="email" name="email"
-												placeholder="이메일" required>
-											<button type="button" class="btn btn-primary"
-												id="sendAuthNumber_bizr" style="background-color: #ffc107; border; color:white; border:none;">인증번호발송</button>
+												placeholder="이메일" required size="25">
+											<button type="button" class="btn btn-primary me-5"
+												id="sendAuthNumber_bizr"
+												style="background-color: #ffc107; border; color: white; border: none;">인증번호발송</button>
 										</div>
 										<div class="d-flex justify-content-between mb-2 mt-3">
 											<input type="text" name="authNumber_bizr"
-												placeholder="인증번호 입력"> <input id="emailAuthBtn1"
-												class="btn btn-primary mt-1" type="button" value="본인인증"
-												style="width: 100px; background-color: #ffc107; border; color:white; border:none;s">
+												placeholder="인증번호 입력" size="25"> <input
+												id="emailAuthBtn1" class="btn btn-primary mt-1 me-5"
+												type="button" value="본인인증"
+												style="width: 100px; background-color: #ffc107; border; color: white; border: none;">
 										</div>
 									</div>
 								</div>
@@ -345,8 +382,10 @@
 								<div class="mb-1">사업자번호</div>
 								<div class="d-flex justify-content-between mb-2">
 									<input type="text" name="bizrno" placeholder="사업자번호"
-										id="bizrno_check" required> <a><button
-											type="button" class="btn btn-primary" id="bizrno_check_btn" style="background-color: #ffc107; border; color:white; border:none;">사업자인증</button></a>
+										id="bizrno_check" required size="25"> <a><button
+											type="button" class="btn btn-primary me-5"
+											id="bizrno_check_btn"
+											style="background-color: #ffc107; border; color: white; border: none;">사업자인증</button></a>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>
@@ -355,13 +394,14 @@
 										<!-- tos : Terms Of Use 이용약관 -->
 									</div>
 									<div>
-										<a href="">보기</a>
+										<a href="" class="me-5">보기</a>
 									</div>
 								</div>
 
 								<div class="d-flex justify-content-center">
 									<!-- 사업자 회원가입 버튼 -->
-									<input type="submit" class="btn btn-primary" value="회원가입" style="background-color: green; border: none;">
+									<input type="submit" class="btn btn-primary" value="회원가입"
+										style="background-color: green; border: none;">
 								</div>
 							</form>
 						</div>
@@ -370,10 +410,13 @@
 			</div>
 			<div class="modal-footer">
 				<a data-bs-toggle="modal" href="#login" role="button">
-					<button type="button" class="btn btn-primary p-2" data-bs-dismiss="modal" style="background-color: green; border: none;">Login</button>
+					<button type="button" class="btn btn-primary p-2"
+						data-bs-dismiss="modal"
+						style="background-color: green; border: none;">Login</button>
 				</a>
 				<button class="btn btn-primary" data-bs-target="#exampleModalToggle"
-					data-bs-toggle="modal" data-bs-dismiss="modal" style="background-color: green; border: none;">일반 회원가입</button>
+					data-bs-toggle="modal" data-bs-dismiss="modal"
+					style="background-color: green; border: none;">일반 회원가입</button>
 			</div>
 		</div>
 	</div>
