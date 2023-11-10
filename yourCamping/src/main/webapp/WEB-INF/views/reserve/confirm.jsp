@@ -100,7 +100,7 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 <div class="d-grid">
-    <button id="payButton" class="fw-bold btn btn-warning btn-block w-75 m-auto mt-3" style="height: 60px;">결제하기</button>
+    <button id="payButton" class="fw-bold btn btn-warning btn-block m-auto mt-3" style="height: 60px; width:950px; background-color: #ffc107; border; color:white; border:none;">결제하기</button>
 </div>
 
 <script>

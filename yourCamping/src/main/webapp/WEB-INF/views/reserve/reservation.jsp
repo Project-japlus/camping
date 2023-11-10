@@ -292,7 +292,7 @@
 				<div class="d-grid">
 					<input type="submit"
 						class="btn btn-warning btn-block mt-3 w-50 m-auto fw-bold"
-						style="height: 60px;" value="예약정보 확인 및 결제하러가기">
+						style="height: 60px; background-color: #ffc107; border; color:white; border:none;" value="예약정보 확인 및 결제하러가기">
 				</div>
 			</div>
 		</form>

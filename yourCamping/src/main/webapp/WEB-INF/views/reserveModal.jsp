@@ -44,7 +44,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #ffc107; border; color:white; border:none;">Close</button>
 				</div>
 
 			</div>
@@ -114,7 +114,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #ffc107; border; color:white; border:none;">Close</button>
 				</div>
 
 			</div>
@@ -154,7 +154,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #ffc107; border; color:white; border:none;">Close</button>
 				</div>
 
 			</div>
@@ -185,7 +185,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #ffc107; border; color:white; border:none;">Close</button>
 				</div>
 
 			</div>
@@ -212,7 +212,7 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">Close</button>
+						data-bs-dismiss="modal" style="background-color: #ffc107; border; color:white; border:none;">Close</button>
 				</div>
 
 			</div>
