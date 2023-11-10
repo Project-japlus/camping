@@ -18,16 +18,18 @@
 			</p>
         	<c:if test="${dto.review_img != null}">
         	<div id="carouselExampleControls" class="carousel slide w-50 mx-auto" data-bs-ride="carousel">
-				<div class="carousel-inner">
+				<div class="carousel-inner" style="width: 500px; height: 500px;">
 					<c:forEach var="image" items="${list }" varStatus="i">
 					<c:if test="${i.index == 0 }">
 						<div class="carousel-item active">
 							<img src="${cpath }/upload/${image}" class="d-block w-100">
 						</div>
 					</c:if>
+					<c:if test="${i.index != 0 }">
 					<div class="carousel-item">
 						<img src="${cpath }/upload/${image }" class="d-block w-100">
 					</div>
+					</c:if>
 					</c:forEach>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -42,10 +44,10 @@
 			</c:if>
 			<div class="mt-4 mb-4 d-flex justify-content-center reviewLikeWrap">
 				<c:if test="${login.review_idx.contains(dto.review_idx) }">
-					<span id="reviewLike">👍추천</span>
+					<span id="reviewLike" class="border rounded-3 border-2 border-danger py-2 px-3">👍추천</span>
 				</c:if>
 				<c:if test="${!login.review_idx.contains(dto.review_idx) }">
-					<span id="reviewLike">추천</span>
+					<span id="reviewLike" class="border rounded-3 border-2 border-dark py-2 px-3">추천</span>
 				</c:if>
 			</div>
 		</div>
@@ -90,16 +92,18 @@
 	
 	function changeText() {
 		if (isClicked) {
-	         document.getElementById('reviewLike').innerHTML = "추천";
+			reviewLike.innerText = "추천";
+	         
 		} else {
-	         document.getElementById('reviewLike').innerHTML = "👍추천";
+			reviewLike.innerText = "👍추천";
 		}
     }
     function restoreText() {
     	if (isClicked) {
-	         document.getElementById('reviewLike').innerHTML = "👍추천";
+	         document.getElementById('reviewLike').innerText = "👍추천";
+	         
     	} else {
-	         document.getElementById('reviewLike').innerHTML = "추천";
+	         document.getElementById('reviewLike').innerText = "추천";
     	}
     }
 	
@@ -116,10 +120,14 @@
 			}
 			await fetch(url)
 			if (isClicked) {
-				document.getElementById('reviewLike').innerHTML = "👍추천"
+				document.getElementById('reviewLike').innerText = "👍추천"
+				reviewLike.classList.remove('border-dark')
+				reviewLike.classList.add('border-danger')
 			}
 			else {
-				document.getElementById('reviewLike').innerHTML = "추천"
+				document.getElementById('reviewLike').innerText = "추천"
+				reviewLike.classList.remove('border-danger')
+				reviewLike.classList.add('border-dark')
 			}
 			// 변경된 추천수를 받아오는 ajax 주소
 			url = '${cpath}/ajax/getReviewLikeCnt/${dto.review_idx}'

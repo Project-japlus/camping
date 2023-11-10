@@ -61,6 +61,24 @@ public class BoardService {
 	}
 	
 	public int reviewModify(ReviewDTO dto) {
+		String fileNames1 = boardComponent.selectReviewImg(dto.getReview_idx());
+		if (fileNames1 != null) {
+			String[] arr = fileNames1.split(",");
+			for (int i = 0; i < arr.length; i++) {
+				fileComponent.deleteFile3(arr[i]);
+			}
+		}
+		if (dto.getUpload().get(0).getSize() != 0) {
+			String innerFileName = "";
+			for(int i = 0; i < dto.getUpload().size(); i++) {
+				String fileName = fileComponent.upload3(dto.getUpload().get(i));
+				innerFileName += fileName;
+				if (i < dto.getUpload().size() - 1) {
+					innerFileName += ",";
+				}
+			}
+			dto.setReview_img(innerFileName);
+		} else dto.setReview_img("");
 		return boardComponent.reviewModify(dto);
 	}
 	
@@ -117,6 +135,14 @@ public class BoardService {
 	}
 
 	public int freeModify(FreeDTO dto) {
+		String fileName1 = boardComponent.selectFreeImg(dto.getFree_table_idx());
+		if (fileName1 != null) {
+			fileComponent.deleteFile3(fileName1);
+		}
+		if (dto.getUpload().isEmpty() == false) {
+			String fileName2 = fileComponent.upload3(dto.getUpload());
+			dto.setFree_img(fileName2);
+		} else dto.setFree_img("");
 		return boardComponent.freeModify(dto);
 	}
 	

@@ -45,9 +45,13 @@ public class AjaxController {
 		param.put("receiver", email);
 		param.put("subject", "인증번호 입니다");
 		param.put("content", authNumber);
-
+		
+		if (session.getAttribute("authNumber") != null) {
+			session.removeAttribute("authNumber");
+		}
+		
 		int row = mailComponent.sendMimeMessage(param);
-
+		
 		String msg;
 		if (row != 1) {
 			msg = "인증번호 발송에 실패 했습니다";

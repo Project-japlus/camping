@@ -72,21 +72,21 @@
 			</div>
 
 			<!-- Modal body -->
-			<div class="modal-body">
-				<div>
-					<h4>아이디 찾기</h4>
-					<p>E-MAIL을 입력하면 ID를 확인할 수 있습니다</p>
-					<input type="email" id="findIdEamil" placeholder="이메일">
-					<button type="button" id="findIdBtn">아이디 찾기</button>
+			<div class="modal-body" style="padding: 30px;">
+				<div style="width: 400px; margin: auto;">
+					<h5 style="font-weight: 700;">🔍︎아이디 찾기</h5>
+					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">E-MAIL을 입력하면 ID를 확인할 수 있습니다</p>
+					<p><input type="email" id="findIdEamil" placeholder="✉ 이메일" style="width: 100%; height: 50px;"></p>
+					<p><button type="button" id="findIdBtn" >아이디 찾기</button></p>
 				</div>
-				<div>
-					<h4>패스워드 찾기</h4>
-					<p>ID와 E-MAIL을 입력하여 임시비밀번호를 받을 수 있습니다</p>
+				<div style="width: 400px; margin: auto; margin-top: 30px;">
+					<h5 style="font-weight: 700;">🔍︎패스워드 찾기</h5>
+					<p style="font-size: 0.8em; font-weight: 600; padding-left: 20px;">ID와 E-MAIL을 입력하여 임시비밀번호를 받을 수 있습니다</p>
 					<p>
-						<input type="text" id="findPwId" placeholder="아이디">
+						<input type="text" id="findPwId" placeholder="👤 아이디" style="width: 100%; height: 50px;">
 					</p>
 					<p>
-						<input type="email" id="findPwEamil" placeholder="이메일">
+						<input type="email" id="findPwEamil" placeholder="✉ 이메일" style="width: 100%; height: 50px;">
 					</p>
 					<button type="button" id="findPwBtn">패스워드 찾기</button>
 				</div>

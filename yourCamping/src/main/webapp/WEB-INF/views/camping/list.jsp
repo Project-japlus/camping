@@ -158,11 +158,21 @@
 											href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
 										</span>
 									</c:if>
+									<c:if test="${fn:length(dto.featurenm) < 50 }">
+										<span class="intro"> <a
+											href="${cpath }/camping/view/${dto.camping_idx}">${dto.featurenm }</a>
+										</span>
+									</c:if>
 								</c:when>
 								<c:when test="${dto.intro != '' }">
 									<c:if test="${fn:length(dto.intro) >= 50 }">
 										<span class="intro"> <a
 											href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
+										</span>
+									</c:if>
+									<c:if test="${fn:length(dto.intro) < 50 }">
+										<span class="intro"> <a
+											href="${cpath }/camping/view/${dto.camping_idx}">${dto.intro }</a>
 										</span>
 									</c:if>
 								</c:when>
