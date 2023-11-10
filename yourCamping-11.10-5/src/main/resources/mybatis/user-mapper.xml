@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+		"-//mybatis.org//DTD Mapper 3.0//EN" 
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itbank.repository.UserDAO">
+	<insert id="user_join" parameterType="user">
+		insert into user_table (userid, userpw, username, phone, role, email, salt) 
+			values (#{userid}, #{userpw}, #{username}, #{phone}, #{role}, #{email}, #{salt})
+	</insert>
+	
+	<insert id="bizr_join" parameterType="user">
+		insert into bizr_table (userid, userpw, username, phone,  email, salt, bizrno) 
+			values (#{userid}, #{userpw}, #{username}, #{phone},  #{email}, #{salt}, #{bizrno})
+	</insert>
+	
+	<select id="selectOneByUserid_check" resultType="string">
+		SELECT
+			  userid
+			FROM
+			  (
+			    SELECT
+			      userid
+			    FROM
+			      user_table
+			    UNION ALL
+			    SELECT
+			      userid
+			    FROM
+			      bizr_table
+			  )
+			WHERE
+			  userid = #{userid}
+			GROUP BY
+			  userid
+			HAVING
+  		COUNT(*) >= 1
+	</select>
+	
+	<select id="getBookMark" parameterType="int" resultType="int">
+		select camping_idx from bookmark where user_idx = #{user_idx}
+	</select>
+	
+	<select id="getReviewLike" parameterType="int" resultType="int">
+		select review_idx from review_like where user_idx = #{user_idx}
+	</select>
+	
+	<update id="user_leave" parameterType="int">
+		update user_table set joinconfirm = 'N' where user_idx = #{user_idx}
+	</update>
+	
+	<select id="getReserveInfo" parameterType="int">
+		    SELECT *
+			    FROM reserve r
+			    JOIN camping c ON r.camping_idx = c.camping_idx
+			    WHERE r.user_idx = #{user_idx} AND r.checkout = 'Y'
+			    ORDER BY r.reserve_idx ASC
+	</select>
+	
+	<select id="getBookmarkInfo" parameterType="int">
+			select
+				* 
+				from bookmark b
+				join camping c on b.camping_idx = c.camping_idx 
+				where b.user_idx = #{user_idx}
+	</select>
+	
+	<select id="getbizrInfo" parameterType="int">
+			select * from 
+		    camping 
+		        where user_idx = #{user_idx}
+	</select>
+	
+	<select id="findIdFromEmail" parameterType="string" resultType="string">
+		SELECT COALESCE(u.userid, b.userid) AS userid
+			FROM user_table u
+			FULL OUTER JOIN bizr_table b ON u.email = b.email
+				WHERE u.email = #{email} OR b.email = #{email}
+	</select>
+	
+</mapper>
+
+
+
