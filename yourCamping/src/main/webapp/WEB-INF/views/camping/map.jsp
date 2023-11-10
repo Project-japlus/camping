@@ -124,10 +124,10 @@
 		}
 	</script>
 
-	<div class="map_list">
+	<div class="map_list" style="position: relative;">
 	
-		<div id="map" style="width: 860px; height: 700px;"></div>
-		<div style="overflow-y:auto; overflow-x: hidden; background-color:#fafbfe; width:310px; height:670px;">
+		<div id="map" style="width: 950px; height: 700px;"></div>
+		<div style="overflow-y:auto; overflow-x: hidden; background-color:#fafbfe; width:350px; height:670px;">
 			<c:if test="${empty list }">
 				<div class="map_result">검색 결과가 없습니다.</div>
 				<div class="map_pagingNon"></div>
@@ -142,28 +142,28 @@
 						<li>${row.tel }</li>
 					</ul>
 				</c:forEach>
-			<div>
+			<div style="position: absolute; bottom: 31px; right: 350px;">
 				<!-- 페이징 -->
 				<div class="map_paging">
 					<div id="prevDiv"
-						style="border-right: 1px solid black; padding: 3px; width: 100px; text-align: center;">
+						style="border-right: 1px solid black; padding: 3px; width: 115px; text-align: center;">
 						<c:if test="${page != 1 }">
 							<a id="prevA" href="javascript:void(0);" onclick="prevA()">
 								PREV </a>
 						</c:if>
 					</div>
 					<div id="pageDiv"
-						style="border-right: 1px solid black; padding: 3px; width: 100px; text-align: center;">
+						style="border-right: 1px solid black; padding: 3px; width: 120px; text-align: center;">
 						<c:if test="${not empty param }">
 							<a id="pageA" href="javascript:void(0);" onclick="pageA()">
-								${page }</a>
+								${page }/${paging.pageCount }</a>
 						</c:if>
 						<c:if test="${empty param }">
 							<a href="${cpath }/camping/list/${page}"> ${page }</a>
 						</c:if>
 					</div>
 
-					<div id="nextDiv" style="padding: 3px; width: 100px; text-align: center;">
+					<div id="nextDiv" style="padding: 3px; width: 115px; text-align: center;">
 						<c:if test="${page < paging.pageCount }">
 							<a id="nextA" href="javascript:void(0);" onclick="nextA()">
 								NEXT </a>

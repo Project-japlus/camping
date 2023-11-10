@@ -293,7 +293,7 @@ div.paging {
 div.map_list {
 	display: flex; 
 	height: 700px; 
-	width: 1200px; 
+	width: 1300px; 
 	margin: auto; 
 	margin-top: 30px;
 	position: relative;
@@ -302,9 +302,10 @@ div.map_paging {
 	position: absolute; 
 	top: 95.5%;
 	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
 	display:flex; 
 	height:30px; 
-	width:310px; 
+	width:350px; 
 	background-color:#fafbfe;
 }
 div.map_result {
@@ -330,8 +331,8 @@ ul.map_ul {
 	list-style:none; 
 	padding-left:0; 
 	height:120px; 
-	width:300px; 
-	border-bottom:1px solid #eee; 
+	width:350px; 
+	border-bottom:1px solid #bbb; 
 	margin:0; 
 	padding:15px;
 }

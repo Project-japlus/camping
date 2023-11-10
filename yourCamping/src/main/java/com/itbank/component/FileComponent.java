@@ -17,7 +17,13 @@ public class FileComponent {
 	private String saveDirectory = "C:\\first_img";
 	private String saveDirectory2 = "C:\\inner_img";
 	private String saveDirectory3 = "C:\\upload";
-
+	
+//	배포용
+//	private String saveDirectory = "/camping/first_img";
+//	private String saveDirectory2 = "/camping/inner_img";
+//	private String saveDirectory3 = "/camping/upload";
+	
+	
 	public FileComponent() {
 		File dir = new File(saveDirectory);
 		if (dir.exists() == false) {
