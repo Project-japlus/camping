@@ -57,20 +57,16 @@ public class CampingService {
 
 	public int campingImgInsert(CampingDTO dto) {
 		int row = 0;
-		if (dto.getUpload1().getSize() != 0) {
-			String fileName = fileComponent.upload(dto.getUpload1());
-			dto.setFirst_img(fileName);
-			row = campingDAO.campingFirstInsert(dto);
+		String fileName = fileComponent.upload(dto.getUpload1());
+		dto.setFirst_img(fileName);
+		row = campingDAO.campingFirstInsert(dto);
 
-		}
-		if (dto.getUpload2() != null) {
-			for (int i = 0; i < dto.getUpload2().length; i++) {
-				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				CampingDTO inner = new CampingDTO();
-				inner.setCamping_idx(dto.getCamping_idx());
-				inner.setInner_img(fileName);
-				row = campingDAO.campingImgInsert(inner);
-			}
+		for (int i = 0; i < dto.getUpload2().length; i++) {
+			String inner_img = fileComponent.upload2(dto.getUpload2()[i]);
+			CampingDTO inner = new CampingDTO();
+			inner.setCamping_idx(dto.getCamping_idx());
+			inner.setInner_img(inner_img);
+			row = campingDAO.campingImgInsert(inner);
 		}
 		return row;
 	}
@@ -109,20 +105,16 @@ public class CampingService {
 	}
 
 	public int updateCampingImg(CampingDTO dto) {
-		if (dto.getUpload1().getSize() != 0) {
-			String fileName = fileComponent.upload(dto.getUpload1());
-			dto.setFirst_img(fileName);
+		String fileName = fileComponent.upload(dto.getUpload1());
+		dto.setFirst_img(fileName);
+		
+		for (int i = 0; i < dto.getUpload2().length; i++) {
+			String inner_img = fileComponent.upload2(dto.getUpload2()[i]);
+			CampingDTO inner = new CampingDTO();
+			inner.setCamping_idx(dto.getCamping_idx());
+			inner.setInner_img(inner_img);
+			campingDAO.updateCampingImg(inner);
 		}
-		if (dto.getUpload2() != null) {
-			for (int i = 0; i < dto.getUpload2().length; i++) {
-				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				CampingDTO inner = new CampingDTO();
-				inner.setCamping_idx(dto.getCamping_idx());
-				inner.setInner_img(fileName);
-				campingDAO.updateCampingImg(inner);
-			}
-		}
-
 		return campingDAO.updateCampingImg(dto);
 	}
 

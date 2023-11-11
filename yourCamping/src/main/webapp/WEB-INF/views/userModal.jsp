@@ -103,7 +103,7 @@
 					</p>
 					<p>
 						<button type="button" id="findPwBtn" class="rounded"
-							style="background-color: #25A5F0; border; color: white; border: none; width: 100%; height: 50px;"">패스워드
+							style="background-color: #25A5F0; border; color: white; border: none; width: 100%; height: 50px;">패스워드
 							찾기</button>
 					</p>
 				</div>
@@ -207,8 +207,7 @@
 										autofocus autocomplete="off" class="idcheck" size="25">
 									<button type="button"
 										class="btn btn-primary checkDuplicate me-5"
-										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">중복
-										확인</button>
+										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">확인</button>
 								</div>
 
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -227,8 +226,7 @@
 											placeholder="비밀번호  확인" required size="25">
 										<button type="button" class="btn btn-primary me-5"
 											onclick="userpw_test()"
-											style="width: 100px; background-color: #ffc107; border; color: white; border: none;">PW
-											확인</button>
+											style="width: 100px; background-color: #ffc107; border; color: white; border: none;">확인</button>
 									</p>
 								</div>
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -250,15 +248,15 @@
 										<div class="d-flex justify-content-between">
 											<input type="email" id="email_user" type="email" name="email"
 												placeholder="이메일" required size="25">
-											<button type="button" class="btn btn-primary me-5"
-												style="background-color: #ffc107; border; color: white; border: none;"
-												id="sendAuthNumber">인증번호발송</button>
+											<button type="button" class="btn btn-primary mt-1 me-5"
+												style="width: 100px; background-color: #ffc107; border; color: white; border: none;"
+												id="sendAuthNumber">발송</button>
 										</div>
 										<div class="d-flex justify-content-between mb-2 mt-3">
 											<input type="text" name="authNumber_user"
 												placeholder="인증번호 입력" size="25"> <input
 												id="emailAuthBtn" class="btn btn-primary mt-1 me-5"
-												type="button" value="본인인증"
+												type="button" value="인증"
 												style="width: 100px; background-color: #ffc107; border; color: white; border: none;">
 										</div>
 										<!-- 								중복여부 띄어줄 div								 -->
@@ -323,7 +321,7 @@
 										autofocus autocomplete="off" class="idcheck" size="25">
 									<button type="button"
 										class="btn btn-primary checkDuplicate me-5"
-										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">중복
+										style="width: 100px; background-color: #ffc107; border; color: white; border: none;">
 										확인</button>
 								</div>
 
@@ -343,7 +341,7 @@
 											type="button" class="btn btn-primary me-5"
 											onclick="bizrpw_test()"
 											style="width: 100px; background-color: #ffc107; border; color: white; border: none;"
-											value="PW 확인">
+											value="확인">
 									</p>
 								</div>
 								<!-- 								중복여부 띄어줄 div								 -->
@@ -366,13 +364,13 @@
 												placeholder="이메일" required size="25">
 											<button type="button" class="btn btn-primary me-5"
 												id="sendAuthNumber_bizr"
-												style="background-color: #ffc107; border; color: white; border: none;">인증번호발송</button>
+												style="width: 100px; background-color: #ffc107; border; color: white; border: none;">발송</button>
 										</div>
 										<div class="d-flex justify-content-between mb-2 mt-3">
 											<input type="text" name="authNumber_bizr"
 												placeholder="인증번호 입력" size="25"> <input
 												id="emailAuthBtn1" class="btn btn-primary mt-1 me-5"
-												type="button" value="본인인증"
+												type="button" value="인증"
 												style="width: 100px; background-color: #ffc107; border; color: white; border: none;">
 										</div>
 									</div>
@@ -385,7 +383,7 @@
 										id="bizrno_check" required size="25"> <a><button
 											type="button" class="btn btn-primary me-5"
 											id="bizrno_check_btn"
-											style="background-color: #ffc107; border; color: white; border: none;">사업자인증</button></a>
+											style="width: 100px; background-color: #ffc107; border; color: white; border: none;">인증</button></a>
 								</div>
 								<div class="d-flex justify-content-between mb-2">
 									<div>

@@ -43,7 +43,7 @@ public class AjaxController {
 		String authNumber = (ran.nextInt(8999999) + 1000000) + "";
 		HashMap<String, String> param = new HashMap<>();
 		param.put("receiver", email);
-		param.put("subject", "인증번호 입니다");
+		param.put("subject", "[Bear Camping]인증번호 입니다");
 		param.put("content", authNumber);
 		
 		if (session.getAttribute("authNumber") != null) {
@@ -184,7 +184,7 @@ public class AjaxController {
 		dto.setUserpw(hash);
 		
 		param.put("userpw", pass);
-		param.put("subject", "[어디로캠핑] 변경된 비밀번호입니다");
+		param.put("subject", "[Bear Camping] 변경된 비밀번호입니다");
 		
 		if (dto.getBizrno() != null) {
 			row = userDAO.bizr_modify_pw(dto);

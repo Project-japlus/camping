@@ -354,10 +354,11 @@ div.view_reserveBtn {
 button#view_prev {
 	z-index: 10;
 	height: fit-content;
-	background-color: white;
 	margin-left:15px;
-	margin-right:45%;
-	margin-top: 31%; 
+/* 	margin-right:45%; */
+/* 	margin-top: 31%;  */
+	position: absolute;
+	top: 50%;
 	background-color: #ffc107; 
 	color:white; 
 	border:none;
@@ -366,12 +367,15 @@ button#view_prev {
 button#view_next{
 	z-index: 10;
 	height: fit-content;
-	background-color: white;
-	margin-left:45%;
-	margin-top: 31%; 
+/* 	margin-left:45%; */
+/* 	margin-top: 31%;  */
+	position: absolute;
+	top: 50%;
+	right: 1.5%;
 	background-color: #ffc107; 
 	color:white; 
 	border:none;
+	font-weight: bolder;
 }
 
 div#view_TopWrap {
