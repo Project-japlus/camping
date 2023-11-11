@@ -352,30 +352,32 @@ div.view_reserveBtn {
 }
 
 button#view_prev {
-	z-index: 10;
-	height: fit-content;
-	margin-left:15px;
-/* 	margin-right:45%; */
-/* 	margin-top: 31%;  */
-	position: absolute;
+    z-index: 10;
+    height: fit-content;
+    padding:10px;
+    position: absolute;
 	top: 50%;
-	background-color: #ffc107; 
-	color:white; 
-	border:none;
+    background-color: #white; 
+    opacity: 50%;
+    color:black; 
+    font-weight:bold;
+    border:none;
+    font-size: 1.2em; 
 }
 
 button#view_next{
-	z-index: 10;
-	height: fit-content;
-/* 	margin-left:45%; */
-/* 	margin-top: 31%;  */
-	position: absolute;
+    z-index: 10;
+    height: fit-content;
+    padding:10px;
+    position: absolute;
 	top: 50%;
 	right: 1.5%;
-	background-color: #ffc107; 
-	color:white; 
-	border:none;
-	font-weight: bolder;
+    background-color: #white; 
+    opacity: 50%;
+    color:black; 
+    font-weight:bold;
+    border:none;
+    font-size: 1.2em; 
 }
 
 div#view_TopWrap {
