@@ -55,7 +55,7 @@
 
 	// 버튼 클릭 이벤트 핸들러 추가
 	home.addEventListener('click', function() {
-    window.location.href = "${cpath}";
+    window.location.href = "${cpath}/";
 	});
 </script>
 	

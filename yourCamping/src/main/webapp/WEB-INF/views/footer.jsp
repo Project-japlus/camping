@@ -4,7 +4,7 @@
 	<div class="p-2 text-black rounded text-center"
 		style="-bs-bg-opacity: .7; background-color: black;">
 		<div class="footer_width d-flex justify-content-between">
-			<h2 class="mt-1" style="color: white;" >🏕️어디로캠핑(주)</h2>
+			<h2 class="mt-1" style="color: white;">Bear Camping</h2>
 			<div class="d-flex mt-3" style="color: white;">
 				<p class="me-3">개인정보처리방침</p>
 				<p class="me-3">홈페이지 이용약관</p>

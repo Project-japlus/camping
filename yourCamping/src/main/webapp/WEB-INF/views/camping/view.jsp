@@ -625,11 +625,10 @@
 </div>
 
 <script>
-	const imgarr = document.querySelectorAll('.rounded')
+	const imgarr = document.querySelectorAll('img.rounded')
 	const prev = document.getElementById('view_prev')
 	const next = document.getElementById('view_next')
 	var currentImageIndex = 0;
-	
 	function showImage(index) {
 		for (var i = 0; i < imgarr.length; i++) {
 			imgarr[i].classList.remove('active');
@@ -637,7 +636,7 @@
 		imgarr[index].classList.add('active');
 	}
 	
-	showImage(0);
+	showImage(currentImageIndex);
 	
 	next.onclick = function(event) {
 		currentImageIndex = (currentImageIndex + 1) % imgarr.length;
@@ -647,6 +646,6 @@
 	prev.onclick = function () {
 		currentImageIndex = (currentImageIndex - 1 + imgarr.length) % imgarr.length;
 		showImage(currentImageIndex);
-	}
+	}	
 </script>
 <%@ include file="../footer.jsp"%>

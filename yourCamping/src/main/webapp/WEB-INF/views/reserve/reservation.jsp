@@ -107,7 +107,7 @@
 								id="won">원</span>
 						</div>
 					</div>
-				</c:if>
+				
 				<!-- 선택시 input값이 바뀌는 스크립트 -->
 				<script>
 		   		 	document.getElementById('reserveSiteSelect').addEventListener('change', function () {
@@ -295,6 +295,7 @@
 						style="height: 60px; background-color: #ffc107; border; color:white; border:none;" value="예약정보 확인 및 결제하러가기">
 				</div>
 			</div>
+		</c:if>
 		</form>
 	</div>
 </div>

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>yourCamping</title>
+<title>Bear Camping</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 		<div class="d-flex justify-content-between"
 			style="width: 90%; margin: 40px 50px 40px 50px; align-items: center;">
 			<div class="fst-italic fw-bold text-black">
-				<a href="${cpath }/" style="font-size: 50px;"><span><img src="https://cdn.discordapp.com/attachments/1159803376817668108/1172440483864260658/ezgif-4-0846559a0e.webp?ex=6560534a&is=654dde4a&hm=7c137ce0a3aad6f77c55ed50d74dcce05ba8a4129c62bc141b425cd6c5cf30f0&" width="100px;">bear Camping</span></a>
+				<a href="${cpath }/" style="font-size: 50px;"><span><img src="https://cdn.discordapp.com/attachments/1159803376817668108/1172440483864260658/ezgif-4-0846559a0e.webp?ex=6560534a&is=654dde4a&hm=7c137ce0a3aad6f77c55ed50d74dcce05ba8a4129c62bc141b425cd6c5cf30f0&" width="100px;">Bear Camping</span></a>
 			</div>
 			<ul class="nav justify-content-end userInfo">
 				<c:if test="${not empty login }">
