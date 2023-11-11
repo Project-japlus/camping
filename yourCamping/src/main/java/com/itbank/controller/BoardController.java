@@ -96,7 +96,7 @@ public class BoardController {
 	
 	@GetMapping("/reviewView/{review_idx}")
 	public ModelAndView reviewView(@PathVariable("review_idx") int review_idx) {
-		ModelAndView mav= new ModelAndView("/board/reviewView");
+		ModelAndView mav = new ModelAndView("/board/reviewView");
 		boardService.countReviewView(review_idx);
 		ReviewDTO dto = boardService.selectReviewOne(review_idx);
 		String[] list = null;

@@ -49,7 +49,7 @@
 			</div>
 		</div>
 		<div class="mt-5 d-flex">
-			<form method="POST" class="d-flex w-100">
+			<form method="POST" class="d-flex w-100" onsubmit="return checkForm()">
 				<textarea class="form-control me-4" rows="3" id="reply_content" placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다." name="reply_content" required></textarea>
 				<button type="submit" class="btn btn-secondary ms-4 text-nowrap ps-4 pe-4">등 록</button>
 			</form>
@@ -69,8 +69,7 @@
 			location.href = event.target.parentNode.href
 		}	
 	}
-	modifyBtn.onclick = modifyHandler
-
+	
 	const deleteBtn = document.getElementById('deleteBtn')
 	const deleteHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
@@ -82,7 +81,6 @@
 			location.href = event.target.parentNode.href
 		}	
 	}
-	deleteBtn.onclick = deleteHandler
 	
 	const deleteReplyBtn = document.getElementById('deleteReplyBtn')
 	const deleteReplyHandler = function(event) {
@@ -91,6 +89,17 @@
 			location.href = event.target.parentNode.href
 		}	
 	}
+	
+	function checkForm() {
+        if ('${login}' == '') {
+            alert('로그인이 필요한 항목입니다')
+            return false
+        }
+        return true
+    }
+	
+	modifyBtn.onclick = modifyHandler
+	deleteBtn.onclick = deleteHandler
 	deleteReplyBtn.onclick = deleteReplyHandler
 </script>
 

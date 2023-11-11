@@ -22,7 +22,7 @@
 		<div class="d-flex justify-content-between"
 			style="width: 90%; margin: 40px 50px 40px 50px; align-items: center;">
 			<div class="fst-italic fw-bold text-black">
-				<a href="${cpath }/" style="font-size: 50px;"><span><img src="https://cdn.discordapp.com/attachments/1159803376817668108/1172440483864260658/ezgif-4-0846559a0e.webp?ex=6560534a&is=654dde4a&hm=7c137ce0a3aad6f77c55ed50d74dcce05ba8a4129c62bc141b425cd6c5cf30f0&" width="100px;"></span>어디로캠핑</a>
+				<a href="${cpath }/" style="font-size: 50px;"><span><img src="https://cdn.discordapp.com/attachments/1159803376817668108/1172440483864260658/ezgif-4-0846559a0e.webp?ex=6560534a&is=654dde4a&hm=7c137ce0a3aad6f77c55ed50d74dcce05ba8a4129c62bc141b425cd6c5cf30f0&" width="100px;">bear Camping</span></a>
 			</div>
 			<ul class="nav justify-content-end userInfo">
 				<c:if test="${not empty login }">

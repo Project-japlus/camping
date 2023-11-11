@@ -58,7 +58,16 @@
 			<div class="list-group w-90 m-4">
 				<ul class="main_link_ul">
 					<c:forEach var="camping" items="${campList }" begin="0" end="5">
-						<li class="mb-2"><a href="${cpath }/camping/view/${camping.camping_idx}" class="fs-5">${camping.facltnm }</a></li>
+						<li class="mb-2">
+							<a href="${cpath }/camping/view/${camping.camping_idx}" class="fs-5">
+								<c:if test="${fn:length(camping.facltnm) > 15 }">
+									${fn:substring(camping.facltnm, 0, 15) }...
+								</c:if>
+								<c:if test="${fn:length(camping.facltnm) <= 15 }">
+									${camping.facltnm }
+								</c:if>
+							</a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -72,7 +81,16 @@
 			<div class="list-group w-90 m-4">
 				<ul class="main_link_ul">
 					<c:forEach var="review" items="${revList }" begin="0" end="5">
-						<li class="mb-2"><a href="${cpath }/board/reviewView/${review.review_idx}" class="fs-5">${review.review_title }</a></li>
+						<li class="mb-2">
+							<a href="${cpath }/board/reviewView/${review.review_idx}" class="fs-5">
+								<c:if test="${fn:length(review.review_title) > 15 }">
+									${fn:substring(review.review_title, 0, 15) }...
+								</c:if>
+								<c:if test="${fn:length(review.review_title) <= 15 }">
+									${review.review_title }
+								</c:if>
+							</a>
+						</li>
 					</c:forEach>
 				</ul>
 			</div>
@@ -88,10 +106,10 @@
 					<c:forEach var="free" items="${freeList }" begin="0" end="5">
 						<li class="mb-2">
 							<a href="${cpath }/board/freeView/${free.free_table_idx}" class="fs-5">
-								<c:if test="${fn:length(free.free_title) > 20 }">
-									${fn:substring(free.free_title, 0, 20) }...
+								<c:if test="${fn:length(free.free_title) > 15 }">
+									${fn:substring(free.free_title, 0, 15) }...
 								</c:if>
-								<c:if test="${fn:length(free.free_title) <= 20 }">
+								<c:if test="${fn:length(free.free_title) <= 15 }">
 									${free.free_title }
 								</c:if>
 							</a>

@@ -149,15 +149,11 @@
 	<select id="selectFreeList" resultType="free" parameterType="map">
 		SELECT
 		    f.*,
-		    u.USERID,
-		    fr.REPLY_WDATE,
-		    fr.REPLY_CONTENT
+		    u.USERID
 		FROM
 		    free_table f
 		JOIN
 		    user_table u ON f.USER_IDX = u.USER_IDX
-		LEFT JOIN
-		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		ORDER BY
 		    f.free_table_idx desc
 		offset #{paging.offset} rows fetch next #{paging.perPage} rows only
@@ -170,14 +166,11 @@
 	<select id="selectSearchFreeTitle" parameterType="String" resultType="free">
 		SELECT
 		    f.*,
-		    u.USERID,
-		    fr.*
+		    u.USERID
 		FROM
 		    free_table f
 		JOIN
 		    user_table u ON f.USER_IDX = u.USER_IDX
-		LEFT JOIN
-		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
 			f.free_title like '%${keyword}%'
 		ORDER BY
@@ -195,14 +188,11 @@
 	<select id="selectSearchFreeWriter" parameterType="String" resultType="free">
 		SELECT
 		    f.*,
-		    u.USERID,
-		    fr.*
+		    u.USERID
 		FROM
 		    free_table f
 		JOIN
 		    user_table u ON f.USER_IDX = u.USER_IDX
-		LEFT JOIN
-		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
 			u.userid like '%${keyword}%'
 		ORDER BY
@@ -229,15 +219,11 @@
 	<select id="selectFreeOne" resultType="free">
 		SELECT
 		    f.*,
-		    u.USERID,
-		    fr.REPLY_WDATE,
-		    fr.REPLY_CONTENT
+		    u.USERID
 		FROM
 		    free_table f
 		JOIN
 		    user_table u ON f.USER_IDX = u.USER_IDX
-		LEFT JOIN
-		    free_reply fr ON f.FREE_TABLE_IDX = fr.FREE_TABLE_IDX
 		WHERE
 			f.free_table_idx = #{free_table_idx}
 	</select>
@@ -300,11 +286,11 @@
 	</update>
 	
 	<select id="reviewSortViewCount" resultType="review">
-		select * from review order by review_viewCount desc
+		select * from review order by review_idx desc
 	</select>
 	
 	<select id="freeSortViewCount" resultType="free">
-		select * from free_table order by free_viewCount desc
+		select * from free_table order by free_table_idx desc
 	</select>
 	
 </mapper>
