@@ -38,7 +38,12 @@
 	</select>
 	
 	<select id="getBookMark" parameterType="int" resultType="int">
-		select camping_idx from bookmark where user_idx = #{user_idx}
+		select 
+			b.camping_idx 
+				from bookmark b 
+					join camping c 
+						on b.camping_idx = c.camping_idx 
+					where b.user_idx = #{user_idx} and c.camping_confirm != 'N'
 	</select>
 	
 	<select id="getReviewLike" parameterType="int" resultType="int">
@@ -72,10 +77,13 @@
 	</select>
 	
 	<select id="findIdFromEmail" parameterType="string" resultType="string">
-		SELECT COALESCE(u.userid, b.userid) AS userid
-			FROM user_table u
-			FULL OUTER JOIN bizr_table b ON u.email = b.email
-				WHERE u.email = #{email} OR b.email = #{email}
+		select u.userid 
+   			from user_table u
+        		where u.email = #{email} and u.joinconfirm != 'N'
+    		UNION
+		select b.userid
+    		from bizr_table b
+        		where b.email = #{email}
 	</select>
 	
 </mapper>

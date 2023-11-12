@@ -87,7 +87,7 @@
 			</form>
 		</div>
 	</div>
-	<div class="d-flex mb-3" style="justify-content: flex-end;">
+	<div class="d-flex mb-3">
 		<button class="btn btn-primary map_showListBtn" id="showList" style="background-color: #ffc107; color:white; border:none;">
 			리스트로 보기
 		</button>

@@ -223,9 +223,14 @@
 			fillSecondOptions(busanOptions);
 
 		} else if (selectedValue == '경상남도') {
-			var busanOptions = [ "전체", "서귀포시", "제주시" ];
-			fillSecondOptions(busanOptions);
-		}
+	        var busanOptions = ["전체", "거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시",
+	        	"의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"];
+	        fillSecondOptions(busanOptions);  
+	        
+		} else if(selectedValue == '제주도') {
+	        var busanOptions = ["전체", "서귀포시", "제주시"];
+	        fillSecondOptions(busanOptions);
+	    }
 
 	}
 
