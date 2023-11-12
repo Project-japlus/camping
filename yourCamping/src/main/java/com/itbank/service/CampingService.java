@@ -30,6 +30,7 @@ public class CampingService {
 
 	// 대표 이미지
 	public CampingDTO selectOne(int camping_idx) {
+		campingDAO.plusCamping_viewCount(camping_idx);
 		return campingDAO.selectOne(camping_idx);
 	}
 
@@ -55,20 +56,19 @@ public class CampingService {
 	}
 
 	public int campingImgInsert(CampingDTO dto) {
-		if (dto.getUpload1().getSize() != 0) {
-			String fileName = fileComponent.upload(dto.getUpload1());
-			dto.setFirst_img(fileName);
+		int row = 0;
+		String fileName = fileComponent.upload(dto.getUpload1());
+		dto.setFirst_img(fileName);
+		row = campingDAO.campingFirstInsert(dto);
+
+		for (int i = 0; i < dto.getUpload2().length; i++) {
+			String inner_img = fileComponent.upload2(dto.getUpload2()[i]);
+			CampingDTO inner = new CampingDTO();
+			inner.setCamping_idx(dto.getCamping_idx());
+			inner.setInner_img(inner_img);
+			row = campingDAO.campingImgInsert(inner);
 		}
-		if (dto.getUpload2() != null) {
-			for (int i = 0; i < dto.getUpload2().length; i++) {
-				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				CampingDTO inner = new CampingDTO();
-				inner.setCamping_idx(dto.getCamping_idx());
-				inner.setInner_img(fileName);
-				campingDAO.campingImgInsert(inner);
-			}
-		}
-		return campingDAO.campingImgInsert(dto);
+		return row;
 	}
 
 	public int campingPlaceInsert(CampingDTO dto) {
@@ -105,20 +105,16 @@ public class CampingService {
 	}
 
 	public int updateCampingImg(CampingDTO dto) {
-		if (dto.getUpload1().getSize() != 0) {
-			String fileName = fileComponent.upload(dto.getUpload1());
-			dto.setFirst_img(fileName);
+		String fileName = fileComponent.upload(dto.getUpload1());
+		dto.setFirst_img(fileName);
+		
+		for (int i = 0; i < dto.getUpload2().length; i++) {
+			String inner_img = fileComponent.upload2(dto.getUpload2()[i]);
+			CampingDTO inner = new CampingDTO();
+			inner.setCamping_idx(dto.getCamping_idx());
+			inner.setInner_img(inner_img);
+			campingDAO.updateCampingImg(inner);
 		}
-		if (dto.getUpload2() != null) {
-			for (int i = 0; i < dto.getUpload2().length; i++) {
-				String fileName = fileComponent.upload2(dto.getUpload2()[i]);
-				CampingDTO inner = new CampingDTO();
-				inner.setCamping_idx(dto.getCamping_idx());
-				inner.setInner_img(fileName);
-				campingDAO.updateCampingImg(inner);
-			}
-		}
-
 		return campingDAO.updateCampingImg(dto);
 	}
 
@@ -144,37 +140,25 @@ public class CampingService {
 		return campingDAO.deleteCamping(maxCampingIdx);
 	}
 
-	public int deleteCampingImg(CampingDTO dto) {
-		fileComponent.deleteFile(dto.getFirst_img());
-		String[] fileName = dto.getInner_img().split(",");
-		for (int i = 0; i < fileName.length; i++) {
-			fileComponent.deleteFile2(fileName[i]);
+	public int deleteCampingImg(int maxCampingIdx) {
+		List<CampingDTO> list = campingDAO.selectOneByImg(maxCampingIdx);
+		for (CampingDTO img : list) {
+			if (img.getFirst_img() != null) {
+				fileComponent.deleteFile(img.getFirst_img());
+			} else {
+				String inner = img.getInner_img();
+				fileComponent.deleteFile2(inner);
+			}
 		}
-		return campingDAO.deleteCampingImg(dto);
+		return campingDAO.deleteCampingImg(maxCampingIdx);
 	}
 
 	public int deleteCampingActivity(int maxCampingIdx) {
 		return campingDAO.deleteCampingActivity(maxCampingIdx);
 	}
 
-	public int deleteCampingIntoduce(int maxCampingIdx) {
-		return campingDAO.deleteCampingIntoduce(maxCampingIdx);
-	}
-
 	public int deleteCampingPlace(int maxCampingIdx) {
 		return campingDAO.deleteCampingPlace(maxCampingIdx);
-	}
-
-	public void deleteCampingInternal(int camping_idx) {
-		campingDAO.deleteCampingInternal(camping_idx);
-	}
-
-	public void deleteCampingSafetyDevice(int camping_idx) {
-		campingDAO.deleteCampingSafetyDevice(camping_idx);
-	}
-
-	public void deleteCampingSite(int camping_idx) {
-		campingDAO.deleteCampingSite(camping_idx);
 	}
 
 	public CampingDTO selectCamping(int camping_idx) {
@@ -201,7 +185,7 @@ public class CampingService {
 		return campingDAO.selectCampingThree(camping_idx);
 	}
 
-	public CampingDTO selectOneByImg(int maxCampingIdx) {
+	public List<CampingDTO> selectOneByImg(int maxCampingIdx) {
 		return campingDAO.selectOneByImg(maxCampingIdx);
 	}
 
@@ -212,5 +196,13 @@ public class CampingService {
 	// 캠핑장명만 가져오기
 	public List<CampingDTO> selectFacltnmList() {
 		return campingDAO.selectFacltnmList();
+	}
+
+	public List<CampingDTO> campingSortViewCount() {
+		return campingDAO.campingSortViewCount();
+	}
+
+	public void updateConfirm(int camping_idx) {
+		campingDAO.updateConfirm(camping_idx);
 	}
 }

@@ -1,5 +1,6 @@
-	package com.itbank.controller;
+package com.itbank.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import com.itbank.model.ReviewDTO;
 import com.itbank.model.UserDTO;
 import com.itbank.service.BoardService;
 import com.itbank.service.CampingService;
+import com.itbank.service.PagingService;
 
 @Controller
 @RequestMapping("/board")
@@ -28,31 +30,44 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	@Autowired private CampingService campingService;
 	
-	@GetMapping("/reviewList")
-	public ModelAndView reviewList() {
+	@GetMapping("/reviewList/{page}")
+	public ModelAndView reviewList(@PathVariable("page") int page) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = boardService.selectReviewList();
+		int reviewCount = boardService.countReviewList();
+		PagingService paging = new PagingService(page, reviewCount);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<ReviewDTO> list = boardService.selectReviewList(map);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
-	@PostMapping("/reviewList")
-	public ModelAndView reviewList(@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword)throws Exception {
+	@GetMapping("/reviewSearch/{page}")
+	public ModelAndView reviewSearch(@PathVariable("page") int page, @RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/reviewList");
-		List<ReviewDTO> list = null;
-		if (type == "facltnm" && keyword != null) {
-			list = boardService.selectSearchReviewCamping(keyword);
+		int reviewCount = boardService.countReviewList();
+		if (type.equals("facltnm")) {
+			reviewCount = boardService.countSearchReviewCamping(keyword);
+		} else if (type.equals("title")) {
+			reviewCount = boardService.countSearchReviewTitle(keyword);
+		} else if (type.equals("writer")) {
+			reviewCount = boardService.countSearchReviewWriter(keyword);
 		}
-		else if (type == "title" && keyword != null) {
-			list = boardService.selectSearchReviewTitle(keyword);
-		}
-		else if (type == "writer" && keyword != null) {
-			list = boardService.selectSearchReviewWriter(keyword);
-		}
-		else  {
-			list = boardService.selectReviewList();
-		}
+		
+		PagingService paging = new PagingService(page, reviewCount);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<ReviewDTO> list = boardService.selectSearchReview(map, type, keyword);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
@@ -71,19 +86,23 @@ public class BoardController {
 	
 	@PostMapping("/reviewWrite")
 	public String reviewWrite(ReviewDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		
-		boardService.insertReview(dto);
-		return "redirect:/board/reviewList";
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		if (login != null) {
+			dto.setUser_idx(login.getUser_idx());
+			boardService.insertReview(dto);
+		}
+		return "redirect:/board/reviewList/1";
 	}
 	
 	@GetMapping("/reviewView/{review_idx}")
 	public ModelAndView reviewView(@PathVariable("review_idx") int review_idx) {
-		ModelAndView mav= new ModelAndView("/board/reviewView");
+		ModelAndView mav = new ModelAndView("/board/reviewView");
+		boardService.countReviewView(review_idx);
 		ReviewDTO dto = boardService.selectReviewOne(review_idx);
-		dto.setReview_viewCount(dto.getReview_viewCount() + 1);
-		String[] list = dto.getReview_img().split(",");
+		String[] list = null;
+		if (dto.getReview_img() != null) {
+			list = dto.getReview_img().split(",");
+		}
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
 		return mav;
@@ -92,7 +111,7 @@ public class BoardController {
 	@GetMapping("/reviewDelete/{review_idx}")
 	public String reviewDelete(@PathVariable("review_idx") int review_idx) {
 		boardService.reviewDelete(review_idx);
-		return "redirect:/board/reviewList";
+		return "redirect:/board/reviewList/1";
 	}
 	
 	@GetMapping("/reviewModify/{review_idx}")
@@ -107,34 +126,50 @@ public class BoardController {
 	
 	@PostMapping("/reviewModify/{review_idx}")
 	public String reviewModify(@PathVariable("review_idx") int review_idx, ReviewDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		boardService.reviewModify(dto);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		if (login != null) {
+			dto.setUser_idx(login.getUser_idx());
+			boardService.reviewModify(dto);
+		}
 		return "redirect:/board/reviewView/" + review_idx;
 	}
 	
-	@GetMapping("/freeList")
-	public ModelAndView freeList() {
+	@GetMapping("/freeList/{page}")
+	public ModelAndView freeList(@PathVariable("page") int page) {
 		ModelAndView mav = new ModelAndView("/board/freeList");
-		List<FreeDTO> list = boardService.selectFreeList();
+		int freeCount = boardService.countFreeList();
+		PagingService paging = new PagingService(page, freeCount);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<FreeDTO> list = boardService.selectFreeList(map);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
-	@PostMapping("/freeList")
-	public ModelAndView freeList(@RequestParam(value="type", required=false) String type,@RequestParam(value="keyword", required=false) String keyword)throws Exception {
+	@GetMapping("/freeSearch/{page}")
+	public ModelAndView freeSearch(@PathVariable("page") int page, @RequestParam("type") String type,@RequestParam("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView("/board/freeList");
-		List<FreeDTO> list = null;
-		if (type == "title" && keyword != null) {
-			list = boardService.selectSearchFreeTitle(keyword);
+		int freeCount = boardService.countFreeList();
+		if (type.equals("title")) {
+			freeCount = boardService.countSearchFreeTitle(keyword);
+		} else if (type.equals("writer")) {
+			freeCount = boardService.countSearchFreeWriter(keyword);
 		}
-		else if (type == "writer" && keyword != null) {
-			list = boardService.selectSearchFreeWriter(keyword);
-		}
-		else  {
-			list = boardService.selectFreeList();
-		}
+		
+		PagingService paging = new PagingService(page, freeCount);
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("paging", paging);
+		
+		List<FreeDTO> list = boardService.selectSearchFree(map, type, keyword);
+		
 		mav.addObject("list", list);
+		mav.addObject("paging", paging);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
@@ -143,18 +178,19 @@ public class BoardController {
 	
 	@PostMapping("/freeWrite")
 	public String freeWrite(FreeDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		
-		boardService.insertFree(dto);
-		return "redirect:/board/freeList";
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		if (login != null) {
+			dto.setUser_idx(login.getUser_idx());
+			boardService.insertFree(dto);
+		}
+		return "redirect:/board/freeList/1";
 	}
 	
 	@GetMapping("/freeView/{free_table_idx}")
 	public ModelAndView freeView(@PathVariable("free_table_idx") int free_table_idx) {
 		ModelAndView mav= new ModelAndView("/board/freeView");
+		boardService.countFreeView(free_table_idx);
 		FreeDTO dto = boardService.selectFreeOne(free_table_idx);
-		dto.setFree_viewCount(dto.getFree_viewCount() + 1);
 		List<ReplyDTO> list = boardService.selectReply(free_table_idx);
 		mav.addObject("dto", dto);
 		mav.addObject("list", list);
@@ -163,23 +199,26 @@ public class BoardController {
 	
 	@PostMapping("/freeView/{free_table_idx}")
 	public String insertReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		dto.setUser_idx(user_idx);
-		dto.setFree_table_idx(free_table_idx);
-		
-		FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-		freeDTO.setReplyCount(freeDTO.getReplyCount() + 1);
-		boardService.insertReply(dto);
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		if (login != null) {
+			dto.setUser_idx(login.getUser_idx());
+			dto.setFree_table_idx(free_table_idx);
+			boardService.insertReply(dto);
+		}
 		return "redirect:/board/freeView/" + free_table_idx;
 	}
 	
 	@GetMapping("/freeView/{free_table_idx}/deleteReply")
-	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, ReplyDTO dto, HttpSession session) {
-		int user_idx = ((UserDTO)session.getAttribute("login")).getUser_idx();
-		if (dto.getUser_idx() == user_idx) {
+	public String deleteReply(@PathVariable("free_table_idx") int free_table_idx, HttpSession session) {
+		UserDTO login = (UserDTO) session.getAttribute("login");
+		ReplyDTO dto = null;
+		HashMap<String, Object> map = new HashMap<>();
+		
+		if (login != null) {
+			map.put("free_table_idx", free_table_idx);
+			map.put("user_idx", login.getUser_idx());
+			dto = boardService.selectReplyOne(map);
 			boardService.deleteReplyOne(dto);
-			FreeDTO freeDTO = boardService.selectFreeOne(free_table_idx);
-			freeDTO.setReplyCount(freeDTO.getReplyCount() - 1);
 		}
 		return "redirect:/board/freeView/" + free_table_idx;
 	}
@@ -188,7 +227,7 @@ public class BoardController {
 	public String freeDelete(@PathVariable("free_table_idx") int free_table_idx) {
 		boardService.deleteReplyAll(free_table_idx);
 		boardService.freeDelete(free_table_idx);
-		return "redirect:/board/freeList";
+		return "redirect:/board/freeList/1";
 	}
 	
 	@GetMapping("/freeModify/{free_table_idx}")

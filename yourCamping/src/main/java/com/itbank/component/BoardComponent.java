@@ -1,5 +1,6 @@
 package com.itbank.component;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +16,49 @@ public class BoardComponent {
 
 	@Autowired private BoardDAO boardDAO;
 	
-	public List<ReviewDTO> selectReviewList() {
-		List<ReviewDTO> list = boardDAO.selectReviewList();
+	public List<ReviewDTO> selectReviewList(HashMap<String, Object> map) {
+		List<ReviewDTO> list = boardDAO.selectReviewList(map);
 		return list;
+	}
+	
+	public int countReviewList() {
+		return boardDAO.countReviewList();
 	}
 	
 	public int insertReview(ReviewDTO dto) {
 		return boardDAO.insertReview(dto);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewCamping(String keyword) {
-		return boardDAO.selectSearchReviewCamping(keyword);
+	public List<ReviewDTO> selectSearchReviewCamping(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewCamping(map);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewTitle(String keyword) {
-		return boardDAO.selectSearchReviewTitle(keyword);
+	public int countSearchReviewCamping(String keyword) {
+		return boardDAO.countSearchReviewCamping(keyword);
 	}
 	
-	public List<ReviewDTO> selectSearchReviewWriter(String keyword) {
-		return boardDAO.selectSearchReviewWriter(keyword);
+	public List<ReviewDTO> selectSearchReviewTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewTitle(map);
+	}
+	
+	public int countSearchReviewTitle(String keyword) {
+		return boardDAO.countSearchReviewTitle(keyword);
+	}
+	
+	public List<ReviewDTO> selectSearchReviewWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchReviewWriter(map);
+	}
+	
+	public int countSearchReviewWriter(String keyword) {
+		return boardDAO.countSearchReviewWriter(keyword);
 	}
 
 	public ReviewDTO selectReviewOne(int review_idx) {
 		return boardDAO.selectReviewOne(review_idx);
+	}
+	
+	public int countReviewView(int review_idx) {
+		return boardDAO.countReviewView(review_idx);
 	}
 	
 	public String selectReviewImg(int review_idx) {
@@ -52,18 +73,30 @@ public class BoardComponent {
 		return boardDAO.reviewModify(dto);
 	}
 
-	public List<FreeDTO> selectFreeList() {
-		return boardDAO.selectFreeList();
-	}
-	
-	public List<FreeDTO> selectSearchFreeTitle(String keyword) {
-		return boardDAO.selectSearchFreeTitle(keyword);
-	}
-	
-	public List<FreeDTO> selectSearchFreeWriter(String keyword) {
-		return boardDAO.selectSearchFreeWriter(keyword);
+	public List<FreeDTO> selectFreeList(HashMap<String, Object> map) {
+		return boardDAO.selectFreeList(map);
 	}
 
+	public int countFreeList() {
+		return boardDAO.countFreeList();
+	}
+	
+	public List<FreeDTO> selectSearchFreeTitle(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeTitle(map);
+	}
+	
+	public int countSearchFreeTitle(String keyword) {
+		return boardDAO.countSearchFreeTitle(keyword);
+	}
+	
+	public List<FreeDTO> selectSearchFreeWriter(HashMap<String, Object> map) {
+		return boardDAO.selectSearchFreeWriter(map);
+	}
+
+	public int countSearchFreeWriter(String keyword) {
+		return boardDAO.countSearchFreeWriter(keyword);
+	}
+	
 	public int insertFree(FreeDTO dto) {
 		return boardDAO.insertFree(dto);
 	}
@@ -72,6 +105,10 @@ public class BoardComponent {
 		return boardDAO.selectFreeOne(free_table_idx);
 	}
 
+	public int countFreeView(int free_table_idx) {
+		return boardDAO.countFreeView(free_table_idx);
+	}
+	
 	public int replyCount(int free_table_idx) {
 		return boardDAO.replyCount(free_table_idx);
 	}
@@ -103,4 +140,17 @@ public class BoardComponent {
 	public int freeModify(FreeDTO dto) {
 		return boardDAO.freeModify(dto);
 	}
+	
+	public List<ReviewDTO> reviewSortViewCount() {
+		return boardDAO.reviewSortViewCount();
+	}
+	
+	public List<FreeDTO> freeSortViewCount() {
+		return boardDAO.freeSortViewCount();
+	}
+
+	public ReplyDTO selectReplyOne(HashMap<String, Object> map) {
+		return boardDAO.selectReplyOne(map);
+	}
+
 }

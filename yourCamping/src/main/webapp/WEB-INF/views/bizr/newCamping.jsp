@@ -1,100 +1,184 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
+<div class="main">
+	<hr>
 
+	<form method="POST" id="form-first" enctype="multipart/form-data">
+		<div class=" w-75 m-auto rounded-3" style="background-color: #eee;">
+			<div class="mt-4 mb-5 text-white rounded w-75 m-auto" style="padding-top:60px;">
+			<h1 class="fw-bold mb-4 fst-italic text-dark">지금 개장한 멋진 캠핑장을
+				소개해보세요!</h1>
+			<div class="fw-bold text-dark">최근에 개장한 캠핑장을 저희 플랫폼에 등록하고 특별한 제휴
+				혜택을 누려보세요.</div>
+			<div class="fw-bold text-dark">캠핑을 사랑하는 많은 여행객들이 여러분의 캠핑장을 찾고
+				있습니다.</div>
+			</div>
+			<br>
+			<!-- 히든 -->
+			<input type="hidden" name="mapX" id="mapX"> 
+			<input type="hidden" name="mapY" id="mapY">
+			<div class="input-group mb-3  w-75 m-auto">
 
-<div class="container mt-3">
-  <h2>캠핑장 등록</h2>
-  <form method="POST" enctype="multipart/form-data">
-    <div class="mb-3 mt-3">
-      <label for="facltnm">이름:</label>
-      <input type="text" name="facltnm" required>
-    </div>
-    <div class="mb-3">
-      <label for="featurenm">특징:</label><br>
-      <textarea name="featurenm" cols="50" rows="10"></textarea>
-    </div>
-    <div class="mb-3">
-      <label for="tooltip">툴팁:</label><br>
-     	<textarea name="tooltip" cols="50" rows="10"></textarea>
-    </div>
-    <div class="mb-3">
-   		<label for="induty">업종:</label><br>
-	    <p>
-			<input type="checkbox" name="induty" value="일반 야영장" checked>
-				<label for="induty1">일반 야영장</label>
-			<input type="checkbox" name="induty" value="자동차 야영장">
-				<label for="induty2">자동차 야영장</label>
-			<input type="checkbox" name="induty" value="글램핑">
-				<label for="induty3">글램핑</label>
-			<input type="checkbox" name="induty" value="카라반">
-				<label for="induty4">카라반</label>
-		</p>
-    </div>
-    <div class="mb-3">
-      <label for="tel">연락처:</label>
-     	<input type="text" name="tel">
-    </div>
-    <div class="mb-3">
-      <label for="homepage">홈페이지:</label>
-     	<input type="text" name="homepage">
-    </div>
-    <div class="mb-3">
-	    <label for="lctcl">입지:</label>
-    	<p>
-			<input type="checkbox" name="lctcl" value="산" checked="checked">
-				<label>산</label>
-			<input type="checkbox" name="lctcl" value="숲">
-				<label>숲</label>
-			<input type="checkbox" name="lctcl" value="해변">
-				<label>해변</label>
-			<input type="checkbox" name="lctcl" value="계곡">
-				<label>계곡</label>
-			<input type="checkbox" name="lctcl" value="강">
-				<label>강</label>
-			<input type="checkbox" name="lctcl" value="도심">
-				<label>도심</label>
-			<input type="checkbox" name="lctcl" value="섬">
-				<label>섬</label>
-		</p>
-     </div>
-     <div class="mb-3">
-      <label for="addr1">주소:</label>
-      	<select id="firstSelect" name="firstSelect" onchange="changeSecondOptions()">
-			<option value="서울시">서울시</option>
-			<option value="부산시">부산시</option>
-			<option value="대구시">대구시</option>
-			<option value="인천시">인천시</option>
-			<option value="광주시">광주시</option>
-			<option value="대전시">대전시</option>
-			<option value="울산시">울산시</option>
-			<option value="세종시">세종시</option>
-			<option value="경기도">경기도</option>
-			<option value="강원도">강원도</option>
-			<option value="충청북도">충청북도</option>
-			<option value="충청남도">충청남도</option>
-			<option value="전라북도">전라북도</option>
-			<option value="전라남도">전라남도</option>
-			<option value="경상북도">경상북도</option>
-			<option value="경상남도">경상남도</option>
-			<option value="제주도">제주도</option>
-		</select>
-		
-		<select id="secondSelect" name="secondSelect"></select>
-		<input type="text" name="addr1" placeholder="상세주소" required>
-   	 </div>
-     <div class="mb-3">
-      <label for="first_img">대표 사진:</label>
-     	<input type="file" name="upload1" required>
-    </div>
-    <div>
-      <label for="inner_img">상세 사진:</label>
-     	<input type="file" name="upload2" multiple="multiple" required>
-    </div>
-	    <input type="submit" class="btn btn-primary" value="다음">
-  </form>
+				<!-- 이름 -->
+				<span class="input-group-text fw-bold">캠핑장명</span> <input
+					type="text" class="form-control" name="facltnm">
+			</div>
+			<!--툴팁-->
+			<div class="m-auto w-75">
+				<label for="comment" class="fw-bold mb-3">특징</label>
+				<textarea class="form-control mb-3" rows="5" id="comment"
+					name="featurenm"></textarea>
+
+				<label for="comment" class="fw-bold mb-3">툴팁</label>
+				<textarea class="form-control mb-3" rows="5" id="comment"
+					name="tooltip"></textarea>
+			</div>
+
+			<!--업종-->
+			<div class="fw-bold w-75 m-auto">업종</div>
+			<div class="d-flex w-75 m-auto mb-3">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="check1"
+						name="induty" value="일반 야영장" checked> <label
+						class="form-check-label">일반 야영장</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input" type="checkbox" id="check1"
+						name="induty" value="자동차 야영장"> <label
+						class="form-check-label">자동차 야영장</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input" type="checkbox" id="check1"
+						name="induty" value="글램핑"> <label
+						class="form-check-label">글램핑</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input" type="checkbox" id="check1"
+						name="induty" value="카라반"> <label
+						class="form-check-label">카라반</label>
+				</div>
+			</div>
+
+			<div class="input-group mb-3 w-75 m-auto">
+				<span class="input-group-text fw-bold">연락처</span> <input type="text"
+					class="form-control" name="tel" placeholder="phone">
+			</div>
+
+			<div class="input-group mb-3 w-75 m-auto">
+				<span class="input-group-text fw-bold">https:</span> <input
+					type="text" class="form-control" name="homepage" placeholder="URL">
+			</div>
+
+			<div class="fw-bold w-75 m-auto">입지</div>
+			<div class="d-flex w-75 m-auto mb-3">
+				<div class="form-check">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="산" checked> <label
+						class="form-check-label">산</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="숲"> <label class="form-check-label ">숲
+					</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="해변"> <label class="form-check-label">해변
+					</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="계곡"> <label class="form-check-label ">계곡
+					</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input" type="checkbox" id="check1"
+						name="lctcl" value="강"> <label class="form-check-label ">강
+					</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="도심"> <label class="form-check-label ">도심
+					</label>
+				</div>
+				<div class="form-check ms-4">
+					<input class="form-check-input " type="checkbox" id="check1"
+						name="lctcl" value="섬"> <label class="form-check-label ">섬
+					</label>
+				</div>
+			</div>
+
+			<!--주소-->
+			<div class="d-flex w-75 m-auto">
+				<div class="m-auto fw-bold" style="width: 50px;">주소</div>
+				<select class="form-select w-25 m-auto ms-2" name="firstSelect" id="firstSelect"
+					onchange="changeSecondOptions()">
+					<option value="서울시">서울시</option>
+					<option value="부산시">부산시</option>
+					<option value="대구시">대구시</option>
+					<option value="인천시">인천시</option>
+					<option value="광주시">광주시</option>
+					<option value="대전시">대전시</option>
+					<option value="울산시">울산시</option>
+					<option value="세종시">세종시</option>
+					<option value="경기도">경기도</option>
+					<option value="강원도">강원도</option>
+					<option value="충청북도">충청북도</option>
+					<option value="충청남도">충청남도</option>
+					<option value="전라북도">전라북도</option>
+					<option value="전라남도">전라남도</option>
+					<option value="경상북도">경상북도</option>
+					<option value="경상남도">경상남도</option>
+					<option value="제주도">제주도</option>
+				</select> <select class="form-select w-25 m-auto ms-2" id="secondSelect"
+					name="secondSelect"></select>
+
+				<div class="input-group w-50 ms-2 ">
+					<span class="input-group-text">상세주소</span> <input type="text"
+						name="addr1" id="addr" class="form-control">
+				</div>
+			</div>
+
+			<!--사진-->
+			<div class="d-flex w-75 m-auto mt-3">
+				<div class="fw-bold">대표사진</div>
+				<input type="file" name="upload1" class="btn btn-white ms-4"
+					value="Input Button">
+			</div>
+			<div class="d-flex w-75 m-auto mt-3">
+				<div class="fw-bold">상세사진</div>
+				<input type="file" name="upload2" multiple="multiple" required
+					id="upload2" class="btn btn-white ms-4" value="Input Button">
+			</div>
+			<!--주변이용 가능한 시설 -->
+
+			<div class="form-floating mb-3 mt-3 m-auto w-75">
+				<input type="text" class="form-control" name="posblFcltyCl">
+				<label class="fw-bold">주변이용가능시설</label>
+			</div>
+			<div class="form-floating mb-3 mt-3 m-auto w-75">
+				<input type="text" class="form-control" name="posblFcltyEtc">
+				<label class="fw-bold">시설 기타</label>
+			</div>
+			<div class="form-floating mb-3 mt-3 m-auto w-75">
+				<input type="text" class="form-control" name="exprnprogrm">
+				<label class="fw-bold">체험 프로그램</label>
+			</div>
+			<div class="form-floating mb-3 mt-3 m-auto w-75">
+				<input type="text" class="form-control" name="direction"> <label
+					class="fw-bold">오시는 길</label>
+			</div>
+			<br> <br>
+
+			<div class="w-75 m-auto">
+				<input type="submit" style="height: 60px;"
+					class="btn btn-outline-secondary w-100 fw-bold" value="다음">
+			</div>
+			<br> <br> <br>
+		</div>
+	</form>
 </div>
-
 <script>
 	window.onload = function() {
 	    // 기본값으로 '전체'를 선택하도록 함
@@ -201,8 +285,49 @@
 	        secondSelect.appendChild(opt);
 	    });
 	}
+</script>
 
 
+<script
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
+<script>
+	const mapX = document.getElementById('mapX');
+	const mapY = document.getElementById('mapY');
+	const addr1 = document.getElementById('addr');
+
+	function handler(event) {
+		event.preventDefault();
+		var geocoder = new kakao.maps.services.Geocoder();
+		const addr = addr1.value;
+		console.log(addr)
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch(addr, function(result, status) {
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
+				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				let mapXValue = result[0].x
+				let mapYValue = result[0].y
+
+				mapX.value = mapXValue;
+				mapY.value = mapYValue;
+
+				document.getElementById('form-first').submit();
+			} else {
+				alert('유효한 주소가 아닙니다.');
+			}
+		});
+	}
+
+	const upload2 = document.getElementById('upload2');
+
+	function file() {
+		alert('사진을 여러 개 선택하려면 Ctrl 키를 누른 채로 선택하세요.');
+	}
+
+	document.getElementById('form-first').addEventListener('submit', handler);
+	upload2.addEventListener('click', file);
+	// 	window.addEventListener("DOMContentLoaded", handler);
 </script>
 
 </body>

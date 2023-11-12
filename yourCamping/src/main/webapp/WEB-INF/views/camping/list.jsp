@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div class="main">
-	<div class="d-flex" id="listSearchContainer">
-		<div class="w-50" id="listSearchBox">
+	<div class="d-flex listSearchContainer" style="background-image: url('${cpath}/resources/list_back.jpg');">
+		<div class="w-50 listSearchBox">
 			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
-				<div style="display: flex" id="listSearch">
+				<div style="display: flex" class="listSearch">
 					<div>
-						<span>지역</span> <select id="firstSelect" name="firstSelect"
+						<span>지역</span> <select id="firstSelect" name="firstSelect" class="rounded"
 							onchange="changeSecondOptions()">
 							<option value="전체"
 								${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
@@ -45,10 +45,10 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect"></select>
+						</select> <select id="secondSelect" name="secondSelect"  class="rounded"></select>
 					</div>
 					<div>
-						<span>테마</span> <select id="lctcl" name="lctcl">
+						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
 							<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
 							<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
 							<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
@@ -61,7 +61,7 @@
 						</select>
 					</div>
 					<div>
-						<span>숙박 형태</span> <select id="induty" name="induty">
+						<span>숙박 형태</span> <select id="induty" name="induty" class="rounded">
 							<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
 							<option value="일반야영장"
 								${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
@@ -73,13 +73,13 @@
 						</select>
 					</div>
 				</div>
-				<div id="keywordBox">
+				<div class="keywordBox">
 					<div>
-						<span>검색어를 입력하세요</span> <input type="text" name="keyword"
+						<span>키워드 검색</span> <input type="text" name="keyword" class="rounded"
 							placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색"> <input type="button"
+						<input type="submit" value="캠핑장 검색" class="btn btn-success ms-3"> <input type="button" class="rounded btn btn-success ms-3"
 							id="reset" value="초기화">
 					</div>
 				</div>
@@ -95,9 +95,9 @@
 	</div>
 </div>
 <div class="container sb" style="width: 100%;">
-	<h4>총 ${paging.boardCount }개의 캠핑장이 검색되었습니다.</h4>
+	<h4>총 <span class="text-danger fw-bold">${paging.boardCount }</span>개의 캠핑장이 검색되었습니다.</h4>
 	<div class="justify-content-between d-flex mb-3">
-		<button class="btn btn-primary" id="mapBtn">지도로보기</button>
+		<button class="btn btn-primary" id="mapBtn" style="background-color: #ffc107; color:white; border:none;">지도로보기</button>
 	</div>
 
 	<script>
@@ -127,16 +127,17 @@
 	</script>
 </div>
 
-<div class="d-flex flex-wrap col-8 container"
-	style="border-top: 2px solid black;">
+<div class="d-flex flex-wrap col-8 container" style="border-top: 2px solid black; width: 100%;">
 	<c:if test="${paging.boardCount != 0 }">
 		<c:forEach var="dto" items="${list }">
 			<div class="item d-flex">
 				<div class="p-3">
-					<div class="itemImg"
-						style="background-image: url('${dto.first_img}'); cursor: pointer;"
-						OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'">
-					</div>
+					<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg" style="background-image: url('${dto.first_img}'); cursor: pointer; width:300px; height:200px;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"></div>
+					</c:if>
+					<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+						<div class="itemImg2" style="cursor:pointer;" OnClick="location.href='${cpath }/camping/view/${dto.camping_idx}'"><img src="${cpath }/first_img/${dto.first_img}" style="width:300px; height:200px;"></div>
+					</c:if>
 				</div>
 				<div class="mt-1 ms-3 itemTextWrap">
 					<div class="viewCount">
@@ -157,11 +158,21 @@
 											href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.featurenm,0, 50) }...</a>
 										</span>
 									</c:if>
+									<c:if test="${fn:length(dto.featurenm) < 50 }">
+										<span class="intro"> <a
+											href="${cpath }/camping/view/${dto.camping_idx}">${dto.featurenm }</a>
+										</span>
+									</c:if>
 								</c:when>
 								<c:when test="${dto.intro != '' }">
 									<c:if test="${fn:length(dto.intro) >= 50 }">
 										<span class="intro"> <a
 											href="${cpath }/camping/view/${dto.camping_idx}">${fn:substring(dto.intro,0, 50) }...</a>
+										</span>
+									</c:if>
+									<c:if test="${fn:length(dto.intro) < 50 }">
+										<span class="intro"> <a
+											href="${cpath }/camping/view/${dto.camping_idx}">${dto.intro }</a>
 										</span>
 									</c:if>
 								</c:when>
@@ -174,39 +185,50 @@
 							</ul>
 						</div>
 					</div>
-					<div class="list_SbrsCl">
+					<div class="list_SbrsCl" style="background-color: #f9f9f9;">
 						<c:if test="${dto.sbrsCl.contains('전기') }">
-							<span style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/전기.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('장작판매') }">
-							<span class="firewood" style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
+							<span class="firewood"
+								style="background-image: url('${cpath }/resources/icon/장작.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('온수') }">
-							<span class="hotWater" style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
+							<span class="hotWater"
+								style="background-image: url('${cpath }/resources/icon/온수.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('물놀이장') }">
-							<span class="waterplay" style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
+							<span class="waterplay"
+								style="background-image: url('${cpath }/resources/icon/물놀이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('산책로') }">
-							<span style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/산책.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('마트편의점') }">
-							<span style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
+							<span
+								style="background-image: url('${cpath }/resources/icon/마트.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동시설') }">
-							<span class="play" style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
+							<span class="play"
+								style="background-image: url('${cpath }/resources/icon/운동.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('무선인터넷') }">
-							<span class="wifi" style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
+							<span class="wifi"
+								style="background-image: url('${cpath }/resources/icon/와이파이.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('트렘폴린') }">
-							<span class="tram" style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
+							<span class="tram"
+								style="background-image: url('${cpath }/resources/icon/트렘폴린.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('놀이터') }">
-							<span class="joyplace" style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
+							<span class="joyplace"
+								style="background-image: url('${cpath }/resources/icon/놀이터.png');"></span>
 						</c:if>
 						<c:if test="${dto.sbrsCl.contains('운동장') }">
-							<span class="playground" style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
+							<span class="playground"
+								style="background-image: url('${cpath }/resources/icon/운동장.png');"></span>
 						</c:if>
 					</div>
 				</div>
@@ -364,9 +386,14 @@
 			fillSecondOptions(busanOptions);
 
 		} else if (selectedValue == '경상남도') {
-			var busanOptions = [ "전체", "서귀포시", "제주시" ];
-			fillSecondOptions(busanOptions);
-		}
+	        var busanOptions = ["전체", "거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시",
+	        	"의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"];
+	        fillSecondOptions(busanOptions);  
+	        
+		} else if(selectedValue == '제주도') {
+	        var busanOptions = ["전체", "서귀포시", "제주시"];
+	        fillSecondOptions(busanOptions);
+	    }
 
 	}
 
@@ -381,5 +408,4 @@
 		});
 	}
 </script>
-</body>
-</html>
+<%@ include file="../footer.jsp" %>

@@ -18,14 +18,14 @@
 			</p>
         	<c:if test="${dto.free_img != null}">
         	<div class="mt-5 mb-5">
-        		<img src="${cpath }/upload/${dto.free_img }" class="d-block w-100">
+        		<img src="${cpath }/upload/${dto.free_img }" class="d-block w-50 mx-auto">
 			</div>
 			</c:if>
 		</div>
       	<div class="mt-4 mb-4 d-flex justify-content-end">
       		<a href="${cpath }/board/freeModify/${dto.free_table_idx}"><button id="modifyBtn" type="button" class="btn btn-outline-secondary me-3">수정하기</button></a>
       		<a href="${cpath }/board/freeDelete/${dto.free_table_idx}"><button id="deleteBtn" type="button" class="btn btn-outline-secondary me-3">삭제하기</button></a>
-        	<a href="${cpath }/board/freeList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
+        	<a href="${cpath }/board/freeList/1"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
 		<div class="mt-4">
 			<div class="mb-4">댓글</div>
@@ -40,14 +40,16 @@
 						<div class="ms-2">${reply.reply_content}</div>
 					</div>
 					<div>
-						<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						<c:if test="${reply.userid == login.userid }">
+							<a href="${cpath }/board/freeView/${dto.free_table_idx}/deleteReply"><button id="deleteReplyBtn" type="button" class="btn btn-outline-secondary">X</button></a>
+						</c:if>
 					</div>
 				</div>
 				</c:forEach>
 			</div>
 		</div>
 		<div class="mt-5 d-flex">
-			<form method="POST" class="d-flex w-100">
+			<form method="POST" class="d-flex w-100" onsubmit="return checkForm()">
 				<textarea class="form-control me-4" rows="3" id="reply_content" placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다." name="reply_content" required></textarea>
 				<button type="submit" class="btn btn-secondary ms-4 text-nowrap ps-4 pe-4">등 록</button>
 			</form>
@@ -67,8 +69,7 @@
 			location.href = event.target.parentNode.href
 		}	
 	}
-	modifyBtn.onclick = modifyHandler
-
+	
 	const deleteBtn = document.getElementById('deleteBtn')
 	const deleteHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
@@ -80,19 +81,25 @@
 			location.href = event.target.parentNode.href
 		}	
 	}
-	deleteBtn.onclick = deleteHandler
 	
 	const deleteReplyBtn = document.getElementById('deleteReplyBtn')
 	const deleteReplyHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
-		if ('${dto.userid}' != '${login.userid}') {
-			alert('본인 댓글만 삭제할 수 있습니다')
-			return
-		}
 		if (confirm('삭제하시겠습니까')) {
 			location.href = event.target.parentNode.href
 		}	
 	}
+	
+	function checkForm() {
+        if ('${login}' == '') {
+            alert('로그인이 필요한 항목입니다')
+            return false
+        }
+        return true
+    }
+	
+	modifyBtn.onclick = modifyHandler
+	deleteBtn.onclick = deleteHandler
 	deleteReplyBtn.onclick = deleteReplyHandler
 </script>
 

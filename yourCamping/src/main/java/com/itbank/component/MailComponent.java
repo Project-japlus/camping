@@ -32,10 +32,9 @@ public class MailComponent {
 	// classpath 에서 특정 파일 불러오기
 	// src/main/java
 	// src/main/resources
-	@Value("classpath:mailForm.html")
-	private Resource mailForm;
+	@Value("classpath:mailForm.html") private Resource mailForm;
+	@Value("classpath:newPw.html") private Resource newPw;
 	
-	private String tag = "";
 	
 	public MailComponent() throws FileNotFoundException, IOException{
 		// 파일 내용 불러와서 태그에 넣어두기
@@ -75,6 +74,44 @@ public class MailComponent {
 			message.setSubject(param.get("subject"));
 			message.setContent(
 					String.format(tag, param.get("content")),
+					"text/html; charset=utf-8");
+			Transport.send(message);
+			return 1;
+			
+		} catch (MessagingException | IOException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+
+	public int sendPwMessage(HashMap<String, String> param) {
+		Session mailSession = Session.getDefaultInstance(props, new Authenticator() {
+			String un = serverID;
+			String pw = serverPW;
+			
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(un, pw);
+			}
+		});
+		
+		mailSession.setDebug(true);
+		
+		Message message = new MimeMessage(mailSession);
+		String tag = "";
+		try {
+			Scanner sc = new Scanner(newPw.getFile());
+			while(sc.hasNextLine()) {
+				tag += sc.nextLine();
+			}
+			sc.close();
+			
+			message.setFrom(new InternetAddress(serverID + "@naver.com"));
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(param.get("email")));
+			message.setSubject(param.get("subject"));
+			message.setContent(
+					String.format(tag, param.get("userpw")),
 					"text/html; charset=utf-8");
 			Transport.send(message);
 			return 1;

@@ -1,37 +1,175 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
-
-
-	<h1>Mypage</h1>
-	<hr>
-
-	<a href="${cpath }/user/Mypage_modify"><button>수정페이지</button></a>
-
-	<div>
-		<h1>세션에 저장된 정보들</h1>
-		<h3>사용자 이름 : ${login.username }</h3>
-		<h3>사용자 아이디 : ${login.userid }</h3>
-		<h3>사용자 비번 : ${login.userpw }</h3>
-		<h3>사용자 번호 : ${login.user_idx }</h3>
-		<c:if test="${empty login.remember_bizr }">
-			<h3>사업자 번호 : ${login.bizrno }</h3>
-		</c:if>
-		<h3>사용자 솔트 :${login.salt }</h3>
-		<h3>사용자 이름 : ${login.username }</h3>
-		<h3>사용자 속성 : ${login.role }</h3>
-		<h3>사용자 전번 : ${login.phone }</h3>
-		<h3>사용자 이메일 : ${login.email }</h3>
+<%@ include file="../header.jsp"%>
+<hr>
+	<div class="main">
+	<!-- 내정보 보는 태이블 -->
+	<div class="container">
+		<div class="container mt-3">
+			<div class="d-flex mt-4 justify-content-between">
+				<h2>내정보</h2>
+				<a href="${cpath }/user/leave/${login.user_idx}">
+					<button class="btn ms-3 userDelete" id="leave">회원탈퇴</button>
+				</a>
+			</div>
+		  <table class="table table-striped table-hover">
+		    <tbody>
+		      <tr>
+		        <td>아이디</td>
+		        <td style="border-left: 1px solid #c2c2c2;">${login.userid }</td>
+		      </tr>
+		      <tr>
+		        <td>휴대전화 번호</td>
+		        <td style="border-left: 1px solid #c2c2c2;">${login.phone }</td>
+		      </tr>
+		      
+		      <tr>
+		        <td>이메일</td>
+		        <td style="border-left: 1px solid #c2c2c2;">${login.email }</td>
+		      </tr>
+		      
+		      <c:if test="${not empty login.bizrno }">
+			      <tr>
+			        <td>사업자번호</td>
+			        <td style="border-left: 1px solid #c2c2c2;">${login.bizrno }</td>
+			      </tr>
+		      </c:if>
+		    </tbody>
+		  </table>
+		</div>
+		<div class="d-flex justify-content-end">
+			<a class="text-primary fw-bold mt-1 me-4"
+					href="${cpath }/user/Mypage_modify">정보수정</a> 
+		</div>
 	</div>
 
-	<div>
-		즐겨찾기<br> 예약된 캠핑장<br> 올린 캠핑장<br> review_like table 써서 내가
-		좋아요 한 게시글 마이페이지에 올리기<br> 지난 예약<br>
-	</div>
-	<c:if test="${not empty login.bizrno }">
-		<div><a class="text-warning fw-bold"
-			href="${cpath }/bizr/newCamping">캠핑장 등록</a></div>
+	<!-- 일반사용자 MyPage -->
+	<c:if test="${empty login.bizrno }">
+
+		<div class="container">
+			<!-- 예약된 캠핑장 보기 -->
+			<div class="container mt-3">
+				<h2>예약된 캠핑장</h2>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>캠핑장 이름</th>
+							<th>예약 날짜</th>
+							<th>전화번호</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="dto" items="${reservelist }">
+							<tr>
+								<td><a href="${cpath }/camping/view/${dto.camping_idx}">${dto.facltnm }</a></td>
+								<td style="border-left: 1px solid #c2c2c2;">${dto.reserve_str_date }</td>
+								<c:if test="${empty dto.tel }">
+									<td style="border-left: 1px solid #c2c2c2;">전화번호 없음</td>
+								</c:if>
+								<c:if test="${not empty dto.tel }">
+									<td style="border-left: 1px solid #c2c2c2;">${dto.tel }</td>
+								</c:if>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="container">
+			<!-- 찜한 캠핑장 보기 -->
+			<div class="container mt-3">
+				<h2>북마크한 캠핑장</h2>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>캠핑장 이름</th>
+							<th>캠핑장 홈페이지</th>
+							<th>전화번호</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="dto" items="${bookmarklist }">
+							<tr>
+								<td><a href="${cpath }/camping/view/${dto.camping_idx}">${dto.facltnm }</a></td>
+								<td style="border-left: 1px solid #c2c2c2;"><a href="${dto.homepage}">${dto.homepage }</a></td>
+								<c:if test="${empty dto.tel }">
+									<td style="border-left: 1px solid #c2c2c2;">전화번호 없음</td>
+								</c:if>
+								<c:if test="${not empty dto.tel }">
+									<td style="border-left: 1px solid #c2c2c2;">${dto.tel }</td>
+								</c:if>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
 	</c:if>
 
+	<!-- 사업자 MyPage -->
+	<c:if test="${not empty login.bizrno }">
+		<div class="container	">
+			<!-- 등록한 캠핑장 보기 -->
+			<div class="container mt-3">
+				<h2>등록한 캠핑장</h2>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>캠핑장 이름</th>
+							<th>캠핑장 홈페이지</th>
+							<th>조회수</th>
+							<th>관리</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="dto" items="${bizrlist }">
+							<tr>
+								<td>${dto.facltnm }</td>
+<!-- 								홈페이지 있으면 링크 띄어주고 없으면 '홈페이지 없음 띄어주기' -->
+									<c:if test="${empty homepage }">
+										<td style="border-left: 1px solid #c2c2c2;">홈페이지 없음</td>
+									</c:if>
+									<c:if test="${not empty homepage }">
+										<td style="border-left: 1px solid #c2c2c2;"><a href="${dto.homepage}">${dto.homepage }</a></td>
+									</c:if>
+								<td style="border-left: 1px solid #c2c2c2;">${dto.camping_viewCount }</td>
+								<td style="border-left: 1px solid #c2c2c2;">
+									<div class="justify-content-between">
+										<a class="text-warning fw-bold" href="${cpath }/bizr/campingUpdate/${dto.camping_idx}">캠핑장 수정</a>
+										<a class="text-warning fw-bold" href="${cpath }/user/Mypage_check?camping_idx=${dto.camping_idx}" id="campingDel">캠핑장 삭제</a>
+									</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</c:if>
+<script>
+	const leave = document.getElementById('leave')
+	leave.onclick = function(event) {
+		event.preventDefault()
+		const flag = confirm('정말 탈퇴하시겠습니까?')
+		if (flag) {
+			location.href = event.target.parentNode.href
+		} else {
+			return
+		}
+	}
+	
+	const campingDel = document.getElementById('campingDel');
+	campingDel.addEventListener('click', function(event) {
+	  event.preventDefault();
+	  const userConfirm = confirm('정말 삭제하시겠습니까?');
+	  if(userConfirm) {
+	    location.href = campingDel.href;
+	  }
+	});
+</script>
+</div>
 </body>
 </html>

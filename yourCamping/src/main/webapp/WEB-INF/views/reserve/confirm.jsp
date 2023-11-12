@@ -92,7 +92,6 @@
 		const checkOutDate = new Date('${reservedto.reserve_end_date}');
 		
 		let price = ((checkOutDate - checkInDate)/ 86400000)*'${reservedto.reserve_price}';
-		price = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '원';
 		addPrice.innerText = price;
 		
 	</script>
@@ -101,7 +100,7 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 
 <div class="d-grid">
-    <button id="payButton" class="fw-bold btn btn-warning btn-block w-75 m-auto mt-3" style="height: 60px;">결제하기</button>
+    <button id="payButton" class="fw-bold btn btn-warning btn-block m-auto mt-3" style="height: 60px; width:950px; background-color: #ffc107; border; color:white; border:none;">결제하기</button>
 </div>
 
 <script>
@@ -129,8 +128,9 @@
 	        m_redirect_url: "",
 	    }, function(rsp) {
 	        if (rsp.success) {
-	            alert('완료 -> imp_uid : ' + '${rsp.imp_uid}');
-	            location.href = '${cpath}/reserve/payCheck/${reservedto.reserve_idx}';
+	        	//username이 안나옴 
+	            alert('완료 -> imp_uid : ' + '${rsp.imp_uid}' + username);
+	            location.href = '${cpath}/reserve/payCheck/${reservedto.reserve_idx}?price='+price;
 	        } else {
 	            alert('결제실패 : 코드(${rsp.error_code}) / 메세지(${rsp.error_msg})');
 	        }

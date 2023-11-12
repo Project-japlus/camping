@@ -29,6 +29,10 @@
 	<resources mapping="/first_img/**" location="file:c:/first_img/" />
 	<resources mapping="/inner_img/**" location="file:c:/inner_img/" />
 	<resources mapping="/upload/**" location="file:c:/upload/" />
+<!-- 	배포 때 주석 풀기 -->
+<!-- 	<resources mapping="/first_img/**" location="file:/camping/first_img/" /> -->
+<!-- 	<resources mapping="/inner_img/**" location="file:/camping/inner_img/" /> -->
+<!-- 	<resources mapping="/upload/**" location="file:/camping/upload/" /> -->
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

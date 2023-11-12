@@ -14,9 +14,78 @@
 			values (#{userid}, #{userpw}, #{username}, #{phone},  #{email}, #{salt}, #{bizrno})
 	</insert>
 	
-	<select id="checkLogin" resultType="user">
-		select * from user_table where userid = #{userid}
+	<select id="selectOneByUserid_check" resultType="string">
+		SELECT
+			  userid
+			FROM
+			  (
+			    SELECT
+			      userid
+			    FROM
+			      user_table
+			    UNION ALL
+			    SELECT
+			      userid
+			    FROM
+			      bizr_table
+			  )
+			WHERE
+			  userid = #{userid}
+			GROUP BY
+			  userid
+			HAVING
+  		COUNT(*) >= 1
 	</select>
+	
+	<select id="getBookMark" parameterType="int" resultType="int">
+		select 
+			b.camping_idx 
+				from bookmark b 
+					join camping c 
+						on b.camping_idx = c.camping_idx 
+					where b.user_idx = #{user_idx} and c.camping_confirm != 'N'
+	</select>
+	
+	<select id="getReviewLike" parameterType="int" resultType="int">
+		select review_idx from review_like where user_idx = #{user_idx}
+	</select>
+	
+	<update id="user_leave" parameterType="int">
+		update user_table set joinconfirm = 'N' where user_idx = #{user_idx}
+	</update>
+	
+	<select id="getReserveInfo" parameterType="int">
+		    SELECT *
+			    FROM reserve r
+			    JOIN camping c ON r.camping_idx = c.camping_idx
+			    WHERE r.user_idx = #{user_idx} AND r.checkout = 'Y'
+			    ORDER BY r.reserve_idx ASC
+	</select>
+	
+	<select id="getBookmarkInfo" parameterType="int">
+			select
+				* 
+				from bookmark b
+				join camping c on b.camping_idx = c.camping_idx 
+				where b.user_idx = #{user_idx}
+	</select>
+	
+	<select id="getbizrInfo" parameterType="int">
+			select * from 
+		    camping 
+		        where user_idx = #{user_idx}
+	</select>
+	
+	<select id="findIdFromEmail" parameterType="string" resultType="string">
+		select u.userid 
+   			from user_table u
+        		where u.email = #{email} and u.joinconfirm != 'N'
+    		UNION
+		select b.userid
+    		from bizr_table b
+        		where b.email = #{email}
+	</select>
+	
 </mapper>
 
 

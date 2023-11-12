@@ -57,7 +57,8 @@
 		</div>
 
 		<!-- 금액별 금액 보기 -->
-		<form method="POST" action="${cpath }/reserve/reservation/${cdto.camping_idx }">
+		<form method="POST"
+			action="${cpath }/reserve/reservation/${cdto.camping_idx }">
 			<div class="row border border-1 rounded-2 w-50 m-auto mt-3 p-3">
 				<!--사이트 구역지정 -->
 				<h4 class="fw-bold">구역별 금액</h4>
@@ -106,7 +107,7 @@
 								id="won">원</span>
 						</div>
 					</div>
-				</c:if>
+				
 				<!-- 선택시 input값이 바뀌는 스크립트 -->
 				<script>
 		   		 	document.getElementById('reserveSiteSelect').addEventListener('change', function () {
@@ -151,73 +152,77 @@
 				</div>
 			</div>
 
-			<!-- 체크인 - 체크아웃 -->
+			<!-- 체크인 -체크아웃 -->
+
 			<div
 				class="row d-flex border border-1 rounded-2 w-50 m-auto mt-3 p-3">
-				<div>${cdto.reserve_end_date }</div>
-				<div class="dates-wrapper group">
-
+				<div class="dates-wrapper group d-flex justify-content-evenly">
 					<!-- 캠핑 시작 날짜 -->
-					<div class="field clearfix date-range-start date-wrapper">
-						<div class="label">
-							<label for="datepicker-start">체크인:</label>
+					<div class="field clearfix date-range-start date-wrapper p-2">
+						<div class="label fw-bold mb-3 text-center">
+							<label for="datepicker-start">📅입실일</label>
 						</div>
 						<div class="input">
 							<input type="date" name="reserve_str_date" id="datepicker-start"
-								class="input-text" readonly value="${rdto.reserve_str_date }">
+								class="input-text form-control text-center"
+								placeholder="dd/mm/yyyy" readonly
+								value="${rdto.reserve_str_date }">
 						</div>
-						<a href="#" class="calendar-btn calendar-start hide-text">View
-							calendar</a>
+						<a href="#" class="calendar-btn calendar-start hide-text"></a>
 					</div>
 
+
 					<!-- 캠핑 끝 날짜 -->
-					<div class="field clearfix date-range-start date-wrapper">
-						<div class="label">
-							<label for="datepicker-end">체크아웃:</label>
+					<div class="field clearfix date-range-start date-wrapper p-2">
+						<div class="label  fw-bold mb-3 text-center">
+							<label for="datepicker-end text-center">📅퇴실일</label>
 						</div>
 						<div class="input">
 							<input type="date" name="reserve_end_date" id="datepicker-end"
-								class="input-text" readonly value="${rdto.reserve_end_date }">
+								class="input-text form-control text-center"
+								placeholder="dd/mm/yyyy" readonly
+								value="${rdto.reserve_end_date }">
 						</div>
-						<a href="#" class="calendar-btn hide-text">View calendar</a>
+						<a href="#" class="calendar-btn hide-text"></a>
 					</div>
 
 					<!-- 달력 -->
 					<script>
-                    if ( $('html').hasClass('no-touch') ) {
-                        var $input, $btn;
-                        $( ".date-wrapper" ).each(function( index ) {
-                            $input = $(this).find('input');
-                            $btn = $(this).find('.calendar-btn');
-                            $input.attr('type', 'text');
-                            var pickerStart = new Pikaday({
-                            field: $input[0],
-                            trigger: $btn[0],
-                            container: $(this)[0],
-                            format: 'dd/mm/yyyy',
-                            firstDay: 1
-                            });
-                            $btn.show();
-                        });
-                        } else {
-	                        $('.date-wrapper input').attr('type', 'date');
-	                        $('.calendar-btn').hide();
-                        }
-                    
-                </script>
+						if ($('html').hasClass('no-touch')) {
+							var $input, $btn;
+							$(".date-wrapper").each(function(index) {
+								$input = $(this).find('input');
+								$btn = $(this).find('.calendar-btn');
+								$input.attr('type', 'text');
+								var pickerStart = new Pikaday({
+									field : $input[0],
+									trigger : $btn[0],
+									container : $(this)[0],
+									format : 'dd/mm/yyyy',
+									firstDay : 1
+								});
+								$btn.show();
+							});
+							} else {
+								$('.date-wrapper input').attr('type', 'date');
+								$('.calendar-btn').hide();
+							}
+						</script>
+
 				</div>
 			</div>
-
 
 			<!-- 인원수 선택 -->
 			<div
 				class="row d-flex border border-1 rounded-2 w-50 m-auto mt-3 p-3">
 				<h3 class="fw-bold mb-3">인원수 선택</h3>
 				<div class="w-50">
-					<span>👨‍🦱 인원 수 : <input type="number" name="human_cnt" value="1"></span>
+					<span>👨‍🦱 인원 수 : <input type="number" name="human_cnt"
+						value="1"></span>
 				</div>
 				<div class="w-50">
-					<span>🚗 차량 수 : <input type="number" name="car_cnt" value="1"></span>
+					<span>🚗 차량 수 : <input type="number" name="car_cnt"
+						value="1"></span>
 				</div>
 			</div>
 
@@ -229,8 +234,9 @@
 
 				<!--전체약관동의-->
 				<div class="form-check">
-					<label class="form-check-label ms-1">
-						<input class="form-check-input ms-1" type="checkbox" id="check1" required name="option1" onclick="selectAll(this)">전체 이용 약관에 동의합니다.
+					<label class="form-check-label ms-1"> <input
+						class="form-check-input ms-1" type="checkbox" id="check1" required
+						name="option1" onclick="selectAll(this)">전체 이용 약관에 동의합니다.
 					</label>
 					<hr>
 				</div>
@@ -286,9 +292,10 @@
 				<div class="d-grid">
 					<input type="submit"
 						class="btn btn-warning btn-block mt-3 w-50 m-auto fw-bold"
-						style="height: 60px;" value="예약정보 확인 및 결제하러가기">
+						style="height: 60px; background-color: #ffc107; border; color:white; border:none;" value="예약정보 확인 및 결제하러가기">
 				</div>
 			</div>
+		</c:if>
 		</form>
 	</div>
 </div>

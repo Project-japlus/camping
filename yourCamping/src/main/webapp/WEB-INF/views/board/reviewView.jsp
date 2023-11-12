@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-between border-bottom border-secondary border-3 pt-4 pb-4">
 			<div class="col text-start ms-2">${dto.userid }</div>
 			<div class="col text-center">${dto.review_wdate }</div>
-			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | 추천 : ${dto.like_count }</div>
+			<div class="col text-end me-2">조회 : ${dto.review_viewCount } | <span id="review_like">추천 : ${dto.like_count }</span></div>
 		</div>
 		<div class="mt-5 mb-5">
 			<h2>${dto.review_title }</h2>
@@ -18,14 +18,18 @@
 			</p>
         	<c:if test="${dto.review_img != null}">
         	<div id="carouselExampleControls" class="carousel slide w-50 mx-auto" data-bs-ride="carousel">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="${cpath }/resources/logo/logo.png" class="d-block w-100">
-					</div>
-					<c:forEach var="image" items="${list }">
+				<div class="carousel-inner" style="width: 500px; height: 500px;">
+					<c:forEach var="image" items="${list }" varStatus="i">
+					<c:if test="${i.index == 0 }">
+						<div class="carousel-item active">
+							<img src="${cpath }/upload/${image}" class="d-block w-100">
+						</div>
+					</c:if>
+					<c:if test="${i.index != 0 }">
 					<div class="carousel-item">
 						<img src="${cpath }/upload/${image }" class="d-block w-100">
 					</div>
+					</c:if>
 					</c:forEach>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -38,22 +42,29 @@
 				</button>
 			</div>
 			</c:if>
-			<div class="mt-4 mb-4 d-flex justify-content-center">
-				<form method="POST">
-					<input type="submit" class="btn btn-primary" value="👍추천">
-				</form>
+			<div class="mt-4 mb-4 d-flex justify-content-center reviewLikeWrap">
+				<c:if test="${login.review_idx.contains(dto.review_idx) }">
+					<span id="reviewLike" class="border rounded-3 border-2 border-danger py-2 px-3">👍추천</span>
+				</c:if>
+				<c:if test="${!login.review_idx.contains(dto.review_idx) }">
+					<span id="reviewLike" class="border rounded-3 border-2 border-dark py-2 px-3">추천</span>
+				</c:if>
 			</div>
 		</div>
       	<div class="mt-4 mb-4 d-flex justify-content-end">
       		<a href="${cpath }/board/reviewModify/${dto.review_idx}"><button id="modifyBtn" type="button" class="btn btn-outline-secondary me-3">수정하기</button></a>
       		<a href="${cpath }/board/reviewDelete/${dto.review_idx}"><button id="deleteBtn" type="button" class="btn btn-outline-secondary me-3">삭제하기</button></a>
-        	<a href="${cpath }/board/reviewList"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
+        	<a href="${cpath }/board/reviewList/1"><button type="button" class="btn btn-outline-secondary me-3">목록으로</button></a>
       	</div>
     </div>
 </div>
 
 <script>
 	const modifyBtn = document.getElementById('modifyBtn')
+	const reviewLike = document.getElementById('reviewLike')
+	let review_idx = '${login.review_idx}'
+	let isClicked = review_idx.includes('${dto.review_idx}') ? true : false;
+	
 	const modifyHandler = function(event) {
 		event.preventDefault()			// 이벤트 기본 작동을 막는다
 		if ('${dto.userid}' != '${login.userid}') {
@@ -78,6 +89,62 @@
 		}	
 	}
 	deleteBtn.onclick = deleteHandler
+	
+	function changeText() {
+		if (isClicked) {
+			reviewLike.innerText = "추천";
+	         
+		} else {
+			reviewLike.innerText = "👍추천";
+		}
+    }
+    function restoreText() {
+    	if (isClicked) {
+	         document.getElementById('reviewLike').innerText = "👍추천";
+	         
+    	} else {
+	         document.getElementById('reviewLike').innerText = "추천";
+    	}
+    }
+	
+	async function likeChange() {
+		if ('${login.user_idx}' != '') {
+			let url = ''
+			if (isClicked) {
+				url = '${cpath}/ajax/removeReviewLike?user_idx=${login.user_idx}&review_idx=${dto.review_idx}'
+				isClicked = false
+			}
+			else {
+				url = '${cpath}/ajax/addReviewLike?user_idx=${login.user_idx}&review_idx=${dto.review_idx}'
+				isClicked = true
+			}
+			await fetch(url)
+			if (isClicked) {
+				document.getElementById('reviewLike').innerText = "👍추천"
+				reviewLike.classList.remove('border-dark')
+				reviewLike.classList.add('border-danger')
+			}
+			else {
+				document.getElementById('reviewLike').innerText = "추천"
+				reviewLike.classList.remove('border-danger')
+				reviewLike.classList.add('border-dark')
+			}
+			// 변경된 추천수를 받아오는 ajax 주소
+			url = '${cpath}/ajax/getReviewLikeCnt/${dto.review_idx}'
+			let data = await fetch(url).then(resp => resp.text());
+			let match = data.match(/<Integer>(\d+)<\/Integer>/);
+			let cnt = match ? parseInt(match[1], 10) : null;
+			const review_like = document.getElementById('review_like')
+			review_like.innerText = '추천 : ' + cnt
+		}
+		else {
+			alert('로그인 후 이용할 수 있습니다')
+		}
+	}
+	reviewLike.onmouseover = changeText
+	reviewLike.onmouseout = restoreText
+	reviewLike.onclick = likeChange
+	
 </script>
 
 </body>

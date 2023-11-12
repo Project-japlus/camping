@@ -7,13 +7,23 @@
 			<img src="${cpath }/resources/loading.gif" alt="로딩 중...">
 		</div>
 	</div>
-	<a href="${cpath }/bizr/campingUpdate/${dto.camping_idx}"><button>캠핑장 수정</button></a>
-	<a href="${cpath }/bizr/campingDelete/${dto.camping_idx}"><button>캠핑장 삭제</button></a>
-	<a href="${cpath }/camping/list"><button>캠핑 리스트</button></a>
-	<div id="view_TopWrap">
+	<div id="view_TopWrap"
+		style="background-image: url('${cpath}/resources/home_back1.jpeg');">
 		<div class="sb">
 			<div>
-				<h1 id="view_Facltnm">${dto.facltnm }</h1>
+				<div class="campingNm">
+					<h1 id="view_Facltnm">${dto.facltnm }</h1>
+					<c:choose>
+						<c:when test="${login.camping_idx.contains(dto.camping_idx) }">
+							<span id="bookmark" onmouseover="changeText()"
+								onmouseout="restoreText()">❤️</span>
+						</c:when>
+						<c:otherwise>
+							<span id="bookmark" onmouseover="changeText()"
+								onmouseout="restoreText()">🤍</span>
+						</c:otherwise>
+					</c:choose>
+				</div>
 				<c:if test="${not empty dto.lineIntro }">
 					<p>${dto.lineIntro }</p>
 				</c:if>
@@ -48,14 +58,59 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	    const bookmark = document.getElementById('bookmark')
+	    let camping_list = '${login.camping_idx}'
+	    let isClicked = camping_list.includes('${dto.camping_idx}') ? true : false;
+	    bookmark.onclick = function () {
+	    	if ('${login.user_idx}' != '') {
+	    		let url = ''
+	    		if (isClicked) {
+	    			url = '${cpath}/ajax/removeBookMark?user_idx=${login.user_idx}&camping_idx=${dto.camping_idx}'
+	    			isClicked = false;
+	    		} else {
+	    			url = '${cpath}/ajax/addBookMark?user_idx=${login.user_idx}&camping_idx=${dto.camping_idx}'
+	    			isClicked = true;
+	    		}
+	    		fetch(url)
+	    		if (isClicked) {
+	    			 document.getElementById('bookmark').innerHTML = "❤️";
+	    		} else {
+	    			document.getElementById('bookmark').innerHTML = "🤍";
+	    		}
+	    	} else {
+	    		alert('로그인 후 이용해 주세요')
+	    	}
+	    }
+		function changeText() {
+			if (isClicked) {
+		         document.getElementById('bookmark').innerHTML = "🤍";
+			} else {
+		         document.getElementById('bookmark').innerHTML = "❤️";
+			}
+	    }
+	    function restoreText() {
+	    	if (isClicked) {
+		         document.getElementById('bookmark').innerHTML = "❤️";
+	    	} else {
+		         document.getElementById('bookmark').innerHTML = "🤍";
+	    	}
+	    }
+	</script>
 	<div style="width: 70%; margin: auto;">
-		<div style="display: flex; margin-top: 20px;">
+		<div class="view_imgTable">
 			<div class="container mt-3">
-				<img src="${dto.first_img }" class="first" width="700px"
-					height="525px">
+				<c:if test="${fn:startsWith(dto.first_img, 'https')}">
+					<img src="${dto.first_img }" class="first" width="700px"
+						height="525px" style="border-radius: 3%;">
+				</c:if>
+				<c:if test="${not fn:startsWith(dto.first_img, 'https')}">
+					<img src="${cpath }/first_img/${dto.first_img }" class="first"
+						width="700px" height="525px">
+				</c:if>
 			</div>
 			<div class="container mt-1 view_campingInfo">
-				<table class="table">
+				<table class="table" style="width: 100%;">
 					<tr>
 						<th>캠핑장</th>
 						<td>${dto.facltnm }</td>
@@ -99,45 +154,36 @@
 						</tr>
 					</c:if>
 				</table>
-			</div>
-		</div>
 
-		<div>
-			<div style="margin-top: 50px;">
-				<h5>💡예약하기</h5>
-			</div>
-			<form action="${cpath }/reserve/reservation/${dto.camping_idx}">
-				<!--체크인 - 체크아웃 -->
-				<div
-					class="row d-flex border border-1 rounded-2 w-50 m-auto mt-3 p-3">
-					<div class="dates-wrapper group">
-						<!-- 캠핑 시작 날짜 -->
-						<div class="field clearfix date-range-start date-wrapper">
-							<div class="label">
-								<label for="datepicker-start">체크인:</label>
+				<form action="${cpath }/reserve/reservation/${dto.camping_idx}">
+					<!--체크인 - 체크아웃 -->
+					<div>
+						<div class="view_date">
+							<!-- 캠핑 시작 날짜 -->
+							<div class="view_dateStart">
+								<div class="label">
+									<label for="datepicker-start">체크인:</label>
+								</div>
+								<div class="input">
+									<input type="date" name="reserve_str_date"
+										id="datepicker-start" class="input-text"
+										placeholder="dd/mm/yyyy" required>
+								</div>
 							</div>
-							<div class="input">
-								<input type="date" name="reserve_str_date" id="datepicker-start"
-									class="input-text" placeholder="dd/mm/yyyy" required>
-							</div>
-							<a href="#" class="calendar-btn calendar-start hide-text">View
-								calendar</a>
-						</div>
 
-						<!-- 캠핑 끝 날짜 -->
-						<div class="field clearfix date-range-start date-wrapper">
-							<div class="label">
-								<label for="datepicker-end">체크아웃:</label>
+							<!-- 캠핑 끝 날짜 -->
+							<div class="field clearfix date-range-start date-wrapper">
+								<div class="label">
+									<label for="datepicker-end">체크아웃:</label>
+								</div>
+								<div class="input">
+									<input type="date" name="reserve_end_date" id="datepicker-end"
+										class="input-text" placeholder="dd/mm/yyyy" required>
+								</div>
 							</div>
-							<div class="input">
-								<input type="date" name="reserve_end_date" id="datepicker-end"
-									class="input-text" placeholder="dd/mm/yyyy" required>
-							</div>
-							<a href="#" class="calendar-btn hide-text">View calendar</a>
-						</div>
 
-						<!-- 달력 -->
-						<script>
+							<!-- 달력 -->
+							<script>
 						if ($('html').hasClass('no-touch')) {
 							var $input, $btn;
 							$(".date-wrapper").each(function(index) {
@@ -158,16 +204,14 @@
 							$('.calendar-btn').hide();
 						}
 					</script>
-
+							<div class="view_reserveBtn">
+								<input type="submit" value="예약하기" style="background-color: #ffc107; color:white; border:none;">
+							</div>
+						</div>
 					</div>
-				</div>
-				<input type="submit" value="예약하기">
-			</form>
-
-
-			<%-- 		<a href="${cpath }/reservation/${dto.camping_idx}?reserve_str_date=${dto.reserve_str_date}&reserve_end_date=${dto.reserve_end_date}&reserve_site=${dto.reserve_site}" >${dto.camping_idx }</a> --%>
+				</form>
+			</div>
 		</div>
-		<%-- 	<div>${dto.reserve_str_date }</div> --%>
 
 		<div style="margin-top: 50px;">
 			<h5>💡주간날씨</h5>
@@ -190,6 +234,29 @@
 		<script>
 			document.getElementById('loading-container').style.display = 'block';
 			document.body.style.overflow = 'hidden';
+			// 이벤트 리스너를 저장할 변수
+			let isEventListenersDisabled = false;
+
+			// 이벤트 리스너를 비활성화하는 함수
+			function disableEventListeners() {
+			  isEventListenersDisabled = true;
+			}
+
+			// 이벤트 리스너를 다시 활성화하는 함수
+			function enableEventListeners() {
+			  isEventListenersDisabled = false;
+			}
+
+			// 키 다운 이벤트 리스너
+			function keyDownHandler(event) {
+			  if (isEventListenersDisabled) {
+			    event.preventDefault();
+			    return;
+			  }
+			}
+			// 로딩 시작 시 이벤트 리스너 비활성화
+			disableEventListeners();
+
 			let date = new Date()
 			async function dateLoadHandler() {
 				const tr = document.getElementById('date')
@@ -404,6 +471,8 @@
 					td.innerHTML = '<h5>날씨를 불러올 수 없습니다</h5>'
 					document.getElementById('tr#date').appendChild(td)
 				} finally {
+					// 로딩 완료 후 이벤트 리스너 다시 활성화
+					enableEventListeners();
 					document.getElementById('loading-container').style.display = 'none';
 					document.body.style.overflow = 'auto';
 				}
@@ -538,35 +607,36 @@
 		</div>
 
 		<div>
-			<button id="prev"><-</button>
-			<div id="imgBox">
+			<div id="imgBox" style="position: relative;">
+			<button id="view_prev"><</button>
 				<c:forEach var="img" items="${image }" varStatus="i">
-					<c:if test="${i.index == 0 }">
-						<img src="${img.inner_img }" class="rounded active">
+					<c:if test="${fn:startsWith(img.inner_img, 'https')}">
+						<img src="${img.inner_img }" class="rounded">
 					</c:if>
-					<img src="${img.inner_img }" class="rounded">
+					
+					<c:if test="${not fn:startsWith(img.inner_img, 'https')}">
+						<img src="${cpath }/inner_img/${img.inner_img }" class="rounded">
+					</c:if>
 				</c:forEach>
+				<button id="view_next">></button>
 			</div>
-			<button id="next">-></button>
 		</div>
 	</div>
 </div>
-<div style="height: 300px;"></div>
 
 <script>
-	const imgBox = document.getElementById('imgBox')
-	const imgarr = document.querySelectorAll('.rounded')
-	const prev = document.getElementById('prev')
-	const next = document.getElementById('next')
-	const fullsize = +imgarr.length * 900;
+	const imgarr = document.querySelectorAll('img.rounded')
+	const prev = document.getElementById('view_prev')
+	const next = document.getElementById('view_next')
 	var currentImageIndex = 0;
-	
 	function showImage(index) {
 		for (var i = 0; i < imgarr.length; i++) {
 			imgarr[i].classList.remove('active');
 		}
 		imgarr[index].classList.add('active');
 	}
+	
+	showImage(currentImageIndex);
 	
 	next.onclick = function(event) {
 		currentImageIndex = (currentImageIndex + 1) % imgarr.length;
@@ -576,7 +646,6 @@
 	prev.onclick = function () {
 		currentImageIndex = (currentImageIndex - 1 + imgarr.length) % imgarr.length;
 		showImage(currentImageIndex);
-	}
+	}	
 </script>
-</body>
-</html>
+<%@ include file="../footer.jsp"%>

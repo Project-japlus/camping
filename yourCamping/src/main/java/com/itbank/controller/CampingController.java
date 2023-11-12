@@ -36,14 +36,13 @@ public class CampingController {
 				break;
 			}
 		}
-		int tmp = page;
 		int boardCount = campingService.getListCnt();
 		boolean flag1 = param.containsKey("keyword");
 		if (flag1) {
 			if (param.get("keyword").equals("")) {
 				param.put("keyword", null);
 				flag1 = !flag1;
-			} 
+			}
 		}
 		boolean flag2 = param.containsKey("induty");
 		if (flag2) {
@@ -66,13 +65,12 @@ public class CampingController {
 				flag4 = !flag4;
 			}
 		}
-		
+
 		if (flag1 || flag2 || flag3 || flag4) {
-			tmp = 1;
 			boardCount = campingService.getSearchCnt(param);
 		}
-		PagingService paging = new PagingService(tmp, boardCount);
-		
+		PagingService paging = new PagingService(page, boardCount);
+
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		for (String key : param.keySet()) {
 			params.put(key, param.get(key));
@@ -95,5 +93,5 @@ public class CampingController {
 		mav.addObject("image", image);
 		return mav;
 	}
-	
+
 }

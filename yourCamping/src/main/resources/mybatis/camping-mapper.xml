@@ -11,6 +11,7 @@
     			join camping_internal ci on c.camping_idx = ci.camping_idx 
     			join camping_img cimg on c.camping_idx = cimg.camping_idx
     		where cimg.first_img is not null 
+    		and c.camping_confirm = 'Y'
     		<if test="keyword != null">
 	    		and c.facltNm like '%${keyword}%' 
     		</if>
@@ -31,12 +32,12 @@
 	</select>
 	 
 	<select id="getListCnt" resultType="int">
-		select count(*) from camping
+		select count(*) from camping where camping_confirm = 'Y'
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultType="camping">
 	 	select c.*, ac.*, inter.*, intro.*, safe.*, img.first_img
-   			from camping c
+   			from camping c 
     		join camping_activity ac on c.camping_idx = ac.camping_idx
     		join camping_internal inter on c.camping_idx = inter.camping_idx
     		join camping_introduce intro on c.camping_idx = intro.camping_idx
@@ -47,12 +48,16 @@
 	</select>
 	
 	<select id="selectOneImage" resultType="camping" parameterType="int">
-		    select c.camping_idx, img.inner_img
+		    select c.camping_idx, img.*
         		from camping c
        			join camping_img img
         		on c.camping_idx = img.camping_idx
         		where c.camping_idx = #{camping_idx}
         		and img.inner_img is not null
+	</select>
+	
+	<select id="selectOneByImg" parameterType="int" resultType="camping">
+		select * from camping_img where camping_idx = #{camping_idx}
 	</select>
 	
 	<update id="plusCamping_viewCount" parameterType="int">
@@ -95,7 +100,6 @@
 	
 	<insert id="campingInsert" parameterType="camping">
 		insert into camping
-<!-- 			(userid, -->
 			(facltnm,
 			featurenm,
 			tooltip,
@@ -105,9 +109,9 @@
 			lctcl,
 			addr1,
 			donm,
-			sigungunm)
+			sigungunm,
+			user_idx)
 		values(
-<!-- 			#{userid}, -->
 			#{facltnm},
 			#{featurenm},
 			#{tooltip},
@@ -117,7 +121,8 @@
 			#{lctcl},
 			#{addr1},
 			#{doNm},
-			#{sigunguNm}
+			#{sigunguNm},
+			#{user_idx}
 		)
 	</insert>
 	
@@ -126,8 +131,13 @@
 	</select>
 	
 	<insert id="campingImgInsert" parameterType="camping">
-		insert into camping_img
-			values(#{camping_idx}, #{first_img}, #{inner_img})
+		insert into camping_img(camping_idx, inner_img)
+			values(#{camping_idx}, #{inner_img})
+	</insert>
+	
+	<insert id="campingFirstInsert" parameterType="camping">
+		insert into camping_img(camping_idx, first_img)
+			values(#{camping_idx}, #{first_img})
 	</insert>
 
 	<insert id="campingPlaceInsert" parameterType="camping">
@@ -309,7 +319,7 @@
 		delete camping where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingImg" parameterType="camping">
+	<delete id="deleteCampingImg" parameterType="int">
 		delete camping_img where camping_idx = #{camping_idx}
 	</delete>
 	
@@ -317,52 +327,39 @@
 		delete camping_activity where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingIntoduce" parameterType="int">
-		delete camping_introduce where camping_idx = #{camping_idx}
-	</delete>
-	
 	<delete id="deleteCampingPlace" parameterType="int">
 		delete camping_place where camping_idx = #{camping_idx}
 	</delete>
 	
-	<delete id="deleteCampingInternal" parameterType="int">
-		delete camping_internal where camping_idx = #{camping_idx}
-	</delete>
-	
-	<delete id="deleteCampingSafetyDevice" parameterType="int">
-		delete camping_safety_device where camping_idx = #{camping_idx}
-	</delete>
-	
-	<delete id="deleteCampingSite" parameterType="int">
-		delete camping_site where camping_idx = #{camping_idx}
-	</delete>
+	<update id="updateConfirm" parameterType="int">
+		update camping set camping_confirm = 'N'
+				where camping_idx = #{camping_idx}
+	</update>
 	
 	<select id="selectCamping" resultType="camping" parameterType="int">
 		select *
 			from camping c
-			join camping_img img
-			on c.camping_idx = img.camping_idx
+			join camping_img img on c.camping_idx = img.camping_idx
+			join camping_activity ac on c.camping_idx = ac.camping_idx
 			where c.camping_idx = #{camping_idx} 
 			and img.first_img is not null
 	</select>
 	
 	<select id="selectCampingTwo" resultType="camping" parameterType="int">
-		select pla.*, ac.*, intro.*
-		 	from camping_place pla 
-		 	join camping_activity ac on pla.camping_idx = ac.camping_idx
-		 	join camping_introduce intro on pla.camping_idx = intro.camping_idx
-		 	where pla.camping_idx = #{camping_idx}
-	</select>
-	
-	<select id="selectCampingThree" resultType="camping" parameterType="int">
-		select inter.*, safe.*, site.*
-			from camping_internal inter
-			join camping_safety_device safe on inter.camping_idx = safe.camping_idx
-			join camping_site site on inter.camping_idx = site.camping_idx
-			where inter.camping_idx = #{camping_idx}
+		select intro.*, inter.*, safe.*, site.* 
+			from camping_introduce intro
+			join camping_internal inter on intro.camping_idx = inter.camping_idx
+			join camping_safety_device safe on intro.camping_idx = safe.camping_idx
+			join camping_site site on intro.camping_idx = site.camping_idx
+			where intro.camping_idx = #{camping_idx}
 	</select>
 	
 	<select id="selectFacltnmList" resultType="String">
 		select facltnm from camping
 	</select>
+	
+	<select id="campingSortViewCount" resultType="camping">
+		select * from camping order by camping_viewCount desc
+	</select>
+	
 </mapper>
