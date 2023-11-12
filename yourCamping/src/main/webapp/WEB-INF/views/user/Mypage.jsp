@@ -75,10 +75,12 @@
 				</table>
 			</div>
 		</div>
+		<br>
+		<br>
 
-		<div class="container">
+		<div class="container mt-3">
 			<!-- 찜한 캠핑장 보기 -->
-			<div class="container mt-3">
+			<div class="container">
 				<h2>북마크한 캠핑장</h2>
 				<table class="table table-striped table-hover">
 					<thead>
@@ -111,7 +113,7 @@
 
 	<!-- 사업자 MyPage -->
 	<c:if test="${not empty login.bizrno }">
-		<div class="container	">
+		<div class="container">
 			<!-- 등록한 캠핑장 보기 -->
 			<div class="container mt-3">
 				<h2>등록한 캠핑장</h2>

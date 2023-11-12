@@ -166,7 +166,7 @@
 								</div>
 								<div class="input">
 									<input type="date" name="reserve_str_date"
-										id="datepicker-start" class="input-text"
+										id="datepicker-start" class="input-text" min="${today }"
 										placeholder="dd/mm/yyyy" required>
 								</div>
 							</div>
@@ -178,34 +178,38 @@
 								</div>
 								<div class="input">
 									<input type="date" name="reserve_end_date" id="datepicker-end"
-										class="input-text" placeholder="dd/mm/yyyy" required>
+										min="${today }" class="input-text" placeholder="dd/mm/yyyy"
+										required>
 								</div>
 							</div>
 
 							<!-- 달력 -->
 							<script>
-						if ($('html').hasClass('no-touch')) {
-							var $input, $btn;
-							$(".date-wrapper").each(function(index) {
-								$input = $(this).find('input');
-								$btn = $(this).find('.calendar-btn');
-								$input.attr('type', 'text');
-								var pickerStart = new Pikaday({
-									field : $input[0],
-									trigger : $btn[0],
-									container : $(this)[0],
-									format : 'dd/mm/yyyy',
-									firstDay : 1
-								});
-								$btn.show();
-							});
-						} else {
-							$('.date-wrapper input').attr('type', 'date');
-							$('.calendar-btn').hide();
-						}
-					</script>
+	                            var $inputStart = $('#datepicker-start');
+	                            var $inputEnd = $('#datepicker-end');
+	
+	                            // 체크인 날짜 선택 시 이벤트 핸들러
+	                            $inputStart.on('change', function () {
+	                                var startDate = new Date($inputStart.val());
+	                                // 체크아웃 날짜의 min 속성 업데이트
+	                                $inputEnd.attr('min', formatDate(startDate));
+	                            });
+	
+	                            // 날짜를 'YYYY-MM-DD' 형식으로 포맷하는 함수
+	                            function formatDate(date) {
+	                                var month = '' + (date.getMonth() + 1);
+	                                var day = '' + date.getDate();
+	                                var year = date.getFullYear();
+	
+	                                if (month.length < 2) month = '0' + month;
+	                                if (day.length < 2) day = '0' + day;
+	
+	                                return [year, month, day].join('-');
+	                                }
+							</script>
 							<div class="view_reserveBtn">
-								<input type="submit" value="예약하기" style="background-color: #ffc107; color:white; border:none;">
+								<input type="submit" value="예약하기"
+									style="background-color: #ffc107; color: white; border: none;">
 							</div>
 						</div>
 					</div>
@@ -608,12 +612,12 @@
 
 		<div>
 			<div id="imgBox" style="position: relative;">
-			<button id="view_prev"><</button>
+				<button id="view_prev"><</button>
 				<c:forEach var="img" items="${image }" varStatus="i">
 					<c:if test="${fn:startsWith(img.inner_img, 'https')}">
 						<img src="${img.inner_img }" class="rounded">
 					</c:if>
-					
+
 					<c:if test="${not fn:startsWith(img.inner_img, 'https')}">
 						<img src="${cpath }/inner_img/${img.inner_img }" class="rounded">
 					</c:if>

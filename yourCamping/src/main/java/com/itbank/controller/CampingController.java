@@ -1,5 +1,7 @@
 package com.itbank.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -89,6 +91,13 @@ public class CampingController {
 		ModelAndView mav = new ModelAndView("/camping/view");
 		CampingDTO dto = campingService.selectOne(camping_idx);
 		List<CampingDTO> image = campingService.selectOneImage(camping_idx);
+		// 현재 날짜 가져오기
+        LocalDate currentDate = LocalDate.now();
+
+        // 날짜를 원하는 형식으로 포맷
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String today = currentDate.format(formatter);
+        mav.addObject("today", today);
 		mav.addObject("dto", dto);
 		mav.addObject("image", image);
 		return mav;

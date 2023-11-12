@@ -8,8 +8,8 @@
 	</div>
 	<!-- 상단 -->
     <div class="row d-flex border border-1 rounded-2 w-50 m-auto mt-4 p-2" style="height: 60px;">
-        <h2 class="col-sm-4"><a class="text-decoration-none text-secondary" href="">&lt;</a></h2>
-        <h2 class="col-sm-8 fw-bold"><a class="text-decoration-none text-black" href="">campingOne(홈으로)</a></h2>
+        <h2 class="col-sm-4"><a class="text-decoration-none text-secondary" href="${cpath }/reserve/reservation/${reservedto.camping_idx}?reserve_str_date=${reservedto.reserve_str_date }&reserve_end_date=${reservedto.reserve_end_date}">&lt;</a></h2>
+        <h2 class="col-sm-8 fw-bold"><a class="text-decoration-none text-black" href="${cpath }/">campingOne(홈으로)</a></h2>
     </div>
     
     <!-- 상품정보 -->
@@ -129,10 +129,10 @@
 	    }, function(rsp) {
 	        if (rsp.success) {
 	        	//username이 안나옴 
-	            alert('완료 -> imp_uid : ' + '${rsp.imp_uid}' + username);
+	            alert(username+ '님의 결제가 완료되었습니다.');
 	            location.href = '${cpath}/reserve/payCheck/${reservedto.reserve_idx}?price='+price;
 	        } else {
-	            alert('결제실패 : 코드(${rsp.error_code}) / 메세지(${rsp.error_msg})');
+	            alert('사용자가 결제를 취소하였거나 정상적인 결제가 이루어지지 않았습니다.');
 	        }
 	    })
 	}

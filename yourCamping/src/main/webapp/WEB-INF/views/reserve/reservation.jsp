@@ -11,7 +11,7 @@
 
 			<!-- 상세로 돌아가기 (url 수정해야됨)  -->
 			<h2 class="col-sm-4">
-				<a class="text-decoration-none text-secondary" href="${cpath }/list">&lt;</a>
+				<a class="text-decoration-none text-secondary" href="${cpath }/camping/view/${cdto.camping_idx}">&lt;</a>
 			</h2>
 
 			<h2 class="col-sm-8 fw-bold">

@@ -166,7 +166,7 @@
     event.preventDefault();
 
     const authNumber = document.getElementById('user_number').value;
-    const url = '${cpath}/ajax/checkAuthNumber/${authNumber}';
+    const url = '${cpath}/ajax/checkAuthNumber/' + authNumber;
     if (authNumber !== '') {
         const result = await fetch(url).then(resp => resp.text());
         if (result === '0') {
