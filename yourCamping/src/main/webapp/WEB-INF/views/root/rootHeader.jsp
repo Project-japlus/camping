@@ -26,6 +26,9 @@
 	    <li class="nav-item">
 	      <a class="nav-link fw-bold" href="${cpath }/root/userManage">유저관리</a>
 	    </li>
+		<li class="nav-item">
+          <a class="nav-link fw-bold" href="${cpath }/root/bizrManage">사업주관리</a>
+        </li>
   	</ul>
   	
  </div>

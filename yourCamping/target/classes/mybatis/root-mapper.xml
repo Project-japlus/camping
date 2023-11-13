@@ -91,5 +91,9 @@
 		    join camping_activity ca on cimg.camping_idx = ca.camping_idx
 		    where c.camping_idx = #{camping_idx}
 	</select>
+	
+	<select id="bizrList" parameterType="bizr">
+        select * from bizr_table order by user_idx desc
+    </select>
 
 </mapper>

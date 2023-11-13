@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itbank.model.BizrDTO;
 import com.itbank.model.CampingDTO;
 import com.itbank.model.ReserveDTO;
 import com.itbank.model.UserDTO;
@@ -59,7 +60,11 @@ public class RootService {
 		// TODO Auto-generated method stub
 		return rootDAO.newCampingDelete(camping_idx);
 	}
-
+	
+	public List<BizrDTO> bizrList(BizrDTO bizrdto) {
+        // TODO Auto-generated method stub
+        return rootDAO.bizrList(bizrdto);
+    }
 //	public int checkOutByRoot(int reserve_idx) {
 //		// TODO Auto-generated method stub
 //		return rootDAO.checkOutByRoot(reserve_idx);

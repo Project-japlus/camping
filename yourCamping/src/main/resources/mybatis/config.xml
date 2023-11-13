@@ -12,5 +12,6 @@
 		<typeAlias type="com.itbank.model.ReplyDTO" alias="reply"/>
 		<typeAlias type="com.itbank.model.ReviewDTO" alias="review"/>
 		<typeAlias type="com.itbank.model.BookmarkDTO" alias="bookmark"/>
+		<typeAlias type="com.itbank.model.BizrDTO" alias="bizr"/>
 	</typeAliases>
 </configuration>

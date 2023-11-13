@@ -2,14 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <div class="main">
-	<div class="d-flex listSearchContainer"  style="background-image: url('${cpath}/resources/list_back.jpg');">
+	<div class="d-flex listSearchContainer"
+		style="background-image: url('${cpath}/resources/list_back.jpg');">
 		<div class="w-50 listSearchBox">
 			<form style="margin-bottom: 10px;" action="${cpath }/camping/list/1">
 				<input type="hidden" name="listType" value="${listType }">
 				<div style="display: flex" class="listSearch">
 					<div>
 						<span>지역</span> <select id="firstSelect" name="firstSelect"
-							onchange="changeSecondOptions()"  class="rounded">
+							onchange="changeSecondOptions()" class="rounded">
 							<option value="전체"
 								${param.firstSelect eq '전체' ? 'selected' : '' }>시/도</option>
 							<option value="서울시"
@@ -46,10 +47,10 @@
 								${param.firstSelect eq '경상남도' ? 'selected' : '' }>경상남도</option>
 							<option value="제주도"
 								${param.firstSelect eq '제주도' ? 'selected' : '' }>제주도</option>
-						</select> <select id="secondSelect" name="secondSelect"  class="rounded"></select>
+						</select> <select id="secondSelect" name="secondSelect" class="rounded"></select>
 					</div>
 					<div>
-						<span>테마</span> <select id="lctcl" name="lctcl"  class="rounded">
+						<span>테마</span> <select id="lctcl" name="lctcl" class="rounded">
 							<option value="전체" ${param.lctcl eq '전체' ? 'selected' : '' }>전체테마</option>
 							<option value="해변" ${param.lctcl eq '해변' ? 'selected' : '' }>해변</option>
 							<option value="섬" ${param.lctcl eq '섬' ? 'selected' : '' }>섬</option>
@@ -62,7 +63,8 @@
 						</select>
 					</div>
 					<div>
-						<span>숙박 형태</span> <select id="induty" name="induty"  class="rounded">
+						<span>숙박 형태</span> <select id="induty" name="induty"
+							class="rounded">
 							<option value="전체" ${param.induty eq '전체' ? 'selected' : '' }>전체</option>
 							<option value="일반야영장"
 								${param.induty eq '일반야영장' ? 'selected' : '' }>캠핑</option>
@@ -76,21 +78,22 @@
 				</div>
 				<div class="keywordBox">
 					<div>
-						<span>키워드 검색</span> <input type="text" name="keyword"  class="rounded"
-							placeholder="검색어를 입력하세요">
+						<span>키워드 검색</span> <input type="text" name="keyword"
+							class="rounded" placeholder="검색어를 입력하세요">
 					</div>
 					<div>
-						<input type="submit" value="캠핑장 검색" class="btn btn-success ms-3"> <input type="button" class="btn btn-success ms-3"
-							id="reset" value="초기화">
+						<input type="submit" value="캠핑장 검색" class="btn btn-success ms-3">
+						<input type="button" class="btn btn-success ms-3" id="reset"
+							value="초기화">
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-	<div class="d-flex mb-3">
-		<button class="btn btn-primary map_showListBtn" id="showList" style="background-color: #ffc107; color:white; border:none;">
-			리스트로 보기
-		</button>
+	<div class="d-flex mb-3" style="position: relative;">
+		<button class="btn btn-primary" id="showList"
+			style="background-color: #ffc107; color: white; border: none; position: absolute; right: 415px; z-index: 999999;">
+			리스트로 보기</button>
 	</div>
 
 	<script>
@@ -125,14 +128,15 @@
 	</script>
 
 	<div class="map_list" style="position: relative;">
-	
+
 		<div id="map" style="width: 950px; height: 700px;"></div>
-		<div style="overflow-y:auto; overflow-x: hidden; background-color:#fafbfe; width:350px; height:670px;">
+		<div
+			style="overflow-y: auto; overflow-x: hidden; background-color: #fafbfe; width: 350px; height: 670px;">
 			<c:if test="${empty list }">
 				<div class="map_result">검색 결과가 없습니다.</div>
 				<div class="map_pagingNon"></div>
 			</c:if>
-			
+
 			<c:if test="${not empty list }">
 				<c:forEach var="row" items="${list}">
 					<ul class="map_ul">
@@ -142,35 +146,37 @@
 						<li>${row.tel }</li>
 					</ul>
 				</c:forEach>
-			<div style="position: absolute; bottom: 31px; right: 350px;">
-				<!-- 페이징 -->
-				<div class="map_paging">
-					<div id="prevDiv"
-						style="border-right: 1px solid black; padding: 3px; width: 115px; text-align: center;">
-						<c:if test="${page != 1 }">
-							<a id="prevA" href="javascript:void(0);" onclick="prevA()">
-								PREV </a>
-						</c:if>
-					</div>
-					<div id="pageDiv"
-						style="border-right: 1px solid black; padding: 3px; width: 120px; text-align: center;">
-						<c:if test="${not empty param }">
-							<a id="pageA" href="javascript:void(0);" onclick="pageA()">
-								${page }/${paging.pageCount }</a>
-						</c:if>
-						<c:if test="${empty param }">
-							<a href="${cpath }/camping/list/${page}"> ${page }</a>
-						</c:if>
-					</div>
+				<div style="position: absolute; bottom: 31px; right: 350px;">
+					<!-- 페이징 -->
+					<div class="map_paging">
+						<div id="prevDiv"
+							style="border-right: 1px solid black; padding: 3px; width: 115px; text-align: center;">
+							<c:if test="${page != 1 }">
+								<a id="prevA" href="javascript:void(0);" onclick="prevA()">
+									PREV </a>
+							</c:if>
+						</div>
+						<div id="pageDiv"
+							style="border-right: 1px solid black; padding: 3px; width: 120px; text-align: center;">
+							<c:if test="${not empty param }">
+								<a id="pageA" href="javascript:void(0);" onclick="pageA()">
+									${page }/${paging.pageCount }</a>
+							</c:if>
+							<c:if test="${empty param }">
+								<a href="${cpath }/camping/list/${page}"> ${page }</a>
+							</c:if>
+						</div>
 
-					<div id="nextDiv" style="padding: 3px; width: 115px; text-align: center;">
-						<c:if test="${page < paging.pageCount }">
-							<a id="nextA" href="javascript:void(0);" onclick="nextA()">
-								NEXT </a>
-						</c:if>
+						<div id="nextDiv"
+							style="padding: 3px; width: 115px; text-align: center;">
+							<c:if test="${page < paging.pageCount }">
+								<a id="nextA" href="javascript:void(0);" onclick="nextA()">
+									NEXT </a>
+							</c:if>
+						</div>
+						<br>
+						<br>
 					</div>
-					<br><br>
-				</div>
 				</div>
 			</c:if>
 		</div>
@@ -247,10 +253,10 @@
 </script>
 
 </div>
-	<!-- 지도 -->
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
-	<script>
+<!-- 지도 -->
+<script
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7a5f98cddb99a6595fc86122e8b7be5d&libraries=services"></script>
+<script>
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
@@ -349,8 +355,8 @@
 	})
 </script>
 
-	<!-- 옵션 적용 -->
-	<script>
+<!-- 옵션 적용 -->
+<script>
 	window.onload = function() {
 	    // 기본값으로 '전체'를 선택하도록 함
 	    var firstSelect = document.getElementById('firstSelect');
@@ -465,4 +471,4 @@
 	}
 </script>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../footer.jsp"%>

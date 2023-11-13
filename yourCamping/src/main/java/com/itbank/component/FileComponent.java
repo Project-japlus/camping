@@ -12,8 +12,6 @@ public class FileComponent {
 //    @Value("${cpath}")
 //    private String cpath;
 //    
-//	private String saveDirectory = "C://workspace-camping/camping2/src/main/webapp/resources/first_img";
-//	private String saveDirectory2 = cpath + "/webapp/resources/inner_img";
 	private String saveDirectory = "C:\\first_img";
 	private String saveDirectory2 = "C:\\inner_img";
 	private String saveDirectory3 = "C:\\upload";

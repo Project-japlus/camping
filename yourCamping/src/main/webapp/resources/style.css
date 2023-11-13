@@ -320,9 +320,11 @@ div.map_pagingNon {
 div.paging>button {
 	opacity: 0.1;
 }
-button.map_showListBtn {
-	justify-content: flex-end;
-	margin-right: 17%;
+button#showList {
+	z-index: 999999;
+	position: absolute;
+	top: 70%;
+	right: 17%;
 }
 ul.map_ul {
 	list-style:none; 
