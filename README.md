@@ -171,3 +171,96 @@
 - [x] 마이페이지에서 캠핑장 수정과 삭제 링크 주소 변경
 - [x] 정말 삭제할 것인지 물어보는 스크립트 생성
 - [x] MyPage_check의 GetMapping과 PostMapping 모두 변경
+
+
+## 2023년 11월 10일
+
+### 정수용
+- 자유게시판과 리뷰게시판 페이징 추가
+  - `boardController`, `Service`, `Component`, `DAO`, mapper의 리스트 불러오는 메서드에 파라미터 추가
+  - `reivewList.jsp`, `freeList.jsp` 페이징 코드 추가
+  - 페이지 관리자: 게시판에서 글 삭제 기능 추가
+  - `reviewView`와 `freeView` 목록으로 버튼 링크 수정
+  - `reviewView` 이미지 보여주는 부분 코드 수정
+  - `freeView` 댓글 삭제 버튼 본인이 쓴 댓글에만 보이게 수정
+
+### 현우
+- `User-mapper.xml`에서 'getReserveInfo' 쿼리문 수정 (reserveTable에서 checkout이 'y'인 것만 출력하게) + `reserve_idx` 오름차순으로 정렬
+- Mypage
+  - 내 정보 테이블 크기 축소
+  - 회원탈퇴 버튼: 흰색으로 변경
+  - 정보 테이블에 세로선 추가("style=border-left:1px solid #c2c2c2;")
+- `Mypage_modify.jsp` 수정
+  - 이메일 변경 버튼을 출력된 이메일 옆으로 이동
+  - 회원 정보 수정 테이블 크기 축소
+  - 인증번호 받기에서 기존과 같은 이메일이면 alert으로 막기
+
+### 이현우
+- 비밀번호 변경 버그 발견
+  - Salt에 특수문자(+, - 등)이 있을 경우, `ajaxController`로 넘어가는 과정에서 특수문자가 공백문자로 변경되고, 그에 따라 hash값이 다르게 나옴
+  - 현재 비밀번호: `f1ef798d`, 변경 비밀번호: `1234`
+  - 해결방법: 스크립트에서 salt를 넘기는 것이 아니라, `ajaxController`에서 `login.salt`를 불러온다
+
+### 유란
+- Style 복붙
+- Footer, `view.jsp`, `mypage.jsp` 등에서 현우 변경사항과 유란 변경사항 혼합
+- `list.jsp`, `newCamping.jsp`, `newCampingSecond.jsp`, `campingUpdate.jsp`, `campingUpdateTwo.jsp`, `home.jsp`, `map.jsp`
+- `userController`: `@PostMapping Mypage_check`
+- `camping-mapper`: `getCampingList`, `getListCnt` => where `camping_confirm = 'Y'` 추가
+
+### 하람
+- 추천 버튼 수정
+- `reviewView` 이미지 크기 고정
+- `review`, `free` 수정부분 수정
+- `home.jsp` 게시판 스타일
+- `userModal - ID/PW 찾기` 스타일 진행 중
+
+### 예외발생
+- `freeView`에서 비 로그인 상태로 댓글을 달려고 했을 때 경고창이 출력되지 않음
+- 댓글을 작성한 후, 해당 글로 들어가지지 않음(해결)
+  - 댓글을 2개 달면 게시글이 복제가 됨
+  - `freeview`와 `freeList`의 쿼리문 문제였음
+  - Reply과 관련된 구문 삭제
+
+## 2023년 11월 11일
+
+### 지훈
+- 버그발생
+  - 예약 사이트가 없으면 결제하러가기 버튼도 안보이게 해주세요
+  - 사이트 없는데 밑에 버튼은 클릭이 가능해서 클릭하면 예외 터짐
+  - `view` 이미지슬라이드 버튼 변경
+
+
+## 2023년 11월 12일
+
+### 수용
+- **ID/PW 찾기 및 기타 버그 수정**
+  - `bizr_table`이 나오지 않는 현상 수정.
+  - 이에 따라 PW 찾기가 안 되는 버그도 해결.
+- **Camping 기능 업데이트**
+  - `camping_confirm`이 'N'인 경우 bookmark를 가져오지 않도록 수정.
+- **UI 개선**
+  - `home.jsp`에서 경상남도에 서귀포시, 제주도시가 나오는 현상 수정.
+
+## 2023년 11월 13일
+
+### 지훈
+- **예약 기능 업데이트**
+  - 예약날짜 선택 시 오늘보다 이전 날짜 선택 불가능하게 블락 처리.
+  - 입실일을 선택하면 퇴실일은 입실일보다 이후를 선택해야만 하게 스크립트 처리(날짜 제한).
+  - 예약 확인 뒤로가기 버튼 오류 수정.
+
+### 현우
+- **이메일 오류 수정**
+
+## 2023년 11월 13일
+
+### 지훈
+- **관리자 기능 추가**
+  - 사업주 내역 관리 기능 추가.
+  - `BizrDTO`, `bizrManage.jsp`, Controller, Service, DAO, root-mapper 수정.
+
+### 최종본 테스트 
+
+### 서버 배포 및 시연
+- **서버 배포 후 팀 전체 PPT 발표**
