@@ -173,6 +173,52 @@
 - [x] MyPage_check의 GetMapping과 PostMapping 모두 변경
 
 
+## 2023년 11월 9일
+
+### 하람
+-boardmapper에 전체리스트 불러오는 부분 파라미터 추가 - 페이징에 사용
+-파라미터 추가로 board컴포넌트, 서비스, 컨트롤러도 수정
+-reviewList, freeList 페이징 추가 + 관리자일경우 글 삭제 버튼 추가
+-home에 게시판 모양 수정, 링크 부분 수정
+-reviewWrite, freeWrite 작성완료버튼 취소버튼 옆으로 이동
+-reviewView랑 freeView 목록으로 버튼 링크 수정
+-reviewView 이미지 보여주는 부분 코드 수정
+-ReviewDTO upload multipartfile배열에서 리스트로 수정
+
+
+
+### 현우
+@Mypage일반 사업자 마이페이지 만들기
+     -BookmarkDTO만듬
+     -reserveDTO에 private String tel 추가함 / private String homepage 추가함
+     -Config.xml typeAlias 추가함
+     -Mypage.jsp 전체적으로 수정해서 그냥 그대로 쓰면 될듯
+     -일반 사용자 정보에서 시설 이름 누르면 view로 넘어가게 구현 / 북마크한 캠핑장에서 캠핑장 홈페이지 누르면 홈페이지로 넘어가게 구현함
+     -UserController  list 추가함
+     -UserService  함수만듬
+     -UserDAO  함수만듬
+     -UserMapper  <select>문 getReserveInfo & getBookmarkInfo & getbizrInfo 만듬
+     -Mypage_modify
+     -MYPAGE 버튼 경로 바꿈 ${cpath}/user/Mypage 로
+     -userModal
+     -아이디 저장
+     -userModal 3번째 줄에 Jquery 추가하고
+     -밑에 스크립트 추가하면 완성
+
+### 유란 
+- 캠핑장 등록/ 수정/상세기능 수정 , 프론트 수정 (지훈)
+- 버튼
+- 캠핑장 등록(색)
+- 캠핑장 수정 페이지에 프론트 적용이 안되는거 같아여(확인 필요)
+- footer 글 사이 좀 더 넓게
+
+### 수용 (하람,현우, 유란수정본 병합)
+
+### 버그발견
+🏕️어디로캠핑(로고) 헤더에 있는 로고 링크가 안잡힘 => 수정 
+
+### ppt제출용 템플릿 의논 및 문서작성 start
+
 ## 2023년 11월 10일
 
 ### 정수용
