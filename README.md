@@ -6,6 +6,14 @@
   <h4>프로젝트소개란</h4>
 </div>
 
+<div align=center>
+  <h3>:open_hands: Project Introduction</h3>
+  <h4>각 페이지별 팀원 파트 (작성예정)</h4>
+</div>
+
+
+
+
 <h3 align="center">📚 Tech Stack 📚</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat-square&logo=eclipseide&logoColor=white"/>&nbsp 
