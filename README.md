@@ -12,6 +12,10 @@
 <h1><img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white" width="100"/>&nbsp 노션링크(프로젝트 기술일지)</h1>
 <p>https://shy-circle-05e.notion.site/BearCamping-bca2d73eab624bb896dd293d92e67fd6?pvs=4</p>
 
+<br>
+<br>
+<br>
+
 <h1 align="center">📚 Tech Stack 📚</h1>
 <p align="center">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat-square&logo=eclipseide&logoColor=white"/>&nbsp 
