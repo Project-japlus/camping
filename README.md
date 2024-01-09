@@ -249,7 +249,8 @@
 <br>
 
 ## 게시판 리뷰/후기 (댓글포함) (하람)
-![image](https://github.com/Project-japlus/camping/assets/133019246/4e86bb32-5042-46ab-9e6e-73c6ea83754b)
+![image](https://github.com/Project-japlus/camping/assets/133019246/a28524a2-428c-4a61-bfbf-d0a532e4f1d4)
+
 ### SQL CRUD 적용하여 쓰기/수정/삭제/조회 가능
 ### 검색유형 선택 및 키워드 검색 가능 
 ### 페이징 적용
