@@ -37,7 +37,7 @@
 
 
 
-<h3 align="center">📚 Tech Stack 📚</h3>
+<h1 align="center">📚 Tech Stack 📚</h1>
 <p align="center">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat-square&logo=eclipseide&logoColor=white"/>&nbsp 
   <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white"/>&nbsp
