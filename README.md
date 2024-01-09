@@ -92,6 +92,7 @@
 
 ## 회원 로그인/ 회원가입
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/c72613ac-9e7f-4881-a981-7ae254ae497e"/>
+<p></p>
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/d27dc13d-0c5d-4bff-853a-5ee3ef901d56"/>
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
