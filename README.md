@@ -1,36 +1,33 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=CAMPING🏕️&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44" />
-</div>
+![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=CAMPING🏕️&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
 
-<h1 align="center">캠핑통합예약시스템</h1>
 
-<p align="center">이 프로젝트는 캠핑 관련 정보를 조회 및 관리하고 날씨, 예약, 결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.</p>
 
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />캠핑통합예약시스템
+
+이 프로젝트는 캠핑 관련 정보를 조회 및 관리하고 날씨,예약,결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.
+
+<br>
+<br>
 ---
 
-## 팀원 및 담당 기능
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand.png" alt="Call Me Hand" width="25" height="25" />팀원 및 담당 기능
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand.png" width="25" height="25" />
-</div>
-
-### 수용(리더)
-- **역할:** 고캠핑API의 전체 DB 설계 (E-R 다이어그램) 및 프로젝트 전체 병합
-- **기능:** 캠핑목록(LIST)
-
-### 하람
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Office%20Worker.png" alt="Man Office Worker" width="50" height="50" />수용(리더)
+- **역할:** 고캠핑API의 전체 DB 설계 (E-R 다이어그램) 및 프로젝트 전체병합
+- **기능:캠핑목록(LIST)
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Raising%20Hand.png" alt="Man Raising Hand" width="40" height="40" />하람
 - **역할:** 날씨API를 통한 날씨 정보 연동
 - **기능:** 게시판 및 댓글 기능 구현
 
-### 유란
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Raising%20Hand.png" alt="Woman Raising Hand" width="40" height="40" /> 유란
 - **역할:** 지도API (카카오MAP) 활용 및 관련 기능 개발
 - **기능:** 상세 캠핑 정보 조회, 지도로 캠핑 목록 표시, 사업주용 캠핑장 등록/수정 기능 구현
 
-### 리우
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Person%20Raising%20Hand.png" alt="Person Raising Hand" width="40" height="40" /> 리우
 - **역할:** 결제 API(카카오페이)를 통한 결제 기능 구현
 - **기능:** 달력 스크립트 활용하여 지정일 예약/결제, 관리자 페이지 관리 기능 구현
 
-### 현우
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Technologist.png" alt="Technologist" width="40" height="40" /> 현우
 - **역할:** 회원 관리 기능 개발
 - **기능:** 개인 및 사업자 회원용 로그인, 회원가입, 마이페이지 구현
 
