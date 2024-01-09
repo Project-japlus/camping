@@ -92,16 +92,19 @@
 
 ## 회원 로그인/ 회원가입 *모달처리 (현우)
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/c72613ac-9e7f-4881-a981-7ae254ae497e"/>
+<br>
 ### Hash/ salt 처리하여 DB에서 사용자의 패스워드 보호 
 ### 사업자 로그인 체크 기능 
 
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/d27dc13d-0c5d-4bff-853a-5ee3ef901d56"/>
+<br>
 ### 자바스크립트 true/false처리 아이디/패스워드/이메일/약관동의 모두 true시 회원가입 가능 
 ### 사업자 회원가입 클릭시 전환
 
 ## LIST 키워드검색시 캠핑장 리스트 (수용/유란)
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/0a703d15-0b52-48f1-8ba4-c342133ef110"/>
 <img width="400" src="https://github.com/Project-japlus/camping/assets/133019246/c12127c9-29e1-4f3d-80e4-695fe900cebe"/>
+<br>
 ### 검색 조건 / 지역에 맞는 캠핑장 리스트 출력
 ### 지도API 사용 
 ### 지도로보기 클릭시 지도에 마커표시  
