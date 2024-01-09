@@ -22,15 +22,15 @@
 - **역할:** 날씨API를 통한 날씨 정보 연동
 - **기능:** 게시판 및 댓글 기능 구현
 
-### 유란
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Raising%20Hand.png" alt="Woman Raising Hand" width="40" height="40" /> 유란
 - **역할:** 지도API (카카오MAP) 활용 및 관련 기능 개발
 - **기능:** 상세 캠핑 정보 조회, 지도로 캠핑 목록 표시, 사업주용 캠핑장 등록/수정 기능 구현
 
-### 리우
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Person%20Raising%20Hand.png" alt="Person Raising Hand" width="40" height="40" /> 리우
 - **역할:** 결제 API(카카오페이)를 통한 결제 기능 구현
 - **기능:** 달력 스크립트 활용하여 지정일 예약/결제, 관리자 페이지 관리 기능 구현
 
-### 현우
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Technologist.png" alt="Technologist" width="40" height="40" /> 현우
 - **역할:** 회원 관리 기능 개발
 - **기능:** 개인 및 사업자 회원용 로그인, 회원가입, 마이페이지 구현
 
