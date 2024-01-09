@@ -218,15 +218,55 @@
 
 
 <br>
+<br>
 
+## 유저관리 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/c2a1872b-0a22-43b6-96df-9efafa219463)
-### 유저관리 
 ### 탈퇴처리는 데이터 삭제가 아닌 비활성화 
 ### 탈퇴버튼 클릭시 경고 alert 팝업
 
 <br>
+
+## 캠핑사업장 등록내역 관리 
+![image](https://github.com/Project-japlus/camping/assets/133019246/18898662-6f86-4f65-a7f5-bfc9ff0b884e)
+
+<br>
 <br>
 
+## 사업자 캠핑장 등록 페이지 (리우/유란)
+![image](https://github.com/Project-japlus/camping/assets/133019246/141bf3d1-9f3f-4758-a908-af94a8fe67be)
+![image](https://github.com/Project-japlus/camping/assets/133019246/c322e1ba-c889-4f06-ade6-f22af685279f)
+
+### 리우 (프론트) / 유란 (백)
+### 파일업로드 기능 추가
+### 고캠핑 API 참고하여 데이터 추가 
+
+<br>
+<br>
+
+## 게시판 리뷰/후기 (댓글포함) (하람)
+![image](https://github.com/Project-japlus/camping/assets/133019246/4e86bb32-5042-46ab-9e6e-73c6ea83754b)
+### SQL CRUD 적용하여 쓰기/수정/삭제/조회 가능
+### 검색유형 선택 및 키워드 검색 가능 
+
+<br>
+<br>
+
+## 리뷰작성 (하람)
+![image](https://github.com/Project-japlus/camping/assets/133019246/533456f7-3efb-40f3-9272-0c3fcf48ca60)
+### 로그인해야 게시글 및 댓글작성 가능
+### 캠핑장 이름 선택가능 
+### 제목 , 내용, 파일 업로드 
+
+## 게시글 상세보기 (하람)
+![image](https://github.com/Project-japlus/camping/assets/133019246/2fc57f29-b8d6-4edd-871d-77cc8738d57f)
+### 이미지 한장씩 자동 캐러셀(슬라이드)
+### 본인 게시글에 수정 / 삭제 버튼 활성화 
+### 추천 기능 
+### 자주찾는 캠핑장 및 인기 캠핑장 메인에서 보여주기 위함 
+
+<br>
+<br>
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
