@@ -81,7 +81,7 @@
 <h1><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Camera%20with%20Flash.png" alt="Camera with Flash" width="50" height="50" />ScreenShot</h1>
 
 ## 메인페이지 
-<img width="800" src="https://github.com/Project-japlus/camping/assets/133019246/f026fcaa-6adc-43eb-b834-2416bd594bee"/>
+![스크린샷 2024-01-09 223528](https://github.com/Project-japlus/camping/assets/133019246/40ddccd7-6d4b-4433-8562-20b08bcf6fe2)
 <br>
 
 ### header : 로고 (프로젝트이름) <- 클릭시 홈으로 
@@ -92,7 +92,7 @@
 
 ## 회원 로그인/ 회원가입
 <img width="500" src="https://github.com/Project-japlus/camping/assets/133019246/c72613ac-9e7f-4881-a981-7ae254ae497e"/>
-<img width="300" src="https://github.com/Project-japlus/camping/assets/133019246/d27dc13d-0c5d-4bff-853a-5ee3ef901d56"/>
+<img width="700" src="https://github.com/Project-japlus/camping/assets/133019246/d27dc13d-0c5d-4bff-853a-5ee3ef901d56"/>
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
