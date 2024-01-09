@@ -96,6 +96,8 @@
 ###  Hash/salt 처리하여 DB에서 사용자의 패스워드 보호 
 ### 사업자 로그인 체크 기능 
 
+<br>
+
 ## 개인/사업자 회원가입 *모달(현우)
 ![image](https://github.com/Project-japlus/camping/assets/133019246/b054c3ea-b3d6-4f0c-8acd-0585e45cd5b1)
 ### 자바스크립트 true/false처리 아이디/패스워드/이메일/약관동의 모두 true시 회원가입 가능 
@@ -113,6 +115,29 @@
 
 ### 지도API 사용 
 ### 지도로보기 클릭시 지도에 마커표시  
+
+<br>
+
+## VIEW (해당캠핑장 상세정보 및 입/퇴실일 지정) 유란/하람
+![image](https://github.com/Project-japlus/camping/assets/133019246/f278d734-5e9f-4b25-9eab-054905ef385d)
+### 날씨 데이터 로딩중 이모티콘gif 표시
+
+<br>
+![image](https://github.com/Project-japlus/camping/assets/133019246/fa2bc507-51ff-4953-bfb7-5f860c9bd3b1)
+
+### 상단 : 캠핑장 이름 / 우측 테마정보(ex산,숲) 
+### 메인 : 캠핑장 메인 이미지 / 캠핑장정보 표시 / 지정일로 예약하기 버튼
+
+<br>
+
+### 메인2 : 주간날씨 
+### 기상청 날씨 API (단기/중기 강수량 및 온도)
+### 캠핑장 자세한 소개 
+### 캠핑장 시설정보 아이콘 표시 및 기타주요시설 
+
+<br>
+![image](https://github.com/Project-japlus/camping/assets/133019246/27d7f038-dc18-46a0-b8df-02ea2fcd3fcb)
+### 하단 : 캐러셀 캠핑장 내부사진 이미지 슬라이드 
 
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
