@@ -20,7 +20,7 @@
 ![image](https://github.com/Project-japlus/camping/assets/133019246/4506376a-9b7e-4e14-9b7c-bd6adce04b8e)
 ## 하나의 계정에서 DB설계
 ## spring 라이브러리 의존성 주입 osdt  (oracle.database.security)
-## rootContext에서 팀원 전원 경로지정
+## rootContext에서 팀원 전원 경로 지정 및 전자지갑계정 DB 연결 
 <br>
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/52885554-cfb8-450c-9bb2-62b751e1ab4d)
