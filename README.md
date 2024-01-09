@@ -111,6 +111,7 @@
 ### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
 <br>
 <br>
+
 ![image](https://github.com/Project-japlus/camping/assets/133019246/6bef0bdb-397d-4bb1-a9df-bcaa9f08aa2f)
 
 ### 지도API 사용 
@@ -151,14 +152,60 @@
 <br>
 
 ## 지정일 선택 후 예약 (리우)
-![image](https://github.com/Project-japlus/camping/assets/133019246/87743186-18d2-4602-a937-78bee8348d20)
+![image](https://github.com/Project-japlus/camping/assets/133019246/3b73f3ff-8117-463a-ba6d-ff8037d774fd)
+
 ### 달력스크립트 사용
 ### 입실일 선택 (오늘 이전은 선택불가능)
 
 <br>
 
-![image](https://github.com/Project-japlus/camping/assets/133019246/5666b894-e490-4847-b13d-96f69fbb18ab)
+![image](https://github.com/Project-japlus/camping/assets/133019246/32b42c23-5a59-4315-8079-7fadb7ada63f)
+
 ### 퇴실일 선택 (입실일 이전은 선택 불가능)
+
+<br>
+
+## 예약 및 캠핑장 정보 (리우)
+![image](https://github.com/Project-japlus/camping/assets/133019246/fc16836e-972e-4c14-8147-c28c741661d4)
+### 캠핑장 이름
+### 구역별 요금표 
+### 구역 선택 및 금액 표시 
+
+<br>
+<br>
+
+![image](https://github.com/Project-japlus/camping/assets/133019246/80de9a60-4b74-46f7-9e1e-4a7d0afd1f8f)
+### 인원수 선택 및 약관동의 
+### 약관동의 보기 버튼 모달 
+### 전체이용약관동의 와 개별 이용약관 동기화 및 상호작용 
+### 결제하러가기 버튼 
+
+<br>
+<br>
+
+## 예약 내역확인 및 결제하기
+![image](https://github.com/Project-japlus/camping/assets/133019246/ec8b8b8c-074c-49a5-a871-5caadd118e28)
+
+### 예약자 정보 출력 및 옵션 선택 확인
+### 이때 예약 컬럼에 1행 추가 (결제상태는 업데이트x)
+
+<br> 
+<br>
+
+## 결제버튼 클릭시 결제창 모달(리우)
+![image](https://github.com/Project-japlus/camping/assets/133019246/04615dba-514f-419c-b966-e1a7ddea5577)
+### portOne 결제스크립트사용
+### 1박 초과시 가산금액 지정후 쿼리스트링으로 전달
+### 지정된 예약 컬럼에 결제상태 및 결제금액 업데이트 
+### 카카오페이 결제 후 모바일폰으로 알림 및 결제완료처리 
+
+<br>
+<br>
+
+## 결제완료 및 확인 페이지 (리우)
+![image](https://github.com/Project-japlus/camping/assets/133019246/fe7214bc-0dbf-4666-bcd8-d281790a35c0)
+### 결제내역 / 예약자 정보 표시 
+### 메인으로 버튼 
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
