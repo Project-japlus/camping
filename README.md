@@ -1,5 +1,5 @@
-![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=CAMPING🏕️&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=😊welcome!&fontSize=90" />
 
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />캠핑통합예약시스템
@@ -50,7 +50,7 @@
 
 <hr>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=🧾기록&fontSize=90" />
+![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=기록&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
