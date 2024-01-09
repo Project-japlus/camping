@@ -6,6 +6,8 @@
 
 이 프로젝트는 캠핑 관련 정보를 관리하고 제공하는 서비스를 개발하는 것을 목표로 합니다.
 
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Backhand%20Index%20Pointing%20Down.png" alt="Backhand Index Pointing Down" width="25" height="25" />
+
 ---
 
 ## 🤝팀원 및 담당 기능
