@@ -110,12 +110,13 @@
 ### 검색 조건 / 지역에 맞는 캠핑장 리스트 출력
 ### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
 <br>
-
+<br>
 ![image](https://github.com/Project-japlus/camping/assets/133019246/6bef0bdb-397d-4bb1-a9df-bcaa9f08aa2f)
 
 ### 지도API 사용 
 ### 지도로보기 클릭시 지도에 마커표시  
 
+<br>
 <br>
 
 ## VIEW (해당캠핑장 상세정보 및 입/퇴실일 지정) 유란/하람
@@ -123,12 +124,14 @@
 ### 날씨 데이터 로딩중 이모티콘gif 표시
 
 <br>
+<br>
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/fa2bc507-51ff-4953-bfb7-5f860c9bd3b1)
 
-### 상단 : 캠핑장 이름 / 우측 테마정보(ex산,숲) 
+### 상단 : 캠핑장 이름 (즐겨찾기버튼) / 우측 테마정보 아이콘 표시 (ex산,숲) 
 ### 메인 : 캠핑장 메인 이미지 / 캠핑장정보 표시 / 지정일로 예약하기 버튼
 
+<br>
 <br>
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/05bb887d-4388-47be-81f6-76229c2a113a)
@@ -139,10 +142,23 @@
 ### 캠핑장 시설정보 아이콘 표시 및 기타주요시설 
 
 <br>
+<br>
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/27d7f038-dc18-46a0-b8df-02ea2fcd3fcb)
 ### 하단 : 캐러셀 캠핑장 내부사진 이미지 슬라이드 
 
+<br>
+<br>
+
+## 지정일 선택 후 예약 (리우)
+![image](https://github.com/Project-japlus/camping/assets/133019246/87743186-18d2-4602-a937-78bee8348d20)
+### 달력스크립트 사용
+### 입실일 선택 (오늘 이전은 선택불가능)
+
+<br>
+
+![image](https://github.com/Project-japlus/camping/assets/133019246/5666b894-e490-4847-b13d-96f69fbb18ab)
+### 퇴실일 선택 (입실일 이전은 선택 불가능)
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
