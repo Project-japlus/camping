@@ -35,11 +35,8 @@
     PortOne 결제 스크립트:** 결제 처리를 위해 PortOne의 결제 스크립트를 사용합니다.
 
 
-
-
-
-<h1 align="center">📚 Tech Stack 📚</h1>
-<p align="center">
+<h1>📚 Tech Stack 📚</h1>
+<p>
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat-square&logo=eclipseide&logoColor=white"/>&nbsp 
   <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white"/>&nbsp
   <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat-square&logo=apachetomcat&logoColor=white"/>&nbsp 
