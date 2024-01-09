@@ -92,24 +92,30 @@
 <br>
 
 ## 회원 로그인/ 회원가입 *모달처리 (현우)
-![이미지1](https://github.com/Project-japlus/camping/blob/main/assets/133019246/c72613ac-9e7f-4881-a981-7ae254ae497e.png)
+![image](https://github.com/Project-japlus/camping/assets/133019246/2f16aedb-fce7-4b8e-986b-a74d5e0aa550)
+
 <br>
 ### Hash/ salt 처리하여 DB에서 사용자의 패스워드 보호 
 ### 사업자 로그인 체크 기능 
 
-![이미지2](https://github.com/Project-japlus/camping/blob/main/assets/133019246/d27dc13d-0c5d-4bff-853a-5ee3ef901d56.png)
+![image](https://github.com/Project-japlus/camping/assets/133019246/b054c3ea-b3d6-4f0c-8acd-0585e45cd5b1)
+
 <br>
 ### 자바스크립트 true/false처리 아이디/패스워드/이메일/약관동의 모두 true시 회원가입 가능 
 ### 사업자 회원가입 클릭시 전환
 
 ## LIST 키워드검색시 캠핑장 리스트 (수용/유란)
-![이미지3](https://github.com/Project-japlus/camping/blob/main/assets/133019246/0a703d15-0b52-48f1-8ba4-c342133ef110.png)
-![이미지4](https://github.com/Project-japlus/camping/blob/main/assets/133019246/c12127c9-29e1-4f3d-80e4-695fe900cebe.png)
-<br>
+![image](https://github.com/Project-japlus/camping/assets/133019246/e74d6ad8-5354-46f1-84ea-91b299a1cf38)
 ### 검색 조건 / 지역에 맞는 캠핑장 리스트 출력
+### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
+<br>
+
+![image](https://github.com/Project-japlus/camping/assets/133019246/6bef0bdb-397d-4bb1-a9df-bcaa9f08aa2f)
+<br>
+
 ### 지도API 사용 
 ### 지도로보기 클릭시 지도에 마커표시  
-### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
+
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
