@@ -207,8 +207,31 @@
 ### 결제내역 / 예약자 정보 표시 
 ### 메인으로 버튼 
 
+<br>
+<br>
+
+## 관리자페이지 (리우)
+![image](https://github.com/Project-japlus/camping/assets/133019246/8b167c64-1757-4f70-ba76-bd029bc5deb0)
+### rootHeader.jsp를 import하여 한 페이지에서 예약내역/사업주캠핑등록내역/유저관리  
+### 고객예약 내역 이름 클릭시 상세예약정보페이지로 전환 
+![image](https://github.com/Project-japlus/camping/assets/133019246/cae15081-b418-475a-9a18-5ea8653a1de7)
+
+
+<br>
+
+![image](https://github.com/Project-japlus/camping/assets/133019246/c2a1872b-0a22-43b6-96df-9efafa219463)
+### 유저관리 
+### 탈퇴처리는 데이터 삭제가 아닌 비활성화 
+### 탈퇴버튼 클릭시 경고 alert 팝업
+
+<br>
+<br>
+
+
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
+
+<img src="https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=90" />
 
 ## 2023년 10월 30일
 
