@@ -214,6 +214,10 @@
 ![image](https://github.com/Project-japlus/camping/assets/133019246/8b167c64-1757-4f70-ba76-bd029bc5deb0)
 ### rootHeader.jsp를 import하여 한 페이지에서 예약내역/사업주캠핑등록내역/유저관리  
 ### 고객예약 내역 이름 클릭시 상세예약정보페이지로 전환 
+
+<br>
+<br>
+
 ![image](https://github.com/Project-japlus/camping/assets/133019246/cae15081-b418-475a-9a18-5ea8653a1de7)
 
 
