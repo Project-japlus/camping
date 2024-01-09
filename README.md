@@ -15,7 +15,18 @@
 
 <br>
 <br>
- 
+
+# ORACLE DB 전자지갑 사용 
+![image](https://github.com/Project-japlus/camping/assets/133019246/4506376a-9b7e-4e14-9b7c-bd6adce04b8e)
+## 하나의 계정에서 DB설계
+## spring 라이브러리 의존성 주입 osdt  (oracle.database.security)
+## rootContext에서 팀원 전원 경로지정
+<br>
+
+![image](https://github.com/Project-japlus/camping/assets/133019246/52885554-cfb8-450c-9bb2-62b751e1ab4d)
+
+<br>
+
 # Restful API LIST
 
 ## 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
