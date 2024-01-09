@@ -276,6 +276,7 @@
 <br>
 <br>
 ## 관리자 로그인시 게시글 관리
+
 ![image](https://github.com/Project-japlus/camping/assets/133019246/dec407b4-f561-499d-a84c-418707a962dc)
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
