@@ -4,12 +4,12 @@
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />캠핑통합예약시스템
 
-이 프로젝트는 캠핑 관련 정보를 관리하고 제공하는 서비스를 개발하는 것을 목표로 합니다.
+이 프로젝트는 캠핑 관련 정보를 조회 및 관리하고 날씨,예약,결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.
 
 <br>
 <br>
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Backhand%20Index%20Pointing%20Down.png" alt="Backhand Index Pointing Down" width="100" height="100" />
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Backhand%20Index%20Pointing%20Down.png" alt="Backhand Index Pointing Down" width="75" height="75" />
 
 ---
 
