@@ -20,7 +20,9 @@
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="50" height="50" />  overview  
 
 
-### 사용된 Restful API 목록
+<div align="center">
+
+### Restful API LIST
 
 이 프로젝트에서는 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
 
@@ -34,6 +36,9 @@
     달력 스크립트:** 예약 및 일정 관리를 위해 사용되는 달력 스크립트를 사용합니다.
 - **<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Credit%20Card.png" alt="Credit Card" width="25" height="25" />
     PortOne 결제 스크립트:** 결제 처리를 위해 PortOne의 결제 스크립트를 사용합니다.
+
+</div>
+
 
 
 
