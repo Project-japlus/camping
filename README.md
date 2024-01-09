@@ -18,16 +18,19 @@
 <br>
 
 <h1><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="50" height="50" />overView</h1>
+
 # RestFul API
 
-## 다음과 같은 다양한 API들을 활용하여 서비스를 구축하였습니다.
-<p>데이터 공공포털 링크</p>
-<p>https://www.data.go.kr/</p>
-- **한국관광공사 고캠핑 API**: 한국관광공사에서 제공하는 캠핑 관련 정보를 활용합니다.
-- **기상청 API**: 날씨 정보를 제공하기 위해 기상청 API를 사용합니다.
-- **카카오 MAP API**: 지도 기능을 구현하기 위해 카카오의 MAP API를 활용합니다.
-- **달력 스크립트**: 예약 및 일정 관리를 위한 달력 스크립트를 사용합니다.
-- **PortOne 결제 스크립트**: 결제 처리를 위해 PortOne의 결제 스크립트를 사용합니다.
+# 사용된 Restful API 목록
+
+이 프로젝트에서는 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
+
+- **한국관광공사 고캠핑 API:** 캠핑 관련 정보를 제공하는 API로, 캠핑장 정보 및 예약 기능을 활용합니다.
+- **기상청 API:** 날씨 정보를 제공하기 위해 기상청의 API를 사용합니다.
+- **카카오 MAP API:** 지도 기능을 구현하기 위해 카카오의 지도 API를 활용합니다.
+- **달력 스크립트:** 예약 및 일정 관리를 위해 사용되는 달력 스크립트를 사용합니다.
+- **PortOne 결제 스크립트:** 결제 처리를 위해 PortOne의 결제 스크립트를 사용합니다.
+
 
 
 <h1 align="center">📚 Tech Stack 📚</h1>
