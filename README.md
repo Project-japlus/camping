@@ -98,13 +98,13 @@
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/b054c3ea-b3d6-4f0c-8acd-0585e45cd5b1)
 
-### 자바스크립트 true/false처리 아이디/패스워드/이메일/약관동의 모두 true시 회원가입 가능 
-### 사업자 회원가입 클릭시 전환
+#### 자바스크립트 true/false처리 아이디/패스워드/이메일/약관동의 모두 true시 회원가입 가능 
+#### 사업자 회원가입 클릭시 전환
 
 ## LIST 키워드검색시 캠핑장 리스트 (수용/유란)
 ![image](https://github.com/Project-japlus/camping/assets/133019246/e74d6ad8-5354-46f1-84ea-91b299a1cf38)
-### 검색 조건 / 지역에 맞는 캠핑장 리스트 출력
-### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
+#### 검색 조건 / 지역에 맞는 캠핑장 리스트 출력
+#### 캠핑장 이름 / 기본 시설 / 주소 / 한줄소개 / 조회수 표시
 <br>
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/6bef0bdb-397d-4bb1-a9df-bcaa9f08aa2f)
