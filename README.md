@@ -183,7 +183,7 @@
 <br>
 <br>
 
-## 예약 내역확인 및 결제하기
+## 예약 내역확인 및 결제하기 (리우)
 ![image](https://github.com/Project-japlus/camping/assets/133019246/ec8b8b8c-074c-49a5-a871-5caadd118e28)
 
 ### 예약자 정보 출력 및 옵션 선택 확인
