@@ -1,11 +1,6 @@
 ![slice](https://capsule-render.vercel.app/api?type=slice&color=auto&height=200&text=CAMPING🏕️&fontAlign=70&rotate=13&fontAlignY=25&desc=seulzzang's%20GitHub&descAlign=70.&descAlignY=44)
 
 
-<div align=center>
-  <h3>:open_hands: Project Introduction</h3>
-  <h4>프로젝트소개란</h4>
-</div>
-
 
 # 🏕️캠핑통합예약시스템
 
@@ -46,7 +41,8 @@
   <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white"/>&nbsp 
   <br>
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=spring&logoColor=white"/>&nbsp 
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"/>&nbsp 
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=white"/>&nbsp
+  <img src="https://img.shields.io/badge/Kakao-FFCD00?style=flat-square&logo=javascript&logoColor=white"/>&nbsp 
 </p>
 
 <hr>
