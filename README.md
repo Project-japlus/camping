@@ -2,12 +2,15 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=😊welcome!&fontSize=110" />
 
 
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />캠핑통합예약시스템
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />BearCamping
 
-이 프로젝트는 캠핑 관련 정보를 조회 및 관리하고 날씨,예약,결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.
+이 프로젝트는 전국 캠핑 관련 정보를 조회 및 관리하고 날씨,예약,결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.(전국캠핑통합예약시스템)
 
 <br>
 <br>
+
+<h1>노션 링크</h1>
+<p>https://shy-circle-05e.notion.site/BearCamping-bca2d73eab624bb896dd293d92e67fd6?pvs=4</p>
 
 <h1 align="center">📚 Tech Stack 📚</h1>
 <p align="center">
