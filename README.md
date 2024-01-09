@@ -279,12 +279,14 @@
 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/dec407b4-f561-499d-a84c-418707a962dc)
 
-<h1>당일 12시 프로젝트 전체업로드 필수 </h1>
-<h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=감사합니다&fontSize=90" />
+<br>
+<br>
 
 ### 최종본 테스트 
 
 ### 서버 배포 및 시연
 - **서버 배포 후 팀 전체 PPT 발표**
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=감사합니다&fontSize=90" />
+
+
