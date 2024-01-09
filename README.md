@@ -27,6 +27,14 @@
 
 <br>
 
+# E-R 다이어그램 설계 
+![e-r 다이어그램](https://github.com/Project-japlus/camping/assets/133019246/72e99e33-59c9-47fd-8e0b-60ac0da8be2c)
+## camping_idx 대부분의 테이블에 camping_idx 캠핑장고유번호 외래키 지정 
+
+<br>
+![image](https://github.com/Project-japlus/camping/assets/133019246/6fa67327-96f1-4c64-9b88-f315d9094a6f)
+## 캠핑장 정보(소개,활동,내부시설,안전시설,사이트(구역),유저,자유게시판,리뷰게시판,예약,북마크,캠핑이미지,사업자,사업자등록번호,위도,경도)
+
 # Restful API LIST
 
 ## 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
