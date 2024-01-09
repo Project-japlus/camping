@@ -82,6 +82,8 @@
 
 ## 메인페이지 
 <img width="500" src="https://github.com/Project-japlus/camping/assets/133019246/f026fcaa-6adc-43eb-b834-2416bd594bee"/>
+<br>
+
 ### header : 로고 (프로젝트이름) <- 클릭시 홈으로 
 ### header : 로그인 및 회원가입 / (로그인 중)마이페이지/ 로그아웃 버튼 전환 
 ### 메인 : 지역 시/군구 선택 or 키워드 검색 및 캠핑장 카테고리별 검색
