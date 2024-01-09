@@ -17,14 +17,17 @@
 <br>
 <br>
 
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="50" height="50" />  overview  
+<div align="center">
+    # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Eyes.png" alt="Eyes" width="50" height="50" />  overview      
+</div>
+
 
 
 <div align="center">
 
-### Restful API LIST
+## Restful API LIST
 
-이 프로젝트에서는 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
+### 이 프로젝트에서는 다음과 같은 다양한 API를 활용하여 서비스를 구축하였습니다.
 
 - **<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Camping.png" alt="Camping" width="25" height="25" />
     한국관광공사 고캠핑 API:** 캠핑 관련 정보를 제공하는 API로, 캠핑장 정보 및 예약 기능을 활용합니다.
