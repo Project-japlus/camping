@@ -1,5 +1,5 @@
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=😊welcome!&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=😊welcome!&fontSize=110" />
 
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="100" height="100" />캠핑통합예약시스템
