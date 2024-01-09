@@ -80,11 +80,13 @@
 
 <h1><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Camera%20with%20Flash.png" alt="Camera with Flash" width="50" height="50" />ScreenShot</h1>
 
-# 메인페이지 
+## 메인페이지 
 ![스크린샷 2024-01-09 223528](https://github.com/Project-japlus/camping/assets/133019246/f026fcaa-6adc-43eb-b834-2416bd594bee)
-## 상단 좌측 : 로고 
-## 상단 우측 : 로그인 및 회원가입 / (로그인 중)마이페이지/ 로그아웃 버튼 전환 
-
+### header : 로고 (프로젝트이름) <- 클릭시 홈으로 
+### header : 로그인 및 회원가입 / (로그인 중)마이페이지/ 로그아웃 버튼 전환 
+### 메인 : 지역 시/군구 선택 or 키워드 검색 및 캠핑장 카테고리별 검색
+### 하단 : 자주찾는 캠핑장 / (최근) 캠핑장 후기 및 자유게시판 
+### footer : 개인정보처리방침 / 이용약관/ 주소 / 고객센터 / 이메일 
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
