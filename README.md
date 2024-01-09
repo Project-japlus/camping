@@ -123,6 +123,7 @@
 ### 날씨 데이터 로딩중 이모티콘gif 표시
 
 <br>
+
 ![image](https://github.com/Project-japlus/camping/assets/133019246/fa2bc507-51ff-4953-bfb7-5f860c9bd3b1)
 
 ### 상단 : 캠핑장 이름 / 우측 테마정보(ex산,숲) 
@@ -130,12 +131,15 @@
 
 <br>
 
+![image](https://github.com/Project-japlus/camping/assets/133019246/05bb887d-4388-47be-81f6-76229c2a113a)
+
 ### 메인2 : 주간날씨 
 ### 기상청 날씨 API (단기/중기 강수량 및 온도)
 ### 캠핑장 자세한 소개 
 ### 캠핑장 시설정보 아이콘 표시 및 기타주요시설 
 
 <br>
+
 ![image](https://github.com/Project-japlus/camping/assets/133019246/27d7f038-dc18-46a0-b8df-02ea2fcd3fcb)
 ### 하단 : 캐러셀 캠핑장 내부사진 이미지 슬라이드 
 
