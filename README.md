@@ -248,7 +248,7 @@
 ![image](https://github.com/Project-japlus/camping/assets/133019246/4e86bb32-5042-46ab-9e6e-73c6ea83754b)
 ### SQL CRUD 적용하여 쓰기/수정/삭제/조회 가능
 ### 검색유형 선택 및 키워드 검색 가능 
-
+### 페이징 적용
 <br>
 <br>
 
@@ -257,6 +257,9 @@
 ### 로그인해야 게시글 및 댓글작성 가능
 ### 캠핑장 이름 선택가능 
 ### 제목 , 내용, 파일 업로드 
+
+<br>
+<br>
 
 ## 게시글 상세보기 (하람)
 ![image](https://github.com/Project-japlus/camping/assets/133019246/2fc57f29-b8d6-4edd-871d-77cc8738d57f)
@@ -267,11 +270,13 @@
 
 <br>
 <br>
+## 관리자 로그인시 게시글 관리
+![image](https://github.com/Project-japlus/camping/assets/133019246/dec407b4-f561-499d-a84c-418707a962dc)
 
 <h1>당일 12시 프로젝트 전체업로드 필수 </h1>
 <h1>(구현/업로드 시간에 비례해서 병합도 늦어짐)</h1>  
 
-<img src="https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=90" />
+<img src="https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=capsule%20render&fontSize=90" 기록 />
 
 ## 2023년 10월 30일
 
