@@ -9,7 +9,7 @@
 <br>
 <br>
 
-<h1>노션 링크</h1>
+<h1><img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white"/>&nbsp 노션 링크</h1>
 <p>https://shy-circle-05e.notion.site/BearCamping-bca2d73eab624bb896dd293d92e67fd6?pvs=4</p>
 
 <h1 align="center">📚 Tech Stack 📚</h1>
