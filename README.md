@@ -270,7 +270,7 @@
 ![image](https://github.com/Project-japlus/camping/assets/133019246/141bf3d1-9f3f-4758-a908-af94a8fe67be)
 ![image](https://github.com/Project-japlus/camping/assets/133019246/c322e1ba-c889-4f06-ade6-f22af685279f)
 
-### 리우 (프론트) / 유란 (백,프론트트)
+### 리우 (프론트) / 유란 (백,프론트)
 ### 파일업로드 기능 추가
 ### 고캠핑 API 참고하여 데이터 추가 
 
