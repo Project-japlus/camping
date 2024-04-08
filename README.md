@@ -90,7 +90,7 @@
 
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Raising%20Hand.png" alt="Woman Raising Hand" width="40" height="40" /> 유란
 - **역할:** 지도API (카카오MAP) 활용 및 관련 기능 개발
-- **기능:** 캠핑 정보 상세 조회, 캠핑 목록 지도 위치 표시(단일/다중), 사업주용 캠핑장 등록/수정 기능 구현
+- **기능:** 캠핑 정보 상세 조회, 캠핑 목록 지도에 위치 표시(단일/다중), 사업주용 캠핑장 등록/수정 기능 구현
 
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Person%20Raising%20Hand.png" alt="Person Raising Hand" width="40" height="40" /> 리우
 - **역할:** 결제 API(카카오페이)를 통한 결제 기능 구현
