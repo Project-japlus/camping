@@ -4,8 +4,9 @@
 
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="50" height="50" />BearCamping
 
-## 이 프로젝트는 전국 캠핑 관련 정보를 조회 및 관리하고 <br>  날씨,예약,결제를 제공하는 서비스를 개발하는 것을 목표로 합니다.
-### (전국캠핑통합예약시스템)
+
+## 전국 캠핑장 정보를 한눈에 위치부터 날씨까지, 그리고 간편한 예약 및 결제까지 <br> 모든 것을 제공하는 캠핑 동반자 서비스입니다.
+
 
 <br>
 <br>
