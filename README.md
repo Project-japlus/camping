@@ -10,8 +10,9 @@
 <br>
 <br>
 
-<h1><img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white" width="100"/>&nbsp 노션링크(프로젝트 기술일지)</h1>
-<p>https://shy-circle-05e.notion.site/BearCamping-bca2d73eab624bb896dd293d92e67fd6?pvs=4</p>
+<h1><img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white" width="100"/>&nbsp 노션_프로젝트</h1>
+<p>[노션 프로젝트 기술일지]https://shy-circle-05e.notion.site/BearCamping-bca2d73eab624bb896dd293d92e67fd6?pvs=4</p>
+<p>[PPT]https://www.canva.com/design/DAFzwMii9xM/I_Sp30ywCra5Q6P2littEw/view?utm_content=DAFzwMii9xM&utm_campaign=designshare&utm_medium=link&utm_source=editor</p>
 
 <br>
 <br>
