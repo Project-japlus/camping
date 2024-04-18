@@ -5,7 +5,7 @@
 # <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bear.png" alt="Bear" width="50" height="50" />BearCamping
 
 
-## 전국 캠핑장 정보를 한눈에 위치부터 날씨까지, 그리고 간편한 예약 및 결제까지 <br> 모든 것을 제공하는 캠핑 동반자 서비스입니다.
+## 전국 캠핑장 정보를 한눈에 위치부터 날씨까지, 그리고 간편한 예약 및 결제까지 모든 것을 제공하는 캠핑 동반자 서비스입니다.
 
 
 <br>
