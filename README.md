@@ -19,8 +19,7 @@
 <br>
 
 # ORACLE DB 전자지갑 사용 
-![image](https://github.com/Project-japlus/camping/assets/133019246/4506376a-9b7e-4e14-9b7c-bd6adce04b8e)
-## 하나의 계정에서 DB설계
+![오라클 db](https://github.com/Project-japlus/camping/assets/133099209/754f1312-f1fc-411f-85a4-5d99ba53aa7d)
 ## spring 라이브러리 의존성 주입 osdt  (oracle.database.security)
 ## rootContext에서 팀원 전원 경로 지정 및 전자지갑계정 DB 연결 
 <br>
