@@ -142,10 +142,9 @@
 <br>
 <br>
 
+## 지도API 사용/지도로 보기 클릭시 지도에 마커표시(유란) 
 ![image](https://github.com/Project-japlus/camping/assets/133019246/6bef0bdb-397d-4bb1-a9df-bcaa9f08aa2f)
 
-### 지도API 사용 
-### 지도로보기 클릭시 지도에 마커표시  
 
 <br>
 <br>
