@@ -82,7 +82,7 @@
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Call%20Me%20Hand.png" alt="Call Me Hand" width="25" height="25" />팀원 및 담당 기능
 
-### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Office%20Worker.png" alt="Man Office Worker" width="50" height="50" />수용(리더)
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Office%20Worker.png" alt="Man Office Worker" width="50" height="50" />수용(PM)
 - **역할:** 고캠핑API의 전체 DB 설계 (E-R 다이어그램) 및 프로젝트 전체병합
 - **기능:** 캠핑목록(LIST)
 ### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Raising%20Hand.png" alt="Man Raising Hand" width="40" height="40" />하람
